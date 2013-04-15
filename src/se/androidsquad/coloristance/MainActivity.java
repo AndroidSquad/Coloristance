@@ -1,4 +1,6 @@
-package com.example.coloristance;
+package se.androidsquad.coloristance;
+
+import se.androidsquad.coloristance.R;
 
 import android.os.Bundle;
 import android.app.Activity;
@@ -10,6 +12,7 @@ public class MainActivity extends Activity {
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_main);
+
 	}
 
 	@Override
