@@ -17,7 +17,7 @@
         android:layout_marginTop="95dp"
         android:text="Coloristance"
         android:textAppearance="?android:attr/textAppearanceLarge"
-        android:textSize="@dimen/activity_vertical_margin" />
+        android:textSize="@android:dimen/app_icon_size" />
 
     <Button
         android:id="@+id/button1"
