@@ -33,4 +33,14 @@
         android:layout_marginTop="110dp"
         android:text="Nice Bytton" />
 
+    <Button
+        android:id="@+id/button2"
+        style="?android:attr/buttonStyleSmall"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/button1"
+        android:layout_marginTop="47dp"
+        android:layout_toRightOf="@+id/textView1"
+        android:text="Button" />
+
 </RelativeLayout>
