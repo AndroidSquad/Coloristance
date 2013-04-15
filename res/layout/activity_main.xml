@@ -48,10 +48,9 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_below="@+id/textView1"
-        android:layout_marginLeft="18dp"
-        android:layout_marginTop="62dp"
-        android:layout_toRightOf="@+id/button2"
-        android:text="Need some gi --help"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="43dp"
+        android:text="Need some git --help"
         android:textAppearance="?android:attr/textAppearanceLarge" />
 
 </RelativeLayout>
