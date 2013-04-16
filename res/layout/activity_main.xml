@@ -6,7 +6,8 @@
     android:paddingLeft="@dimen/activity_horizontal_margin"
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin"
-    tools:context=".MainActivity" >
+    tools:context=".MainActivity"
+    >
 
     <TextView
         android:id="@+id/textView2"
@@ -15,26 +16,35 @@
         android:layout_alignParentTop="true"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="95dp"
-        android:text="Coloristance"
+        android:text="@string/name"
         android:textAppearance="?android:attr/textAppearanceLarge"
         android:textSize="@android:dimen/app_icon_size" />
 
     <Button
         android:id="@+id/button1"
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_below="@+id/textView2"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="42dp"
-        android:text="New Game " />
+        android:text="@string/button_new" />
 
     <Button
         android:id="@+id/button3"
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_below="@+id/button1"
         android:layout_centerHorizontal="true"
-        android:layout_marginTop="31dp"
-        android:text="Quit" />
+        android:layout_marginTop="42dp"
+        android:text="@string/button_quit" />
 
+        <ImageView
+        android:contentDescription="@string/image_coloristance"
+        android:id="@+id/img"
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        android:background="@drawable/coloristance_start_logo"
+        android:layout_alignLeft="true"
+        android:layout_alignTop="true"/>
+    
 </RelativeLayout>
