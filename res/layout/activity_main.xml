@@ -44,7 +44,7 @@
         android:layout_alignParentBottom="true"
         android:layout_centerHorizontal="true"
         android:layout_marginBottom="38dp"
-        android:text="music_off" />
+        android:text="@string/name_game2" />
 
     <SeekBar
         android:id="@+id/seekBar1"
