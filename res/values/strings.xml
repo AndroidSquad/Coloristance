@@ -3,6 +3,8 @@
 
     <string name="app_name">Coloristance</string>
     <string name="action_settings">Settings</string>
-    <string name="hello_world">Hello world!</string>
+    <string name="new_game">New Game</string>
+    <string name="quit_game">Quit</string>
+    <string name="name_game">Coloristance </string>
 
 </resources>
