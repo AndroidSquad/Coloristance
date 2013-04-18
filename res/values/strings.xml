@@ -4,8 +4,8 @@
     <string name="app_name">Coloristance</string>
     <string name="action_settings">Settings</string>
     <string name="new_game">New Game</string>
-    <string name="quit_game">Yolo!</string>
+    <string name="quit_game">quit</string>
     <string name="name_game">Coloristance Fighter Mega Zingo</string>
-    <string name="name_game2">Sexy music off</string>
+    <string name="name_game2">Sexy music</string>
 
 </resources>
