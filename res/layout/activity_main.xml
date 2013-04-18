@@ -18,7 +18,7 @@
         android:layout_marginBottom="104dp"
         android:text="@string/quit_game"
         android:textStyle="bold"
-        />
+        android:textColor="#FFFFFF"/>
 
     <Button
         android:id="@+id/button1"
@@ -28,7 +28,8 @@
         android:layout_centerHorizontal="true"
         android:layout_marginBottom="24dp"
         android:text="@string/new_game"
-         android:textStyle="bold" />
+        android:textStyle="bold"
+        android:textColor="#FFFFFF" />
 
     <TextView
         android:id="@+id/textView2"
@@ -38,7 +39,8 @@
         android:text="@string/name_game"
         android:textColor="@color/White"
         android:textAppearance="?android:attr/textAppearanceLarge"
-        android:textSize="@android:dimen/app_icon_size" />
+        android:textSize="@android:dimen/app_icon_size" 
+        android:textColor="#FFFFFF"/>
 
     <Button
         android:id="@+id/button2"
@@ -48,7 +50,8 @@
         android:layout_centerHorizontal="true"
         android:layout_marginBottom="38dp"
         android:text="@string/name_game2"
-         android:textStyle="bold" />
+        android:textColor="#FFFFFF"
+        android:textStyle="bold" />
 
     <SeekBar
         android:id="@+id/seekBar1"
