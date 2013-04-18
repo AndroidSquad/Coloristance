@@ -15,8 +15,9 @@ public class MainActivity extends Activity {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_main);
 
-		mp = MediaPlayer.create(MainActivity.this, R.raw.pilot_jones);				    
+		mp = MediaPlayer.create(MainActivity.this, R.raw.music);				    
 		mp.start();
+		mp.setLooping(true);
 	}
 	
 	@Override
