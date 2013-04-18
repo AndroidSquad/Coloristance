@@ -39,8 +39,7 @@
         android:text="@string/name_game"
         android:textColor="@color/White"
         android:textAppearance="?android:attr/textAppearanceLarge"
-        android:textSize="@android:dimen/app_icon_size" 
-        android:textColor="#FFFFFF"/>
+        android:textSize="@android:dimen/app_icon_size" />
 
     <Button
         android:id="@+id/button2"
