@@ -8,5 +8,6 @@ public class ColorFactory {
 	// och funktioner för hur dörrar, rum, nycklar osv hämtar sina färger
 
 	Color blue = new Color();
+	
 
 }

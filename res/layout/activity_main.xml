@@ -37,7 +37,8 @@
         android:layout_centerHorizontal="true"
         android:text="@string/name_game"
         android:textAppearance="?android:attr/textAppearanceLarge"
-        android:textSize="@android:dimen/app_icon_size" />
+        android:textSize="@android:dimen/app_icon_size" 
+        android:textColor="#FFFFFF"/>
 
     <Button
         android:id="@+id/button2"
