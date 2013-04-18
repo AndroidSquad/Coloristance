@@ -17,7 +17,8 @@
         android:layout_centerHorizontal="true"
         android:layout_marginBottom="104dp"
         android:text="@string/quit_game"
-        android:textStyle="bold"/>
+        android:textStyle="bold"
+        />
 
     <Button
         android:id="@+id/button1"
@@ -26,7 +27,8 @@
         android:layout_above="@+id/button3"
         android:layout_centerHorizontal="true"
         android:layout_marginBottom="24dp"
-        android:text="@string/new_game" />
+        android:text="@string/new_game"
+         android:textStyle="bold" />
 
     <TextView
         android:id="@+id/textView2"
@@ -44,7 +46,8 @@
         android:layout_alignParentBottom="true"
         android:layout_centerHorizontal="true"
         android:layout_marginBottom="38dp"
-        android:text="@string/name_game2" />
+        android:text="@string/name_game2"
+         android:textStyle="bold" />
 
     <SeekBar
         android:id="@+id/seekBar1"
