@@ -27,7 +27,8 @@
         android:layout_centerVertical="true"
         android:text="@string/new_game"
         android:textColor="@color/white"
-        android:textStyle="bold" />
+        android:textStyle="bold" 
+        android:onClick="sendNewGame"/>
 
 	  
     <Button
