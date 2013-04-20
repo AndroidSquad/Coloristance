@@ -1,11 +1,14 @@
 package se.androidsquad.coloristance;
 
 import android.app.Activity;
+import android.media.MediaPlayer;
 import android.os.Bundle;
 
 public class FirstScreen extends Activity {
 
 	DrawingRect r;
+	MediaPlayer mp;
+
 	
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -13,5 +16,16 @@ public class FirstScreen extends Activity {
 		super.onCreate(savedInstanceState);
 		r = new DrawingRect(FirstScreen.this);
 		setContentView(r);
-	}	
+		mp = MediaPlayer.create(FirstScreen.this, R.raw.music);	
+		mp.start();
+		mp.setLooping(true);
+	}
+	
+	@Override
+	protected void onPause() {
+		// TODO Auto-generated method stub
+		super.onPause();
+		mp.release();
+
+	}
 }
