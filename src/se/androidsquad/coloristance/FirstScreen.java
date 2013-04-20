@@ -5,10 +5,13 @@ import android.os.Bundle;
 
 public class FirstScreen extends Activity {
 
+	DrawingRect r;
+	
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		// TODO Auto-generated method stub
 		super.onCreate(savedInstanceState);
-		setContentView(R.layout.firstscreen);
+		r = new DrawingRect(FirstScreen.this);
+		setContentView(r);
 	}	
 }
