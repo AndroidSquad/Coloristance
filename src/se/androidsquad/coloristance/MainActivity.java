@@ -86,6 +86,7 @@ public class MainActivity extends Activity {
 		mp.release();
 
 	}
+	
 
 	@Override
 	public boolean onCreateOptionsMenu(Menu menu) {
@@ -93,6 +94,16 @@ public class MainActivity extends Activity {
 		getMenuInflater().inflate(R.menu.main, menu);
 		return true;
 	}
+	@Override
+	protected void onResume() {
+		// TODO Auto-generated method stub
+		super.onResume();
+		mp = MediaPlayer.create(MainActivity.this, R.raw.music);				 
+
+	}
+	
+	
+	
 
 
 }
