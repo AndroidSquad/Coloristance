@@ -7,7 +7,7 @@
 
 #2. Läs mer på länkarna:
 
-- http://en.wikipedia.org/wiki/Hitbox - hitbox
-- http://en.wikipedia.org/wiki/Rendering_(computer_graphics) - rendering
--http://www.learn-cocos2d.com/2012/05/the-game-engine-dating-guide-how-to-findthe-right-engine-for-your-game/
+- http://en.wikipedia.org/wiki/Hitbox :hitbox
+- http://en.wikipedia.org/wiki/Rendering_(computer_graphics) :rendering
+- http://www.learn-cocos2d.com/2012/05/the-game-engine-dating-guide-how-to-findthe-right-engine-for-your-game/
 
