@@ -30,6 +30,11 @@ public class DrawingRect extends View{
 		green.setStyle(Paint.Style.FILL);
 		
 		canvas.drawRect(ourRect, green);
+		 
+		/*Refera till xml-filen i javan istället för tvärtom som vi trodde annars
+		
+		View p = view.getRootView();
+    	TextView greenRect = (TextView)p.findViewById(R.id.toggleButton2); */
 	}
 
 

@@ -21,6 +21,9 @@
         android:text="@string/new_game" />
     </LinearLayout>
 
+    <!-- Hur kan vi skapa en referens till ett DrawingRect.java objekt i denna xml-fil? -->
+
+    
     <LinearLayout
         android:id="@+id/linearLayout2"
         android:layout_width="wrap_content"
