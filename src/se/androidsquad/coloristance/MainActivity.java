@@ -20,7 +20,7 @@ public class MainActivity extends Activity {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_main);
 		
-		mp = MediaPlayer.create(MainActivity.this, R.raw.music);				 
+		mp = MediaPlayer.create(MainActivity.this, R.raw.house_music);				 
 
 		
 		Button a = (Button) findViewById(R.id.button1);
@@ -98,7 +98,7 @@ public class MainActivity extends Activity {
 	protected void onResume() {
 		// TODO Auto-generated method stub
 		super.onResume();
-		mp = MediaPlayer.create(MainActivity.this, R.raw.music);				 
+		mp = MediaPlayer.create(MainActivity.this, R.raw.house_music);				 
 
 	}
 	
