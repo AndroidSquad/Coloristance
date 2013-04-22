@@ -26,7 +26,7 @@
         </activity>
         
         <activity 
-            android:name=".FirstScreen"
+            android:name="se.androidsquad.coloristance.FirstScreen"
             android:theme="@android:style/Theme.NoTitleBar.Fullscreen">
             
         </activity>
