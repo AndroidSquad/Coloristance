@@ -14,8 +14,8 @@ public class FirstScreen extends Activity {
 	protected void onCreate(Bundle savedInstanceState) {
 		// TODO Auto-generated method stub
 		super.onCreate(savedInstanceState);
-		r = new DrawingRect(FirstScreen.this);
-		setContentView(r);
+		r = new DrawingRect(FirstScreen.this, null);
+		setContentView(R.layout.firstscreen);
 		mp = MediaPlayer.create(FirstScreen.this, R.raw.house_music);	
 		mp.start();
 		mp.setLooping(true);
