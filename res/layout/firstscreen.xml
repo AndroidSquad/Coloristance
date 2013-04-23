@@ -15,7 +15,6 @@
         android:gravity="top"
         android:orientation="vertical" >
 
-      
     </LinearLayout>
 
     <LinearLayout
@@ -30,21 +29,8 @@
         android:orientation="vertical" >
     </LinearLayout>
 
-    <LinearLayout
-        android:id="@+id/linearLayout3"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentRight="true"
-        android:layout_below="@+id/linearLayout2"
-        android:layout_marginTop="30dp"
-        android:background="#000000"
-        android:gravity="bottom"
-        android:orientation="vertical" >
-    </LinearLayout>
-
     <se.androidsquad.coloristance.DrawingRect
-        android:id="@+id/drawingRect1"
+        android:id="@+id/drawingRect"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentLeft="true"
