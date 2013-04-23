@@ -7,5 +7,8 @@
     <string name="quit_game">Sexy music pause</string>
     <string name="name_game">Coloristance Fighter Mega Disco</string>
     <string name="name_game2">Sexy music on</string>
+    <string name="door_bot">Bottom Door</string>
+    <string name="door_top">Top Door</string>
+    
 
 </resources>

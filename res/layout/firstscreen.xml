@@ -42,8 +42,7 @@
         android:layout_height="wrap_content"
         android:layout_above="@+id/linearLayout2"
         android:layout_centerHorizontal="true"
-        android:layout_marginBottom="30dp"
-        android:text="Door" />
+        android:text="@string/door_top" />
 
     <Button
         android:id="@+id/button1"
@@ -52,6 +51,7 @@
         android:layout_alignParentRight="true"
         android:layout_centerVertical="true"
         android:layout_marginRight="18dp"
-        android:text="Door" />
+        android:text="@string/door_bot" />
+   
 
 </RelativeLayout>
