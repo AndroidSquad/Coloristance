@@ -1,57 +1,76 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/background_layout"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/blue"
-    android:orientation="vertical" >
+    android:background="@color/white" >
 
-    <LinearLayout
-        android:id="@+id/linearLayout1"
-        android:layout_width="50dp"
-        android:layout_height="50dp"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentRight="true"
-        android:background="#205000"
-        android:gravity="top"
-        android:orientation="vertical" >
+    <RelativeLayout
+        android:id="@+id/top_layout"
+        android:layout_alignParentTop="true"
+        android:layout_width="match_parent"
+        android:layout_height="100dp"
+        android:background="@color/green" >
+        
+        <Button
+            android:id="@+id/fake2_button"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/test"
+            android:layout_centerInParent="true"
+            />
+                
+    </RelativeLayout>
 
-    </LinearLayout>
-
-    <LinearLayout
-        android:id="@+id/linearLayout2"
-        android:layout_width="wrap_content"
-        android:layout_height="90dp"
+    <RelativeLayout
+        android:id="@+id/bot_layout"
         android:layout_alignParentBottom="true"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentRight="true"
-        android:background="#505050"
-        android:gravity="bottom"
-        android:orientation="vertical" >
-    </LinearLayout>
+        android:layout_width="match_parent"
+        android:layout_height="100dp"
+        android:background="@color/red"
+        >
+                
+            <Button
+            android:id="@+id/fake_button"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="55dp"
+            android:text="@string/test"
+            android:layout_centerInParent="true" 
+            />
+        
+    </RelativeLayout>
 
-    <se.androidsquad.coloristance.DrawingRect
-        android:id="@+id/drawingRect"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentTop="true" />
+    <RelativeLayout
+        android:id="@+id/room_layout"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_above="@+id/bot_layout"
+        android:layout_below="@id/top_layout"
+        android:background="@color/yellow" >
 
-    <Button
-        android:id="@+id/button2"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_above="@+id/linearLayout2"
-        android:layout_centerHorizontal="true"
-        android:text="@string/door_top" />
+        <se.androidsquad.coloristance.DrawingRect
+            android:id="@+id/room"
+            android:layout_width="200dp"
+            android:layout_height="200dp"
+			android:layout_centerInParent="true"
+			/>
+            
+         <Button
+            android:id="@+id/right_button"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_toRightOf="@id/room"
+            android:layout_centerVertical="true"
+            android:text="@string/door" />
 
-    <Button
-        android:id="@+id/button1"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentRight="true"
-        android:layout_centerVertical="true"
-        android:layout_marginRight="18dp"
-        android:text="@string/door_bot" />
-   
+        <Button
+            android:id="@+id/top_button"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/door"
+            android:layout_above="@id/room"
+            android:layout_centerHorizontal="true" />
 
+	</RelativeLayout>
 </RelativeLayout>
