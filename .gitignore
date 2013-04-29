@@ -12,10 +12,12 @@
 # generated files
 bin/
 gen/
+.settings/
 
 # Local configuration file (sdk path, etc)
 local.properties
 project.properties
+Thumbs.db
 
 # Eclipse project files
 .classpath
