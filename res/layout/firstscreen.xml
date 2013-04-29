@@ -12,13 +12,20 @@
         android:layout_height="100dp"
         android:background="@color/green" >
         
-        <Button
+           <se.androidsquad.coloristance.DrawMapRect
+            android:id="@+id/map"
+            android:layout_width="210dp"
+            android:layout_height="80dp"
+			android:layout_centerInParent="true"
+			/>
+        
+        <!-- <Button
             android:id="@+id/fake2_button"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/test"
             android:layout_centerInParent="true"
-            />
+            /> -->
                 
     </RelativeLayout>
 
