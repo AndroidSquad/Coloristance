@@ -68,9 +68,10 @@
             android:id="@+id/top_button"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@string/door"
             android:layout_above="@id/room"
-            android:layout_centerHorizontal="true" />
+            android:layout_centerHorizontal="true"
+            android:background="@drawable/rect"
+            android:text="@string/door" />
 
 	</RelativeLayout>
 </RelativeLayout>

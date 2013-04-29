@@ -21,19 +21,20 @@
         android:textSize="@android:dimen/app_icon_size" />
 	 
 	 <Button
-        android:id="@+id/button1"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_centerHorizontal="true"
-        android:layout_centerVertical="true"
-        android:text="@string/new_game"
-        android:textColor="@color/white"
-        android:textStyle="bold" 
-        android:onClick="sendNewGame"/>
-
+	     android:id="@+id/button1"
+	     style="@style/button_layout.highlight"
+	     android:layout_width="wrap_content"
+	     android:layout_height="wrap_content"
+	     android:layout_centerHorizontal="true"
+	     android:layout_centerVertical="true"
+	     android:onClick="sendNewGame"
+	     android:text="@string/new_game"
+	     android:textColor="@color/white"
+	     android:textStyle="bold" />
 	  
     <Button
         android:id="@+id/button3"
+        style="@style/button_layout.highlight"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
@@ -45,6 +46,7 @@
 
     <Button
         android:id="@+id/button2"
+        style="@style/button_layout.highlight"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_above="@+id/button3"
@@ -53,4 +55,5 @@
         android:text="@string/name_game2"
         android:textColor="@color/white"
         android:textStyle="bold" />
+
 </RelativeLayout>

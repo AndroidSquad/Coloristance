@@ -1,4 +1,4 @@
-<resources>
+<resources xmlns:android="http://schemas.android.com/apk/res/android">
 
     <!--
         Base application theme, dependent on API level. This theme is replaced
@@ -15,6 +15,16 @@
     <!-- Application theme. -->
     <style name="AppTheme" parent="AppBaseTheme" >
         <!-- All customizations that are NOT specific to a particular API-level can go here. -->
+    </style>
+    
+    <style name="button_layout" parent="@android:style/TextAppearance">
+        <item name="android:textSize">20sp</item>
+        <item name="android:typeface">monospace</item>
+        <item name="android:textColor">#9000FFFF</item>
+    </style>
+    
+    <style name="button_layout.highlight">
+        <item name="android:textColorHighlight">#FFFF0000</item>
     </style>
 
 </resources>
