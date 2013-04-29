@@ -47,7 +47,7 @@
         android:layout_height="match_parent"
         android:layout_above="@+id/bot_layout"
         android:layout_below="@id/top_layout"
-        android:background="@color/yellow" >
+        android:background="@color/yellow">
 
         <se.androidsquad.coloristance.DrawingRect
             android:id="@+id/room"
@@ -72,6 +72,15 @@
             android:layout_centerHorizontal="true"
             android:background="@drawable/rect"
             android:text="@string/door" />
+
+        <ImageButton
+            android:id="@+id/key_button"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignLeft="@+id/top_button"
+            android:layout_centerInParent="true"
+            android:src="@drawable/key_blue"
+            android:text="@string/test" />
 
 	</RelativeLayout>
 </RelativeLayout>
