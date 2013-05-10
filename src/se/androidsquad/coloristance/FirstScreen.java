@@ -1,10 +1,10 @@
 package se.androidsquad.coloristance;
 
 import android.app.Activity;
-import android.content.Context;
+
 import android.media.MediaPlayer;
 import android.os.Bundle;
-import android.util.AttributeSet;
+
 
 public class FirstScreen extends Activity {
 

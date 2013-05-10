@@ -20,6 +20,15 @@ public class GameController {
 	 * mŒlas i - drawDoor(position) tar info om vart dšrrarna ska placeras i
 	 * rummet
 	 */
+	
+	/** För att veta vad funktionen gör och framför allt vad den tar 
+	 * emot/skickar tillbaka är dessa kommentarer utmärkta verktyg!
+	 * 
+	 *  Annat tips är: Ctr+Space när man inte vet vad som finns att välja på
+	 *  kommandot plockar upp alternativa sätt att avsluta det du skrivit. 
+	 *  Pröva ex. att i en xml-fil skriva android: och sedan trycka Ctrl+Space
+	 *  
+	 *  Om du får ett fel kan du trycka på det och därefter Ctrl+1 för förlag på lösningar*/
 
 	private PositionModel pos;
 	private Levels level = new Levels();

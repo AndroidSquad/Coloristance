@@ -10,7 +10,7 @@
         android:layout_alignParentTop="true"
         android:layout_width="match_parent"
         android:layout_height="100dp"
-        android:background="@color/green" >
+        android:background="@color/green_light" >
         
            <se.androidsquad.coloristance.DrawMapRect
             android:id="@+id/map"
@@ -34,7 +34,7 @@
         android:layout_alignParentBottom="true"
         android:layout_width="match_parent"
         android:layout_height="100dp"
-        android:background="@color/red"
+        android:background="@color/red_light"
         >
                 
             <Button
@@ -54,7 +54,7 @@
         android:layout_height="match_parent"
         android:layout_above="@+id/bot_layout"
         android:layout_below="@id/top_layout"
-        android:background="@color/yellow">
+        android:background="#000000">
 
         <se.androidsquad.coloristance.DrawingRect
             android:id="@+id/room"
@@ -63,31 +63,41 @@
 			android:layout_centerInParent="true"
 			/>
             
-         <Button
+         <ImageButton
             android:id="@+id/right_button"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:rotation="90"  
             android:layout_toRightOf="@id/room"
             android:layout_centerVertical="true"
-            android:text="@string/door" />
+            android:clickable="true" 
+            android:contentDescription="@string/door"
+            android:src="@drawable/ic_door"
+            android:background="@color/orange_light"/>
 
-        <Button
+
+        <ImageButton
             android:id="@+id/top_button"
-            android:layout_width="wrap_content"
+        	android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_above="@id/room"
             android:layout_centerHorizontal="true"
-            android:background="@drawable/rect"
-            android:text="@string/door" />
+            android:clickable="true" 
+            android:contentDescription="@string/door"
+            android:src="@drawable/ic_door"
+            android:background="@color/red_light"/>
 
         <ImageButton
             android:id="@+id/key_button"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:scaleX="0.75"
+            android:scaleY="0.75"
             android:layout_alignLeft="@+id/top_button"
             android:layout_centerInParent="true"
             android:src="@drawable/key_blue"
-            android:text="@string/test" />
-
+            android:background="@null"
+            android:contentDescription="@string/key_desc"/>
+     
 	</RelativeLayout>
 </RelativeLayout>

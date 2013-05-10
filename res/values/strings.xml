@@ -9,6 +9,7 @@
     <string name="name_game2">Sexy music on</string>
     <string name="door">Door</string>
     <string name="test">Herro Herro ima little test-objectz ^^</string>
+    <string name="key_desc">This is a colored key you can use to get access to a room with the same color</string>
     
 
 </resources>

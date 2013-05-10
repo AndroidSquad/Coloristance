@@ -9,6 +9,8 @@ import android.graphics.Rect;
 import android.util.AttributeSet;
 import android.view.View;
 
+//Anton: Why do we have this class? Better to code DrawingRect to take argument that will define if its a map or a room rect...
+
 public class DrawMapRect extends View { // Creates a custom view that paints a
 										// filled rectangle
 	public DrawMapRect(Context context, AttributeSet attrs) {
