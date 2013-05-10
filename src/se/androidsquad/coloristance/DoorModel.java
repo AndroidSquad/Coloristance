@@ -2,7 +2,7 @@ package se.androidsquad.coloristance;
 
 public class DoorModel {
 
-	/* InnehŒller information om fŠrgen pŒ dšrrarna och dess placering relativt rutan. 
+	/* Innehåller information om färgen på dörrarna och dess placering relativt rutan. 
 	 */
 	
 }
