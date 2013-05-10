@@ -1,19 +1,22 @@
 package se.androidsquad.coloristance;
 
-import java.lang.reflect.Array;
-
 public class PositionModel {
 	
-	/*Denna modell innehŒller information om vart spelaren 
-	 * befinner sig sŒ att kartan kan markera den aktulla rutan.
+	/*Denna modell innehåller information om vart spelaren 
+	 * befinner sig så att kartan kan markera den aktuella rutan.
 	 * 
 	 */
-	Array position;
+	private int x,y;
 	
-	protected void setPosition(Array[][] position){
-		
+	protected void setPosition(int x, int y){ //Tar emot de x- och y-värden soom angivits att spelaren står på
+		this.x=x;
+		this.y=y;
 	}
-	protected Array getPosition(){
-		return null;
+	
+	protected int getX(){ //Returnerar x-koordinaten
+		return x;
+	}
+	protected int getY(){ //Returnerar y-koordinaten
+		return y;
 	}
 }
