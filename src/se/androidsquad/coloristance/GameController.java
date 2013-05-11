@@ -30,21 +30,33 @@ public class GameController {
 	 *  
 	 *  Om du får ett fel kan du trycka på det och därefter Ctrl+1 för förlag på lösningar*/
 
-	private PositionModel pos;
+	private PositionModel pos = new PositionModel();
 	private Levels level = new Levels();
-	private RectModel rect;
-	private DoorModel door;
+	private RectModel rect = new RectModel();
+	private DoorModel door = new DoorModel();
+	
+	public GameController(){ // Empty constructor
+		
+	}
+		
+	public GameController(PositionModel pos, Levels level, RectModel rect, DoorModel door) {
+	    this.pos = pos;
+	    this.level = level;
+	    this.rect = rect;
+	    this.door = door;
+	}
 
 	protected void drawMap() {
 		int posX, posY;
 		pos = new PositionModel();
 		posX = pos.getX(); // ska skickas til view att i denna positionen i rutnätet ska en cirkel ritas ut
 		posY = pos.getY();
-		
 
 	}
 
 	protected void drawRoom() {
+		rect.setColor(1); // The value has been set manually but should be read from a file containing the info
+		rect.setSize(1);
 
 	}
 

@@ -7,8 +7,8 @@ public class RectModel {
 	 * och storlek som betsämms av GameController
 	 */
 	
-	int rectCol; //private hides from other classes within the package
-	int a;
+	
+	private RectModelData data = new RectModelData(3,1); // 3 stands for the a color and 1 for the room rectangle
 	
 	/* The method setColor takes a number between 1-4 representing colors.
 	 * 1=Blue
@@ -18,19 +18,19 @@ public class RectModel {
 	 * */
 	
 	protected void setColor(int i){ //set the rectangles color
-		rectCol = i;
+		data.col = i; // Change the variable col in the RectModelData object named data
 	}
 	
 	protected int getColor(){ // get the rectangles color
-		return rectCol;
+		return data.col;
 	}
 	
-	protected void setSize(int x){ // sets the rectangle size, all sides have equall length
-		a = x;
+	protected void setSize(int x){ // sets the rectangle size, all sides have equal length
+		data.size = x; // Change the variable size in the RectModelData object named data
 	}
 	
-	protected int getSize(){
-		return a;
+	protected int getSize(){ // get the rectangles size
+		return data.size;
 
 	}
 	

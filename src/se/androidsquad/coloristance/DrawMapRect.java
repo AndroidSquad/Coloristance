@@ -39,8 +39,8 @@ public class DrawMapRect extends View { // Creates a custom view that paints a
 		dark.setColor(Color.BLACK);
 		
 		for (int i = 0; i < getWidth() ; i++) {
-			canvas.drawLine(i*getWidth()/14, 0, i*getWidth()/14, getHeight(), dark);
-			canvas.drawLine(0, i*getHeight()/5, getWidth(), i*getHeight()/5, dark);
+			canvas.drawLine(i*getWidth()/12, 0, i*getWidth()/12, getHeight(), dark);
+			canvas.drawLine(0, i*getHeight()/4, getWidth(), i*getHeight()/4, dark);
 			
 		}
 	}
