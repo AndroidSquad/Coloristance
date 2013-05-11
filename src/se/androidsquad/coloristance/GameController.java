@@ -20,7 +20,7 @@ public class GameController {
 	 * mŒlas i - drawDoor(position) tar info om vart dšrrarna ska placeras i
 	 * rummet
 	 */
-	
+
 	/** För att veta vad funktionen gör och framför allt vad den tar 
 	 * emot/skickar tillbaka är dessa kommentarer utmärkta verktyg!
 	 * 
@@ -30,21 +30,29 @@ public class GameController {
 	 *  
 	 *  Om du får ett fel kan du trycka på det och därefter Ctrl+1 för förlag på lösningar*/
 
-	private PositionModel pos = new PositionModel();
-	private Levels level = new Levels();
-	private RectModel rect = new RectModel();
-	private DoorModel door = new DoorModel();
-	
-	public GameController(){ // Empty constructor
-		
+	protected PositionModel pos;
+	protected Levels level;
+	protected RectModel rect;
+	protected DoorModel door;
+	protected int col = 3; // Dessa ska vara flexibla och gŒ att Šndra sedan
+	protected int size = 1;// Dessa ska vara flexibla och gŒ att Šndra sedan
+
+	public GameController(){ // Creates an object of each of the Models
+		this.pos = new PositionModel();
+		this.level = new Levels();
+		this.rect = new RectModel(col,size);
+		this.door = new DoorModel();
+
 	}
-		
-	public GameController(PositionModel pos, Levels level, RectModel rect, DoorModel door) {
-	    this.pos = pos;
-	    this.level = level;
-	    this.rect = rect;
-	    this.door = door;
-	}
+
+	/* Do we really need this constructor?
+	 * 
+	 * public GameController(PositionModel pos, Levels level, RectModel rect, DoorModel door) {
+		this.pos = pos;
+		this.level = level;
+		this.rect = rect;
+		this.door = door;
+	}*/
 
 	protected void drawMap() {
 		int posX, posY;
@@ -55,12 +63,14 @@ public class GameController {
 	}
 
 	protected void drawRoom() {
-		rect.getColor(); // The value has bee read from a the class RectModellData which contains the info
-		rect.getSize();
-
+	
 	}
 
 	protected void doorClick() {
 
 	}
+	
+	
+
+	
 }

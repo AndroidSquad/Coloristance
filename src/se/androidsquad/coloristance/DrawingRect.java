@@ -11,7 +11,7 @@ import android.util.AttributeSet;
 import android.view.View;
 
 public class DrawingRect extends View{ // Creates a custom view that paints a filled rectangle
-	
+
 	public static final int BLUE_LIGHT 	= 0xFF33B5E5;
 	public static final int BLUE_DARK 	= 0xFF0099CC;
 	public static final int GREEN_LIGHT	= 0xFF669900;
@@ -23,10 +23,13 @@ public class DrawingRect extends View{ // Creates a custom view that paints a fi
 	public static final int RED_LIGHT 	= 0xFFCC0000;
 	public static final int RED_DARK 	= 0xFFFF4444;
 
+	private GameController gameController;
+	private int size;
+	private int col;
+
 	public DrawingRect(Context context, AttributeSet attrs){
 		super(context, attrs);
 		// TODO Auto-generated constructor stub
-
 	}
 
 	@SuppressLint("DrawAllocation")
@@ -35,22 +38,42 @@ public class DrawingRect extends View{ // Creates a custom view that paints a fi
 		// TODO Auto-generated method stub
 		super.onDraw(canvas);
 
-		Rect ourRect = new Rect();
-		//ourRect.set(canvas.getWidth()/8, canvas.getHeight()/4, 7*canvas.getWidth()/8, 3*canvas.getHeight()/4);
-		ourRect.set(0, 0, canvas.getWidth(),canvas.getHeight());
+		/*Creates an object of gameController to be able to control the size and color of the rectangle
+		 * 
+		 */
+		gameController = new GameController(); // When creating a GameController object we create a RectModel object as well
+		size = gameController.rect.getSize(); // using method from the RectModel object named rect
 
-		Paint green = new Paint();
-		green.setColor(PURPLE_LIGHT);
-		green.setStyle(Paint.Style.FILL);
+		if(size == 1){
 
-		canvas.drawRect(ourRect, green);
+			Rect ourRect = new Rect();
+			//ourRect.set(canvas.getWidth()/8, canvas.getHeight()/4, 7*canvas.getWidth()/8, 3*canvas.getHeight()/4);
+			ourRect.set(0, 0, canvas.getWidth(),canvas.getHeight());
 
-		/*Refera till xml-filen i javan istället för tvärtom som vi trodde annars
+			col = gameController.rect.getColor();
 
-		View p = view.getRootView();
-    	TextView greenRect = (TextView)p.findViewById(R.id.toggleButton2); */
-		 
-		
+			if (col == 3){
+
+				Paint green = new Paint(); 
+				green.setColor(PURPLE_LIGHT);
+				green.setStyle(Paint.Style.FILL);
+				canvas.drawRect(ourRect, green);
+
+			}
+			else {
+				// måla ut rektangeln i annan färg
+			}
+
+			/**Refera till xml-filen i javan istället för tvärtom som vi trodde annars
+
+			View p = view.getRootView();
+	    	TextView greenRect = (TextView)p.findViewById(R.id.toggleButton2); */
+		}
+		else {
+			// Draw a map sized rectangle where it should be drawn
+			// Check for the color with an if statement
+			
+		}
 	}
 
 

@@ -84,7 +84,6 @@ public class MainActivity extends Activity {
 		// TODO Auto-generated method stub
 		super.onPause();
 		mp.release();
-
 	}
 	
 
