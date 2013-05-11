@@ -32,7 +32,7 @@ package se.androidsquad.coloristance;
 
 public class Levels {
 
-int[][] Level1 = {	{0,4,3,4,0},
+int[][] Level1 = {	{0,4,3,4,0},// Each value represents a color in a different room
 					{1,2,0,1,3},
 					{0,1,3,2,0}};
 

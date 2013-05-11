@@ -17,22 +17,13 @@ public class RectModel {
 	 * 4=Red
 	 * */
 	
-	protected void setColor(int i){ //set the rectangles color
-		data.col = i; // Change the variable col in the RectModelData object named data
-	}
-	
 	protected int getColor(){ // get the rectangles color
-		return data.col;
-	}
-	
-	protected void setSize(int x){ // sets the rectangle size, all sides have equal length
-		data.size = x; // Change the variable size in the RectModelData object named data
+		return data.getColor();
 	}
 	
 	protected int getSize(){ // get the rectangles size
-		return data.size;
+		return data.getSize();
 
 	}
-	
 	
 }

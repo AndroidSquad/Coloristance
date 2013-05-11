@@ -55,8 +55,8 @@ public class GameController {
 	}
 
 	protected void drawRoom() {
-		rect.setColor(1); // The value has been set manually but should be read from a file containing the info
-		rect.setSize(1);
+		rect.getColor(); // The value has bee read from a the class RectModellData which contains the info
+		rect.getSize();
 
 	}
 
