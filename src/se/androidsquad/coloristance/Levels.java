@@ -14,7 +14,8 @@ package se.androidsquad.coloristance;
  * 
  * The colors have corresponding keys, with the same names and colors. 
  * 
- * A room is defined by five figures that represent; The room (R) and its four connections in order up (N), right (E), down (S), left (W).
+ * A room is defined by five figures that represent; The room (R) and its four connections in order up 
+ * (N), right (E), down (S), left (W).
  * An example of the RNESW is: 13500 = A Blue room with a Orange door top and a red door to the right.
  * The first figure must be a value since it represent the room's color.
  */
