@@ -13,7 +13,7 @@ import android.view.View;
 public class DrawingRect extends View{ // Creates a custom view that paints a filled rectangle
 
 	private GameController gameController;
-	private ModelData modelData;
+	private RectModel rectModel;
 	private int size;
 	private int col;
 
@@ -40,15 +40,8 @@ public class DrawingRect extends View{ // Creates a custom view that paints a fi
 			//ourRect.set(canvas.getWidth()/8, canvas.getHeight()/4, 7*canvas.getWidth()/8, 3*canvas.getHeight()/4);
 			ourRect.set(0, 0, canvas.getWidth(),canvas.getHeight());
 
-			col = gameController.rect.getColor();
+			canvas.drawRect(ourRect, rectModel.data.getColor());
 
-			if (col == 1){
-				canvas.drawRect(ourRect, modelData.blue);
-
-			}
-			if (col )
-			else {
-				// måla ut rektangeln i annan färg
 			}
 
 			/**Refera till xml-filen i javan istället för tvärtom som vi trodde annars
@@ -56,11 +49,11 @@ public class DrawingRect extends View{ // Creates a custom view that paints a fi
 			View p = view.getRootView();
 	    	TextView greenRect = (TextView)p.findViewById(R.id.toggleButton2); */
 		}
-		else {
-			// Draw a map sized rectangle where it should be drawn
-			// Check for the color with an if statement
-			
-		}
+//		else {
+//			// Draw a map sized rectangle where it should be drawn
+//			// Check for the color with an if statement
+//			
+//		}
 	}
 
 

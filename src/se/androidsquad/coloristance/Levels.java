@@ -34,8 +34,6 @@ public class Levels {
 
 String[] Level1 = {"12300","20410",
 				   "34001","40032"};
-
-
 }
 
 
