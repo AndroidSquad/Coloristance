@@ -1,7 +1,10 @@
 package se.androidsquad.coloristance;
 
+import org.xmlpull.v1.XmlPullParser;
+
 import android.annotation.SuppressLint;
 import android.os.Bundle;
+import android.util.AttributeSet;
 
 public class GameController {
 
@@ -32,17 +35,17 @@ public class GameController {
 
 	protected PositionModel pos;
 	protected Levels level;
-	protected RectModel rect;
+	protected RectModel rectMod;
 	protected DoorModel door;
-	protected int col = 4; // Dessa ska vara flexibla och gå att ändra sedan
-	protected int size = 1;// Dessa ska vara flexibla och gå att ändra sedan
+	protected DrawingRect drawRect;
+	int size;
 
-	public GameController(){ // Creates an object of each of the Models
+	public GameController(DrawingRect rectview){ // Creates an object of each of the Models
 		this.pos = new PositionModel();
 		this.level = new Levels();
-		this.rect = new RectModel(col,size);
+		this.rectMod = new RectModel();
 		this.door = new DoorModel();
-
+		this.drawRect = rectview;
 	}
 
 	/* Do we really need this constructor?
@@ -54,23 +57,45 @@ public class GameController {
 		this.door = door;
 	}*/
 
-	protected void drawMap() {
+	/*protected createMapRect(position where to draw, drawingRectName){
+		col = rect.getColor();
+		size = rect.getMapSize();
+		DrawingRect drawingRectName = new DrawingRect(position where to draw);
+	}*/
+
+
+	protected void drawPosition() {
 		int posX, posY;
 		pos = new PositionModel();
 		posX = pos.getX(); // ska skickas til view att i denna positionen i rutn‰tet ska en cirkel ritas ut
 		posY = pos.getY();
-
 	}
 
-	protected void drawRoom() {
+	protected void drawMap() {
+		//målar kartan som ska fyllas med rektanglar
+
+	}
 	
+	protected void drawMapRect(String name){
+	//	size = this.rect.data.getMapSize();
+		
+	}
+
+
+
+
+
+
+
+	protected void drawRoom() {
+
 	}
 
 	protected void doorClick() {
 
 	}
-	
-	
 
-	
+
+
+
 }

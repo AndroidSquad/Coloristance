@@ -1,10 +1,7 @@
 package se.androidsquad.coloristance;
-
-import android.R.color;
 import android.annotation.SuppressLint;
 import android.content.Context;
 import android.graphics.Canvas;
-import android.graphics.Color;
 import android.graphics.Paint;
 import android.graphics.Rect;
 import android.util.AttributeSet;
@@ -24,35 +21,34 @@ public class DrawingRect extends View{ // Creates a custom view that paints a fi
 	public static final int RED_LIGHT 	= 0xFFCC0000; // Color 5
 	public static final int RED_DARK 	= 0xFFFF4444;
 
-	private GameController gameController;
-	private int size;
+	private int size; // rectangle size
 	private int col;
+	protected Canvas canv;
 
 	public DrawingRect(Context context, AttributeSet attrs){
 		super(context, attrs);
 		// TODO Auto-generated constructor stub
 	}
 
+	public GameController gameController = new GameController(this);// When creating a GameController object we create a RectModel object as well
+	
 	@SuppressLint("DrawAllocation")
 	@Override
 	protected void onDraw(Canvas canvas) {
 		// TODO Auto-generated method stub
 		super.onDraw(canvas);
+		this.canv = canvas;
 
-		/*Creates an object of gameController to be able to control the size and color of the rectangle
-		 * 
-		 */
-		gameController = new GameController(); // When creating a GameController object we create a RectModel object as well
-		size = gameController.rect.getSize(); // using method from the RectModel object named rect
+		//Creates an object of gameController to be able to control the size and color of the rectangle
+		size = gameController.size; 
 		Rect ourRect = new Rect();
-		
+
 		if(size == 1){
 			//ourRect.set(canvas.getWidth()/8, canvas.getHeight()/4, 7*canvas.getWidth()/8, 3*canvas.getHeight()/4);
 			ourRect.set(0, 0, canvas.getWidth(),canvas.getHeight());
 
-			col = gameController.rect.getColor();
+			col = gameController.rectMod.getColor();
 
-			
 			Paint rectCol = new Paint(); 
 			if (col == 1)
 				rectCol.setColor(BLUE_LIGHT);
@@ -64,14 +60,14 @@ public class DrawingRect extends View{ // Creates a custom view that paints a fi
 				rectCol.setColor(PURPLE_LIGHT);
 			if (col == 5)
 				rectCol.setColor(RED_LIGHT);
-			
+
 			else {
 				// måla ut rektangeln i annan färg
 			}
-			
+
 			rectCol.setStyle(Paint.Style.FILL);
 			canvas.drawRect(ourRect, rectCol);
-			
+
 
 			/**Refera till xml-filen i javan istället för tvärtom som vi trodde annars
 
@@ -82,7 +78,7 @@ public class DrawingRect extends View{ // Creates a custom view that paints a fi
 			//ourRect.set(8*canvas.getWidth()/16, 8*canvas.getHeight()/16, 9*canvas.getWidth()/16, 9*canvas.getHeight()/16);
 			ourRect.set(0, 0, canvas.getWidth(),canvas.getHeight());
 
-			col = gameController.rect.getColor();
+			col = gameController.rectMod.getColor();
 
 			Paint rectCol = new Paint(); 
 			if (col == 1)
@@ -95,14 +91,14 @@ public class DrawingRect extends View{ // Creates a custom view that paints a fi
 				rectCol.setColor(PURPLE_LIGHT);
 			if (col == 5)
 				rectCol.setColor(RED_LIGHT);
-			
+
 			else {
 				// måla ut rektangeln i annan färg
 			}
-			
+
 			rectCol.setStyle(Paint.Style.FILL);
 			canvas.drawRect(ourRect, rectCol);
-			
+
 		}
 	}
 

@@ -9,8 +9,8 @@ public class RectModel {
 	RectModelData data;
 	
 	
-	public RectModel(int a, int b) {
-		this.data = new RectModelData(a,b); // 3 stands for the a color and 1 for the room rectangle
+	public RectModel() {
+		this.data = new RectModelData(); 
 	}
 	
 	/* The method setColor takes a number between 1-4 representing colors.
@@ -20,6 +20,8 @@ public class RectModel {
 	 * 4=Red
 	 * */
 	
+	protected int roomSize;// The value could be 0 or 1. 0 = map rectangle  1 = room rectangle.
+	protected int mapSize;// The value could be 0 or 1. 0 = map rectangle  1 = room rectangle.
 	
 	public void updatePos(){
 		/* Denna metod ska meddela RectModelData när position har ändrats så att 
@@ -31,13 +33,13 @@ public class RectModel {
 		return data.getColor();
 	}
 	
-	protected void setSize(int i){
-		data.setSize(i);
+	
+	protected int getRoomSize(){ // get the rectangles size
+		return data.getRoomSize();
 	}
 	
-	protected int getSize(){ // get the rectangles size
-		return data.getSize();
-
+	protected int getMapSize(){ // get the rectangles size
+		return data.getMapSize();
 	}
 	
 }
