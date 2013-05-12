@@ -14,6 +14,11 @@ public class DoorModel {
 	 * För att förändra en dörr anropa findViewById()
 	 * MainActivity har bra exempel på detta:
 	 * Button a = (Button) findViewById(R.id.button1);
-	 * Id:t hittar ni i xml filen 
+	 * Id:t hittar ni i xml filen
 	 */
+	
+
+	
+	
 }
+

@@ -8,6 +8,7 @@ public class RectModel {
 	 */
 	RectModelData data;
 	
+	
 	public RectModel(int a, int b) {
 		this.data = new RectModelData(a,b); // 3 stands for the a color and 1 for the room rectangle
 	}
