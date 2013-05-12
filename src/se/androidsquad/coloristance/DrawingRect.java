@@ -33,14 +33,17 @@ public class DrawingRect extends View{ // Creates a custom view that paints a fi
 		 */
 		gameController = new GameController(); // When creating a GameController object we create a RectModel object as well
 		size = gameController.rect.getSize(); // using method from the RectModel object named rect
-
+		
+		
 		if(size == 1){
 
 			Rect ourRect = new Rect();
 			//ourRect.set(canvas.getWidth()/8, canvas.getHeight()/4, 7*canvas.getWidth()/8, 3*canvas.getHeight()/4);
 			ourRect.set(0, 0, canvas.getWidth(),canvas.getHeight());
-
-			canvas.drawRect(ourRect, rectModel.data.getColor());
+			
+			Paint color = new Paint();
+			color.setColor(gameController.data.getColor());
+			canvas.drawRect(ourRect, color);
 
 			}
 
@@ -58,4 +61,4 @@ public class DrawingRect extends View{ // Creates a custom view that paints a fi
 
 
 
-}
+
