@@ -64,7 +64,7 @@
 			/>
             
          <ImageButton
-            android:id="@+id/right_button"
+            android:id="@+id/right_door"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:rotation="90"  
@@ -77,7 +77,7 @@
 
 
         <ImageButton
-            android:id="@+id/top_button"
+            android:id="@+id/top_door"
         	android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_above="@id/room"
@@ -93,7 +93,7 @@
             android:layout_height="wrap_content"
             android:layout_below="@id/room"
             android:layout_centerHorizontal="true"
-            android:background="@color/green_light"
+            android:background="@color/purple_light"
             android:clickable="true"
             android:contentDescription="@string/door"
             android:rotation="180"
@@ -104,7 +104,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_centerVertical="true"
-            android:layout_toLeftOf="@+id/room"
+            android:layout_toLeftOf="@id/room"
             android:background="@color/blue_light"
             android:clickable="true"
             android:contentDescription="@string/door"
@@ -117,7 +117,7 @@
             android:layout_height="wrap_content"
             android:scaleX="0.75"
             android:scaleY="0.75"
-            android:layout_alignLeft="@+id/top_button"
+            android:layout_alignLeft="@id/top_door"
             android:layout_centerInParent="true"
             android:src="@drawable/key_blue"
             android:background="@null"
