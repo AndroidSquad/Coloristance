@@ -86,6 +86,30 @@
             android:contentDescription="@string/door"
             android:src="@drawable/ic_door"
             android:background="@color/red_light"/>
+        
+        <ImageButton
+            android:id="@+id/bot_door"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/room"
+            android:layout_centerHorizontal="true"
+            android:background="@color/green_light"
+            android:clickable="true"
+            android:contentDescription="@string/door"
+            android:rotation="180"
+            android:src="@drawable/ic_door" />
+
+        <ImageButton
+            android:id="@+id/left_door"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_toLeftOf="@+id/room"
+            android:background="@color/blue_light"
+            android:clickable="true"
+            android:contentDescription="@string/door"
+            android:rotation="270"
+            android:src="@drawable/ic_door" />
 
         <ImageButton
             android:id="@+id/key_button"
@@ -98,6 +122,8 @@
             android:src="@drawable/key_blue"
             android:background="@null"
             android:contentDescription="@string/key_desc"/>
+
+
      
 	</RelativeLayout>
 </RelativeLayout>
