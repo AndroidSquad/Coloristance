@@ -34,7 +34,7 @@ public class GameController {
 	protected Levels level;
 	protected RectModel rect;
 	protected DoorModel door;
-	protected int col = 3; // Dessa ska vara flexibla och gå att ändra sedan
+	protected int col = 4; // Dessa ska vara flexibla och gå att ändra sedan
 	protected int size = 1;// Dessa ska vara flexibla och gå att ändra sedan
 
 	public GameController(){ // Creates an object of each of the Models
