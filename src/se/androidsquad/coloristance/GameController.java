@@ -52,7 +52,7 @@ public class GameController {
 		this.level = level;
 		this.rect = rect;
 		this.door = door;
-	}*/
+	} */
 
 	protected void drawMap() {
 		int posX, posY;
