@@ -47,10 +47,9 @@ public class DrawMap extends View { // Creates a custom view that paints a fille
 		//Creates an object of gameController to be able to control the size and color of the rectangle
 		gameController = new GameController(); // When creating a GameController object we create a RectModel object as well
 		size = RectModel.getSize(); // using method from the RectModel object named rect
-
-		Rect ourRect = new Rect();
-		ourRect.set(5, 5, canvas.getWidth()/13,canvas.getHeight()/22);
 		
+		Rect ourRect = new Rect();
+		ourRect.set(getWidth()/64, getHeight()/24, 7*getWidth()/64,7*getHeight()/24); 
 		Paint color = new Paint();
 		color.setColor(RectModel.getRectColor());
 		canvas.drawRect(ourRect, color);
