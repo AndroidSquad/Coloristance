@@ -11,6 +11,8 @@ import android.view.View;
 
 //Anton: Why do we have this class? Better to code DrawingRect to take argument that will define if its a map or a room rect...
 
+//MapModel.setMap(Levels.level1());
+
 public class DrawMap extends View { // Creates a custom view that paints a filled rectangle 
 
 	private GameController gameController;
@@ -46,7 +48,21 @@ public class DrawMap extends View { // Creates a custom view that paints a fille
 
 			//Creates an object of gameController to be able to control the size and color of the rectangle
 			gameController = new GameController(); // When creating a GameController object we create a RectModel object as well
+			
+			String[] rectId = {"mapRectOne","mapRectTwo","mapRectThree","mapRectFour","mapRectFive"}; 
+			
+			//Test
+			for (int a = 0; a < 5 ; a++){
+				Rect mapRectTest = new Rect();
+				mapRectTest.set(getWidth()/64, 9*getHeight()/24, 7*getWidth()/64,15*getHeight()/24); 
+				Paint colorTest = new Paint();
+				colorTest.setColor(MapModel.getRoomColor(rectId[a]));
+				canvas.drawRect(mapRectTest, colorTest);
+				
+			}
 
+			
+			
 			//Map Rectangle One
 			Rect mapRectOne = new Rect();
 			mapRectOne.set(getWidth()/64, 9*getHeight()/24, 7*getWidth()/64,15*getHeight()/24); 
