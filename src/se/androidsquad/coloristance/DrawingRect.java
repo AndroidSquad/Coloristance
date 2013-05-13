@@ -21,7 +21,7 @@ public class DrawingRect extends View{ // Creates a custom view that paints a fi
 		super(context, attrs);
 		// TODO Auto-generated constructor stub
 	}
-
+ 
 	@SuppressLint("DrawAllocation")
 	@Override
 	protected void onDraw(Canvas canvas) {
