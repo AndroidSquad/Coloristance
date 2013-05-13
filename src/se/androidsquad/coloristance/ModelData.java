@@ -21,7 +21,6 @@ public class ModelData {
 	protected int pos = 0;
 	protected int roomColor, doorEastColor, doorSouthColor, doorWestColor, doorNorthColor; // The color could be 0,1,2,3,4.
 	protected int size;// The value could be 0 or 1. 0 = map rectangle  1 = room rectangle.
-	protected Levels level;
 	protected String[][] mapArray = new String [2][2];
 
 	File filename = new File("/assets/levels/Level1.txt");
@@ -33,17 +32,17 @@ public class ModelData {
 
 	// Each value represents a color in a different room
 	// int[] level1Color = {0,4,3,4,0,1,2,0,1,3,0,1,3,2,0}; 
-	public String[][] initLevel() throws FileNotFoundException, IOException{
-		Scanner sc = new Scanner(filename);
-		for (int row = 0; row < mapArray.length; row++){
-			for(int column = 0; column < mapArray[row].length; column++){
-				mapArray[row][column] = sc.next().toString();
-			}
-
-		} 
-		return mapArray;
-
-	}
+//	public String[][] initLevel() throws FileNotFoundException, IOException{
+//		Scanner sc = new Scanner(filename);
+//		for (int row = 0; row < mapArray.length; row++){
+//			for(int column = 0; column < mapArray[row].length; column++){
+//				mapArray[row][column] = sc.next().toString();
+//			}
+//			
+//		} 
+//		return mapArray;
+//
+//	}
 
 	public void setColor(String roomcode) { //Should be a case sats, but that is a problem for future Simon and future Tommy	
 		for(int i=0;i<roomcode.length();i++){	
@@ -59,7 +58,7 @@ public class ModelData {
 				roomColor = RED_LIGHT;
 			}
 			else 
-				roomColor = RED_LIGHT;
+				roomColor = 0;
 		}
 	}
 

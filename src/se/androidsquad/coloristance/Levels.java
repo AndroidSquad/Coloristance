@@ -32,8 +32,8 @@ package se.androidsquad.coloristance;
 
 public class Levels {
 
-String[] Level1 = {"12300","20410",
-				   "34001","40032"};
+String[][] Level1 = {{"12300","20410"},
+					{"34001","40032"}};
 }
 
 

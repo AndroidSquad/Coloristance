@@ -31,11 +31,11 @@ public class GameController {
 	 *  Om du får ett fel kan du trycka på det och därefter Ctrl+1 för förlag på lösningar*/
 
 	protected PositionModel pos;
-	protected Levels level;
 	protected RectModel rect;
 	protected DoorModel door;
 	protected RectModelData data;
 	protected ModelData modData;
+	protected Levels level;
 	protected int col = 3; // Dessa ska vara flexibla och gŒ att Šndra sedan
 	protected int size = 1;// Dessa ska vara flexibla och gŒ att Šndra sedan
 	protected String roomcode;
@@ -43,12 +43,12 @@ public class GameController {
 	
 	public GameController(){ // Creates an object of each of the Models
 		this.pos = new PositionModel();
-		this.level = new Levels();
 		this.rect = new RectModel();
 		this.door = new DoorModel();
-		roomcode = level.Level1[0]; //retrieving the room from the database "Levels"
+		roomcode = level.Level1[0][0]; //retrieving the room from the database "Levels"
 		this.data = new RectModelData();
-		this.modData = new ModelData("1",3);
+		this.modData = new ModelData(roomcode,3);
+		DoorModel.setDoor(roomcode);
 
 	}
 	
