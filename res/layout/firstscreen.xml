@@ -12,12 +12,11 @@
         android:layout_alignParentTop="true"
         android:background="@color/green_light" >
 
-        <se.androidsquad.coloristance.DrawMapRect
-            android:id="@+id/map"
+        <se.androidsquad.coloristance.DrawMap
+            android:id="@+id/mapRect"
             android:layout_width="210dp"
             android:layout_height="80dp"
             android:layout_centerInParent="true" />
-
       
         <!--
              <Button
@@ -55,11 +54,15 @@
         android:layout_below="@id/top_layout"
         android:background="#000000" >
 
-        <se.androidsquad.coloristance.DrawingRect
+      
+        <ImageButton
             android:id="@+id/room"
             android:layout_width="200dp"
             android:layout_height="200dp"
-            android:layout_centerInParent="true" />
+            android:layout_centerInParent="true"
+            android:background="@color/green_light"
+            android:contentDescription="@string/room" />
+        
 
         <ImageButton
             android:id="@+id/right_door"

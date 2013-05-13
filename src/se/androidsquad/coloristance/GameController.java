@@ -6,7 +6,7 @@ import android.os.Bundle;
 public class GameController {
 
 	/*
-	 * Koordinerar mellan View och Model.Bör innehålla metoderna:
+	 * Koordinerar mellan View och Model.Should contain methods:
 	 * 
 	 * doorClick() - changeRoom() - changeMapLocation() - animateDoor()
 	 * 
