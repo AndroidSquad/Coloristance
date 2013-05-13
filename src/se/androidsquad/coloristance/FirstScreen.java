@@ -1,9 +1,13 @@
 package se.androidsquad.coloristance;
 
 import android.app.Activity;
+import android.content.Intent;
 
 import android.media.MediaPlayer;
 import android.os.Bundle;
+import android.view.View;
+import android.widget.Button;
+import android.widget.ImageButton;
 
 
 public class FirstScreen extends Activity {
@@ -24,6 +28,26 @@ public class FirstScreen extends Activity {
 		mp = MediaPlayer.create(FirstScreen.this, R.raw.house_music);	
 		mp.start();
 		mp.setLooping(true);
+		
+		
+		
+		
+		ImageButton a = (ImageButton) findViewById(R.id.top_door);
+		a.setOnClickListener(new View.OnClickListener() {
+			String test;	
+			@Override
+			public void onClick(View v) {
+							
+				if(test == "22222") test = "11111"; 
+				else test = "22222";
+				
+				DoorModel.setDoor(test);
+				findViewById(R.id.bot_door).setBackgroundColor(DoorModel.getDoor(2));
+
+				
+			}
+		});
+		
 	}
 	
 	@Override
@@ -33,4 +57,6 @@ public class FirstScreen extends Activity {
 		mp.release();
 
 	}
+	
+	
 }

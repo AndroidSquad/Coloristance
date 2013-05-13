@@ -41,7 +41,7 @@ public class GameController {
 		this.pos = new PositionModel();
 		this.level = new Levels();
 		this.rect = new RectModel(col,size);
-		this.door = new DoorModel();
+	//	this.door = new DoorModel();
 
 	}
 
