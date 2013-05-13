@@ -1,10 +1,6 @@
 package se.androidsquad.coloristance;
 
-import org.xmlpull.v1.XmlPullParser;
-
-import android.annotation.SuppressLint;
-import android.os.Bundle;
-import android.util.AttributeSet;
+import android.graphics.Canvas;
 
 public class GameController {
 
@@ -39,6 +35,7 @@ public class GameController {
 	protected DoorModel door;
 	protected DrawingRect drawRect;
 	int size;
+	protected Canvas canvas;
 
 	public GameController(DrawingRect rectview){ // Creates an object of each of the Models
 		this.pos = new PositionModel();
@@ -63,7 +60,6 @@ public class GameController {
 		DrawingRect drawingRectName = new DrawingRect(position where to draw);
 	}*/
 
-
 	protected void drawPosition() {
 		int posX, posY;
 		pos = new PositionModel();
@@ -75,17 +71,6 @@ public class GameController {
 		//målar kartan som ska fyllas med rektanglar
 
 	}
-	
-	protected void drawMapRect(String name){
-	//	size = this.rect.data.getMapSize();
-		
-	}
-
-
-
-
-
-
 
 	protected void drawRoom() {
 
@@ -94,8 +79,5 @@ public class GameController {
 	protected void doorClick() {
 
 	}
-
-
-
 
 }

@@ -23,7 +23,7 @@ public class DrawingRect extends View{ // Creates a custom view that paints a fi
 
 	private int size; // rectangle size
 	private int col;
-	protected Canvas canv;
+	protected Canvas canvas;
 
 	public DrawingRect(Context context, AttributeSet attrs){
 		super(context, attrs);
@@ -31,16 +31,16 @@ public class DrawingRect extends View{ // Creates a custom view that paints a fi
 	}
 
 	public GameController gameController = new GameController(this);// When creating a GameController object we create a RectModel object as well
-	
+
 	@SuppressLint("DrawAllocation")
 	@Override
 	protected void onDraw(Canvas canvas) {
 		// TODO Auto-generated method stub
 		super.onDraw(canvas);
-		this.canv = canvas;
+		this.canvas = canvas;
 
 		//Creates an object of gameController to be able to control the size and color of the rectangle
-		size = gameController.size; 
+		//size = gameController.size; 
 		Rect ourRect = new Rect();
 
 		if(size == 1){
@@ -98,10 +98,6 @@ public class DrawingRect extends View{ // Creates a custom view that paints a fi
 
 			rectCol.setStyle(Paint.Style.FILL);
 			canvas.drawRect(ourRect, rectCol);
-
 		}
 	}
-
-
-
 }

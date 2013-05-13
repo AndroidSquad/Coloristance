@@ -1,6 +1,7 @@
 package se.androidsquad.coloristance;
 
 import android.app.Activity;
+import android.graphics.Canvas;
 
 import android.media.MediaPlayer;
 import android.os.Bundle;

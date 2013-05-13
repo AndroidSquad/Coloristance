@@ -8,7 +8,6 @@ public class RectModel {
 	 */
 	RectModelData data;
 	
-	
 	public RectModel() {
 		this.data = new RectModelData(); 
 	}
