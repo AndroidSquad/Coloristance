@@ -1,6 +1,10 @@
 package se.androidsquad.coloristance;
 
-import java.util.Arrays;
+
+import java.io.BufferedReader;
+import java.io.FileReader;
+import java.io.IOException;
+import java.util.*;
 
 import android.widget.TextView;
 
@@ -22,13 +26,25 @@ public class ModelData {
 	public ModelData(String a, int b){ 
 		this.setColor(a);
 		this.setSize(b);
-		for(String[] row: mapArray)
-			Arrays.fill(row,"hej");
 	}
 
 	
 	// Each value represents a color in a different room
 	// int[] level1Color = {0,4,3,4,0,1,2,0,1,3,0,1,3,2,0}; 
+	public class initLevel {
+
+	    public String[]readLines(String filename) throws IOException {
+	        FileReader fileReader = new FileReader(filename);
+	        BufferedReader bufferedReader = new BufferedReader(fileReader);
+	        List<String> lines = new ArrayList<String>();
+	        String line = null;
+	        while ((line = bufferedReader.readLine()) != null) {
+	            lines.add(line);
+	        }
+	        bufferedReader.close();
+	        return lines.toArray(new String[lines.size()]);
+	    }
+	}
 	
 	public void setColor(String roomcode) { //Should be a case sats, but that is a problem for future Simon and future Tommy	
 		for(int i=0;i<roomcode.length();i++){	
