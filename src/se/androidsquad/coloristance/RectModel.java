@@ -1,9 +1,6 @@
 package se.androidsquad.coloristance;
 
 import java.io.File;
-
-
-
 public class RectModel {
 	
 	/* Denna klass i modellen ska innehålla Color och Size. 
@@ -11,12 +8,10 @@ public class RectModel {
 	 * och storlek som betsämms av GameController
 	 */
 
-	
 	public RectModel(){
 	}
 	
 	public RectModel(String a, int b) {	}
-	
 	
 	public static final int BLUE_LIGHT 	= 0xFF33B5E5;
 	public static final int GREEN_LIGHT	= 0xFF669900;
@@ -31,7 +26,7 @@ public class RectModel {
 	protected File filename = new File("/assets/levels/Level1.txt");
 
 	public static void setRectColor(String roomcode) { //Should be a case sats, but that is a problem for future Simon and future Tommy	
-		for(int i=0;i<roomcode.length();i++){	
+		
 			if (roomcode.charAt(0) == '1') {
 				rectColor = BLUE_LIGHT;
 			} else if (roomcode.charAt(0) == '2') {
@@ -46,12 +41,12 @@ public class RectModel {
 			else 
 				rectColor = 0;
 		}
-	}
+	
 	
 	public static int getRectColor(){
 		return rectColor;
-	}
-	
+	}		
+		
 	public void updatePos(){
 		/* Denna metod ska meddela RectModelData när position har ändrats så att 
 		 * RectModelData vet att den ska förändra rummets färg. Får kanske använda Listeners eller nåt...
