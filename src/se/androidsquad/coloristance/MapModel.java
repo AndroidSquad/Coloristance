@@ -7,12 +7,11 @@ import java.util.StringTokenizer;
 
 public class MapModel {
 	
-	String[][] mapArray;
-	int x,y;
+	static String[][] mapArray;
+	static int x,y;
 
-	public MapModel(String[][] mapArray){
-		this.mapArray = mapArray;
-		renderMap();
+	public static void setMap(String[][] level){
+		mapArray = level;
 	}
 
 	private void renderMap(){
@@ -29,6 +28,17 @@ public class MapModel {
 		//Dessa skall anropas vid vare tryck på en dörr
 		this.x = x;
 		this.y = y;
+	}
+	
+	protected static int getRoomColor(String roomId){
+		//Dessa skall anropas vid vare tryck på en dörr
+		for(int i = 0; i<mapArray.length;i++){
+			for(int j = 0; j<mapArray[i].length;j++){
+				RectModel.setRectColor(mapArray[x][y]);
+			}
+		}
+	
+		return RectModel.getRectColor();
 	}
 	
 	protected String getPos(){
