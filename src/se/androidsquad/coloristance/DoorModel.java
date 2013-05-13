@@ -34,13 +34,19 @@ public class DoorModel{
 			else if(pos.charAt(i+1)== '3') position[i] = ModelData.PURPLE_LIGHT;
 			else if(pos.charAt(i+1)== '4') position[i] = ModelData.ORANGE_LIGHT;
 			else if(pos.charAt(i+1)== '5') position[i] = ModelData.RED_LIGHT;	
-			else position[i+1] = Color.BLACK;	
+			else position[i+1] = 0;	
 			
 		}
 	}
 	
-	public static int getDoor(int loc){
-		return position[loc];
+	public static int getDoor(char loc){
+		
+		if (loc == 'N') return position[0];
+		else if (loc == 'E') return position[1];
+		else if (loc == 'S') return position[2];
+		else if (loc == 'W') return position[3];
+		else return 0;
+		
 	}
 	
 }
