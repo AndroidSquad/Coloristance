@@ -10,6 +10,12 @@ import android.graphics.Rect;
 import android.util.AttributeSet;
 import android.view.View;
 
+
+/**Denna klass har förmodligen blivit överflödig sedan införandet av DrawMap. Den tar hand om rektangelutritningen i kartan medan 
+ * rummet målas med bild eller nått
+ * @author alexandermafi
+ *
+ */
 public class DrawingRect extends View{ // Creates a custom view that paints a filled rectangle
 
 	private GameController gameController;

@@ -54,15 +54,13 @@
         android:layout_below="@id/top_layout"
         android:background="#000000" >
 
-      
         <ImageButton
             android:id="@+id/room"
             android:layout_width="200dp"
             android:layout_height="200dp"
             android:layout_centerInParent="true"
-            android:background="@color/green_light"
+            android:background="@color/orange_dark"
             android:contentDescription="@string/room" />
-
 
         <ImageButton
             android:id="@+id/right_door"

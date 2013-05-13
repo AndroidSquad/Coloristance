@@ -24,16 +24,16 @@ public class MapModel {
 		}
 	}
 
-	protected void setPos(int x, int y){
+	protected static void setPos(int a, int b){
 		//Dessa skall anropas vid vare tryck på en dörr
-		this.x = x;
-		this.y = y;
+		x = a;
+		y = b;
 	}
 	
 	protected static int getRoomColor(String roomId){
-		//Dessa skall anropas vid vare tryck på en dörr
-		for(int i = 0; i<mapArray.length;i++){
-			for(int j = 0; j<mapArray[i].length;j++){
+		//Dessa skall anropas vid vare tryck på en dšrr
+		for(int i = 0; i<2;i++){ // //Loopen Šr felaktig. 2:a bšr ersŠttas med dynamiskt vŠrde
+			for(int j = 0; j<2;j++){ //Loopen Šr felaktig. 2:a bšr ersŠttas med dynamiskt vŠrde
 				RectModel.setRectColor(mapArray[x][y]);
 			}
 		}
