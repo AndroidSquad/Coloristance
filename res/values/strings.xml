@@ -5,9 +5,10 @@
     <string name="action_settings">Settings</string>
     <string name="new_game">New Game</string>
     <string name="quit_game">Sexy music pause</string>
-    <string name="name_game">Coloristance Fighter Mega Disco</string>
+    <string name="name_game">Coloristance</string>
     <string name="name_game2">Sexy music on</string>
     <string name="door">Door</string>
+    <string name="room">Room</string>
     <string name="test">Herro Herro ima little test-objectz ^^</string>
     <string name="key_desc">This is a colored key you can use to get access to a room with the same color</string>
     
