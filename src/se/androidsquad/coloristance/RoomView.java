@@ -10,14 +10,14 @@ public class RoomView extends Activity {
 
 	DrawingRect r;
 	MediaPlayer mp;
-	DrawMapRect mapRect;
+	DrawMap mapRect;
 	
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		// TODO Auto-generated method stub
 		super.onCreate(savedInstanceState);
 		r = new DrawingRect(RoomView.this, null);
-		mapRect = new DrawMapRect(RoomView.this, null);
+		mapRect = new DrawMap(RoomView.this, null);
 		//setContentView(R.id.room_layout);
 		setContentView(R.layout.room_view);
 		

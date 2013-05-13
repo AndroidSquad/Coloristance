@@ -62,7 +62,7 @@
             android:layout_centerInParent="true"
             android:background="@color/green_light"
             android:contentDescription="@string/room" />
-        
+
 
         <ImageButton
             android:id="@+id/right_door"
