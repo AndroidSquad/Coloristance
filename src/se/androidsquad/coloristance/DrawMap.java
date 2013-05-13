@@ -28,41 +28,70 @@ public class DrawMap extends View { // Creates a custom view that paints a fille
 	protected void onDraw(Canvas canvas) {
 		// TODO Auto-generated method stub
 		super.onDraw(canvas);
-		
+
 		//MŒlar ut kartans ram
-				Rect frameRect = new Rect();
-				frameRect.set(0, 0, canvas.getWidth(), canvas.getHeight());
-				Paint blue = new Paint();
-				blue.setColor(Color.BLUE);
-				blue.setStyle(Paint.Style.FILL);
-				canvas.drawRect(frameRect, blue);
+		Rect frameRect = new Rect();
+		frameRect.set(0, 0, canvas.getWidth(), canvas.getHeight());
+		Paint blue = new Paint();
+		blue.setColor(Color.BLUE);
+		blue.setStyle(Paint.Style.FILL);
+		canvas.drawRect(frameRect, blue);
 
-				Paint dark = new Paint();
-				dark.setColor(Color.BLACK);
-				
-				for (int i = 0; i < getWidth() ; i++) {
-					canvas.drawLine(i*getWidth()/8, 0, i*getWidth()/8, getHeight(), dark);
-					canvas.drawLine(0, i*getHeight()/3, getWidth(), i*getHeight()/3, dark);
-		
-		//Creates an object of gameController to be able to control the size and color of the rectangle
-		gameController = new GameController(); // When creating a GameController object we create a RectModel object as well
-		size = RectModel.getSize(); // using method from the RectModel object named rect
-		
-		Rect ourRect = new Rect();
-		ourRect.set(getWidth()/64, getHeight()/24, 7*getWidth()/64,7*getHeight()/24); 
-		Paint color = new Paint();
-		color.setColor(RectModel.getRectColor());
-		canvas.drawRect(ourRect, color);
+		Paint dark = new Paint();
+		dark.setColor(Color.BLACK);
 
-		/**Refera till xml-filen i javan istŠllet fšr tvŠrtom som vi trodde annars
+		for (int i = 0; i < getWidth() ; i++) {
+			canvas.drawLine(i*getWidth()/8, 0, i*getWidth()/8, getHeight(), dark);
+			canvas.drawLine(0, i*getHeight()/3, getWidth(), i*getHeight()/3, dark);
+
+			//Creates an object of gameController to be able to control the size and color of the rectangle
+			gameController = new GameController(); // When creating a GameController object we create a RectModel object as well
+
+			//Map Rectangle One
+			Rect mapRectOne = new Rect();
+			mapRectOne.set(getWidth()/64, 9*getHeight()/24, 7*getWidth()/64,15*getHeight()/24); 
+			Paint color = new Paint();
+			color.setColor(RectModel.getRectColor());
+			canvas.drawRect(mapRectOne, color);
+
+			//Map Rectangle Two
+			Rect mapRectTwo = new Rect();
+			mapRectTwo.set(9*getWidth()/64, 9*getHeight()/24, 15*getWidth()/64,15*getHeight()/24); 
+			Paint colorTwo = new Paint();
+			color.setColor(RectModel.getRectColor());
+			canvas.drawRect(mapRectTwo, colorTwo);
+
+			//Map Rectangle Three
+			Rect mapRectThree = new Rect();
+			mapRectThree.set(9*getWidth()/64, 1*getHeight()/24, 15*getWidth()/64,7*getHeight()/24); 
+			Paint colorThree = new Paint();
+			color.setColor(RectModel.getRectColor());
+			canvas.drawRect(mapRectThree, colorThree);
+
+			//Map Rectangle Four
+			Rect mapRectFour = new Rect();
+			mapRectFour.set(17*getWidth()/64, 1*getHeight()/24, 23*getWidth()/64,7*getHeight()/24); 
+			Paint colorFour = new Paint();
+			color.setColor(RectModel.getRectColor());
+			canvas.drawRect(mapRectFour, colorFour);
+			
+			//Map Rectangle Five
+			Rect mapRectFive = new Rect();
+			mapRectFive.set(25*getWidth()/64, 1*getHeight()/24, 31*getWidth()/64,7*getHeight()/24); 
+			Paint colorFive = new Paint();
+			color.setColor(RectModel.getRectColor());
+			canvas.drawRect(mapRectFive, colorFive);
+
+
+			/**Refera till xml-filen i javan istŠllet fšr tvŠrtom som vi trodde annars
 
 			View p = view.getRootView();
 	    	TextView greenRect = (TextView)p.findViewById(R.id.toggleButton2); */
-	
-	//		else { Draw a map sized rectangle where it should be drawn. Check for the color with an if statement }
 
-		
-			
+			//		else { Draw a map sized rectangle where it should be drawn. Check for the color with an if statement }
+
+
+
 		}
 	}
 }
