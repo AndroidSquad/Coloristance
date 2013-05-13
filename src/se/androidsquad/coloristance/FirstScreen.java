@@ -31,20 +31,24 @@ public class FirstScreen extends Activity {
 		
 		
 		
-		
+		//Nedan onClick är teststycke
 		ImageButton a = (ImageButton) findViewById(R.id.top_door);
 		a.setOnClickListener(new View.OnClickListener() {
-			String test;	
+			String test = "33333";	
 			@Override
 			public void onClick(View v) {
 							
-				if(test == "22222") test = "11111"; 
-				else test = "22222";
-				
-				DoorModel.setDoor(test);
-				findViewById(R.id.bot_door).setBackgroundColor(DoorModel.getDoor(2));
-
-				
+				if(test == "22222"){ 
+					DoorModel.setDoor(test);
+					findViewById(R.id.bot_door).setBackgroundColor(DoorModel.getDoor(2));
+					test = "11111";
+				}
+				else{
+					DoorModel.setDoor(test);
+					findViewById(R.id.bot_door).setBackgroundColor(DoorModel.getDoor(2));
+					test = "22222";
+				}
+												
 			}
 		});
 		

@@ -1,5 +1,7 @@
 package se.androidsquad.coloristance;
 
+import android.graphics.Paint;
+
 public class RectModel {
 	
 	/* Denna klass i modellen ska innehålla Color och Size. 
@@ -8,9 +10,13 @@ public class RectModel {
 	 */
 	RectModelData data;
 	
+	public RectModel(){
+		this.data = new RectModelData();
+	}
 	
-	public RectModel(int a, int b) {
-		this.data = new RectModelData(a,b); // 3 stands for the a color and 1 for the room rectangle
+	
+	public RectModel(String a, int b) {
+		this.data = new RectModelData(); // 3 stands for the a color and 1 for the room rectangle
 	}
 	
 	/* The method setColor takes a number between 1-4 representing colors.
@@ -27,9 +33,9 @@ public class RectModel {
 		 */
 	}
 	
-	protected int getColor(){ // get the rectangles color
-		return data.getColor();
-	}
+//	protected int getColor(){ // get the rectangles color
+//		return data.getColor();
+//	}
 	
 	protected void setSize(int i){
 		data.setSize(i);

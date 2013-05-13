@@ -1,0 +1,11 @@
+Levels 
+//A database containing the characteristics that are necessary to describe each level in the game.
+The levels are defined by strings. Each string contains 5 numbers, from 1 to 5. The first number defines
+the color of the room, the four remaining numbers the colors of the different doors, in order of their positions,
+where the first number refers to the door facing east, the second the door facing south, the third the door facing west,
+and the fourth the door facing north.
+
+//Level 1
+A two dimensional matrix consisting of strings. 
+
+//Level 2

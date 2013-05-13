@@ -1,5 +1,7 @@
 package se.androidsquad.coloristance;
 
+import android.graphics.Color;
+
 /* 
  * I xml är det nu android:background som man ändrar på dörrarna för att byta deras färg, har fixat färgreferenser i både java och xml 
  * i java är de statics benämnda typ BLUE_LIGHT (se DrawingRect)
@@ -10,28 +12,30 @@ package se.androidsquad.coloristance;
  * Id:t hittar ni i xml filen
  */
 
-public class DoorModel{
+/** 
+ * DoorModel tar emot ett paint objekt som är dörr färgen och 
+ * en int som representerar dörrarna representeras av pos 1-4
+ * 
+ * Informationen används för att tillskriva rätt dörr rätt färg
+ */
 
-	/** Innehåller information om färgen på dörrarna och dess placering relativt rutan. 
-	 */
+/** Innehåller information om färgen på dörrarna och dess placering relativt rutan. 
+ */
+
+public class DoorModel{
 	
-	private static int[] position = {2,2,2,2}; 
+	private static int[] position = {1,2,3,4}; 
 		
 	public static void setDoor(String pos){
-		/** 
-		 * DoorModel tar emot ett paint objekt som är dörr färgen och 
-		 * en int som representerar dörrarna representeras av pos 1-4
-		 * 
-		 * Informationen används för att tillskriva rätt dörr rätt färg
-		 */
-		for(int i = 1; i<4; i++){
-			switch(pos.charAt(i)){
-			case '1': position[i] = DrawingRect.BLUE_LIGHT;
-			case '2': position[i] = DrawingRect.GREEN_LIGHT;
-			case '3': position[i] = DrawingRect.PURPLE_LIGHT;
-			case '4': position[i] = DrawingRect.ORANGE_LIGHT;
-			case '5': position[i] = DrawingRect.RED_LIGHT;		
-			}
+		for(int i = 0; i<4; i++){
+			
+			if(pos.charAt(i+1)== '1') position[i] = ModelData.BLUE_LIGHT;
+			else if(pos.charAt(i+1)== '2') position[i] = ModelData.GREEN_LIGHT;
+			else if(pos.charAt(i+1)== '3') position[i] = ModelData.PURPLE_LIGHT;
+			else if(pos.charAt(i+1)== '4') position[i] = ModelData.ORANGE_LIGHT;
+			else if(pos.charAt(i+1)== '5') position[i] = ModelData.RED_LIGHT;	
+			else position[i+1] = Color.BLACK;	
+			
 		}
 	}
 	
