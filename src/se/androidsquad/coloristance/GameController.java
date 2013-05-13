@@ -34,17 +34,22 @@ public class GameController {
 	protected Levels level;
 	protected RectModel rect;
 	protected DoorModel door;
-	protected int col = 4; // Dessa ska vara flexibla och gå att ändra sedan
+	protected ModelData data;
+	protected int col = 3; // Dessa ska vara flexibla och gå att ändra sedan
 	protected int size = 1;// Dessa ska vara flexibla och gå att ändra sedan
-
+	protected String roomcode;
+	
+	
 	public GameController(){ // Creates an object of each of the Models
 		this.pos = new PositionModel();
 		this.level = new Levels();
-		this.rect = new RectModel(col,size);
+//		this.rect = new RectModel(,size);
 		this.door = new DoorModel();
-
+		roomcode = level.Level1[0]; //retrieving the room from the database "Levels"
+		this.data = new ModelData(roomcode,1);
 	}
-
+	
+	
 	/* Do we really need this constructor?
 	 * 
 	 * public GameController(PositionModel pos, Levels level, RectModel rect, DoorModel door) {
@@ -52,7 +57,7 @@ public class GameController {
 		this.level = level;
 		this.rect = rect;
 		this.door = door;
-	}*/
+	} */
 
 	protected void drawMap() {
 		int posX, posY;
@@ -63,7 +68,7 @@ public class GameController {
 	}
 
 	protected void drawRoom() {
-	
+		
 	}
 
 	protected void doorClick() {
