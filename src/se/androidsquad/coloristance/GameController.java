@@ -33,9 +33,6 @@ public class GameController {
 	protected PositionModel pos;
 	protected RectModel rect;
 	protected DoorModel door;
-	protected RectModelData data;
-	protected ModelData modData;
-	protected Levels level;
 	protected int col = 3; // Dessa ska vara flexibla och gå att ändra sedan
 	protected int size = 1;// Dessa ska vara flexibla och gå att ändra sedan
 	protected String roomcode;
@@ -45,7 +42,7 @@ public class GameController {
 		this.pos = new PositionModel();
 		this.rect = new RectModel();
 		this.door = new DoorModel();
-		roomcode = level.Level1[0][0]; //retrieving the room from the database "Levels"
+		roomcode = Levels.Level1[0][0]; //retrieving the room from the database "Levels"
 		RectModel.setRectColor(roomcode);
 		DoorModel.setDoor(roomcode);
 

@@ -2,7 +2,7 @@ package se.androidsquad.coloristance;
 
 import java.io.File;
 
-import android.graphics.Paint;
+
 
 public class RectModel {
 	
@@ -10,7 +10,7 @@ public class RectModel {
 	 * Inte bestämma dessa utan bara veta att den har en färg 
 	 * och storlek som betsämms av GameController
 	 */
-	RectModelData data;
+
 	
 	public RectModel(){
 	}

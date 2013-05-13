@@ -29,13 +29,11 @@ public class DoorModel{
 	public static void setDoor(String pos){
 		for(int i = 0; i<4; i++){
 			
-			if(pos.charAt(i+1)== '1') position[i] = ModelData.BLUE_LIGHT;
-			else if(pos.charAt(i+1)== '2') position[i] = ModelData.GREEN_LIGHT;
-			else if(pos.charAt(i+1)== '3') position[i] = ModelData.PURPLE_LIGHT;
-			else if(pos.charAt(i+1)== '4') position[i] = ModelData.ORANGE_LIGHT;
-			else if(pos.charAt(i+1)== '5') position[i] = ModelData.RED_LIGHT;	
-			else position[i+1] = 0;	
-			
+			if(pos.charAt(i+1)== '1') position[i] = RectModel.BLUE_LIGHT;
+			else if(pos.charAt(i+1)== '2') position[i] = RectModel.GREEN_LIGHT;
+			else if(pos.charAt(i+1)== '3') position[i] = RectModel.PURPLE_LIGHT;
+			else if(pos.charAt(i+1)== '4') position[i] = RectModel.ORANGE_LIGHT;
+			else if(pos.charAt(i+1)== '5') position[i] = RectModel.RED_LIGHT;		
 		}
 	}
 	
