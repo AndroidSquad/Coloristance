@@ -44,23 +44,7 @@ public class ModelData {
 //
 //	}
 
-	public void setColor(String roomcode) { //Should be a case sats, but that is a problem for future Simon and future Tommy	
-		for(int i=0;i<roomcode.length();i++){	
-			if (roomcode.charAt(0) == '1') {
-				roomColor = BLUE_LIGHT;
-			} else if (roomcode.charAt(0) == '2') {
-				roomColor = GREEN_LIGHT;
-			} else if (roomcode.charAt(0) == '3') {
-				roomColor = ORANGE_LIGHT;
-			} else if (roomcode.charAt(0) == '4') {
-				roomColor = PURPLE_LIGHT;
-			} else if (roomcode.charAt(0) == '5') {
-				roomColor = RED_LIGHT;
-			}
-			else 
-				roomColor = 0;
-		}
-	}
+
 
 	public int getColor(){
 		return roomColor;

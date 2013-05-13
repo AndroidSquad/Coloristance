@@ -46,8 +46,7 @@ public class GameController {
 		this.rect = new RectModel();
 		this.door = new DoorModel();
 		roomcode = level.Level1[0][0]; //retrieving the room from the database "Levels"
-		this.data = new RectModelData();
-		this.modData = new ModelData(roomcode,3);
+		RectModel.setRectColor(roomcode);
 		DoorModel.setDoor(roomcode);
 
 	}
