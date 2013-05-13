@@ -46,13 +46,20 @@ public class DrawMap extends View { // Creates a custom view that paints a fille
 		
 		//Creates an object of gameController to be able to control the size and color of the rectangle
 		gameController = new GameController(); // When creating a GameController object we create a RectModel object as well
-		size = RectModel.getSize(); // using method from the RectModel object named rect
 		
-		Rect ourRect = new Rect();
-		ourRect.set(getWidth()/64, getHeight()/24, 7*getWidth()/64,7*getHeight()/24); 
+		//Room One
+		Rect roomOne = new Rect();
+		roomOne.set(getWidth()/64, 9*getHeight()/24, 7*getWidth()/64,15*getHeight()/24); 
 		Paint color = new Paint();
 		color.setColor(RectModel.getRectColor());
-		canvas.drawRect(ourRect, color);
+		canvas.drawRect(roomOne, color);
+		
+		//Room Two
+		Rect roomTwo = new Rect();
+		roomTwo.set(9*getWidth()/64, 9*getHeight()/24, 15*getWidth()/64,15*getHeight()/24); 
+		Paint colorTwo = new Paint();
+		color.setColor(RectModel.getRectColor());
+		canvas.drawRect(roomTwo, colorTwo);
 
 		/**Refera till xml-filen i javan istället för tvärtom som vi trodde annars
 
