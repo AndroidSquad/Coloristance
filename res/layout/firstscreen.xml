@@ -12,7 +12,7 @@
         android:layout_alignParentTop="true"
         android:background="@color/green_light" >
 
-        <se.androidsquad.coloristance.DrawMapRect
+        <se.androidsquad.coloristance.DrawMap
             android:id="@+id/map"
             android:layout_width="210dp"
             android:layout_height="80dp"
@@ -56,6 +56,12 @@
         android:background="#000000" >
 
         <se.androidsquad.coloristance.DrawingRect
+            android:id="@+id/room"
+            android:layout_width="200dp"
+            android:layout_height="200dp"
+            android:layout_centerInParent="true" />
+        
+            <se.androidsquad.coloristance.DrawingRect
             android:id="@+id/room"
             android:layout_width="200dp"
             android:layout_height="200dp"
