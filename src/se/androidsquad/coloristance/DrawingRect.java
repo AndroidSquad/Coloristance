@@ -97,7 +97,7 @@
 
 
 
-package se.androidsquad.coloristance;
+//*package se.androidsquad.coloristance;
 
 import android.R.color;
 import android.annotation.SuppressLint;
