@@ -29,14 +29,28 @@ public class DrawMap extends View { // Creates a custom view that paints a fille
 		// TODO Auto-generated method stub
 		super.onDraw(canvas);
 		
+		//MŒlar ut kartans ram
+				Rect frameRect = new Rect();
+				frameRect.set(0, 0, canvas.getWidth(), canvas.getHeight());
+				Paint blue = new Paint();
+				blue.setColor(Color.BLUE);
+				blue.setStyle(Paint.Style.FILL);
+				canvas.drawRect(frameRect, blue);
+
+				Paint dark = new Paint();
+				dark.setColor(Color.BLACK);
+				
+				for (int i = 0; i < getWidth() ; i++) {
+					canvas.drawLine(i*getWidth()/8, 0, i*getWidth()/8, getHeight(), dark);
+					canvas.drawLine(0, i*getHeight()/3, getWidth(), i*getHeight()/3, dark);
+		
 		//Creates an object of gameController to be able to control the size and color of the rectangle
 		gameController = new GameController(); // When creating a GameController object we create a RectModel object as well
 		size = RectModel.getSize(); // using method from the RectModel object named rect
 
 		Rect ourRect = new Rect();
-		//ourRect.set(canvas.getWidth()/8, canvas.getHeight()/4, 7*canvas.getWidth()/8, 3*canvas.getHeight()/4);
-		ourRect.set(0, 0, canvas.getWidth(),canvas.getHeight());
-
+		ourRect.set(5, 5, canvas.getWidth()/13,canvas.getHeight()/22);
+		
 		Paint color = new Paint();
 		color.setColor(RectModel.getRectColor());
 		canvas.drawRect(ourRect, color);
@@ -48,20 +62,7 @@ public class DrawMap extends View { // Creates a custom view that paints a fille
 	
 	//		else { Draw a map sized rectangle where it should be drawn. Check for the color with an if statement }
 
-		//MŒlar ut kartans ram
-		Rect frameRect = new Rect();
-		frameRect.set(0, 0, canvas.getWidth(), canvas.getHeight());
-		Paint blue = new Paint();
-		blue.setColor(Color.BLUE);
-		blue.setStyle(Paint.Style.FILL);
-		canvas.drawRect(frameRect, blue);
-
-		Paint dark = new Paint();
-		dark.setColor(Color.BLACK);
 		
-		for (int i = 0; i < getWidth() ; i++) {
-			canvas.drawLine(i*getWidth()/12, 0, i*getWidth()/12, getHeight(), dark);
-			canvas.drawLine(0, i*getHeight()/4, getWidth(), i*getHeight()/4, dark);
 			
 		}
 	}
