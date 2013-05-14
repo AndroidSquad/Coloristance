@@ -15,7 +15,7 @@ import android.view.View;
 public class DrawMap extends View { // Creates a custom view that paints a filled rectangle 
 	
 	
-
+	
 	public DrawMap(Context context, AttributeSet attrs) {
 		super(context, attrs);
 		// TODO Auto-generated constructor stub
@@ -23,11 +23,12 @@ public class DrawMap extends View { // Creates a custom view that paints a fille
 
 	@SuppressLint("DrawAllocation")
 	@Override
-	protected void onDraw(Canvas canvas) {
+	public void onDraw(Canvas canvas) {
 		// TODO Auto-generated method stub
 		super.onDraw(canvas);
 		
 		HashMap<String, Paint> col = new HashMap<String, Paint>();
+
 		col.put("bl", new Paint());
 		col.get("bl").setColor(RectModel.BLUE_LIGHT);
 		col.put("gl", new Paint());
@@ -39,7 +40,12 @@ public class DrawMap extends View { // Creates a custom view that paints a fille
 		col.put("rl", new Paint());
 		col.get("rl").setColor(RectModel.RED_LIGHT);
 		
+
+		
 		MapModel.setMapSize(getWidth(),getHeight());
+		
+		
+		
 
 		//MŒlar ut kartans ram
 		Rect frameRect = new Rect();
@@ -94,15 +100,11 @@ public class DrawMap extends View { // Creates a custom view that paints a fille
 
 */
 		
-		// Använd detta för att testa om den flyttar på sig. Just nu flyttas den i punkter, inte i koordinater
-		//	MapModel.setPos(3, 3);
-		
 		//Your Position: Kmmer behöva en specifik position 
-		canvas.drawCircle(MapModel.getDrawPos(5, 1), MapModel.getDrawPos(6, 1), MapModel.getDrawPos(7, 1), col.get("rl"));
-		
+		canvas.drawCircle(MapModel.getDrawPos(5, MapModel.getMyX()), MapModel.getDrawPos(6, MapModel.getMyY()), MapModel.getDrawPos(7, MapModel.getMyY()), col.get("rl"));
+		invalidate();
 	}
-
-
+		
 	/**Refera till xml-filen i javan istŠllet fšr tvŠrtom som vi trodde annars
 
 			View p = view.getRootView();
