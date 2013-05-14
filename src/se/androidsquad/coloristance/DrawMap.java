@@ -98,7 +98,7 @@ public class DrawMap extends View { // Creates a custom view that paints a fille
 		//	MapModel.setPos(3, 3);
 		
 		//Your Position: Kmmer behöva en specifik position 
-		canvas.drawCircle(MapModel.getDrawPos(5, MapModel.getMyX()), MapModel.getDrawPos(6, MapModel.getMyY()), MapModel.getDrawPos(7, MapModel.getMyY()), col.get("rl"));
+		canvas.drawCircle(MapModel.getDrawPos(5, 1), MapModel.getDrawPos(6, 1), MapModel.getDrawPos(7, 1), col.get("rl"));
 		
 	}
 

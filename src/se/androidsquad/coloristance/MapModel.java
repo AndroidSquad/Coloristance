@@ -78,11 +78,11 @@ public class MapModel {
 		
 		//Till cirkeln
 		//Mitt i rectX
-		else if (cornerPos==5) answer = ((multi*8)+2)*(screenWidth/72)+((((multi+1)*8)*(screenWidth/72)-((multi*8)+2)*(screenWidth/24))/2);
+		else if (cornerPos==5) answer = ((multi*8)+2)*(screenWidth/72)+((((multi+1)*8)*(screenWidth/72)-((multi*8)+2)*(screenWidth/72))/2);
 		//Mitt i rectY
 		else if (cornerPos==6) answer = ((multi*8)+2)*(screenHeight/24)+((((multi+1)*8)*(screenHeight/24)-((multi*8)+2)*(screenHeight/24))/2);
 		//Radie
-		else if (cornerPos==7) answer = ((multi+1)*8)*(screenWidth/72)-((multi*8)+2)*(screenWidth/72);
+		else if (cornerPos==7) answer = (((multi+1)*8)*(screenWidth/72)-((multi*8)+2)*(screenWidth/72))/2;
 				
 		else answer = 0;
 		
