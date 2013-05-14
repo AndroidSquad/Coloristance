@@ -95,25 +95,22 @@ public class DrawMap extends View { // Creates a custom view that paints a fille
 		col.put("ol", new Paint());
 		col.get("ol").setColor(RectModel.ORANGE_LIGHT);
 		col.put("pl", new Paint());
-		col.get("pl").setColor(RectModel.RED_LIGHT);
+		col.get("pl").setColor(RectModel.PURPLE_LIGHT);
 		col.put("rl", new Paint());
 		col.get("rl").setColor(RectModel.RED_LIGHT);
 		
 		String name = "Ej startat";
 				
 		for(int i = 0; i<Levels.Level1.length;i++){
-			Log.v("Loop", name);
 			for(int j = 0; j<Levels.Level1[i].length;j++){
 				name = i+","+j;
-				Log.v("Loop", name);
+				//Log.v("Loop", name);
 				map.put(name, new Rect());
-				Log.v("Loop2", name);
-				map.get(name).set(((i*8)+1)*(getWidth()/64), ((j*8)+1)*(getHeight()/24), (((i+1)*8)-1)*(getWidth()/64),(((j+1)*8)-1)*(getHeight()/24)); 
-				Log.v("Loop3", name);
+				map.get(name).set(((j*8)+2)*(getWidth()/72), ((i*8)+2)*(getHeight()/24), (((j+1)*8))*(getWidth()/72),(((i+1)*8))*(getHeight()/24)); 
 				RectModel.setRectColor(Levels.Level1[i][j]);
-				Log.v("Loop4", name);
+				//Log.v("Loop4", name);
 				canvas.drawRect( map.get(name), col.get("pl"));
-				Log.v("Loop5", name);
+				//Log.v("Loop5", name);
 			}
 		}
 			
