@@ -20,14 +20,13 @@ public class FirstScreen extends Activity {
 		// TODO Auto-generated method stub
 		super.onCreate(savedInstanceState);
 		map = new DrawMap(FirstScreen.this, null);
-		//setContentView(R.id.room_layout);
 		setContentView(R.layout.firstscreen);
 		
 		mp = MediaPlayer.create(FirstScreen.this, R.raw.house_music);	
 		mp.start();
 		mp.setLooping(true);
 		
-		//Nedan onClick är teststycke
+		//the code below in onClick is a test piece
 		ImageButton a = (ImageButton) findViewById(R.id.top_door);
 		a.setOnClickListener(new View.OnClickListener() {
 			String test = "31423";	
