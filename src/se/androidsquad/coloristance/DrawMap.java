@@ -112,7 +112,7 @@ public class DrawMap extends View { // Creates a custom view that paints a fille
 				Log.v("Loop", name);
 				map.put(name, new Rect());
 				Log.v("Loop2", name);
-				map.get(name).set((i+1)*getWidth()/64, (j+1)*getHeight()/24, (i+7)*getWidth()/64,(j+7)*getHeight()/24); 
+				map.get(name).set(((i*8)+1)*(getWidth()/64), ((j*8)+1)*(getHeight()/24), (((i+1)*8)-1)*(getWidth()/64),(((j+1)*8)-1)*(getHeight()/24)); 
 				Log.v("Loop3", name);
 				RectModel.setRectColor(Levels.mapArray[i][j]);
 				Log.v("Loop4", name);
