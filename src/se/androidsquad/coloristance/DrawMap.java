@@ -18,6 +18,7 @@ public class DrawMap extends View { // Creates a custom view that paints a fille
 
 	private GameController gameController;
 	private RectModel rectModel;
+	private MapModel mapModel;
 	private int size;
 	private int col;
 	private String [][] rectId = Levels.Level1;
@@ -43,11 +44,23 @@ public class DrawMap extends View { // Creates a custom view that paints a fille
 
 		Paint dark = new Paint();
 		dark.setColor(Color.BLACK);
+		Paint red = new Paint();
+		red.setColor(Color.RED);
 
-		for (int i = 0; i < getWidth() ; i++) {
+
+		for (int i = 1; i < getWidth() ; i++) {
 			canvas.drawLine(i*getWidth()/8, 0, i*getWidth()/8, getHeight(), dark);
 			canvas.drawLine(0, i*getHeight()/3, getWidth(), i*getHeight()/3, dark);
+		
 		}
+		//for (int i = 0; i < getWidth()-1 ; i++){
+		//	canvas.drawLine(i+getWidth()/8, (i+getHeight()/3)+(1/2), (i+getWidth()/8)+(1/5), (i+getHeight()/3)+(1/2), dark);
+
+
+		//}
+
+		
+
 
 		//Creates an object of gameController to be able to control the size and color of the rectangle
 		gameController = new GameController(); // When creating a GameController object we create a RectModel object as well
@@ -159,6 +172,8 @@ public class DrawMap extends View { // Creates a custom view that paints a fille
 		Paint colorTwelve = new Paint();
 		colorTwelve.setColor(RectModel.getRectColor());
 		canvas.drawRect(mapRectTwelve, colorTwelve);
+		
+		canvas.drawCircle(getWidth()/16, getHeight()/2, 10, red);
 	}
 
 

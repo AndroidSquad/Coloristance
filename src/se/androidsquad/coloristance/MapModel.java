@@ -1,5 +1,7 @@
 package se.androidsquad.coloristance;
 
+import android.util.Log;
+
 //Metoder att ha
 	//Läsa in vilken färg varje rektangel har från RectModel, dvs loopa igenom de olika strängarna och säg vilken färg
 
@@ -45,6 +47,7 @@ public class MapModel {
 	protected String getRoom(){
 		return mapArray[x][y];
 	}
+
 	
 	public static int getX(){
 		return x;
@@ -52,6 +55,7 @@ public class MapModel {
 	
 	public static int getY(){
 		return y;
+
 	}
 
 }
