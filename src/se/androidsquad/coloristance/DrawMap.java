@@ -1,5 +1,7 @@
 package se.androidsquad.coloristance;
 
+import java.io.FileNotFoundException;
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -22,7 +24,7 @@ public class DrawMap extends View { // Creates a custom view that paints a fille
 	private MapModel mapModel;
 	private int size;
 	private int col;
-	private String [][] rectId = Levels.Level1;
+	private String [][] rectId = Levels.mapArray;
 
 	public DrawMap(Context context, AttributeSet attrs) {
 		super(context, attrs);
@@ -64,7 +66,9 @@ public class DrawMap extends View { // Creates a custom view that paints a fille
 
 
 		//Creates an object of gameController to be able to control the size and color of the rectangle
-		gameController = new GameController(); // When creating a GameController object we create a RectModel object as well
+	
+			gameController = new GameController();
+		 // When creating a GameController object we create a RectModel object as well
 
 		/*Rect[][] rectList = new Rect[2][2];	
 		MapModel.setMap(Levels.Level1);
@@ -101,14 +105,17 @@ public class DrawMap extends View { // Creates a custom view that paints a fille
 		
 		String name = "Ej startat";
 				
-		for(int i = 0; i<Levels.Level1.length;i++){
-			for(int j = 0; j<Levels.Level1[i].length;j++){
+
+		for(int i = 0; i<Levels.mapArray.length;i++){
+			Log.v("Loop", name);
+			for(int j = 0; j<Levels.mapArray[i].length;j++){
 				name = i+","+j;
 				//Log.v("Loop", name);
 				map.put(name, new Rect());
 				map.get(name).set(((j*8)+2)*(getWidth()/72), ((i*8)+2)*(getHeight()/24), (((j+1)*8))*(getWidth()/72),(((i+1)*8))*(getHeight()/24)); 
-				RectModel.setRectColor(Levels.Level1[i][j]);
 				//Log.v("Loop4", name);
+				RectModel.setRectColor(Levels.mapArray[i][j]);
+				Log.v("Loop4", name);
 				canvas.drawRect( map.get(name), col.get("pl"));
 				//Log.v("Loop5", name);
 			}

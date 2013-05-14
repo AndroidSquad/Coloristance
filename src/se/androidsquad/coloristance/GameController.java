@@ -1,5 +1,8 @@
 package se.androidsquad.coloristance;
 
+import java.io.FileNotFoundException;
+import java.io.IOException;
+
 import android.annotation.SuppressLint;
 import android.os.Bundle;
 
@@ -41,7 +44,8 @@ public class GameController {
 		this.pos = new PositionModel();
 		this.rect = new RectModel();
 		this.door = new DoorModel();
-		roomcode = Levels.Level1[0][0]; //retrieving the room from the database "Levels"
+//		Levels.initLevel();
+		roomcode = Levels.mapArray[0][0]; //retrieving the room from the database "Levels"
 		RectModel.setRectColor(roomcode);
 		DoorModel.setDoor(roomcode);
 		
