@@ -50,13 +50,29 @@ public class MapModel {
 	}
 
 	
-	public static int getX(){
+	public static int getMyX(){
 		return x;
 	}
 	
-	public static int getY(){
+	public static int getMyY(){
 		return y;
-
+	}
+	
+	public static int getDrawPos(int pos, int multi, int size){
+		/** 
+		 * Take a doorposition 1-4, ,the corresponding multiplier and the screensize. 
+		 * This info is used to return a value corresponding to the screen
+		 * */
+		
+		int answer = 0;
+		
+		if(pos==1) 		answer = ((multi*8)+2)*(size/72);
+		else if(pos==2) answer = ((multi*8)+2)*(size/24);
+		else if(pos==3) answer = ((multi+1)*8)*(size/72);
+		else if(pos==4)	answer = ((multi+1)*8)*(size/24);
+		else answer = 0;
+		
+		return answer;
 	}
 
 }

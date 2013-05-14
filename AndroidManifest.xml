@@ -27,10 +27,6 @@
             android:name="se.androidsquad.coloristance.FirstScreen"
             android:theme="@android:style/Theme.NoTitleBar.Fullscreen" >
         </activity>
-        <activity
-            android:name="se.androidsquad.coloristance.RoomView"
-            android:theme="@android:style/Theme.NoTitleBar.Fullscreen" >
-        </activity>
     </application>
 
 </manifest>
