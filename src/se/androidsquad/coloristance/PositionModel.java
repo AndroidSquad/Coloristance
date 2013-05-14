@@ -2,21 +2,21 @@ package se.androidsquad.coloristance;
 
 public class PositionModel {
 	
-	/*Denna modell innehåller information om vart spelaren 
-	 * befinner sig så att kartan kan markera den aktuella rutan.
-	 * 
+	/*
+	 * This model contain the information about the players position
+	 * so the map is able to mark the right rectangle on the map.
 	 */
 	private int x,y;
 	
-	protected void setPosition(int x, int y){ //Tar emot de x- och y-värden soom angivits att spelaren står på
+	protected void setPosition(int x, int y){ //receives x- and y- values which notes where the player is standing at the moment
 		this.x=x;
 		this.y=y;
 	}
 	
-	protected int getX(){ //Returnerar x-koordinaten
+	protected int getX(){ //return the x-coordinate
 		return x;
 	}
-	protected int getY(){ //Returnerar y-koordinaten
+	protected int getY(){ //return the y-coordinate
 		return y;
 	}
 }

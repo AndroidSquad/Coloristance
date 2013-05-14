@@ -18,17 +18,10 @@ package se.androidsquad.coloristance;
  * (N), right (E), down (S), left (W).
  * An example of the RNESW is: 13500 = A Blue room with a Orange door top and a red door to the right.
  * The first figure must be a value since it represent the room's color.
- */
- 
+ */ 
 	 
  //"5=Connecting path between two rooms, under construction." <- Lägg inte denna här, har position 2-5 en siffra finns en dörr och connection
- 
- /*
- * ANTON: Why aren't we using the five figure keys as one number "41200"? 
- * Believe that it's easier to make them as strings. String have way better tools to just look at 
- * what the string contain at a position when we aren't going to use them for counting 
- * anyways, or is there a special need for them being int?  
- */
+
 
 public class Levels {
 
