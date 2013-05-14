@@ -173,7 +173,9 @@ public class DrawMap extends View { // Creates a custom view that paints a fille
 		colorTwelve.setColor(RectModel.getRectColor());
 		canvas.drawRect(mapRectTwelve, colorTwelve);
 		
-		canvas.drawCircle(getWidth()/16, getHeight()/2, 10, red);
+		// Använd detta för att testa om den flyttar på sig. Just nu flyttas den i punkter, inte i koordinater
+		//	MapModel.setPos(3, 3);
+		canvas.drawCircle(MapModel.getX()+(getWidth()/16), MapModel.getY()+(getHeight()/6), 10, red);
 	}
 
 
