@@ -48,6 +48,7 @@ public class MapModel {
 	protected String getRoom(){
 		return mapArray[x][y];
 	}
+
 	
 	public static int getX(){
 		return x;
@@ -55,6 +56,7 @@ public class MapModel {
 	
 	public static int getY(){
 		return y;
+
 	}
 
 }
