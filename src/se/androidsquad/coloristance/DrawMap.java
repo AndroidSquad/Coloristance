@@ -12,6 +12,7 @@ import android.graphics.Color;
 import android.graphics.Paint;
 import android.graphics.Rect;
 import android.util.AttributeSet;
+import android.util.Log;
 import android.view.View;
 
 //Anton: Why do we have this class? Better to code DrawingRect to take argument that will define if its a map or a room rect...
@@ -86,15 +87,39 @@ public class DrawMap extends View { // Creates a custom view that paints a fille
 
 		//Map Rectangle One
 		
-		Map<String, Rect> map = new HashMap<String, Rect>();
-		map.put("test", new Rect());
-		map.get("test").set(getWidth()/64, 9*getHeight()/24, 7*getWidth()/64,15*getHeight()/24);
-		Map<String, Paint> col = new HashMap<String, Paint>();
-		col.put("mag", new Paint());
-		col.get("mag").setColor(Color.MAGENTA);
-		canvas.drawRect(map.get("test"), col.get("mag"));
+		HashMap<String, Rect> map = new HashMap<String, Rect>();
+		
+		HashMap<String, Paint> col = new HashMap<String, Paint>();
+		col.put("bl", new Paint());
+		col.get("bl").setColor(RectModel.BLUE_LIGHT);
+		col.put("gl", new Paint());
+		col.get("gl").setColor(RectModel.GREEN_LIGHT);
+		col.put("ol", new Paint());
+		col.get("ol").setColor(RectModel.ORANGE_LIGHT);
+		col.put("pl", new Paint());
+		col.get("pl").setColor(RectModel.RED_LIGHT);
+		col.put("rl", new Paint());
+		col.get("rl").setColor(RectModel.RED_LIGHT);
+		
+		String name = "Ej startat";
+				
+		for(int i = 0; i<Levels.Level1.length;i++){
+			Log.v("Loop", name);
+			for(int j = 0; j<Levels.Level1[i].length;j++){
+				name = i+","+j;
+				Log.v("Loop", name);
+				map.put(name, new Rect());
+				Log.v("Loop2", name);
+				map.get(name).set((i+1)*getWidth()/64, (j+1)*getHeight()/24, (i+7)*getWidth()/64,(j+7)*getHeight()/24); 
+				Log.v("Loop3", name);
+				RectModel.setRectColor(Levels.Level1[i][j]);
+				Log.v("Loop4", name);
+				canvas.drawRect( map.get(name), col.get("pl"));
+				Log.v("Loop5", name);
+			}
+		}
 			
-
+/*
 		//Map Rectangle Two
 		Rect mapRectTwo = new Rect();
 		mapRectTwo.set(9*getWidth()/64, 9*getHeight()/24, 15*getWidth()/64,15*getHeight()/24); 
@@ -178,6 +203,7 @@ public class DrawMap extends View { // Creates a custom view that paints a fille
 		Paint colorTwelve = new Paint();
 		colorTwelve.setColor(RectModel.getRectColor());
 		canvas.drawRect(mapRectTwelve, colorTwelve);
+*/
 		
 		// Använd detta för att testa om den flyttar på sig. Just nu flyttas den i punkter, inte i koordinater
 		//	MapModel.setPos(3, 3);

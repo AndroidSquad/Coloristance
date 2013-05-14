@@ -1,6 +1,11 @@
 package se.androidsquad.coloristance;
 
 import java.io.File;
+import java.util.HashMap;
+
+import android.graphics.Paint;
+import android.util.Log;
+
 public class RectModel {
 	
 	/* Denna klass i modellen ska innehålla Color och Size. 
@@ -38,14 +43,35 @@ public class RectModel {
 			} else if (roomcode.charAt(0) == '5') {
 				rectColor = RED_LIGHT;
 			}
-			else 
+			else{ 
+				Log.v("RectModel", "No color was found");
 				rectColor = 0;
+			}
+				
+			
 		}
 	
 	
 	public static int getRectColor(){
+		
+		if(rectColor == 0) Log.v("RectModel", "No color was sent");
 		return rectColor;
-	}		
+		
+		
+	}
+	
+	public static String getRoomPaint(){
+
+		String color;
+		if(rectColor == 1)		color = "bl";
+		else if(rectColor == 2)	color = "gl";
+		else if(rectColor == 3)	color = "ol";
+		else if(rectColor == 4)	color = "pl";
+		else if(rectColor == 5)	color = "rl";
+		else color = "Inget";
+			
+		return color;
+	}
 		
 	public void updatePos(){
 		/* Denna metod ska meddela RectModelData när position har ändrats så att 
