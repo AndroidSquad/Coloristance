@@ -8,7 +8,7 @@ import android.util.Log;
 public class MapModel {
 	
 	static String[][] mapArray;
-	static int x,y;
+	private static int x,y,screenWidth,screenHeight;
 
 	public static void setMap(String[][] level){
 		mapArray = level;
@@ -58,18 +58,32 @@ public class MapModel {
 		return y;
 	}
 	
-	public static int getDrawPos(int pos, int multi, int size){
+	public static void setMapSize(int sizeX, int sizeY){
+		screenWidth 	= sizeX;
+		screenHeight 	= sizeY;
+	}
+	
+	public static int getDrawPos(int cornerPos, int multi){
 		/** 
 		 * Take a doorposition 1-4, ,the corresponding multiplier and the screensize. 
 		 * This info is used to return a value corresponding to the screen
 		 * */
 		
 		int answer = 0;
+		//Till rektangeln, hörn 1 - 4
+		if		(cornerPos==1) answer = ((multi*8)+2)*(screenWidth/72);
+		else if	(cornerPos==2) answer = ((multi*8)+2)*(screenHeight/24);
+		else if	(cornerPos==3) answer = ((multi+1)*8)*(screenWidth/72);
+		else if	(cornerPos==4) answer = ((multi+1)*8)*(screenHeight/24);
 		
-		if(pos==1) 		answer = ((multi*8)+2)*(size/72);
-		else if(pos==2) answer = ((multi*8)+2)*(size/24);
-		else if(pos==3) answer = ((multi+1)*8)*(size/72);
-		else if(pos==4)	answer = ((multi+1)*8)*(size/24);
+		//Till cirkeln
+		//Mitt i rectX
+		else if (cornerPos==5) answer = ((multi*8)+2)*(screenWidth/72)+((((multi+1)*8)*(screenWidth/72)-((multi*8)+2)*(screenWidth/24))/2);
+		//Mitt i rectY
+		else if (cornerPos==6) answer = ((multi*8)+2)*(screenHeight/24)+((((multi+1)*8)*(screenHeight/24)-((multi*8)+2)*(screenHeight/24))/2);
+		//Radie
+		else if (cornerPos==7) answer = ((multi+1)*8)*(screenWidth/72)-((multi*8)+2)*(screenWidth/72);
+				
 		else answer = 0;
 		
 		return answer;
