@@ -22,8 +22,8 @@ public class RectModel {
 	protected int pos = 0;
 	protected static int rectColor; // The color could be 0,1,2,3,4.
 	protected static int size;// The value could be 0 or 1. 0 = map rectangle  1 = room rectangle.
-	protected String[][] mapArray = new String [2][2];
-	protected File filename = new File("/assets/levels/Level1.txt");
+	//protected String[][] mapArray;
+	File filename = new File("/assets/levels/Level1.txt");
 
 	public static void setRectColor(String roomcode) { //Should be a case sats, but that is a problem for future Simon and future Tommy	
 		

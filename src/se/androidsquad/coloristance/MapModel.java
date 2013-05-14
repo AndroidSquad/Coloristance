@@ -1,5 +1,7 @@
 package se.androidsquad.coloristance;
 
+import android.util.Log;
+
 //Metoder att ha
 	//Läsa in vilken färg varje rektangel har från RectModel, dvs loopa igenom de olika strängarna och säg vilken färg
 
@@ -25,20 +27,21 @@ public class MapModel {
 		}
 	}
 
-	protected static void setPos(int a, int b){
+	protected static void setPos(int xPos, int yPos){
 		//Dessa skall anropas vid vare tryck på en dörr
-		x = a;
-		y = b;
+		x = xPos;
+		y = yPos;
 	}
 	
 	protected static int getRoomColor(String roomId){
 		//Dessa skall anropas vid vare tryck på en dšrr
-		for(int i = 0; i<2;i++){ // //Loopen Šr felaktig. 2:a bšr ersŠttas med dynamiskt vŠrde
-			for(int j = 0; j<2;j++){ //Loopen Šr felaktig. 2:a bšr ersŠttas med dynamiskt vŠrde
-				RectModel.setRectColor(mapArray[x][y]);
+		for(int i = 0; i<mapArray.length;i++){
+			for(int j = 0; j<mapArray[i].length;j++){
+					if(roomId == mapArray[i][j]){
+						RectModel.setRectColor(mapArray[x][y]);
+					}
 			}
 		}
-	
 		return RectModel.getRectColor();
 	}
 	

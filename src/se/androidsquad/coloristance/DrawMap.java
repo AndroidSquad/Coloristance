@@ -1,7 +1,9 @@
 package se.androidsquad.coloristance;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import android.annotation.SuppressLint;
 import android.content.Context;
@@ -70,11 +72,15 @@ public class DrawMap extends View { // Creates a custom view that paints a fille
 				canvas.drawRect(rectList[i][j], colorList[i][j]);*/
 
 		//Map Rectangle One
-		Rect mapRectOne = new Rect();
-		mapRectOne.set(getWidth()/64, 9*getHeight()/24, 7*getWidth()/64,15*getHeight()/24); 
-		Paint color = new Paint();
-		color.setColor(RectModel.getRectColor());
-		canvas.drawRect(mapRectOne, color);
+		
+		Map<String, Rect> map = new HashMap<String, Rect>();
+		map.put("test", new Rect());
+		map.get("test").set(getWidth()/64, 9*getHeight()/24, 7*getWidth()/64,15*getHeight()/24);
+		Map<String, Paint> col = new HashMap<String, Paint>();
+		col.put("mag", new Paint());
+		col.get("mag").setColor(Color.MAGENTA);
+		canvas.drawRect(map.get("test"), col.get("mag"));
+			
 
 		//Map Rectangle Two
 		Rect mapRectTwo = new Rect();

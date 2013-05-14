@@ -38,18 +38,20 @@ public class FirstScreen extends Activity {
 					test = "31223";
 				}
 				else if(test == "31223"){
-					test = "34123";
+					test = "24123";
 				}
 				else test = "14234";
 				
 				DoorModel.setDoor(test);
+				RectModel.setRectColor(test);
 				findViewById(R.id.top_door).setBackgroundColor(DoorModel.getDoor('N'));
 				findViewById(R.id.right_door).setBackgroundColor(DoorModel.getDoor('E'));
 				findViewById(R.id.bot_door).setBackgroundColor(DoorModel.getDoor('S'));
 				findViewById(R.id.left_door).setBackgroundColor(DoorModel.getDoor('W'));
+				findViewById(R.id.room).setBackgroundColor(RectModel.getRectColor());
 				
-				MapModel.setMap(Levels.Level1);	//Testar MapModel
-				MapModel.renderMap();			//Testar MapModel
+				//MapModel.setMap(Levels.Level1);	//Testar MapModel
+				//MapModel.renderMap();			//Testar MapModel
 												
 			}
 		});
