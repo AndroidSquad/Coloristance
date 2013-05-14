@@ -49,8 +49,6 @@ public class DrawMap extends View { // Creates a custom view that paints a fille
 			canvas.drawLine(0, i*getHeight()/3, getWidth(), i*getHeight()/3, dark);
 		}
 
-
-
 		//Creates an object of gameController to be able to control the size and color of the rectangle
 		gameController = new GameController(); // When creating a GameController object we create a RectModel object as well
 
@@ -82,15 +80,22 @@ public class DrawMap extends View { // Creates a custom view that paints a fille
 		Rect mapRectTwo = new Rect();
 		mapRectTwo.set(9*getWidth()/64, 9*getHeight()/24, 15*getWidth()/64,15*getHeight()/24); 
 		Paint colorTwo = new Paint();
-		colorTwo.setColor(RectModel.getRectColor());
+		colorTwo.setColor(RectModel.PURPLE_LIGHT);
 		canvas.drawRect(mapRectTwo, colorTwo);
 
 		//Map Rectangle Three
 		Rect mapRectThree = new Rect();
 		mapRectThree.set(9*getWidth()/64, 1*getHeight()/24, 15*getWidth()/64,7*getHeight()/24); 
 		Paint colorThree = new Paint();
-		colorThree.setColor(RectModel.getRectColor());
+		colorThree.setColor(RectModel.GREEN_LIGHT);
 		canvas.drawRect(mapRectThree, colorThree);
+		
+		//Map Rectangle Apple
+		Rect mapRectApple = new Rect();
+		mapRectApple.set(17*getWidth()/64, 9*getHeight()/24, 23*getWidth()/64,15*getHeight()/24); 
+		Paint colorApple = new Paint();
+		colorApple.setColor(RectModel.BLUE_LIGHT);
+		canvas.drawRect(mapRectApple, colorApple);
 
 		//Map Rectangle Four
 		Rect mapRectFour = new Rect();
