@@ -1,7 +1,5 @@
 package se.androidsquad.coloristance;
 
-import android.graphics.Color;
-
 /* 
  * I xml är det nu android:background som man ändrar på dörrarna för att byta deras färg, har fixat färgreferenser i både java och xml 
  * i java är de statics benämnda typ BLUE_LIGHT (se DrawingRect)
@@ -17,9 +15,8 @@ import android.graphics.Color;
  * en int som representerar dörrarna representeras av pos 1-4
  * 
  * Informationen används för att tillskriva rätt dörr rätt färg
- */
-
-/** Innehåller information om färgen på dörrarna och dess placering relativt rutan. 
+ * 
+ * Innehåller information om färgen på dörrarna och dess placering relativt rutan. 
  */
 
 public class DoorModel{

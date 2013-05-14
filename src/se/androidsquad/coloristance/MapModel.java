@@ -1,6 +1,10 @@
 package se.androidsquad.coloristance;
 
-import java.util.StringTokenizer;
+import java.io.PrintStream;
+
+import android.os.SystemClock;
+import android.util.Log;
+import android.webkit.ConsoleMessage;
 
 //Metoder att ha
 	//Läsa in vilken färg varje rektangel har från RectModel, dvs loopa igenom de olika strängarna och säg vilken färg
@@ -14,10 +18,13 @@ public class MapModel {
 		mapArray = level;
 	}
 
-	private void renderMap(){
+	public static void renderMap(){
 		//Skall innehålla funktioner som gör instanser av alla element 
 		for(int i = 0; i<mapArray.length;i++){
 			for(int j = 0; j<mapArray[i].length;j++){
+				
+				Log.v("Pos: ", "i:"+i+" j:"+j);
+				
 				//mapArray[i][j].charAt(0) denna snippet är char-siffran på rummet 
 				//och skall sändas till rederaren av färgen tillsammans med positionen som är i och j 
 			}
