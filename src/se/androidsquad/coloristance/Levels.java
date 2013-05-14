@@ -1,5 +1,10 @@
 package se.androidsquad.coloristance;
 
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.IOException;
+import java.util.Scanner;
+
 /**
  * This class is supposed to describe the different levels that are included in the game
  * 				Dark		Light
@@ -23,11 +28,21 @@ package se.androidsquad.coloristance;
  //"5=Connecting path between two rooms, under construction." <- Lägg inte denna här, har position 2-5 en siffra finns en dörr och connection
 
 
-public class Levels {
+public class Levels { //Would like to scan the .txt file and insert the information into a array[][]. The current version does not work however.
+//protected static File filename = new File("/assets/levels/Level1.txt");
+//protected static String[][] mapArray;
 
-
-public static String[][] Level1 = {{"12300","20410","32320","12110"},
+protected static String[][] mapArray = {{"12300","20410","32320","12110"},
 									{"34001","40032","40132","23101"}};
+
+//public static void initLevel() throws FileNotFoundException, IOException {
+//	Scanner sc = new Scanner(filename);
+//	for (int i = 0; i < mapArray.length; i++){
+//		for(int j= 0; j< mapArray[i].length; j++){
+//			mapArray[i][j] = sc.next();
+//		}	
+//	} 
+//}
 
 }
 
