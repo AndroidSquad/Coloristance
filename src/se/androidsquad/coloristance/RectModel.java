@@ -58,16 +58,16 @@ public class RectModel {
 		
 	}
 	
-	public static String getRoomPaint(){
+	public static String getRoomColor(){
 
 		String color;
-		if(rectColor == 1)		color = "bl";
-		else if(rectColor == 2)	color = "gl";
-		else if(rectColor == 3)	color = "ol";
-		else if(rectColor == 4)	color = "pl";
-		else if(rectColor == 5)	color = "rl";
+		if(rectColor == BLUE_LIGHT)		color = "bl";
+		else if(rectColor == GREEN_LIGHT)	color = "gl";
+		else if(rectColor == ORANGE_LIGHT)	color = "ol";
+		else if(rectColor == PURPLE_LIGHT)	color = "pl";
+		else if(rectColor == RED_LIGHT)	color = "rl";
 		else color = "Inget";
-			
+		Log.v("RectModel.getRectColor", "Skickar: "+color);	
 		return color;
 	}
 		
