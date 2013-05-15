@@ -43,6 +43,7 @@ public class DrawMap extends View { // Creates a custom view that paints a fille
 
 		
 		MapModel.setMapSize(getWidth(),getHeight());
+		MapModel.setMap("lvl_1");
 		
 		
 		
@@ -74,17 +75,14 @@ public class DrawMap extends View { // Creates a custom view that paints a fille
 				
 		// Behöver String[][], Färger[]
 		
-		for(int i = 0; i<Levels.mapArray.length;i++){
-			Log.v("Loop", name);
-			for(int j = 0; j<Levels.mapArray[i].length;j++){
+		for(int i = 0; i<MapModel.getMap().length;i++){
+			for(int j = 0; j<MapModel.getMap()[i].length;j++){
 				name = i+","+j;
-				//Log.v("Loop", name);
 				map.put(name, new Rect());
-				map.get(name).set(MapModel.getDrawPos(1, j), MapModel.getDrawPos(2, i), 
-									MapModel.getDrawPos(3, j),MapModel.getDrawPos(4, i)); 
-				//Log.v("Loop4", name);
-				RectModel.setRectColor(Levels.mapArray[i][j]);
-				Log.v("Loop4", name);
+				map.get(name).set(MapModel.getRectPos(1, j), MapModel.getRectPos(2, i), 
+				MapModel.getRectPos(3, j),MapModel.getRectPos(4, i)); 
+				RectModel.setRectColor(MapModel.getMap()[i][j]);
+				Log.v("DrawMap for-loop", name);
 				canvas.drawRect( map.get(name), col.get("pl"));
 				//Log.v("Loop5", name);
 			}
@@ -101,7 +99,7 @@ public class DrawMap extends View { // Creates a custom view that paints a fille
 */
 		
 		//Your Position: Kmmer behöva en specifik position 
-		canvas.drawCircle(MapModel.getDrawPos(5, MapModel.getMyX()), MapModel.getDrawPos(6, MapModel.getMyY()), MapModel.getDrawPos(7, MapModel.getMyY()), col.get("rl"));
+		canvas.drawCircle(MapModel.getCircPos(1, MapModel.getMyX()), MapModel.getCircPos(2, MapModel.getMyY()), MapModel.getCircPos(3, MapModel.getMyY()), col.get("rl"));
 		invalidate();// Calls the onDraw again as soon as has painted everything
 	}
 		

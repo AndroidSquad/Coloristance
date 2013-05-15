@@ -10,8 +10,12 @@ public class MapModel {
 	static String[][] mapArray;
 	private static int x,y,screenWidth,screenHeight;
 
-	public static void setMap(String[][] level){
-		mapArray = level;
+	public static void setMap(String level){
+		if(level == "lvl_1")mapArray = Levels.mapArray;		
+	}
+	
+	public static String[][] getMap(){
+		return mapArray;		
 	}
 
 	public static void renderMap(){
@@ -91,7 +95,7 @@ public class MapModel {
 		screenHeight 	= sizeY;
 	}
 	
-	public static int getDrawPos(int cornerPos, int multi){
+	public static int getRectPos(int cornerPos, int multi){
 		/** 
 		 * Take a doorposition 1-4, ,the corresponding multiplier and the screensize. 
 		 * This info is used to return a value corresponding to the screen
@@ -103,18 +107,34 @@ public class MapModel {
 		else if	(cornerPos==2) answer = ((multi*8)+2)*(screenHeight/24);
 		else if	(cornerPos==3) answer = ((multi+1)*8)*(screenWidth/72);
 		else if	(cornerPos==4) answer = ((multi+1)*8)*(screenHeight/24);
-		
-		//Till cirkeln
-		//Mitt i rectX
-		else if (cornerPos==5) answer = ((multi*8)+2)*(screenWidth/72)+((((multi+1)*8)*(screenWidth/72)-((multi*8)+2)*(screenWidth/72))/2);
-		//Mitt i rectY
-		else if (cornerPos==6) answer = ((multi*8)+2)*(screenHeight/24)+((((multi+1)*8)*(screenHeight/24)-((multi*8)+2)*(screenHeight/24))/2);
-		//Radie
-		else if (cornerPos==7) answer = (((multi+1)*8)*(screenWidth/72)-((multi*8)+2)*(screenWidth/72))/2;
 				
 		else answer = 0;
 		
 		return answer;
 	}
+	
+	public static int getCircPos(int value, int multi){
+		/** 
+		 * Take a doorposition 1-4, ,the corresponding multiplier and the screensize. 
+		 * This info is used to return a value corresponding to the screen
+		 * */
+		int answer = 0;
+		//Till cirkeln
+		//Mitt i rectX
+		if (value==1) answer = ((multi*8)+2)*(screenWidth/72)+((((multi+1)*8)*(screenWidth/72)-((multi*8)+2)*(screenWidth/72))/2);
+		//Mitt i rectY
+		else if (value==2) answer = ((multi*8)+2)*(screenHeight/24)+((((multi+1)*8)*(screenHeight/24)-((multi*8)+2)*(screenHeight/24))/2);
+		//Radie
+		else if (value==3) answer = (((multi+1)*8)*(screenWidth/72)-((multi*8)+2)*(screenWidth/72))/2;
+				
+		else answer = 0;
+		
+		return answer;
+	}
+	
+	
+	
+	
+	
 
 }
