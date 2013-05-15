@@ -32,26 +32,26 @@ public class FirstScreen extends Activity {
 		//the code below in onClick is a test piece
 		ImageButton a = (ImageButton) findViewById(R.id.top_door);
 		a.setOnClickListener(new View.OnClickListener() {
-			String test = "34001";
+			//String test = "34001";
 			
 			@Override
 			public void onClick(View v) {
 					
 				MapModel.moveUp();
 
-				if(test == "34001"){ 
-					test = "14234";
-				}
+//				if(test == "34001"){ 
+//					test = "14234";
+//				}
+//				
+//				else if(test == "14234")
+//					test = "23141";
+//				
+//				else{ 
+//					test = "34001";
+//				};
 				
-				else if(test == "14234")
-					test = "23141";
-				
-				else{ 
-					test = "34001";
-				};
-				
-				DoorModel.setDoor(test);
-				RectModel.setRectColor(test);
+				DoorModel.setDoor(MapModel.getRoom());
+				RectModel.setRectColor(MapModel.getRoom());
 				findViewById(R.id.top_door).setBackgroundColor(DoorModel.getDoor('N'));
 				findViewById(R.id.right_door).setBackgroundColor(DoorModel.getDoor('E'));
 				findViewById(R.id.bot_door).setBackgroundColor(DoorModel.getDoor('S'));
@@ -74,20 +74,20 @@ public class FirstScreen extends Activity {
 			public void onClick(View v) {
 						
 				MapModel.moveRight();
-
-				if(test == "34001"){ 
-					test = "14234";
-				}
+//
+//				if(test == "34001"){ 
+//					test = "14234";
+//				}
+//				
+//				else if(test == "14234")
+//					test = "23141";
+//				
+//				else{ 
+//					test = "34001";
+//				};
 				
-				else if(test == "14234")
-					test = "23141";
-				
-				else{ 
-					test = "34001";
-				};
-				
-				DoorModel.setDoor(test);
-				RectModel.setRectColor(test);
+				DoorModel.setDoor(MapModel.getRoom());
+				RectModel.setRectColor(MapModel.getRoom());
 				findViewById(R.id.top_door).setBackgroundColor(DoorModel.getDoor('N'));
 				findViewById(R.id.right_door).setBackgroundColor(DoorModel.getDoor('E'));
 				findViewById(R.id.bot_door).setBackgroundColor(DoorModel.getDoor('S'));
@@ -110,19 +110,19 @@ public class FirstScreen extends Activity {
 											
 				MapModel.moveDown();
 
-				if(test == "34001"){ 
-					test = "14234";
-				}
-				
-				else if(test == "14234")
-					test = "23141";
-				
-				else{ 
-					test = "34001";
-				};
-				
-				DoorModel.setDoor(test);
-				RectModel.setRectColor(test);
+//				if(test == "34001"){ 
+//					test = "14234";
+//				}
+//				
+//				else if(test == "14234")
+//					test = "23141";
+//				
+//				else{ 
+//					test = "34001";
+//				};
+//				
+				DoorModel.setDoor(MapModel.getRoom());
+				RectModel.setRectColor(MapModel.getRoom());
 				findViewById(R.id.top_door).setBackgroundColor(DoorModel.getDoor('N'));
 				findViewById(R.id.right_door).setBackgroundColor(DoorModel.getDoor('E'));
 				findViewById(R.id.bot_door).setBackgroundColor(DoorModel.getDoor('S'));
@@ -137,26 +137,26 @@ public class FirstScreen extends Activity {
 		
 		ImageButton d = (ImageButton) findViewById(R.id.left_door);
 		d.setOnClickListener(new View.OnClickListener() {
-			String test = "34001";
+
 			
 			@Override
 			public void onClick(View v) {
 											
 				MapModel.moveLeft();
 
-				if(test == "34001"){ 
-					test = "14234";
-				}
+//				if(test == "34001"){ 
+//					test = "14234";
+//				}
+//				
+//				else if(test == "14234")
+//					test = "23141";
+//				
+//				else{ 
+//					test = "34001";
+//				};
 				
-				else if(test == "14234")
-					test = "23141";
-				
-				else{ 
-					test = "34001";
-				};
-				
-				DoorModel.setDoor(test);
-				RectModel.setRectColor(test);
+				DoorModel.setDoor(MapModel.getRoom());
+				RectModel.setRectColor(MapModel.getRoom());
 				findViewById(R.id.top_door).setBackgroundColor(DoorModel.getDoor('N'));
 				findViewById(R.id.right_door).setBackgroundColor(DoorModel.getDoor('E'));
 				findViewById(R.id.bot_door).setBackgroundColor(DoorModel.getDoor('S'));

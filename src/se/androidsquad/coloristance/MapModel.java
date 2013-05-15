@@ -77,7 +77,7 @@ public class MapModel {
 		return RectModel.getRectColor();
 	}
 	
-	protected String getRoom(){
+	public static String getRoom(){
 		return mapArray[x][y];
 	}
 
