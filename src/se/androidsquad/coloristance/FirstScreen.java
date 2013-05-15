@@ -26,26 +26,133 @@ public class FirstScreen extends Activity {
 		mp = MediaPlayer.create(FirstScreen.this, R.raw.house_music);	
 		mp.start();
 		mp.setLooping(true);
+		MapModel.setPos(0, 1);
+
 		
 		//the code below in onClick is a test piece
 		ImageButton a = (ImageButton) findViewById(R.id.top_door);
 		a.setOnClickListener(new View.OnClickListener() {
-			String test = "31423";
+			String test = "34001";
 			
 			@Override
 			public void onClick(View v) {
-							
-				if(test == "14234"){ 
-					test = "31223";
-					MapModel.setPos(0, 1);
-				}
-				else if(test == "31223"){
-					test = "24123";
-					MapModel.setPos(2, 1);
-				}
-				else{ 
+					
+				MapModel.moveUp();
+
+				if(test == "34001"){ 
 					test = "14234";
-					MapModel.setPos(0, 2);
+				}
+				
+				else if(test == "14234")
+					test = "23141";
+				
+				else{ 
+					test = "34001";
+				};
+				
+				DoorModel.setDoor(test);
+				RectModel.setRectColor(test);
+				findViewById(R.id.top_door).setBackgroundColor(DoorModel.getDoor('N'));
+				findViewById(R.id.right_door).setBackgroundColor(DoorModel.getDoor('E'));
+				findViewById(R.id.bot_door).setBackgroundColor(DoorModel.getDoor('S'));
+				findViewById(R.id.left_door).setBackgroundColor(DoorModel.getDoor('W'));
+				findViewById(R.id.room).setBackgroundColor(RectModel.getRectColor());
+												
+				//MapModel.setMap(Levels.Level1);	//Testar MapModel
+				//MapModel.renderMap();			//Testar MapModel
+							
+			}
+		});
+
+		
+		// Right door
+		ImageButton b = (ImageButton) findViewById(R.id.right_door);
+		b.setOnClickListener(new View.OnClickListener() {
+			String test = "34001";
+			
+			@Override
+			public void onClick(View v) {
+						
+				MapModel.moveRight();
+
+				if(test == "34001"){ 
+					test = "14234";
+				}
+				
+				else if(test == "14234")
+					test = "23141";
+				
+				else{ 
+					test = "34001";
+				};
+				
+				DoorModel.setDoor(test);
+				RectModel.setRectColor(test);
+				findViewById(R.id.top_door).setBackgroundColor(DoorModel.getDoor('N'));
+				findViewById(R.id.right_door).setBackgroundColor(DoorModel.getDoor('E'));
+				findViewById(R.id.bot_door).setBackgroundColor(DoorModel.getDoor('S'));
+				findViewById(R.id.left_door).setBackgroundColor(DoorModel.getDoor('W'));
+				findViewById(R.id.room).setBackgroundColor(RectModel.getRectColor());
+												
+				//MapModel.setMap(Levels.Level1);	//Testar MapModel
+				//MapModel.renderMap();			//Testar MapModel
+							
+			}
+		});
+		
+		// Bottom door
+		ImageButton c = (ImageButton) findViewById(R.id.bot_door);
+		c.setOnClickListener(new View.OnClickListener() {
+			String test = "34001";
+			
+			@Override
+			public void onClick(View v) {
+											
+				MapModel.moveDown();
+
+				if(test == "34001"){ 
+					test = "14234";
+				}
+				
+				else if(test == "14234")
+					test = "23141";
+				
+				else{ 
+					test = "34001";
+				};
+				
+				DoorModel.setDoor(test);
+				RectModel.setRectColor(test);
+				findViewById(R.id.top_door).setBackgroundColor(DoorModel.getDoor('N'));
+				findViewById(R.id.right_door).setBackgroundColor(DoorModel.getDoor('E'));
+				findViewById(R.id.bot_door).setBackgroundColor(DoorModel.getDoor('S'));
+				findViewById(R.id.left_door).setBackgroundColor(DoorModel.getDoor('W'));
+				findViewById(R.id.room).setBackgroundColor(RectModel.getRectColor());
+												
+				//MapModel.setMap(Levels.Level1);	//Testar MapModel
+				//MapModel.renderMap();			//Testar MapModel
+							
+			}
+		});
+		
+		ImageButton d = (ImageButton) findViewById(R.id.left_door);
+		d.setOnClickListener(new View.OnClickListener() {
+			String test = "34001";
+			
+			@Override
+			public void onClick(View v) {
+											
+				MapModel.moveLeft();
+
+				if(test == "34001"){ 
+					test = "14234";
+				}
+				
+				else if(test == "14234")
+					test = "23141";
+				
+				else{ 
+					test = "34001";
 				};
 				
 				DoorModel.setDoor(test);

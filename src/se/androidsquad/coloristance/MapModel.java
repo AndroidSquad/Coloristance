@@ -33,6 +33,34 @@ public class MapModel {
 		y = yPos;
 	}
 	
+	protected static void moveUp(){
+		//Ska anropas när den norra dörren klickas
+		y -= 1;
+		if (y < 0)
+			y=0;	
+	}
+
+	protected static void moveRight(){
+		//Ska anropas när den norra dörren klickas
+		x += 1;
+		if (x > 8)
+			x=8;
+	}
+	
+	protected static void moveDown(){
+		//Ska anropas när den norra dörren klickas
+		y += 1;
+		if (y > 2)
+			y=2;
+	}
+	
+	protected static void moveLeft(){
+		//Ska anropas när den norra dörren klickas
+		x -= 1;
+		if (x < 0)
+			x=0;
+	}
+	
 	protected static int getRoomColor(String roomId){
 		//Dessa skall anropas vid vare tryck pÂ en dörr
 		for(int i = 0; i<mapArray.length;i++){

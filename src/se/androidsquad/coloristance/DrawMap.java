@@ -102,7 +102,7 @@ public class DrawMap extends View { // Creates a custom view that paints a fille
 		
 		//Your Position: Kmmer behöva en specifik position 
 		canvas.drawCircle(MapModel.getDrawPos(5, MapModel.getMyX()), MapModel.getDrawPos(6, MapModel.getMyY()), MapModel.getDrawPos(7, MapModel.getMyY()), col.get("rl"));
-		invalidate();
+		invalidate();// Calls the onDraw again as soon as has painted everything
 	}
 		
 	/**Refera till xml-filen i javan istŠllet fšr tvŠrtom som vi trodde annars
