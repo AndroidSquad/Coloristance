@@ -24,29 +24,29 @@ import java.util.Scanner;
  * An example of the RNESW is: 13500 = A Blue room with a Orange door top and a red door to the right.
  * The first figure must be a value since it represent the room's color.
  */ 
-	 
- //"5=Connecting path between two rooms, under construction." <- Lägg inte denna här, har position 2-5 en siffra finns en dörr och connection
+
+//"5=Connecting path between two rooms, under construction." <- Lägg inte denna här, har position 2-5 en siffra finns en dörr och connection
 
 
 public class Levels { //Would like to scan the .txt file and insert the information into a array[][]. The current version does not work however.
-//protected static File filename = new File("/assets/levels/Level1.txt");
-//protected static String[][] mapArray;
+	//protected static File filename = new File("/assets/levels/Level1.txt");
+	//protected static String[][] mapArray;
 
 
-public static String[][] mapArray = {	{"10000","20410","32320","23001","12110","23101","20410","32320","32320"},
-										{"34001","40032","40132","34001","40032","40132","40032","40132","40132"},
-										{"10000","12110","23101","12300","20410","32320","12110","23101","23101"},
-									};
+	public static String[][] mapArray = {	{"00000","40550","50204","20345","30252","20503","50032","00000"},
+											{"10500","54031","00000","42550","53024","00000","35140","10003"},
+											{"00000","35200","40503","54202","25305","30402","00000","00000"},
+	};
 
 
-//public static void initLevel() throws FileNotFoundException, IOException {
-//	Scanner sc = new Scanner(filename);
-//	for (int i = 0; i < mapArray.length; i++){
-//		for(int j= 0; j< mapArray[i].length; j++){
-//			mapArray[i][j] = sc.next();
-//		}	
-//	} 
-//}
+	//public static void initLevel() throws FileNotFoundException, IOException {
+	//	Scanner sc = new Scanner(filename);
+	//	for (int i = 0; i < mapArray.length; i++){
+	//		for(int j= 0; j< mapArray[i].length; j++){
+	//			mapArray[i][j] = sc.next();
+	//		}	
+	//	} 
+	//}
 
 }
 
