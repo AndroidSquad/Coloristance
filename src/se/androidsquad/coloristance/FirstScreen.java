@@ -68,23 +68,11 @@ public class FirstScreen extends Activity {
 		// Right door
 		ImageButton b = (ImageButton) findViewById(R.id.right_door);
 		b.setOnClickListener(new View.OnClickListener() {
-			String test = "34001";
 			
 			@Override
 			public void onClick(View v) {
 						
 				MapModel.moveRight();
-//
-//				if(test == "34001"){ 
-//					test = "14234";
-//				}
-//				
-//				else if(test == "14234")
-//					test = "23141";
-//				
-//				else{ 
-//					test = "34001";
-//				};
 				
 				DoorModel.setDoor(MapModel.getRoom());
 				RectModel.setRectColor(MapModel.getRoom());
@@ -103,24 +91,12 @@ public class FirstScreen extends Activity {
 		// Bottom door
 		ImageButton c = (ImageButton) findViewById(R.id.bot_door);
 		c.setOnClickListener(new View.OnClickListener() {
-			String test = "34001";
 			
 			@Override
 			public void onClick(View v) {
 											
 				MapModel.moveDown();
 
-//				if(test == "34001"){ 
-//					test = "14234";
-//				}
-//				
-//				else if(test == "14234")
-//					test = "23141";
-//				
-//				else{ 
-//					test = "34001";
-//				};
-//				
 				DoorModel.setDoor(MapModel.getRoom());
 				RectModel.setRectColor(MapModel.getRoom());
 				findViewById(R.id.top_door).setBackgroundColor(DoorModel.getDoor('N'));
@@ -144,17 +120,6 @@ public class FirstScreen extends Activity {
 											
 				MapModel.moveLeft();
 
-//				if(test == "34001"){ 
-//					test = "14234";
-//				}
-//				
-//				else if(test == "14234")
-//					test = "23141";
-//				
-//				else{ 
-//					test = "34001";
-//				};
-				
 				DoorModel.setDoor(MapModel.getRoom());
 				RectModel.setRectColor(MapModel.getRoom());
 				findViewById(R.id.top_door).setBackgroundColor(DoorModel.getDoor('N'));
