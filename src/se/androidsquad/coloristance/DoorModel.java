@@ -22,18 +22,19 @@ public class DoorModel{
 	
 
 	
-	private static int[] position = {1,2,3,4}; 
+	private static int[] position = {0,1,2,3,4,5,6}; 
 		
 	public static void setDoor(String pos){
 
 		
 		for(int i = 0; i<4; i++){
-			
-			if(pos.charAt(i+1)== '1') position[i] = RectModel.BLUE_LIGHT;
+			if(pos.charAt(i+1)== '0') position[i] = RectModel.BLACK;
+			else if(pos.charAt(i+1)== '1') position[i] = RectModel.BLUE_LIGHT;
 			else if(pos.charAt(i+1)== '2') position[i] = RectModel.GREEN_LIGHT;
-			else if(pos.charAt(i+1)== '3') position[i] = RectModel.PURPLE_LIGHT;
-			else if(pos.charAt(i+1)== '4') position[i] = RectModel.ORANGE_LIGHT;
-			else if(pos.charAt(i+1)== '5') position[i] = RectModel.RED_LIGHT;		
+			else if(pos.charAt(i+1)== '3') position[i] = RectModel.ORANGE_LIGHT;
+			else if(pos.charAt(i+1)== '4') position[i] = RectModel.PURPLE_LIGHT;
+			else if(pos.charAt(i+1)== '5') position[i] = RectModel.RED_LIGHT;
+			else if(pos.charAt(i+1)== '6') position[i] = RectModel.GOLD;
 		}
 	}
 	

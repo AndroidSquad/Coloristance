@@ -15,7 +15,7 @@ public class FirstScreen extends Activity {
 
 	MediaPlayer mp;
 	DrawMap map;
-	
+	GameController game = new GameController();
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		// TODO Auto-generated method stub
@@ -38,6 +38,7 @@ public class FirstScreen extends Activity {
 			public void onClick(View v) {
 					
 				MapModel.moveUp();
+				//MapModel.setPos(MapModel.getMyX(), MapModel.getMyY()+1);
 
 //				if(test == "34001"){ 
 //					test = "14234";
@@ -49,7 +50,7 @@ public class FirstScreen extends Activity {
 //				else{ 
 //					test = "34001";
 //				};
-				
+				game.doorClick();
 				DoorModel.setDoor(MapModel.getRoom());
 				RectModel.setRectColor(MapModel.getRoom());
 				findViewById(R.id.top_door).setBackgroundColor(DoorModel.getDoor('N'));
@@ -73,7 +74,8 @@ public class FirstScreen extends Activity {
 			public void onClick(View v) {
 						
 				MapModel.moveRight();
-				
+				//MapModel.setPos(MapModel.getMyX()+1, MapModel.getMyY());
+				game.doorClick();
 				DoorModel.setDoor(MapModel.getRoom());
 				RectModel.setRectColor(MapModel.getRoom());
 				findViewById(R.id.top_door).setBackgroundColor(DoorModel.getDoor('N'));
@@ -93,7 +95,8 @@ public class FirstScreen extends Activity {
 			public void onClick(View v) {
 											
 				MapModel.moveDown();
-
+				//MapModel.setPos(MapModel.getMyX(), MapModel.getMyY()-1);
+				game.doorClick();
 				DoorModel.setDoor(MapModel.getRoom());
 				RectModel.setRectColor(MapModel.getRoom());
 				findViewById(R.id.top_door).setBackgroundColor(DoorModel.getDoor('N'));
@@ -116,7 +119,8 @@ public class FirstScreen extends Activity {
 			public void onClick(View v) {
 											
 				MapModel.moveLeft();
-
+				//MapModel.setPos(MapModel.getMyX()-1, MapModel.getMyY());
+				game.doorClick();
 				DoorModel.setDoor(MapModel.getRoom());
 				RectModel.setRectColor(MapModel.getRoom());
 				findViewById(R.id.top_door).setBackgroundColor(DoorModel.getDoor('N'));

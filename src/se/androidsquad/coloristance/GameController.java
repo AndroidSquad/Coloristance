@@ -41,9 +41,7 @@ public class GameController {
 		this.rect = new RectModel();
 		this.door = new DoorModel();
 //		Levels.initLevel();
-		roomcode = Levels.mapArray[0][0]; //retrieving the room from the database "Levels"
-		RectModel.setRectColor(roomcode);
-		DoorModel.setDoor(roomcode);
+		doorClick();
 		
 	}
 	
@@ -70,7 +68,9 @@ public class GameController {
 	}
 
 	protected void doorClick() {
-
+		roomcode = Levels.mapArray[0][0]; //retrieving the room from the database "Levels"
+		RectModel.setRectColor(roomcode);
+		DoorModel.setDoor(roomcode);
 	}
 	
 	

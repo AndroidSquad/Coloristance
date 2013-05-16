@@ -38,6 +38,13 @@ public class DrawMap extends View { // Creates a custom view that paints a fille
 		col.get("pl").setColor(RectModel.PURPLE_LIGHT);
 		col.put("rl", new Paint());
 		col.get("rl").setColor(RectModel.RED_LIGHT);
+		col.put("white", new Paint());
+		col.get("white").setColor(RectModel.WHITE);
+		col.put("black", new Paint());
+		col.get("black").setColor(RectModel.BLACK);
+		col.put("gold", new Paint());
+		col.get("gold").setColor(RectModel.GOLD);
+		
 		String rectColor = "pl";
 		
 		
@@ -91,7 +98,7 @@ public class DrawMap extends View { // Creates a custom view that paints a fille
 				map.get(name).set(MapModel.getRectPos(1, i), MapModel.getRectPos(2, j),  
 				MapModel.getRectPos(3, i), MapModel.getRectPos(4, j)); 
 				RectModel.setRectColor(MapModel.getMap()[i][j]);
-				//Log.v("DrawMap for-loop", name);
+
 				rectColor = RectModel.getRoomColor();
 				canvas.drawRect( map.get(name), col.get(rectColor));
 				//Log.v("Loop5", name);

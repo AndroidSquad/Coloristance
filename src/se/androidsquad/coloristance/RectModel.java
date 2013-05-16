@@ -24,7 +24,10 @@ public class RectModel {
 	public static final int ORANGE_LIGHT= 0xFFFF8800;
 	public static final int PURPLE_LIGHT= 0xFF9933CC;
 	public static final int RED_LIGHT 	= 0xFFCC0000;
-
+	public static final int WHITE 		= 0xFFFFFFFF;
+	public static final int GOLD		= 0xFFCCCC00;
+	
+	
 	protected int pos = 0;
 	protected static int rectColor; // The color could be 0,1,2,3,4,5.
 	protected static int size;// The value could be 0 or 1. 0 = map rectangle  1 = room rectangle.
@@ -44,6 +47,10 @@ public class RectModel {
 				rectColor = PURPLE_LIGHT;
 			} else if (roomcode.charAt(0) == '5') {
 				rectColor = RED_LIGHT;
+			} else if (roomcode.charAt(0) == '6') {
+				rectColor = GOLD;
+			} else if (roomcode.charAt(0) == '7') {
+				rectColor = WHITE;
 			}
 			else{ 
 				Log.v("RectModel", "No color was found");
@@ -65,12 +72,14 @@ public class RectModel {
 	public static String getRoomColor(){
 
 		String color;
-		if(rectColor == BLACK) 				color = "black";
+		if(rectColor == BLACK) 	color = "black";
+		else if(rectColor == WHITE) color ="white";
 		else if(rectColor == BLUE_LIGHT)	color = "bl";
 		else if(rectColor == GREEN_LIGHT)	color = "gl";
 		else if(rectColor == ORANGE_LIGHT)	color = "ol";
 		else if(rectColor == PURPLE_LIGHT)	color = "pl";
 		else if(rectColor == RED_LIGHT)		color = "rl";
+		else if(rectColor == GOLD)		color = "gold";
 		
 		else color = "Inget";
 		//Log.v("RectModel.getRectColor", "Skickar: "+color);	
