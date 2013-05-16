@@ -48,14 +48,14 @@ public class MapModel {
 		//Ska anropas nŠr den norra dšrren klickas
 		x += 1;
 		if (x > mapArray.length)
-			x=mapArray.length;
+			x=mapArray.length-1;
 	}
 	
 	protected static void moveDown(){
 		//Ska anropas nŠr den norra dšrren klickas
 		y += 1;
 		if (y > mapArray[0].length)
-			y=mapArray[0].length;
+			y=mapArray[0].length-1;
 	}
 	
 	protected static void moveLeft(){

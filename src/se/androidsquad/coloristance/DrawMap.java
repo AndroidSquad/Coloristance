@@ -79,8 +79,8 @@ public class DrawMap extends View { // Creates a custom view that paints a fille
 			for(int j = 0; j<MapModel.getMap()[i].length;j++){
 				name = i+","+j;
 				map.put(name, new Rect());
-				map.get(name).set(MapModel.getRectPos(1, j), MapModel.getRectPos(2, i), 
-				MapModel.getRectPos(3, j),MapModel.getRectPos(4, i)); 
+				map.get(name).set(MapModel.getRectPos(2, i), MapModel.getRectPos(1, j),  
+				MapModel.getRectPos(4, i), MapModel.getRectPos(3, j)); 
 				RectModel.setRectColor(MapModel.getMap()[i][j]);
 				Log.v("DrawMap for-loop", name);
 				rectColor = RectModel.getRoomColor();

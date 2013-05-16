@@ -84,6 +84,8 @@ public class FirstScreen extends Activity {
 												
 				//MapModel.setMap(Levels.Level1);	//Testar MapModel
 				//MapModel.renderMap();			//Testar MapModel
+				
+				DoorModel.getDoor('0');
 							
 			}
 		});

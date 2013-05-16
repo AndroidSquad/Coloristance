@@ -10,20 +10,26 @@ package se.androidsquad.coloristance;
  * Id:t hittar ni i xml filen
  */
 
-/** 
- * DoorModel tar emot ett paint objekt som är dörr färgen och 
- * en int som representerar dörrarna representeras av pos 1-4
- * 
- * Informationen används för att tillskriva rätt dörr rätt färg
- * 
- * Innehåller information om färgen på dörrarna och dess placering relativt rutan. 
- */
+
+
+
 
 public class DoorModel{
+	
+
 	
 	private static int[] position = {1,2,3,4}; 
 		
 	public static void setDoor(String pos){
+		
+		/** 
+		 * DoorModel tar emot ett paint objekt som är dörr färgen och 
+		 * en int som representerar dörrarna representeras av pos 1-4
+		 * 
+		 * Informationen används för att tillskriva rätt dörr rätt färg
+		 */
+		
+		
 		for(int i = 0; i<4; i++){
 			
 			if(pos.charAt(i+1)== '1') position[i] = RectModel.BLUE_LIGHT;
