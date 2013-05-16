@@ -1,11 +1,5 @@
 package se.androidsquad.coloristance;
 
-import java.io.FileNotFoundException;
-import java.io.IOException;
-
-import android.annotation.SuppressLint;
-import android.os.Bundle;
-
 public class GameController {
 
 	/*

@@ -1,9 +1,9 @@
 package se.androidsquad.coloristance;
 
-import java.io.File;
-import java.util.HashMap;
 
-import android.graphics.Paint;
+
+
+
 import android.util.Log;
 
 public class RectModel {
