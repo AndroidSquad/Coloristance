@@ -1,5 +1,6 @@
 package se.androidsquad.coloristance;
 
+import se.androidsquad.coloristance.database.Levels;
 import android.util.Log;
 
 //Metoder att ha
