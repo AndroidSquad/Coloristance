@@ -1,9 +1,6 @@
-package se.androidsquad.coloristance;
+package se.androidsquad.coloristance.database;
 
-import java.io.File;
-import java.io.FileNotFoundException;
-import java.io.IOException;
-import java.util.Scanner;
+
 
 /**
  * This class is supposed to describe the different levels that are included in the game
