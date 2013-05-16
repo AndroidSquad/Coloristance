@@ -44,19 +44,22 @@ public class MapModel {
 			y=0;	
 	}
 
-	protected static void moveRight(){
-		//Ska anropas när den norra dörren klickas
-		x += 1;
-		if (x > mapArray.length)
+	
+	public static void moveRight(){
+		if(x+1 >= mapArray.length)
 			x=mapArray.length-1;
+		else
+			x=x+1;
 	}
 	
-	protected static void moveDown(){
-		//Ska anropas när den norra dörren klickas
-		y += 1;
-		if (y > mapArray[0].length)
+	
+	public static void moveDown(){
+		if(y+1>=mapArray[0].length)
 			y=mapArray[0].length-1;
+		else
+			y=y+1;
 	}
+	
 	
 	protected static void moveLeft(){
 		//Ska anropas när den norra dörren klickas
