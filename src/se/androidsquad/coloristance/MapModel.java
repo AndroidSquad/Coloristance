@@ -9,7 +9,9 @@ import android.util.Log;
 public class MapModel {
 	
 	static String[][] mapArray;
-	private static int x,y,screenWidth,screenHeight;
+	private static int x,y,mapWidth,mapHeight,mapTop, mapBot, mapRight, mapLeft;
+	private static int leftX, rightX, topY, botY;
+	
 
 	public static void setMap(String level){
 		if(level == "lvl_1")mapArray = Levels.mapArray;		
@@ -94,9 +96,13 @@ public class MapModel {
 		return y;
 	}
 	
-	public static void setMapSize(int sizeX, int sizeY){
-		screenWidth 	= sizeX;
-		screenHeight 	= sizeY;
+	public static void setMap(int sizeX, int sizeY, int top, int right,int bot, int left){
+		mapWidth 	= sizeX;
+		mapHeight 	= sizeY;
+		mapTop 		= top;
+		mapRight 	= right;
+		mapBot 		= bot;
+		mapLeft 	= left;
 	}
 	
 	public static int getRectPos(int cornerPos, int multi){
@@ -107,12 +113,28 @@ public class MapModel {
 		
 		int answer = 0;
 		//Till rektangeln, hörn 1 - 4
-		if		(cornerPos==1) answer = ((multi*8)+2)*(screenWidth/72);
-		else if	(cornerPos==2) answer = ((multi*8)+2)*(screenHeight/24);
-		else if	(cornerPos==3) answer = ((multi+1)*8)*(screenWidth/72);
-		else if	(cornerPos==4) answer = ((multi+1)*8)*(screenHeight/24);
-				
+		if		(cornerPos==1){ answer = (multi)*(mapWidth/(mapArray.length))+(mapWidth/(mapArray.length*20))		;
+			Log.v("1:",""+answer);
+			leftX = answer;
+		}
+		else if	(cornerPos==2){ 
+			answer = (multi)*(mapHeight/(mapArray[0].length))+(mapHeight/(mapArray[0].length*20))	;
+			Log.v("2:",""+answer);
+			topY = answer;
+		}
+		else if	(cornerPos==3){ 
+			answer = ((multi+1)*(mapWidth/(mapArray.length)))- (mapWidth/(mapArray.length*20));
+			Log.v("3:",""+answer); 
+			rightX = answer;
+		}
+		else if	(cornerPos==4){ 
+			answer = ((multi+1)*(mapHeight/(mapArray[0].length)))-(mapHeight/(mapArray[0].length*20));
+			Log.v("4:", ""+answer);
+			botY = answer;
+		}
 		else answer = 0;
+
+		Log.v("MapModel","x: "+mapArray.length+" y: "+mapArray[0].length);
 		
 		return answer;
 	}
@@ -125,12 +147,21 @@ public class MapModel {
 		int answer = 0;
 		//Till cirkeln
 		//Mitt i rectX
-		if (value==1) answer = ((multi*8)+2)*(screenWidth/72)+((((multi+1)*8)*(screenWidth/72)-((multi*8)+2)*(screenWidth/72))/2);
+		if (value==1) {
+			answer = ((rightX-leftX)/2)+(multi)*(mapWidth/(mapArray.length))+(mapWidth/(mapArray.length*20)) ;
+			Log.v("CircX:", ""+answer);
+			}
 		//Mitt i rectY
-		else if (value==2) answer = ((multi*8)+2)*(screenHeight/24)+((((multi+1)*8)*(screenHeight/24)-((multi*8)+2)*(screenHeight/24))/2);
+		else if (value==2) {
+			answer = ((botY-topY)/2)+(multi)*(mapHeight/(mapArray[0].length))+(mapHeight/(mapArray[0].length*20)) ;
+			Log.v("CircY:", ""+answer);
+			}
 		//Radie
-		else if (value==3) answer = (((multi+1)*8)*(screenWidth/72)-((multi*8)+2)*(screenWidth/72))/2;
-				
+		else if (value==3) {
+			answer = (botY-topY)/2;
+			Log.v("Rad:", ""+answer);
+			}
+
 		else answer = 0;
 		
 		return answer;

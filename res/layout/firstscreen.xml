@@ -14,9 +14,14 @@
 
         <se.androidsquad.coloristance.DrawMap
             android:id="@+id/mapRect"
-            android:layout_width="240dp"
-            android:layout_height="80dp"
-            android:layout_centerInParent="true" />
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_centerInParent="true"
+            android:layout_marginBottom="0dp"
+            android:layout_marginLeft="0dp"
+            android:layout_marginRight="0dp"
+            android:layout_marginTop="0dp"
+            />
       
         <!--
              <Button

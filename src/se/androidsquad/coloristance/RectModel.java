@@ -73,7 +73,7 @@ public class RectModel {
 		else if(rectColor == RED_LIGHT)		color = "rl";
 		
 		else color = "Inget";
-		Log.v("RectModel.getRectColor", "Skickar: "+color);	
+		//Log.v("RectModel.getRectColor", "Skickar: "+color);	
 		return color;
 	}
 		
