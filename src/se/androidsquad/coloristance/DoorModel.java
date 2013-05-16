@@ -11,8 +11,12 @@ package se.androidsquad.coloristance;
  */
 
 
-
-
+/** 
+ * DoorModel tar emot ett paint objekt som är dörr färgen och 
+ * en int som representerar dörrarna representeras av pos 1-4
+ * 
+ * Informationen används för att tillskriva rätt dörr rätt färg
+ */
 
 public class DoorModel{
 	
@@ -21,14 +25,7 @@ public class DoorModel{
 	private static int[] position = {1,2,3,4}; 
 		
 	public static void setDoor(String pos){
-		
-		/** 
-		 * DoorModel tar emot ett paint objekt som är dörr färgen och 
-		 * en int som representerar dörrarna representeras av pos 1-4
-		 * 
-		 * Informationen används för att tillskriva rätt dörr rätt färg
-		 */
-		
+
 		
 		for(int i = 0; i<4; i++){
 			

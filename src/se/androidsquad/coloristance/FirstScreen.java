@@ -81,11 +81,6 @@ public class FirstScreen extends Activity {
 				findViewById(R.id.bot_door).setBackgroundColor(DoorModel.getDoor('S'));
 				findViewById(R.id.left_door).setBackgroundColor(DoorModel.getDoor('W'));
 				findViewById(R.id.room).setBackgroundColor(RectModel.getRectColor());
-												
-				//MapModel.setMap(Levels.Level1);	//Testar MapModel
-				//MapModel.renderMap();			//Testar MapModel
-				
-				DoorModel.getDoor('0');
 							
 			}
 		});
