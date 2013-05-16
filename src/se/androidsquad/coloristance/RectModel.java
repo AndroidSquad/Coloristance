@@ -17,7 +17,8 @@ public class RectModel {
 	}
 	
 	public RectModel(String a, int b) {	}
-	
+
+	public static final int BLACK 		= 0xFF000000;
 	public static final int BLUE_LIGHT 	= 0xFF33B5E5;
 	public static final int GREEN_LIGHT	= 0xFF669900;
 	public static final int ORANGE_LIGHT= 0xFFFF8800;
@@ -25,12 +26,15 @@ public class RectModel {
 	public static final int RED_LIGHT 	= 0xFFCC0000;
 
 	protected int pos = 0;
-	protected static int rectColor; // The color could be 0,1,2,3,4.
+	protected static int rectColor; // The color could be 0,1,2,3,4,5.
 	protected static int size;// The value could be 0 or 1. 0 = map rectangle  1 = room rectangle.
 
 	public static void setRectColor(String roomcode) { //Should be a case sats, but that is a problem for future Simon and future Tommy	
 		
-			if (roomcode.charAt(0) == '1') {
+			
+			if (roomcode.charAt(0) == '0'){
+				rectColor = BLACK;
+			} else if (roomcode.charAt(0) == '1') {
 				rectColor = BLUE_LIGHT;
 			} else if (roomcode.charAt(0) == '2') {
 				rectColor = GREEN_LIGHT;
@@ -43,7 +47,7 @@ public class RectModel {
 			}
 			else{ 
 				Log.v("RectModel", "No color was found");
-				rectColor = 0;
+				rectColor = BLACK;
 			}
 				
 			
@@ -52,7 +56,7 @@ public class RectModel {
 	
 	public static int getRectColor(){
 		
-		if(rectColor == 0) Log.v("RectModel", "No color was sent");
+	//	if(rectColor == 0) Log.v("RectModel", "No color was sent");
 		return rectColor;
 		
 		
@@ -61,11 +65,13 @@ public class RectModel {
 	public static String getRoomColor(){
 
 		String color;
-		if(rectColor == BLUE_LIGHT)		color = "bl";
+		if(rectColor == BLACK) 				color = "black";
+		else if(rectColor == BLUE_LIGHT)	color = "bl";
 		else if(rectColor == GREEN_LIGHT)	color = "gl";
 		else if(rectColor == ORANGE_LIGHT)	color = "ol";
 		else if(rectColor == PURPLE_LIGHT)	color = "pl";
-		else if(rectColor == RED_LIGHT)	color = "rl";
+		else if(rectColor == RED_LIGHT)		color = "rl";
+		
 		else color = "Inget";
 		Log.v("RectModel.getRectColor", "Skickar: "+color);	
 		return color;
