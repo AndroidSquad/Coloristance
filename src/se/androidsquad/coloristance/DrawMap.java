@@ -40,17 +40,27 @@ public class DrawMap extends View { // Creates a custom view that paints a fille
 		col.get("rl").setColor(RectModel.RED_LIGHT);
 		String rectColor = "pl";
 		
-
 		
-		MapModel.setMapSize(getWidth(),getHeight());
+		int mapTop, mapBot, mapRight, mapLeft, mapWidth, mapHeight;
+		mapTop = findViewById(R.id.mapRect).getTop();
+		mapBot = findViewById(R.id.mapRect).getBottom();
+		mapRight = findViewById(R.id.mapRect).getRight();
+		mapLeft = findViewById(R.id.mapRect).getLeft();
+		mapHeight = findViewById(R.id.mapRect).getHeight();
+		mapWidth = findViewById(R.id.mapRect).getWidth();
+
+				
+		MapModel.setMap(mapWidth, mapHeight, mapTop, mapRight, mapBot, mapLeft);
 		MapModel.setMap("lvl_1");
+		
+		Log.v("DrawMap", mapWidth+", "+mapHeight+", "+mapLeft+", "+mapTop+", "+mapRight+", "+mapBot);
 		
 		
 		
 
 		//MŒlar ut kartans ram
 		Rect frameRect = new Rect();
-		frameRect.set(0, 0, canvas.getWidth(), canvas.getHeight());
+		frameRect.set(mapLeft, mapTop, mapRight, mapBot);
 		Paint blue = new Paint();
 		blue.setColor(Color.BLUE);
 		blue.setStyle(Paint.Style.FILL);
@@ -60,6 +70,7 @@ public class DrawMap extends View { // Creates a custom view that paints a fille
 			canvas.drawLine(i*getWidth()/8, 0, i*getWidth()/8, getHeight(), col.get(rectColor));
 			canvas.drawLine(0, i*getHeight()/3, getWidth(), i*getHeight()/3, col.get(rectColor));
 		}
+
 		//for (int i = 0; i < getWidth()-1 ; i++){
 		//	canvas.drawLine(i+getWidth()/8, (i+getHeight()/3)+(1/2), (i+getWidth()/8)+(1/5), (i+getHeight()/3)+(1/2), dark);
 
@@ -68,21 +79,19 @@ public class DrawMap extends View { // Creates a custom view that paints a fille
 		 // When creating a GameController object we create a RectModel object as well
 		
 		HashMap<String, Rect> map = new HashMap<String, Rect>();
-		
 
-		
 		String name = "Ej startat";
-				
+			
 		// Behöver String[][], Färger[]
 		
 		for(int i = 0; i<MapModel.getMap().length;i++){
 			for(int j = 0; j<MapModel.getMap()[i].length;j++){
 				name = i+","+j;
 				map.put(name, new Rect());
-				map.get(name).set(MapModel.getRectPos(2, i), MapModel.getRectPos(1, j),  
-				MapModel.getRectPos(4, i), MapModel.getRectPos(3, j)); 
+				map.get(name).set(MapModel.getRectPos(1, i), MapModel.getRectPos(2, j),  
+				MapModel.getRectPos(3, i), MapModel.getRectPos(4, j)); 
 				RectModel.setRectColor(MapModel.getMap()[i][j]);
-				Log.v("DrawMap for-loop", name);
+				//Log.v("DrawMap for-loop", name);
 				rectColor = RectModel.getRoomColor();
 				canvas.drawRect( map.get(name), col.get(rectColor));
 				//Log.v("Loop5", name);
