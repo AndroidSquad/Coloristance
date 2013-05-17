@@ -16,7 +16,7 @@ public class FirstScreen extends Activity {
 	MediaPlayer mp;
 	DrawMap map;
 	GameController game = new GameController();
-	@Override
+
 	protected void onCreate(Bundle savedInstanceState) {
 		// TODO Auto-generated method stub
 		super.onCreate(savedInstanceState);
@@ -28,6 +28,11 @@ public class FirstScreen extends Activity {
 		mp.setLooping(true);
 		MapModel.setPos(0, 1);
 
+		final View N = findViewById(R.id.top_door);
+		final View E = findViewById(R.id.right_door);
+		final View S = findViewById(R.id.bot_door);
+		final View W = findViewById(R.id.left_door);
+	
 		
 		//the code below in onClick is a test piece
 		ImageButton a = (ImageButton) findViewById(R.id.top_door);
@@ -36,32 +41,32 @@ public class FirstScreen extends Activity {
 			
 			@Override
 			public void onClick(View v) {
-					
+				N.setVisibility(View.VISIBLE);
+				E.setVisibility(View.VISIBLE);
+				S.setVisibility(View.VISIBLE);
+				W.setVisibility(View.VISIBLE);
 				MapModel.moveUp();
-				//MapModel.setPos(MapModel.getMyX(), MapModel.getMyY()+1);
 
-//				if(test == "34001"){ 
-//					test = "14234";
-//				}
-//				
-//				else if(test == "14234")
-//					test = "23141";
-//				
-//				else{ 
-//					test = "34001";
-//				};
 				game.doorClick();
 				DoorModel.setDoor(MapModel.getRoom());
 				RectModel.setRectColor(MapModel.getRoom());
-				findViewById(R.id.top_door).setBackgroundColor(DoorModel.getDoor('N'));
-				findViewById(R.id.right_door).setBackgroundColor(DoorModel.getDoor('E'));
-				findViewById(R.id.bot_door).setBackgroundColor(DoorModel.getDoor('S'));
-				findViewById(R.id.left_door).setBackgroundColor(DoorModel.getDoor('W'));
-				findViewById(R.id.room).setBackgroundColor(RectModel.getRectColor());
-												
-				//MapModel.setMap(Levels.Level1);	//Testar MapModel
-				//MapModel.renderMap();			//Testar MapModel
-							
+				N.setBackgroundColor(DoorModel.getDoor('N'));
+				if(DoorModel.getDoor('N') == RectModel.BLACK){
+					N.setVisibility(View.GONE);
+				}
+				E.setBackgroundColor(DoorModel.getDoor('E'));
+				if(DoorModel.getDoor('E') == RectModel.BLACK){
+					E.setVisibility(View.GONE);
+				}
+				S.setBackgroundColor(DoorModel.getDoor('S'));
+				if(DoorModel.getDoor('S') == RectModel.BLACK){
+					S.setVisibility(View.GONE);
+				}
+				W.setBackgroundColor(DoorModel.getDoor('W'));
+				if(DoorModel.getDoor('W') == RectModel.BLACK){
+					W.setVisibility(View.GONE);
+				}
+				findViewById(R.id.room).setBackgroundColor(RectModel.getRectColor());			
 			}
 		});
 
@@ -72,16 +77,32 @@ public class FirstScreen extends Activity {
 			
 			@Override
 			public void onClick(View v) {
+				N.setVisibility(View.VISIBLE);
+				E.setVisibility(View.VISIBLE);
+				S.setVisibility(View.VISIBLE);
+				W.setVisibility(View.VISIBLE);
 						
 				MapModel.moveRight();
-				//MapModel.setPos(MapModel.getMyX()+1, MapModel.getMyY());
+				
 				game.doorClick();
 				DoorModel.setDoor(MapModel.getRoom());
 				RectModel.setRectColor(MapModel.getRoom());
-				findViewById(R.id.top_door).setBackgroundColor(DoorModel.getDoor('N'));
-				findViewById(R.id.right_door).setBackgroundColor(DoorModel.getDoor('E'));
-				findViewById(R.id.bot_door).setBackgroundColor(DoorModel.getDoor('S'));
-				findViewById(R.id.left_door).setBackgroundColor(DoorModel.getDoor('W'));
+				N.setBackgroundColor(DoorModel.getDoor('N'));
+				if(DoorModel.getDoor('N') == RectModel.BLACK){
+					N.setVisibility(View.GONE);
+				}
+				E.setBackgroundColor(DoorModel.getDoor('E'));
+				if(DoorModel.getDoor('E') == RectModel.BLACK){
+					E.setVisibility(View.GONE);
+				}
+				S.setBackgroundColor(DoorModel.getDoor('S'));
+				if(DoorModel.getDoor('S') == RectModel.BLACK){
+					S.setVisibility(View.GONE);
+				}
+				W.setBackgroundColor(DoorModel.getDoor('W'));
+				if(DoorModel.getDoor('W') == RectModel.BLACK){
+					W.setVisibility(View.GONE);
+				}
 				findViewById(R.id.room).setBackgroundColor(RectModel.getRectColor());
 							
 			}
@@ -93,20 +114,33 @@ public class FirstScreen extends Activity {
 			
 			@Override
 			public void onClick(View v) {
-											
+				
+				N.setVisibility(View.VISIBLE);
+				E.setVisibility(View.VISIBLE);
+				S.setVisibility(View.VISIBLE);
+				W.setVisibility(View.VISIBLE);
+				
 				MapModel.moveDown();
-				//MapModel.setPos(MapModel.getMyX(), MapModel.getMyY()-1);
 				game.doorClick();
 				DoorModel.setDoor(MapModel.getRoom());
 				RectModel.setRectColor(MapModel.getRoom());
-				findViewById(R.id.top_door).setBackgroundColor(DoorModel.getDoor('N'));
-				findViewById(R.id.right_door).setBackgroundColor(DoorModel.getDoor('E'));
-				findViewById(R.id.bot_door).setBackgroundColor(DoorModel.getDoor('S'));
-				findViewById(R.id.left_door).setBackgroundColor(DoorModel.getDoor('W'));
+				N.setBackgroundColor(DoorModel.getDoor('N'));
+				if(DoorModel.getDoor('N') == RectModel.BLACK){
+					N.setVisibility(View.GONE);
+				}
+				E.setBackgroundColor(DoorModel.getDoor('E'));
+				if(DoorModel.getDoor('E') == RectModel.BLACK){
+					E.setVisibility(View.GONE);
+				}
+				S.setBackgroundColor(DoorModel.getDoor('S'));
+				if(DoorModel.getDoor('S') == RectModel.BLACK){
+					S.setVisibility(View.GONE);
+				}
+				W.setBackgroundColor(DoorModel.getDoor('W'));
+				if(DoorModel.getDoor('W') == RectModel.BLACK){
+					W.setVisibility(View.GONE);
+				}
 				findViewById(R.id.room).setBackgroundColor(RectModel.getRectColor());
-												
-				//MapModel.setMap(Levels.Level1);	//Testar MapModel
-				//MapModel.renderMap();			//Testar MapModel
 							
 			}
 		});
@@ -117,20 +151,33 @@ public class FirstScreen extends Activity {
 			
 			@Override
 			public void onClick(View v) {
-											
+				N.setVisibility(View.VISIBLE);
+				E.setVisibility(View.VISIBLE);
+				S.setVisibility(View.VISIBLE);
+				W.setVisibility(View.VISIBLE);
+				
 				MapModel.moveLeft();
-				//MapModel.setPos(MapModel.getMyX()-1, MapModel.getMyY());
+				
 				game.doorClick();
 				DoorModel.setDoor(MapModel.getRoom());
 				RectModel.setRectColor(MapModel.getRoom());
-				findViewById(R.id.top_door).setBackgroundColor(DoorModel.getDoor('N'));
-				findViewById(R.id.right_door).setBackgroundColor(DoorModel.getDoor('E'));
-				findViewById(R.id.bot_door).setBackgroundColor(DoorModel.getDoor('S'));
-				findViewById(R.id.left_door).setBackgroundColor(DoorModel.getDoor('W'));
+				N.setBackgroundColor(DoorModel.getDoor('N'));
+				if(DoorModel.getDoor('N') == RectModel.BLACK){
+					N.setVisibility(View.GONE);
+				}
+				E.setBackgroundColor(DoorModel.getDoor('E'));
+				if(DoorModel.getDoor('E') == RectModel.BLACK){
+					E.setVisibility(View.GONE);
+				}
+				S.setBackgroundColor(DoorModel.getDoor('S'));
+				if(DoorModel.getDoor('S') == RectModel.BLACK){
+					S.setVisibility(View.GONE);
+				}
+				W.setBackgroundColor(DoorModel.getDoor('W'));
+				if(DoorModel.getDoor('W') == RectModel.BLACK){
+					W.setVisibility(View.GONE);
+				}
 				findViewById(R.id.room).setBackgroundColor(RectModel.getRectColor());
-												
-				//MapModel.setMap(Levels.Level1);	//Testar MapModel
-				//MapModel.renderMap();			//Testar MapModel
 							
 			}
 		});
