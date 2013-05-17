@@ -25,21 +25,7 @@
 
     </RelativeLayout>
 
-    <RelativeLayout
-        android:id="@+id/bot_layout"
-        android:layout_width="match_parent"
-        android:layout_height="100dp"
-        android:layout_alignParentBottom="true"
-        android:background="@color/red_light" >
-
-        <Button
-            android:id="@+id/fake_button"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_centerInParent="true"
-            android:layout_marginBottom="55dp"
-            android:text="@string/test" />
-    </RelativeLayout>
+  
 
     <RelativeLayout
         android:id="@+id/room_layout"
@@ -109,6 +95,25 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_alignLeft="@id/top_door"
+            android:layout_centerInParent="true"
+            android:background="@null"
+            android:contentDescription="@string/key_desc"
+            android:scaleX="0.75"
+            android:scaleY="0.75"
+            android:src="@drawable/key_blue" />
+    </RelativeLayout>
+    
+      <RelativeLayout
+        android:id="@+id/bot_layout"
+        android:layout_width="match_parent"
+        android:layout_height="100dp"
+        android:layout_alignParentBottom="true"
+        android:background="@color/red_light" >
+
+         <ImageButton
+            android:id="@+id/key_button"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
             android:layout_centerInParent="true"
             android:background="@null"
             android:contentDescription="@string/key_desc"
