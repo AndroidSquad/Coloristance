@@ -27,8 +27,8 @@ public class DoorModel{
 	
 	private static int[] position = {0,1,2,3,4,5,6,7}; 
 	
-	/*
-	 * @param	pos ,is a String which contain 5 different number
+	/**
+	 * @param pos is a String which contain 5 different number
 	 */
 	public static void setDoor(String pos){
 
@@ -44,9 +44,9 @@ public class DoorModel{
 		}
 	}
 	
-	/*
-	 * @param	loc ,a char which represent the door and its position
-	 * @return 	the color of the door
+	/**
+	 * @param loc a char which represent the door and its position
+	 * @return the color of the door
 	 */
 	public static int getDoor(char loc){
 		
