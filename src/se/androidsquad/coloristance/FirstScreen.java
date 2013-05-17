@@ -25,33 +25,37 @@ public class FirstScreen extends Activity {
 		super.onCreate(savedInstanceState);
 		map = new DrawMap(FirstScreen.this, null);
 		setContentView(R.layout.firstscreen);
-					
+
 		mp = MediaPlayer.create(FirstScreen.this, R.raw.house_music);	
 		mp.start();
 		mp.setLooping(true);
 		MapModel.setPos(0, 1);
 
-		
-		//the code below in onClick is a test piece
 		ImageButton a = (ImageButton) findViewById(R.id.top_door);
 		a.setOnClickListener(new View.OnClickListener() {
-			//String test = "34001";
-			
 			@Override
 			public void onClick(View v) {
-					
+				 
+
 				MapModel.moveUp();
 				game.doorClick();
 				DoorModel.setDoor(MapModel.getRoom());
 				RectModel.setRectColor(MapModel.getRoom());
 
 				for(int z = 0; z<4; z++){
+					findViewById(door[z]).setVisibility(View.VISIBLE);
 					findViewById(door[z]).setBackgroundColor(DoorModel.getDoor(pos[z]));
+					findViewById(door[z]).setBackgroundColor(DoorModel.getDoor(pos[z]));
+					if(DoorModel.getDoor(pos[z]) == RectModel.BLACK){
+						findViewById(door[z]).setVisibility(View.GONE);
+					}
 				}
-				
+
 				findViewById(R.id.room).setBackgroundColor(RectModel.getRectColor());
-							
 			}
+
+
+			
 		});
 
 		
@@ -61,17 +65,23 @@ public class FirstScreen extends Activity {
 			
 			@Override
 			public void onClick(View v) {
-						
+										
 				MapModel.moveRight();
 				game.doorClick();
 				DoorModel.setDoor(MapModel.getRoom());
 				RectModel.setRectColor(MapModel.getRoom());
 
 				for(int z = 0; z<4; z++){
+					findViewById(door[z]).setVisibility(View.VISIBLE);
 					findViewById(door[z]).setBackgroundColor(DoorModel.getDoor(pos[z]));
+					findViewById(door[z]).setBackgroundColor(DoorModel.getDoor(pos[z]));
+					if(DoorModel.getDoor(pos[z]) == RectModel.BLACK){
+						findViewById(door[z]).setVisibility(View.GONE);
+					}
 				}
-				
-				findViewById(R.id.room).setBackgroundColor(RectModel.getRectColor());			
+
+				findViewById(R.id.room).setBackgroundColor(RectModel.getRectColor());
+			
 			}
 		});
 		
@@ -81,16 +91,21 @@ public class FirstScreen extends Activity {
 			
 			@Override
 			public void onClick(View v) {
-											
+							
 				MapModel.moveDown();
 				game.doorClick();
 				DoorModel.setDoor(MapModel.getRoom());
 				RectModel.setRectColor(MapModel.getRoom());
 
 				for(int z = 0; z<4; z++){
+					findViewById(door[z]).setVisibility(View.VISIBLE);
 					findViewById(door[z]).setBackgroundColor(DoorModel.getDoor(pos[z]));
+					findViewById(door[z]).setBackgroundColor(DoorModel.getDoor(pos[z]));
+					if(DoorModel.getDoor(pos[z]) == RectModel.BLACK){
+						findViewById(door[z]).setVisibility(View.GONE);
+					}
 				}
-				
+
 				findViewById(R.id.room).setBackgroundColor(RectModel.getRectColor());
 			}
 		});
@@ -101,18 +116,22 @@ public class FirstScreen extends Activity {
 			
 			@Override
 			public void onClick(View v) {
-											
+							
 				MapModel.moveLeft();
 				game.doorClick();
 				DoorModel.setDoor(MapModel.getRoom());
 				RectModel.setRectColor(MapModel.getRoom());
 
 				for(int z = 0; z<4; z++){
+					findViewById(door[z]).setVisibility(View.VISIBLE);
 					findViewById(door[z]).setBackgroundColor(DoorModel.getDoor(pos[z]));
+					findViewById(door[z]).setBackgroundColor(DoorModel.getDoor(pos[z]));
+					if(DoorModel.getDoor(pos[z]) == RectModel.BLACK){
+						findViewById(door[z]).setVisibility(View.GONE);
+					}
 				}
-				
+
 				findViewById(R.id.room).setBackgroundColor(RectModel.getRectColor());
-							
 			}
 		});
 		

@@ -26,7 +26,7 @@ public class DoorModel{
 		
 	public static void setDoor(String pos){
 
-		
+		 
 		for(int i = 0; i<4; i++){
 			if(pos.charAt(i+1)== '0') position[i] = RectModel.BLACK;
 			else if(pos.charAt(i+1)== '1') position[i] = RectModel.BLUE_LIGHT;
@@ -34,7 +34,7 @@ public class DoorModel{
 			else if(pos.charAt(i+1)== '3') position[i] = RectModel.ORANGE_LIGHT;
 			else if(pos.charAt(i+1)== '4') position[i] = RectModel.PURPLE_LIGHT;
 			else if(pos.charAt(i+1)== '5') position[i] = RectModel.RED_LIGHT;
-			//else if(pos.charAt(i+1)== '6') position[i] = RectModel.GOLD;
+			else if(pos.charAt(i+1)== '7') position[i] = RectModel.WHITE;
 		}
 	}
 	

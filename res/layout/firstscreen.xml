@@ -22,16 +22,6 @@
             android:layout_marginRight="0dp"
             android:layout_marginTop="0dp"
             />
-      
-        <!--
-             <Button
-            android:id="@+id/fake2_button"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@string/test"
-            android:layout_centerInParent="true"
-            />
-        -->
 
     </RelativeLayout>
 
