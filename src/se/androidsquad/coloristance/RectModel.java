@@ -7,7 +7,7 @@ package se.androidsquad.coloristance;
 import android.util.Log;
 
 public class RectModel {
-	
+
 	/* Denna klass i modellen ska innehålla Color och Size. 
 	 * Inte bestämma dessa utan bara veta att den har en färg 
 	 * och storlek som betsämms av GameController
@@ -15,7 +15,7 @@ public class RectModel {
 
 	public RectModel(){
 	}
-	
+
 	public RectModel(String a, int b) {	}
 
 	public static final int BLACK 		= 0xFF000000;
@@ -26,49 +26,49 @@ public class RectModel {
 	public static final int RED_LIGHT 	= 0xFFCC0000;
 	public static final int WHITE 		= 0xFFFFFFFF;
 	//public static final int GOLD		= 0xFFCCCC00;
-	
-	
+
 	protected int pos = 0;
 	protected static int rectColor; // The color could be 0,1,2,3,4,5.
 	protected static int size;// The value could be 0 or 1. 0 = map rectangle  1 = room rectangle.
 
 	public static void setRectColor(String roomcode) { //Should be a case sats, but that is a problem for future Simon and future Tommy	
-		
-			
-			if (roomcode.charAt(0) == '0'){
-				rectColor = BLACK;
-			} else if (roomcode.charAt(0) == '1') {
-				rectColor = BLUE_LIGHT;
-			} else if (roomcode.charAt(0) == '2') {
-				rectColor = GREEN_LIGHT;
-			} else if (roomcode.charAt(0) == '3') {
-				rectColor = ORANGE_LIGHT;
-			} else if (roomcode.charAt(0) == '4') {
-				rectColor = PURPLE_LIGHT;
-			} else if (roomcode.charAt(0) == '5') {
-				rectColor = RED_LIGHT;
-		//	} else if (roomcode.charAt(0) == '6') {
-		//		rectColor = GOLD;
-			} else if (roomcode.charAt(0) == '7') {
-				rectColor = WHITE;
-			}
-			else{ 
-				Log.v("RectModel", "No color was found");
-				rectColor = BLACK;
-			}
-				
-			
+
+		if (roomcode.charAt(0) == '0'){
+			rectColor = BLACK;
+		} else if (roomcode.charAt(0) == '1') {
+			rectColor = BLUE_LIGHT;
+		} else if (roomcode.charAt(0) == '2') {
+			rectColor = GREEN_LIGHT;
+		} else if (roomcode.charAt(0) == '3') {
+			rectColor = ORANGE_LIGHT;
+		} else if (roomcode.charAt(0) == '4') {
+			rectColor = PURPLE_LIGHT;
+		} else if (roomcode.charAt(0) == '5') {
+			rectColor = RED_LIGHT;
+			//	} else if (roomcode.charAt(0) == '6') {
+			//		rectColor = GOLD;
+		} else if (roomcode.charAt(0) == '7') {
+			rectColor = WHITE;
 		}
-	
-	
-	public static int getRectColor(){
-		
-	//	if(rectColor == 0) Log.v("RectModel", "No color was sent");
-		return rectColor;
-		
-		
+		else{ 
+			Log.v("RectModel", "No color was found");
+			rectColor = BLACK;
+		}
+
 	}
-	
+
+
+
+
+
+	public static int getRectColor(){
+
+		//	if(rectColor == 0) Log.v("RectModel", "No color was sent");
+		return rectColor;
+
+
+	}
+
 	public static String getRoomColor(){
 
 		String color;
@@ -79,31 +79,35 @@ public class RectModel {
 		else if(rectColor == ORANGE_LIGHT)	color = "ol";
 		else if(rectColor == PURPLE_LIGHT)	color = "pl";
 		else if(rectColor == RED_LIGHT)		color = "rl";
-	//	else if(rectColor == GOLD)		color = "gold";
-		
+		//	else if(rectColor == GOLD)		color = "gold";
+
 		else color = "Inget";
 		//Log.v("RectModel.getRectColor", "Skickar: "+color);	
 		return color;
 	}
-		
+
 	public void updatePos(){
 		/* Denna metod ska meddela RectModelData när position har ändrats så att 
 		 * RectModelData vet att den ska förändra rummets färg. Får kanske använda Listeners eller nåt...
 		 */
 	}	
-	
+
 	protected static void setSize(int i){
 		size=i;
 	}
-	
+
 	protected static int getSize(){ // get the rectangles size
 		return size;
 	}
 
-	public int getRoomSize(){return 1;}
-	public int getMapSize(){return 0;}
-	
+	public int getRoomSize(){
+		return 1;
+	}
+	public int getMapSize(){
+		return 0;
+	}
 
 
-	
+
+
 }
