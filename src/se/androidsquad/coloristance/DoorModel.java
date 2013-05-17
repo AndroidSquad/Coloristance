@@ -1,6 +1,7 @@
 package se.androidsquad.coloristance;
 
 /* 
+ * 
  * I xml är det nu android:background som man ändrar på dörrarna för att byta deras färg, har fixat färgreferenser i både java och xml 
  * i java är de statics benämnda typ BLUE_LIGHT (se DrawingRect)
  * i xml är nås de genom @color/blue_light
@@ -12,10 +13,12 @@ package se.androidsquad.coloristance;
 
 
 /** 
- * DoorModel tar emot ett paint objekt som är dörr färgen och 
- * en int som representerar dörrarna representeras av pos 1-4
+ * DoorModel receives a Paint object which is the door color,
+ * and an int which represent the door position. the doors position 
+ * can have the value 1-4.
  * 
- * Informationen används för att tillskriva rätt dörr rätt färg
+ * This information is used in order to provide the door with the right
+ * position and color.
  */
 
 public class DoorModel{
@@ -23,7 +26,10 @@ public class DoorModel{
 
 	
 	private static int[] position = {0,1,2,3,4,5,6,7}; 
-		
+	
+	/*
+	 * @param	pos ,is a String which contain 5 different number
+	 */
 	public static void setDoor(String pos){
 
 		 
@@ -38,6 +44,10 @@ public class DoorModel{
 		}
 	}
 	
+	/*
+	 * @param	loc ,a char which represent the door and its position
+	 * @return 	the color of the door
+	 */
 	public static int getDoor(char loc){
 		
 		if (loc == 'N') return position[0];

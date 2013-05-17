@@ -29,22 +29,7 @@ public class Levels { //Would like to scan the .txt file and insert the informat
 //protected static File filename = new File("/assets/levels/Level1.txt");
 //protected static String[][] mapArray;
 
-
-/*public static String[][] mapArray = {	//{"10000","20410","32320","23001","12110","23101"},
-										//{"34001","40032","40132","34001","40032","40132"},
-										//{"10000","12110","23101","12300","20410","32320"},
-									
-										{"10000","10410","12320"},
-										{"13001","12110","13101"},
-										{"24001","20032","20132"},
-										{"24001","20032","20132"},
-										{"30000","32110","33101"},
-										{"32300","30410","32320"},
-										{"24001","20032","20132"}
-										
-				
-
-									};*/
+	
 public static String[][] mapArray = {	
 
 	{"00000","70100","00000"},
