@@ -16,6 +16,9 @@ public class FirstScreen extends Activity {
 	MediaPlayer mp;
 	DrawMap map;
 	GameController game = new GameController();
+	int[] door = {R.id.top_door, R.id.right_door, R.id.bot_door,  R.id.left_door};
+	char[] pos = {'N','E','S','W'};
+	
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		// TODO Auto-generated method stub
@@ -38,29 +41,15 @@ public class FirstScreen extends Activity {
 			public void onClick(View v) {
 					
 				MapModel.moveUp();
-				//MapModel.setPos(MapModel.getMyX(), MapModel.getMyY()+1);
-
-//				if(test == "34001"){ 
-//					test = "14234";
-//				}
-//				
-//				else if(test == "14234")
-//					test = "23141";
-//				
-//				else{ 
-//					test = "34001";
-//				};
 				game.doorClick();
 				DoorModel.setDoor(MapModel.getRoom());
 				RectModel.setRectColor(MapModel.getRoom());
-				findViewById(R.id.top_door).setBackgroundColor(DoorModel.getDoor('N'));
-				findViewById(R.id.right_door).setBackgroundColor(DoorModel.getDoor('E'));
-				findViewById(R.id.bot_door).setBackgroundColor(DoorModel.getDoor('S'));
-				findViewById(R.id.left_door).setBackgroundColor(DoorModel.getDoor('W'));
+
+				for(int z = 0; z<4; z++){
+					findViewById(door[z]).setBackgroundColor(DoorModel.getDoor(pos[z]));
+				}
+				
 				findViewById(R.id.room).setBackgroundColor(RectModel.getRectColor());
-												
-				//MapModel.setMap(Levels.Level1);	//Testar MapModel
-				//MapModel.renderMap();			//Testar MapModel
 							
 			}
 		});
@@ -74,16 +63,15 @@ public class FirstScreen extends Activity {
 			public void onClick(View v) {
 						
 				MapModel.moveRight();
-				//MapModel.setPos(MapModel.getMyX()+1, MapModel.getMyY());
 				game.doorClick();
 				DoorModel.setDoor(MapModel.getRoom());
 				RectModel.setRectColor(MapModel.getRoom());
-				findViewById(R.id.top_door).setBackgroundColor(DoorModel.getDoor('N'));
-				findViewById(R.id.right_door).setBackgroundColor(DoorModel.getDoor('E'));
-				findViewById(R.id.bot_door).setBackgroundColor(DoorModel.getDoor('S'));
-				findViewById(R.id.left_door).setBackgroundColor(DoorModel.getDoor('W'));
-				findViewById(R.id.room).setBackgroundColor(RectModel.getRectColor());
-							
+
+				for(int z = 0; z<4; z++){
+					findViewById(door[z]).setBackgroundColor(DoorModel.getDoor(pos[z]));
+				}
+				
+				findViewById(R.id.room).setBackgroundColor(RectModel.getRectColor());			
 			}
 		});
 		
@@ -95,19 +83,15 @@ public class FirstScreen extends Activity {
 			public void onClick(View v) {
 											
 				MapModel.moveDown();
-				//MapModel.setPos(MapModel.getMyX(), MapModel.getMyY()-1);
 				game.doorClick();
 				DoorModel.setDoor(MapModel.getRoom());
 				RectModel.setRectColor(MapModel.getRoom());
-				findViewById(R.id.top_door).setBackgroundColor(DoorModel.getDoor('N'));
-				findViewById(R.id.right_door).setBackgroundColor(DoorModel.getDoor('E'));
-				findViewById(R.id.bot_door).setBackgroundColor(DoorModel.getDoor('S'));
-				findViewById(R.id.left_door).setBackgroundColor(DoorModel.getDoor('W'));
+
+				for(int z = 0; z<4; z++){
+					findViewById(door[z]).setBackgroundColor(DoorModel.getDoor(pos[z]));
+				}
+				
 				findViewById(R.id.room).setBackgroundColor(RectModel.getRectColor());
-												
-				//MapModel.setMap(Levels.Level1);	//Testar MapModel
-				//MapModel.renderMap();			//Testar MapModel
-							
 			}
 		});
 		
@@ -119,18 +103,15 @@ public class FirstScreen extends Activity {
 			public void onClick(View v) {
 											
 				MapModel.moveLeft();
-				//MapModel.setPos(MapModel.getMyX()-1, MapModel.getMyY());
 				game.doorClick();
 				DoorModel.setDoor(MapModel.getRoom());
 				RectModel.setRectColor(MapModel.getRoom());
-				findViewById(R.id.top_door).setBackgroundColor(DoorModel.getDoor('N'));
-				findViewById(R.id.right_door).setBackgroundColor(DoorModel.getDoor('E'));
-				findViewById(R.id.bot_door).setBackgroundColor(DoorModel.getDoor('S'));
-				findViewById(R.id.left_door).setBackgroundColor(DoorModel.getDoor('W'));
+
+				for(int z = 0; z<4; z++){
+					findViewById(door[z]).setBackgroundColor(DoorModel.getDoor(pos[z]));
+				}
+				
 				findViewById(R.id.room).setBackgroundColor(RectModel.getRectColor());
-												
-				//MapModel.setMap(Levels.Level1);	//Testar MapModel
-				//MapModel.renderMap();			//Testar MapModel
 							
 			}
 		});
