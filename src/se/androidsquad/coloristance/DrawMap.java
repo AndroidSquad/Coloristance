@@ -14,8 +14,7 @@ import android.view.View;
 
 public class DrawMap extends View { // Creates a custom view that paints a filled rectangle 
 	
-	
-	
+
 	public DrawMap(Context context, AttributeSet attrs) {
 		super(context, attrs);
 		// TODO Auto-generated constructor stub

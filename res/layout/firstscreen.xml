@@ -110,7 +110,20 @@
         android:layout_height="100dp"
         android:layout_alignParentBottom="true"
         android:background="@color/red_light" >
-    </RelativeLayout>
 
+        <ImageButton
+            android:id="@+id/key1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignLeft="@id/top_door"
+            android:layout_centerInParent="true"
+            android:background="@null"
+            android:clickable="true"
+            android:contentDescription="@string/key_desc"
+            android:scaleX="0.75"
+            android:scaleY="0.75"
+            android:src="@drawable/key_blue"
+            android:visibility="visible" />
+    </RelativeLayout>
 
 </RelativeLayout>
