@@ -1,29 +1,28 @@
 package se.androidsquad.coloristance.database;
 
-
-
 /**
  * This class is supposed to describe the different levels that are included in the game
  * 				Dark		Light
+ * 0=Black
  * 1=Blue 		#0099CC		#33B5E5
  * 2=Green 		#669900		#99CC00
  * 3=Orange 	#FF8800		#FFBB33	
  * 4=Purple 	#9933CC		#AA66CC
  * 5=Red  		#CC0000		#FF4444
- * 0=Nothing -> there is no door and no connection
+ * 7=White		
  * 
  * These colors are predefined. The naming is in format:  color.holo_green_light
  * 
  * The colors have corresponding keys, with the same names and colors. 
  * 
- * A room is defined by five figures that represent; The room (R) and its four connections in order up 
+ * A room is defined by a five character long string;
+ * forexample "12340", where the first character represent the room (R) and the following four characters 
+ * represent the rooms that the R is connected to, and the following characters represent the four connections in order up 
  * (N), right (E), down (S), left (W).
- * An example of the RNESW is: 13500 = A Blue room with a Orange door top and a red door to the right.
+ * An example of the RNESW is: 13500 = A Blue room with a Orange door top and a red door to the right,
+ * and no doors under or to the left.
  * The first figure must be a value since it represent the room's color.
  */ 
-	 
- //"5=Connecting path between two rooms, under construction." <- Lägg inte denna här, har position 2-5 en siffra finns en dörr och connection
-
 
 public class Levels { //Would like to scan the .txt file and insert the information into a array[][]. The current version does not work however.
 //protected static File filename = new File("/assets/levels/Level1.txt");
@@ -33,14 +32,12 @@ public class Levels { //Would like to scan the .txt file and insert the informat
 public static String[][] mapArray = {	
 
 	{"00000","70100","00000"},
-
 	{"30210","13027","21400"},
 	{"20503","00000","40302"},
 	{"50212","15430","31104"},
 	{"20345","42011","14503"},
 	{"30502","00000","50201"},
 	{"50043","45720","24005"},
-
 	{"00000","70000","00000"}
 	
 
