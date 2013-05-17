@@ -20,12 +20,16 @@
             android:layout_marginBottom="0dp"
             android:layout_marginLeft="0dp"
             android:layout_marginRight="0dp"
-            android:layout_marginTop="0dp"
-            />
-
+            android:layout_marginTop="0dp" />
     </RelativeLayout>
 
-  
+    <RelativeLayout
+        android:id="@+id/bot_layout"
+        android:layout_width="match_parent"
+        android:layout_height="100dp"
+        android:layout_alignParentBottom="true"
+        android:background="@color/red_light" >
+    </RelativeLayout>
 
     <RelativeLayout
         android:id="@+id/room_layout"
@@ -40,7 +44,7 @@
             android:layout_width="200dp"
             android:layout_height="200dp"
             android:layout_centerInParent="true"
-            android:background="@color/orange_dark"
+            android:background="@color/white"
             android:contentDescription="@string/room" />
 
         <ImageButton
@@ -49,7 +53,7 @@
             android:layout_height="wrap_content"
             android:layout_centerVertical="true"
             android:layout_toRightOf="@id/room"
-            android:background="@color/orange_light"
+            android:background="@color/blue_light"
             android:clickable="true"
             android:contentDescription="@string/door"
             android:rotation="90"
@@ -61,6 +65,7 @@
             android:layout_height="wrap_content"
             android:layout_above="@id/room"
             android:layout_centerHorizontal="true"
+            android:visibility="gone"
             android:background="@color/red_light"
             android:clickable="true"
             android:contentDescription="@string/door"
@@ -74,6 +79,7 @@
             android:layout_centerHorizontal="true"
             android:background="@color/purple_light"
             android:clickable="true"
+            android:visibility="gone"
             android:contentDescription="@string/door"
             android:rotation="180"
             android:src="@drawable/ic_door" />
@@ -86,6 +92,7 @@
             android:layout_toLeftOf="@id/room"
             android:background="@color/blue_light"
             android:clickable="true"
+            android:visibility="gone"
             android:contentDescription="@string/door"
             android:rotation="270"
             android:src="@drawable/ic_door" />
@@ -96,25 +103,8 @@
             android:layout_height="wrap_content"
             android:layout_alignLeft="@id/top_door"
             android:layout_centerInParent="true"
-            android:background="@null"
-            android:contentDescription="@string/key_desc"
-            android:scaleX="0.75"
-            android:scaleY="0.75"
-            android:src="@drawable/key_blue" />
-    </RelativeLayout>
-    
-      <RelativeLayout
-        android:id="@+id/bot_layout"
-        android:layout_width="match_parent"
-        android:layout_height="100dp"
-        android:layout_alignParentBottom="true"
-        android:background="@color/red_light" >
-
-         <ImageButton
-            android:id="@+id/key_button"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_centerInParent="true"
+            android:clickable="true"
+            android:visibility="gone"
             android:background="@null"
             android:contentDescription="@string/key_desc"
             android:scaleX="0.75"

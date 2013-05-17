@@ -22,7 +22,7 @@ public class DoorModel{
 	
 
 	
-	private static int[] position = {0,1,2,3,4,5,6}; 
+	private static int[] position = {0,1,2,3,4,5,6,7}; 
 		
 	public static void setDoor(String pos){
 
