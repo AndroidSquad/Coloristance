@@ -25,7 +25,7 @@ public class RectModel {
 	public static final int PURPLE_LIGHT= 0xFF9933CC;
 	public static final int RED_LIGHT 	= 0xFFCC0000;
 	public static final int WHITE 		= 0xFFFFFFFF;
-	public static final int GOLD		= 0xFFCCCC00;
+	//public static final int GOLD		= 0xFFCCCC00;
 	
 	
 	protected int pos = 0;
@@ -47,8 +47,8 @@ public class RectModel {
 				rectColor = PURPLE_LIGHT;
 			} else if (roomcode.charAt(0) == '5') {
 				rectColor = RED_LIGHT;
-			} else if (roomcode.charAt(0) == '6') {
-				rectColor = GOLD;
+		//	} else if (roomcode.charAt(0) == '6') {
+		//		rectColor = GOLD;
 			} else if (roomcode.charAt(0) == '7') {
 				rectColor = WHITE;
 			}
@@ -79,7 +79,7 @@ public class RectModel {
 		else if(rectColor == ORANGE_LIGHT)	color = "ol";
 		else if(rectColor == PURPLE_LIGHT)	color = "pl";
 		else if(rectColor == RED_LIGHT)		color = "rl";
-		else if(rectColor == GOLD)		color = "gold";
+	//	else if(rectColor == GOLD)		color = "gold";
 		
 		else color = "Inget";
 		//Log.v("RectModel.getRectColor", "Skickar: "+color);	

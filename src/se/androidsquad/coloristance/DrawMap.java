@@ -42,8 +42,8 @@ public class DrawMap extends View { // Creates a custom view that paints a fille
 		col.get("white").setColor(RectModel.WHITE);
 		col.put("black", new Paint());
 		col.get("black").setColor(RectModel.BLACK);
-		col.put("gold", new Paint());
-		col.get("gold").setColor(RectModel.GOLD);
+	//	col.put("gold", new Paint());
+	//	col.get("gold").setColor(RectModel.GOLD);
 		
 		String rectColor = "pl";
 		
@@ -116,7 +116,7 @@ public class DrawMap extends View { // Creates a custom view that paints a fille
 */
 		
 		//Your Position: Kmmer behöva en specifik position 
-		canvas.drawCircle(MapModel.getCircPos(1, MapModel.getMyX()), MapModel.getCircPos(2, MapModel.getMyY()), MapModel.getCircPos(3, MapModel.getMyY()), col.get("rl"));
+		canvas.drawCircle(MapModel.getCircPos(1, MapModel.getMyX()), MapModel.getCircPos(2, MapModel.getMyY()), MapModel.getCircPos(3, MapModel.getMyY()), col.get("white"));
 		invalidate();// Calls the onDraw again as soon as has painted everything
 	}
 		

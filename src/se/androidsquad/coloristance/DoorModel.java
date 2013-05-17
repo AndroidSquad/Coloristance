@@ -34,7 +34,7 @@ public class DoorModel{
 			else if(pos.charAt(i+1)== '3') position[i] = RectModel.ORANGE_LIGHT;
 			else if(pos.charAt(i+1)== '4') position[i] = RectModel.PURPLE_LIGHT;
 			else if(pos.charAt(i+1)== '5') position[i] = RectModel.RED_LIGHT;
-			else if(pos.charAt(i+1)== '6') position[i] = RectModel.GOLD;
+			//else if(pos.charAt(i+1)== '6') position[i] = RectModel.GOLD;
 		}
 	}
 	
