@@ -117,7 +117,7 @@ public class DrawMap extends View { // Creates a custom view that paints a fille
 
 */
 		
-		//Your Position: Kmmer behöva en specifik position 
+		//Your Position: it needs to be specific position 
 		canvas.drawCircle(MapModel.getCircPos(1, MapModel.getMyX()), MapModel.getCircPos(2, MapModel.getMyY()), MapModel.getCircPos(3, MapModel.getMyY()), col.get("white"));
 		invalidate();// Calls the onDraw again as soon as has painted everything
 	}
@@ -126,9 +126,6 @@ public class DrawMap extends View { // Creates a custom view that paints a fille
 
 			View p = view.getRootView();
 	    	TextView greenRect = (TextView)p.findViewById(R.id.toggleButton2); */
-
-	//		else { Draw a map sized rectangle where it should be drawn. Check for the color with an if statement }
-
 
 }
 
