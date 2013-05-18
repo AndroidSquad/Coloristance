@@ -43,7 +43,7 @@ public class FirstScreen extends Activity {
 				 
 
 				MapModel.moveUp();
-				game.doorClick();
+				//game.doorClick(); At the moment we are not using this code line :)
 				DoorModel.setDoor(MapModel.getRoom());
 				RectModel.setRectColor(MapModel.getRoom());
 				
@@ -72,7 +72,7 @@ public class FirstScreen extends Activity {
 			public void onClick(View v) {
 										
 				MapModel.moveRight();
-				game.doorClick();
+				//game.doorClick();At the moment we are not using this code line :)
 				DoorModel.setDoor(MapModel.getRoom());
 				RectModel.setRectColor(MapModel.getRoom());
 
@@ -98,7 +98,7 @@ public class FirstScreen extends Activity {
 			public void onClick(View v) {
 							
 				MapModel.moveDown();
-				game.doorClick();
+				//game.doorClick();At the moment we are not using this code line :)
 				DoorModel.setDoor(MapModel.getRoom());
 				RectModel.setRectColor(MapModel.getRoom());
 
@@ -123,7 +123,7 @@ public class FirstScreen extends Activity {
 			public void onClick(View v) {
 							
 				MapModel.moveLeft();
-				game.doorClick();
+				//game.doorClick();At the moment we are not using this code line :)
 				DoorModel.setDoor(MapModel.getRoom());
 				RectModel.setRectColor(MapModel.getRoom());
 
