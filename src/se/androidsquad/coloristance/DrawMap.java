@@ -64,7 +64,10 @@ public class DrawMap extends View { // Creates a custom view that paints a fille
 		
 		
 
-		//MŒlar ut kartans ram
+		/*
+		 * the following code segment the foor-loop included creates the map frame that the
+		 * levels will be painted on.
+		 */
 		Rect frameRect = new Rect();
 		frameRect.set(mapLeft, mapTop, mapRight, mapBot);
 		Paint blue = new Paint();

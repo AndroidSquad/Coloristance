@@ -8,15 +8,26 @@ public class PositionModel {
 	 */
 	private int x,y;
 	
-	protected void setPosition(int x, int y){ //receives x- and y- values which notes where the player is standing at the moment
+	/**
+	 * @param x	this variable represent the x coordinate where the player stand at the moment
+	 * @param y	this variable represent the y coordinate where the player stand at the moment
+	 */
+	protected void setPosition(int x, int y){ 
 		this.x=x;
 		this.y=y;
 	}
 	
+	/**
+	 * @return	 the x coordinate where the player stands at the moment
+	 */
 	protected int getX(){ //return the x-coordinate
 		return x;
 	}
-	protected int getY(){ //return the y-coordinate
+	
+	/**
+	 * @return the y coordinate where the player stands at the moment
+	 */
+	protected int getY(){ 
 		return y;
 	}
 }

@@ -31,6 +31,11 @@ public class FirstScreen extends Activity {
 		mp.setLooping(true);
 		MapModel.setPos(0, 1);
 
+		/*
+		 * the following four ImageButtons represent our doors that enables a player to move between the
+		 * rooms on the map.
+		 */
+		
 		ImageButton a = (ImageButton) findViewById(R.id.top_door);
 		a.setOnClickListener(new View.OnClickListener() {
 			@Override
@@ -41,12 +46,12 @@ public class FirstScreen extends Activity {
 				game.doorClick();
 				DoorModel.setDoor(MapModel.getRoom());
 				RectModel.setRectColor(MapModel.getRoom());
-
+				
 				for(int z = 0; z<4; z++){
-					findViewById(door[z]).setVisibility(View.VISIBLE);
-					findViewById(door[z]).setBackgroundColor(DoorModel.getDoor(pos[z]));
-					findViewById(door[z]).setBackgroundColor(DoorModel.getDoor(pos[z]));
-					if(DoorModel.getDoor(pos[z]) == RectModel.BLACK){
+					findViewById(door[z]).setVisibility(View.VISIBLE); //sets the visibility of the door to VISIBLE when it is initialized
+					findViewById(door[z]).setBackgroundColor(DoorModel.getDoor(pos[z]));//sets the door color to the color of the room it is connected to
+					findViewById(door[z]).setBackgroundColor(DoorModel.getDoor(pos[z]));/////denna behšvs den verkligen
+					if(DoorModel.getDoor(pos[z]) == RectModel.BLACK){ // if the room has no connection defined by no room or a blach rectangle this code sets the visibility to GONE.
 						findViewById(door[z]).setVisibility(View.GONE);
 					}
 				}
