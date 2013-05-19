@@ -97,19 +97,70 @@
             android:rotation="270"
             android:src="@drawable/ic_door" />
 
-        <ImageButton
-            android:id="@+id/key_button"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignLeft="@id/top_door"
-            android:layout_centerInParent="true"
-            android:clickable="true"
-            android:visibility="gone"
-            android:background="@null"
-            android:contentDescription="@string/key_desc"
-            android:scaleX="0.75"
-            android:scaleY="0.75"
-            android:src="@drawable/key_blue" />
+                  <ImageButton
+                      android:id="@+id/key_button_orange"
+                      android:layout_width="wrap_content"
+                      android:layout_height="wrap_content"
+                      android:layout_toLeftOf="@+id/key_button_red"
+                      android:layout_centerInParent="true"
+                      android:background="@null"
+                      android:clickable="true"
+                      android:contentDescription="@string/key_desc"
+                      android:scaleX="0.75"
+                      android:scaleY="0.75"
+                      android:src="@drawable/key_orange" />
+
+                  <ImageButton
+                      android:id="@+id/key_button_blue"
+                      android:layout_width="wrap_content"
+                      android:layout_height="wrap_content"
+                      android:layout_toRightOf="@+id/key_button_red"
+                      android:layout_centerInParent="true"
+                      android:background="@null"
+                      android:clickable="true"
+                      android:contentDescription="@string/key_desc"
+                      android:scaleX="0.75"
+                      android:scaleY="0.75"
+                      android:src="@drawable/key_blue" />
+
+                  <ImageButton
+                      android:id="@+id/key_button_red"
+                      android:layout_width="wrap_content"
+                      android:layout_height="wrap_content"
+                      android:layout_centerInParent="true"
+                      android:background="@null"
+                      android:clickable="true"
+                      android:contentDescription="@string/key_desc"
+                      android:scaleX="0.75"
+                      android:scaleY="0.75"
+                      android:src="@drawable/key_red" />
+
+                  <ImageButton
+                      android:id="@+id/key_button_purple"
+                      android:layout_width="wrap_content"
+                      android:layout_height="wrap_content"
+                      android:layout_above="@+id/key_button_red"
+                      android:layout_centerInParent="true"
+                      android:background="@null"
+                      android:clickable="true"
+                      android:contentDescription="@string/key_desc"
+                      android:scaleX="0.75"
+                      android:scaleY="0.75"
+                      android:src="@drawable/key_purple" />
+
+                  <ImageButton
+                      android:id="@+id/key_button_green"
+                      android:layout_width="wrap_content"
+                      android:layout_height="wrap_content"
+                      android:layout_below="@+id/key_button_red"
+                      android:layout_centerInParent="true"
+                      android:background="@null"
+                      android:clickable="true"
+                      android:contentDescription="@string/key_desc"
+                      android:scaleX="0.75"
+                      android:scaleY="0.75"
+                      android:src="@drawable/key_green" />
+
     </RelativeLayout>
 
 </RelativeLayout>

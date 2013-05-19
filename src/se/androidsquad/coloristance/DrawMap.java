@@ -61,9 +61,7 @@ public class DrawMap extends View { // Creates a custom view that paints a fille
 		MapModel.setMap("lvl_1");
 		
 		Log.v("DrawMap", mapWidth+", "+mapHeight+", "+mapLeft+", "+mapTop+", "+mapRight+", "+mapBot);
-		
-		
-		
+
 
 		//MŒlar ut kartans ram
 		Rect frameRect = new Rect();

@@ -16,6 +16,7 @@ public class MapModel {
 	public static void setMap(String level){
 		if(level == "lvl_1")mapArray = Levels.mapArray;		
 	}
+
 	
 	public static String[][] getMap(){
 		return mapArray;		

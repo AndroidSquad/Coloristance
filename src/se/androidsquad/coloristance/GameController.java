@@ -32,17 +32,18 @@ public class GameController {
 	protected PositionModel pos;
 	protected RectModel rect;
 	protected DoorModel door;
-	protected int size = 1;// Dessa ska vara flexibla och gå att ändra sedan
 	protected String roomcode;
-	
-	
+	public static KeyModel[][] key = null;
+
 	public GameController(){ // Creates an object of each of the Models
+		MapModel.setMap("lvl_1");
+		key = new KeyModel[MapModel.mapArray.length][MapModel.mapArray[0].length];
 		this.pos = new PositionModel();
 		this.rect = new RectModel();
 		this.door = new DoorModel();
-//		Levels.initLevel();
 		doorClick();
-		
+		KeyModel.setKeys(key);
+//		Levels.initLevel();
 	}
 	
 	

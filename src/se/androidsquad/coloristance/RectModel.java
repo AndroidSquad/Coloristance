@@ -57,10 +57,6 @@ public class RectModel {
 
 	}
 
-
-
-
-
 	public static int getRectColor(){
 
 		//	if(rectColor == 0) Log.v("RectModel", "No color was sent");
@@ -85,29 +81,5 @@ public class RectModel {
 		//Log.v("RectModel.getRectColor", "Skickar: "+color);	
 		return color;
 	}
-
-	public void updatePos(){
-		/* Denna metod ska meddela RectModelData när position har ändrats så att 
-		 * RectModelData vet att den ska förändra rummets färg. Får kanske använda Listeners eller nåt...
-		 */
-	}	
-
-	protected static void setSize(int i){
-		size=i;
-	}
-
-	protected static int getSize(){ // get the rectangles size
-		return size;
-	}
-
-	public int getRoomSize(){
-		return 1;
-	}
-	public int getMapSize(){
-		return 0;
-	}
-
-
-
-
+	
 }
