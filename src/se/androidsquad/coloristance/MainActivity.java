@@ -9,7 +9,11 @@ import android.content.Intent;
 import android.view.Menu;
 import android.view.View;
 import android.widget.Button;
-
+/*
+ * This class represent the first screen of our game, it should contain buttons to 
+ * crate a new game, start the music, pause the music. From this first screen you should
+ * be routed to the firstscreen when you click on the button new game.
+ */
 
 public class MainActivity extends Activity {
 
@@ -23,8 +27,9 @@ public class MainActivity extends Activity {
 		mp = MediaPlayer.create(MainActivity.this, R.raw.house_music);				 
 
 		
-		Button a = (Button) findViewById(R.id.button1);
-		a.setOnClickListener(new View.OnClickListener() {
+		Button newGame = (Button) findViewById(R.id.button1); // This row connect the button named button1 in main_activity.xml to the button a.
+		newGame.setOnClickListener(new View.OnClickListener() { //in order for the user to be able to click on the button a you need to be able to listen to the button.
+			
 			
 			@Override
 			public void onClick(View v) {
@@ -34,8 +39,8 @@ public class MainActivity extends Activity {
 			}
 		});
 		
-		Button b = (Button) findViewById(R.id.button2);
-		b.setOnClickListener(new View.OnClickListener() {
+		Button sexyMusicOn = (Button) findViewById(R.id.button2);
+		sexyMusicOn.setOnClickListener(new View.OnClickListener() {
 
 			@Override
 			public void onClick(View v) {
@@ -55,8 +60,8 @@ public class MainActivity extends Activity {
 			}
 		});
 
-		Button c = (Button) findViewById(R.id.button3);
-		c.setOnClickListener(new View.OnClickListener() {
+		Button sexyMusicPause = (Button) findViewById(R.id.button3);
+		sexyMusicPause.setOnClickListener(new View.OnClickListener() {
 
 			@Override
 			public void onClick(View v) {

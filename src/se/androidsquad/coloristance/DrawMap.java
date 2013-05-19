@@ -64,7 +64,10 @@ public class DrawMap extends View { // Creates a custom view that paints a fille
 		
 		
 
-		//MŒlar ut kartans ram
+		/*
+		 * the following code segment the foor-loop included creates the map frame that the
+		 * levels will be painted on.
+		 */
 		Rect frameRect = new Rect();
 		frameRect.set(mapLeft, mapTop, mapRight, mapBot);
 		Paint blue = new Paint();
@@ -114,7 +117,7 @@ public class DrawMap extends View { // Creates a custom view that paints a fille
 
 */
 		
-		//Your Position: Kmmer behöva en specifik position 
+		//Your Position: it needs to be specific position 
 		canvas.drawCircle(MapModel.getCircPos(1, MapModel.getMyX()), MapModel.getCircPos(2, MapModel.getMyY()), MapModel.getCircPos(3, MapModel.getMyY()), col.get("white"));
 		invalidate();// Calls the onDraw again as soon as has painted everything
 	}
@@ -123,9 +126,6 @@ public class DrawMap extends View { // Creates a custom view that paints a fille
 
 			View p = view.getRootView();
 	    	TextView greenRect = (TextView)p.findViewById(R.id.toggleButton2); */
-
-	//		else { Draw a map sized rectangle where it should be drawn. Check for the color with an if statement }
-
 
 }
 
