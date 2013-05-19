@@ -12,15 +12,22 @@ import android.util.Log;
 
 public class MapModel {
 
-	static String[][] mapArray;
+	static String[][] mapArray, keyArray;
 	private static int x,y,mapWidth,mapHeight,mapTop, mapBot, mapRight, mapLeft;
 	private static int leftX, rightX, topY, botY;
 
 
 	public static void setMap(String level){
-		if(level == "lvl_1") mapArray = Levels.mapArray;		
+		if(level == "map_1") mapArray = Levels.mapArray;
 	}
-
+	
+	public static String[][] getKeys(){
+		if(mapArray == Levels.mapArray){
+			keyArray = Levels.keyArray;
+		}
+		
+		return keyArray;
+	}
 
 	public static String[][] getMap(){
 		return mapArray;		

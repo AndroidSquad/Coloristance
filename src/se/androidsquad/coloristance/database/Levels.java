@@ -44,6 +44,18 @@ public static String[][] mapArray = {
 
 };
 
+public static String[][] keyArray = {	
+
+	{"00000","00000","00000"},
+	{"01000","00000","00000"},
+	{"00000","00010","00000"},
+	{"00010","00000","00001"},
+	{"00100","11000","01000"},
+	{"00000","00000","01000"},
+	{"10000","01100","00010"},
+	{"00000","00000","00000"}
+};
+
 
 
 //public static void initLevel() throws FileNotFoundException, IOException {

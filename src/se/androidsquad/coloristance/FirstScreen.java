@@ -60,7 +60,9 @@ public class FirstScreen extends Activity {
 				RectModel.setRectColor(MapModel.getRoom());
 				index = Integer.parseInt(""+MapModel.getRoom().charAt(0))-1;
 				findViewById(keyNames[index]).setVisibility(GameController.key[MapModel.getMyX()][MapModel.getMyY()].isVisible);
-				findViewById(keyNames[index]).setBackgroundResource(keyImg[index]);
+				//if(GameController.key[MapModel.getMyX()][MapModel.getMyY()].isVisible == View.VISIBLE){
+					findViewById(keyNames[index]).setBackgroundResource(keyImg[index]);
+				//}
 				
 				for(int z = 0; z<4; z++){
 					findViewById(door[z]).setVisibility(View.VISIBLE); //sets the visibility of the door to VISIBLE when it is initialized

@@ -42,21 +42,9 @@ public class GameController {
 	 * each of the different models created
 	 */
 	public GameController(){ // Creates an object of each of the Models
-		MapModel.setMap("lvl_1");
-		key = new KeyModel[MapModel.mapArray.length][MapModel.mapArray[0].length]; 
-		Log.v("GameController", "Key not made");
+		MapModel.setMap("map_1");
 		
-		for(int i = 0; i<MapModel.mapArray.length;i++){
-			for(int j = 0; j<MapModel.mapArray[0].length;j++){
-//				Log.v("GameController", "Key making" +i+","+j);
-					String room = MapModel.mapArray[i][j];
-					key[i][j] = new KeyModel(room);
-					
-					if(Integer.parseInt(""+room.charAt(0))%2 == 1) key[i][j].setKey(room, true );
-					else key[i][j].setKey(room, false);
-			}
-		}
-
+		key = KeyModel.getKeyArray();
 
 		this.pos = new PositionModel();
 		this.rect = new RectModel();
