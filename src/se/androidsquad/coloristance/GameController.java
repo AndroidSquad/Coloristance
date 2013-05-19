@@ -2,6 +2,11 @@ package se.androidsquad.coloristance;
 
 import se.androidsquad.coloristance.database.Levels;
 
+/**
+ * @author Erik
+ *
+ */
+
 public class GameController {
 
 	/*
@@ -33,11 +38,17 @@ public class GameController {
 	protected RectModel rect;
 	protected DoorModel door;
 	protected String roomcode;
-	public static KeyModel[][] key = null;
 
+	public static KeyModel[][] key = null;
+		
+	/*
+	 * The empty constructor of GameController whcih creates an object of 
+	 * each of the different models created
+	 */
 	public GameController(){ // Creates an object of each of the Models
 		MapModel.setMap("lvl_1");
 		key = new KeyModel[MapModel.mapArray.length][MapModel.mapArray[0].length];
+
 		this.pos = new PositionModel();
 		this.rect = new RectModel();
 		this.door = new DoorModel();
@@ -67,7 +78,7 @@ public class GameController {
 	protected void drawRoom() {
 		
 	}
-
+	// this model is only called once and not as it supposed more often as I understand it.............................................................
 	protected void doorClick() {
 		roomcode = Levels.mapArray[0][0]; //retrieving the room from the database "Levels"
 		RectModel.setRectColor(roomcode);
