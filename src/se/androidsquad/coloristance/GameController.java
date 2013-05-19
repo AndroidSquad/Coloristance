@@ -1,5 +1,6 @@
 package se.androidsquad.coloristance;
 
+import android.util.Log;
 import se.androidsquad.coloristance.database.Levels;
 
 public class GameController {
@@ -34,7 +35,7 @@ public class GameController {
 	protected DoorModel door;
 	protected String roomcode;
 
-	public static KeyModel[][] key = null;
+	public static KeyModel[][] key;
 		
 	/*
 	 * The empty constructor of GameController whcih creates an object of 
@@ -42,14 +43,26 @@ public class GameController {
 	 */
 	public GameController(){ // Creates an object of each of the Models
 		MapModel.setMap("lvl_1");
-		key = new KeyModel[MapModel.mapArray.length][MapModel.mapArray[0].length];
+		key = new KeyModel[MapModel.mapArray.length][MapModel.mapArray[0].length]; 
+		Log.v("GameController", "Key not made");
+		
+		for(int i = 0; i<MapModel.mapArray.length;i++){
+			for(int j = 0; j<MapModel.mapArray[0].length;j++){
+//				Log.v("GameController", "Key making" +i+","+j);
+					String room = MapModel.mapArray[i][j];
+					key[i][j] = new KeyModel(room);
+					
+					if(Integer.parseInt(""+room.charAt(0))%2 == 1) key[i][j].setKey(room, true );
+					else key[i][j].setKey(room, false);
+			}
+		}
+
 
 		this.pos = new PositionModel();
 		this.rect = new RectModel();
 		this.door = new DoorModel();
 
 //		doorClick();
-		KeyModel.setKeys(key);
 //		Levels.initLevel();
 
 	}
@@ -81,6 +94,7 @@ public class GameController {
 //		RectModel.setRectColor(roomcode);
 //		DoorModel.setDoor(roomcode);
 //	}
+
 	
 	
 

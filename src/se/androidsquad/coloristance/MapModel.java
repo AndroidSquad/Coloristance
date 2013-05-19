@@ -18,7 +18,7 @@ public class MapModel {
 
 
 	public static void setMap(String level){
-		if(level == "lvl_1")mapArray = Levels.mapArray;		
+		if(level == "lvl_1") mapArray = Levels.mapArray;		
 	}
 
 
@@ -173,7 +173,7 @@ public class MapModel {
 		}
 		else answer = 0;
 
-		Log.v("MapModel","x: "+mapArray.length+" y: "+mapArray[0].length);
+		//Log.v("MapModel","x: "+mapArray.length+" y: "+mapArray[0].length);
 
 		return answer;
 	}

@@ -1,11 +1,13 @@
 package se.androidsquad.coloristance;
 
+import se.androidsquad.coloristance.R.drawable;
 import android.app.Activity;
 
 
 
 import android.media.MediaPlayer;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 
 import android.widget.ImageButton;
@@ -19,6 +21,7 @@ public class FirstScreen extends Activity {
 
 	int[] door = {R.id.top_door, R.id.right_door, R.id.bot_door,  R.id.left_door};
 	int[] keyNames = {R.id.key_button_blue, R.id.key_button_green, R.id.key_button_orange, R.id.key_button_purple, R.id.key_button_red};
+	int[] keyImg = {drawable.key_blue, drawable.key_green, drawable.key_orange, drawable.key_purple, drawable.key_red};
 	char[] pos = {'N','E','S','W'};
 	int index;
 
@@ -44,16 +47,21 @@ public class FirstScreen extends Activity {
 		a.setOnClickListener(new View.OnClickListener() {
 			@Override
 			public void onClick(View v) {
+				
+			/*	Log.v("FirstScreen", 	"Index: "+index+ 
+						", KeyNames: "+keyNames[index]+
+						//", Parsed KeyValue: "+ GameController.key[MapModel.getMyX()][MapModel.getMyY()].isVisible+
+						", MyX: "+ MapModel.getMyX()+
+						", MyY: "+ MapModel.getMyY());*/
 
 				MapModel.moveUp();
 				//game.doorClick(); At the moment we are not using this code line :)
 				DoorModel.setDoor(MapModel.getRoom());
 				RectModel.setRectColor(MapModel.getRoom());
-
-				index = Integer.parseInt(""+MapModel.getRoom().charAt(0));
+				index = Integer.parseInt(""+MapModel.getRoom().charAt(0))-1;
 				findViewById(keyNames[index]).setVisibility(GameController.key[MapModel.getMyX()][MapModel.getMyY()].isVisible);
-				findViewById(keyNames[index]).setBackgroundColor(GameController.key[MapModel.getMyX()][MapModel.getMyY()].color);
-
+				findViewById(keyNames[index]).setBackgroundResource(keyImg[index]);
+				
 				for(int z = 0; z<4; z++){
 					findViewById(door[z]).setVisibility(View.VISIBLE); //sets the visibility of the door to VISIBLE when it is initialized
 					findViewById(door[z]).setBackgroundColor(DoorModel.getDoor(pos[z]));//sets the door color to the color of the room it is connected to

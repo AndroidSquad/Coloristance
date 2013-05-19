@@ -22,10 +22,15 @@ public class KeyModel {
 		isVisible = View.GONE; 
 	}
 	
+	public KeyModel(String room){
+		position = Integer.parseInt(""+room.charAt(3));
+		color = room.charAt(3);
+	}
+
 	//TODO Set positions related to screen
 
 	public void setKey(String col, boolean isVisible){
-		/** col takes blue,green,orange,purple and red as strings*/ 		
+		/** col takes 1-5 as strings*/ 		
 		if(isVisible == true){
 			this.isVisible = View.VISIBLE;
 		}
@@ -44,7 +49,7 @@ public class KeyModel {
 	public int getPos(){
 		return position;
 	}
-	
+
 	public void setVisibility(boolean isVisible){
 		if(isVisible == true){
 			this.isVisible = View.VISIBLE;
@@ -53,12 +58,12 @@ public class KeyModel {
 			this.isVisible = View.GONE;
 		}
 	}
-	
+
 	public String keyName(){
 		return key;
 	}
-	
-	public static void setKeys(KeyModel key[][]){
+	/*
+	public void setKeys(KeyModel key[][]){
 		for(int i = 0; i<key.length;i++){
 			for(int j = 0; j<key[i].length;j++){
 				if(MapModel.mapArray[i][j].charAt(0) == 1){
@@ -69,30 +74,30 @@ public class KeyModel {
 					key[i][j].setKey("red", true);
 				}
 			}
-		}
-	}
-	
-	/*public int getColorFromString(String col){
-		
-		if (col == "blue"){
+		}*/
+
+
+public int getColorFromChar(char col){
+
+		if (col == '1'){
 			return RectModel.BLUE_LIGHT;
 		} 
-		else if (col == "green"){
+		else if (col == '2'){
 			return RectModel.GREEN_LIGHT;
 		}
-		else if (col == "orange"){
+		else if (col == '3'){
 			return RectModel.ORANGE_LIGHT;
 		} 
-		else if (col == "purple"){
+		else if (col == '4'){
 			return RectModel.PURPLE_LIGHT;
 		} 
-		else if (col == "red"){
+		else if (col == '5'){
 			return RectModel.RED_LIGHT;
 		} 
 		else{ 
 			Log.v("KeyModel", "No color was found");
 			return 666;
 		}
-		
-	}*/
+
+	}
 }
