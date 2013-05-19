@@ -11,7 +11,6 @@ package se.androidsquad.coloristance;
  * Id:t hittar ni i xml filen
  */
 
-
 /** 
  * DoorModel receives a Paint object which is the door color,
  * and an int which represent the door position. the doors position 
@@ -28,7 +27,7 @@ public class DoorModel{
 	private static int[] position = {0,1,2,3,4,5,6,7}; 
 	
 	/**
-	 * @param pos is a String which contain 5 different number
+	 * @param pos is a String which contain 5 different numbers
 	 */
 	public static void setDoor(String pos){
 
