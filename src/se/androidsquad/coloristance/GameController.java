@@ -76,7 +76,7 @@ public class GameController {
 //	protected void drawRoom() {
 //		
 //	}
-	// this model is only called once and not as it supposed more often as I understand it.............................................................
+//	 this model is only called once and not as it supposed more often as I understand it.............................................................
 //	protected void doorClick() {
 //		roomcode = Levels.mapArray[0][0]; //retrieving the room from the database "Levels"
 //		RectModel.setRectColor(roomcode);
