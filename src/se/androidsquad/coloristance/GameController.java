@@ -2,11 +2,6 @@ package se.androidsquad.coloristance;
 
 import se.androidsquad.coloristance.database.Levels;
 
-/**
- * @author Erik
- *
- */
-
 public class GameController {
 
 	/*
@@ -52,9 +47,11 @@ public class GameController {
 		this.pos = new PositionModel();
 		this.rect = new RectModel();
 		this.door = new DoorModel();
-		doorClick();
+
+//		doorClick();
 		KeyModel.setKeys(key);
 //		Levels.initLevel();
+
 	}
 	
 	
@@ -67,23 +64,23 @@ public class GameController {
 		this.door = door;
 	} */
 
-	protected void drawMap() {
-		int posX, posY;
-		pos = new PositionModel();
-		posX = pos.getX(); // ska skickas til view att i denna positionen i rutnätet ska en cirkel ritas ut
-		posY = pos.getY();
+//	protected void drawMap() {
+//		int posX, posY;
+//		pos = new PositionModel();
+//		posX = pos.getX(); // ska skickas til view att i denna positionen i rutnätet ska en cirkel ritas ut
+//		posY = pos.getY();
+//
+//	}
 
-	}
-
-	protected void drawRoom() {
-		
-	}
+//	protected void drawRoom() {
+//		
+//	}
 	// this model is only called once and not as it supposed more often as I understand it.............................................................
-	protected void doorClick() {
-		roomcode = Levels.mapArray[0][0]; //retrieving the room from the database "Levels"
-		RectModel.setRectColor(roomcode);
-		DoorModel.setDoor(roomcode);
-	}
+//	protected void doorClick() {
+//		roomcode = Levels.mapArray[0][0]; //retrieving the room from the database "Levels"
+//		RectModel.setRectColor(roomcode);
+//		DoorModel.setDoor(roomcode);
+//	}
 	
 	
 
