@@ -11,14 +11,18 @@ import android.view.View;
 import android.widget.Button;
 /*
  * This class represent the first screen of our game, it should contain buttons to 
- * crate a new game, start the music, pause the music. From this first screen you should
- * be routed to the firstscreen when you click on the button new game.
+ * create a new game, start the music, pause the music. From this first screen you should
+ * be routed to the firstscreen.xml when you click on the newGame button.
  */
 
 public class MainActivity extends Activity {
 
 	MediaPlayer mp;
 
+	/*
+	 * When the class is called the onCreate it sets the view to activity_main.xml, and it also creates different
+	 * buttons in order for the player to start a newGame and turn on the music.
+	 */
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
@@ -27,13 +31,12 @@ public class MainActivity extends Activity {
 		mp = MediaPlayer.create(MainActivity.this, R.raw.house_music);				 
 
 		
-		Button newGame = (Button) findViewById(R.id.button1); // This row connect the button named button1 in main_activity.xml to the button a.
-		newGame.setOnClickListener(new View.OnClickListener() { //in order for the user to be able to click on the button a you need to be able to listen to the button.
+		Button newGame = (Button) findViewById(R.id.button1); // This row connect the button named button1 in main_activity.xml to the button newGame.
+		newGame.setOnClickListener(new View.OnClickListener() { 
 			
 			
 			@Override
 			public void onClick(View v) {
-				// TODO Auto-generated method stub
 				startActivity(new Intent(MainActivity.this, FirstScreen.class));
 				
 			}
@@ -44,15 +47,15 @@ public class MainActivity extends Activity {
 
 			@Override
 			public void onClick(View v) {
-				// TODO Auto-generated method stub
-				//Nedan behövs för att ta MediaPlayer från Initialized State till Prepared State
+				/*
+				 * The following lines of codes is needed in order to change the state of
+				 *  the MediaPlayer from Initialized State to Prepared State.
+				 */
 				try {
 					mp.prepare();
 				} catch (IllegalStateException e) {
-					// TODO Auto-generated catch block
 					e.printStackTrace();
 				} catch (IOException e) {
-					// TODO Auto-generated catch block
 					e.printStackTrace();
 				}				 
 				mp.start();
@@ -65,17 +68,17 @@ public class MainActivity extends Activity {
 
 			@Override
 			public void onClick(View v) {
-				// TODO Auto-generated method stub
-				// Nedan behövs för att trycka på Sexy Music off
-				// första gången innan MediaPlayer är i Started State
+				/*
+				 * The following lines of codes is needed to be able
+				 * to click on the button Sexy Music off the first time 
+				 * before Media Player is in Started State			
+				 */
 				
 				try {
 					mp.prepare();
 				} catch (IllegalStateException e) {
-					// TODO Auto-generated catch block
 					e.printStackTrace();
 				} catch (IOException e) {
-					// TODO Auto-generated catch block
 					e.printStackTrace();
 				}				 
 				mp.start();
@@ -86,7 +89,6 @@ public class MainActivity extends Activity {
 	}
 	@Override
 	protected void onPause() {
-		// TODO Auto-generated method stub
 		super.onPause();
 		mp.release();
 	}
@@ -100,7 +102,6 @@ public class MainActivity extends Activity {
 	}
 	@Override
 	protected void onResume() {
-		// TODO Auto-generated method stub
 		super.onResume();
 		mp = MediaPlayer.create(MainActivity.this, R.raw.house_music);				 
 
