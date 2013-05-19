@@ -9,7 +9,11 @@ import android.os.Bundle;
 import android.view.View;
 
 import android.widget.ImageButton;
-
+/*
+ * This class is the main window which the current room is created. It sets the screen to firstscreen.xml,
+ * , contains the code for the music, and the information about the doors that the different rooms should contain and
+ * the color of the doors.
+ */
 
 public class FirstScreen extends Activity {
 
@@ -25,7 +29,6 @@ public class FirstScreen extends Activity {
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
-		// TODO Auto-generated method stub
 		super.onCreate(savedInstanceState);
 		map = new DrawMap(FirstScreen.this, null);
 		setContentView(R.layout.firstscreen);
@@ -57,7 +60,7 @@ public class FirstScreen extends Activity {
 				for(int z = 0; z<4; z++){
 					findViewById(door[z]).setVisibility(View.VISIBLE); //sets the visibility of the door to VISIBLE when it is initialized
 					findViewById(door[z]).setBackgroundColor(DoorModel.getDoor(pos[z]));//sets the door color to the color of the room it is connected to
-					if(DoorModel.getDoor(pos[z]) == RectModel.BLACK){ // if the room has no connection defined by no room or a blach rectangle this code sets the visibility to GONE.
+					if(DoorModel.getDoor(pos[z]) == RectModel.BLACK){ // if the room has no connection defined by no room or a black rectangle this code sets the visibility to GONE.
 						findViewById(door[z]).setVisibility(View.GONE);
 					}
 				}
@@ -147,7 +150,6 @@ public class FirstScreen extends Activity {
 
 	@Override
 	protected void onPause() {
-		// TODO Auto-generated method stub
 		super.onPause();
 		mp.release();
 
