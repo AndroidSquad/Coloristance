@@ -2,18 +2,6 @@ package se.androidsquad.coloristance;
 
 import se.androidsquad.coloristance.database.Levels;
 
-/**
- * @author Erik
- *
- */
-/**
- * @author Erik
- *
- */
-/**
- * @author Erik
- *
- */
 public class GameController {
 
 	/*
@@ -44,20 +32,26 @@ public class GameController {
 	protected PositionModel pos;
 	protected RectModel rect;
 	protected DoorModel door;
-	protected int size = 1;// Dessa ska vara flexibla och gå att ändra sedan
 	protected String roomcode;
-	
+
+	public static KeyModel[][] key = null;
+		
 	/*
 	 * The empty constructor of GameController whcih creates an object of 
 	 * each of the different models created
 	 */
-	public GameController(){ 
+	public GameController(){ // Creates an object of each of the Models
+		MapModel.setMap("lvl_1");
+		key = new KeyModel[MapModel.mapArray.length][MapModel.mapArray[0].length];
+
 		this.pos = new PositionModel();
 		this.rect = new RectModel();
 		this.door = new DoorModel();
+
+//		doorClick();
+		KeyModel.setKeys(key);
 //		Levels.initLevel();
-		doorClick();
-		
+
 	}
 	
 	
@@ -70,23 +64,23 @@ public class GameController {
 		this.door = door;
 	} */
 
-	protected void drawMap() {
-		int posX, posY;
-		pos = new PositionModel();
-		posX = pos.getX(); // ska skickas til view att i denna positionen i rutn‰tet ska en cirkel ritas ut
-		posY = pos.getY();
+//	protected void drawMap() {
+//		int posX, posY;
+//		pos = new PositionModel();
+//		posX = pos.getX(); // ska skickas til view att i denna positionen i rutn‰tet ska en cirkel ritas ut
+//		posY = pos.getY();
+//
+//	}
 
-	}
-
-	protected void drawRoom() {
-		
-	}
-	// this model is only called once and not as it supposed more often as I understand it.............................................................
-	protected void doorClick() {
-		roomcode = Levels.mapArray[0][0]; //retrieving the room from the database "Levels"
-		RectModel.setRectColor(roomcode);
-		DoorModel.setDoor(roomcode);
-	}
+//	protected void drawRoom() {
+//		
+//	}
+//	 this model is only called once and not as it supposed more often as I understand it.............................................................
+//	protected void doorClick() {
+//		roomcode = Levels.mapArray[0][0]; //retrieving the room from the database "Levels"
+//		RectModel.setRectColor(roomcode);
+//		DoorModel.setDoor(roomcode);
+//	}
 	
 	
 

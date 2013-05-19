@@ -18,7 +18,7 @@ public class RectModel {
 	public static final int WHITE 		= 0xFFFFFFFF;
 
 	protected int pos = 0;
-	protected static int rectColor; // The color could be 0,1,2,3,4,5.
+	protected static int rectColor; // The color could be 0,1,2,3,4,5,6
 
 	/**
 	 * @param roomcode	this string is the code of the current room
@@ -41,12 +41,15 @@ public class RectModel {
 		}
 	}
 
+	/**
+	 * @return	the color of the the room asked for as an int
+	 */
 	public static int getRectColor(){
 		return rectColor;
 	}
 
 	/**
-	 * @return the color of the room as a string
+	 * @return the color of the room as a string needed for the initialization of a paint object in drawMap
 	 */
 	public static String getRoomColor(){
 

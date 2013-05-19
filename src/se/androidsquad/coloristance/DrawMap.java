@@ -12,18 +12,20 @@ import android.util.AttributeSet;
 import android.util.Log;
 import android.view.View;
 
-public class DrawMap extends View { // Creates a custom view that paints a filled rectangle 
+/*
+ * This class is in charge of the painting of the current map on the screen, and also 
+ * the player position.
+ */
+public class DrawMap extends View { 
 	
 
 	public DrawMap(Context context, AttributeSet attrs) {
 		super(context, attrs);
-		// TODO Auto-generated constructor stub
 	}
 
 	@SuppressLint("DrawAllocation")
 	@Override
-	public void onDraw(Canvas canvas) {
-		// TODO Auto-generated method stub
+	public void onDraw(Canvas canvas) { 
 		super.onDraw(canvas);
 		
 		HashMap<String, Paint> col = new HashMap<String, Paint>();
@@ -41,8 +43,6 @@ public class DrawMap extends View { // Creates a custom view that paints a fille
 		col.get("white").setColor(RectModel.WHITE);
 		col.put("black", new Paint());
 		col.get("black").setColor(RectModel.BLACK);
-	//	col.put("gold", new Paint());
-	//	col.get("gold").setColor(RectModel.GOLD);
 		
 		String rectColor = "pl";
 		
@@ -57,15 +57,13 @@ public class DrawMap extends View { // Creates a custom view that paints a fille
 
 				
 		MapModel.setMap(mapWidth, mapHeight, mapTop, mapRight, mapBot, mapLeft);
-		MapModel.setMap("lvl_1");
+		MapModel.setMap("lvl_1");//this line sets the level to be played
 		
-		Log.v("DrawMap", mapWidth+", "+mapHeight+", "+mapLeft+", "+mapTop+", "+mapRight+", "+mapBot);
-		
-		
-		
+		//Log.v("DrawMap", mapWidth+", "+mapHeight+", "+mapLeft+", "+mapTop+", "+mapRight+", "+mapBot);
+
 
 		/*
-		 * the following code segment the foor-loop included creates the map frame that the
+		 * the following code segment including the for-loop creates the map frame that the
 		 * levels will be painted on.
 		 */
 		Rect frameRect = new Rect();
@@ -82,16 +80,17 @@ public class DrawMap extends View { // Creates a custom view that paints a fille
 
 		//for (int i = 0; i < getWidth()-1 ; i++){
 		//	canvas.drawLine(i+getWidth()/8, (i+getHeight()/3)+(1/2), (i+getWidth()/8)+(1/5), (i+getHeight()/3)+(1/2), dark);
-
-		//Creates an object of gameController to be able to control the size and color of the rectangle
-
-		 // When creating a GameController object we create a RectModel object as well
 		
+		/*
+		 * creates a HashMap to be able to store a certain x,y position with the corresponding color of the room.
+		 * The String is the key to the specific room.
+		 */
 		HashMap<String, Rect> map = new HashMap<String, Rect>();
 
 		String name = "Ej startat";
-			
-		// Behöver String[][], Färger[]
+		/*
+		 * these two for-loops insert the values of the x,y-position and the corresponding color in the map
+		 */
 		
 		for(int i = 0; i<MapModel.getMap().length;i++){
 			for(int j = 0; j<MapModel.getMap()[i].length;j++){
@@ -103,7 +102,6 @@ public class DrawMap extends View { // Creates a custom view that paints a fille
 
 				rectColor = RectModel.getRoomColor();
 				canvas.drawRect( map.get(name), col.get(rectColor));
-				//Log.v("Loop5", name);
 			}
 		}
 			
@@ -117,9 +115,9 @@ public class DrawMap extends View { // Creates a custom view that paints a fille
 
 */
 		
-		//Your Position: it needs to be specific position 
+		//The following line draws the position of the player on the map 
 		canvas.drawCircle(MapModel.getCircPos(1, MapModel.getMyX()), MapModel.getCircPos(2, MapModel.getMyY()), MapModel.getCircPos(3, MapModel.getMyY()), col.get("white"));
-		invalidate();// Calls the onDraw again as soon as has painted everything
+		invalidate();// Calls the onDraw again as soon as it has painted everything
 	}
 		
 	/**Refera till xml-filen i javan istŠllet fšr tvŠrtom som vi trodde annars
