@@ -58,11 +58,12 @@ public class FirstScreen extends Activity {
 				//game.doorClick(); At the moment we are not using this code line :)
 				DoorModel.setDoor(MapModel.getRoom());
 				RectModel.setRectColor(MapModel.getRoom());
-				index = Integer.parseInt(""+MapModel.getRoom().charAt(0))-1;
-				findViewById(keyNames[index]).setVisibility(GameController.key[MapModel.getMyX()][MapModel.getMyY()].isVisible);
-				//if(GameController.key[MapModel.getMyX()][MapModel.getMyY()].isVisible == View.VISIBLE){
-					findViewById(keyNames[index]).setBackgroundResource(keyImg[index]);
-				//}
+//				index = Integer.parseInt(""+MapModel.getRoom().charAt(0))-1;
+				for(int i = 0; i<5; i++){
+				findViewById(keyNames[i]).setVisibility(GameController.key[MapModel.getMyX()][MapModel.getMyY()].isVisible);}
+//				if(GameController.key[MapModel.getMyX()][MapModel.getMyY()].isVisible == View.VISIBLE){
+//					findViewById(keyNames[index]).setBackgroundResource(keyImg[index]);
+//				}
 				
 				for(int z = 0; z<4; z++){
 					findViewById(door[z]).setVisibility(View.VISIBLE); //sets the visibility of the door to VISIBLE when it is initialized
@@ -91,6 +92,14 @@ public class FirstScreen extends Activity {
 				//game.doorClick();At the moment we are not using this code line :)
 				DoorModel.setDoor(MapModel.getRoom());
 				RectModel.setRectColor(MapModel.getRoom());
+				
+//				index = Integer.parseInt(""+MapModel.getRoom().charAt(0))-1;
+				for(int i = 0; i<5; i++){
+				findViewById(keyNames[i]).setVisibility(GameController.key[MapModel.getMyX()][MapModel.getMyY()].isVisible);}
+//				if(GameController.key[MapModel.getMyX()][MapModel.getMyY()].isVisible == View.VISIBLE){
+//					findViewById(keyNames[index]).setBackgroundResource(keyImg[index]);
+//				}
+				
 
 				for(int z = 0; z<4; z++){
 					findViewById(door[z]).setVisibility(View.VISIBLE);
@@ -117,6 +126,13 @@ public class FirstScreen extends Activity {
 				DoorModel.setDoor(MapModel.getRoom());
 				RectModel.setRectColor(MapModel.getRoom());
 
+//				index = Integer.parseInt(""+MapModel.getRoom().charAt(0))-1;
+				for(int i = 0; i<5; i++){
+				findViewById(keyNames[i]).setVisibility(GameController.key[MapModel.getMyX()][MapModel.getMyY()].isVisible);}
+//				if(GameController.key[MapModel.getMyX()][MapModel.getMyY()].isVisible == View.VISIBLE){
+//					findViewById(keyNames[index]).setBackgroundResource(keyImg[index]);
+//				}
+				
 				for(int z = 0; z<4; z++){
 					findViewById(door[z]).setVisibility(View.VISIBLE);
 					findViewById(door[z]).setBackgroundColor(DoorModel.getDoor(pos[z]));
@@ -140,6 +156,13 @@ public class FirstScreen extends Activity {
 				//game.doorClick();At the moment we are not using this code line :)
 				DoorModel.setDoor(MapModel.getRoom());
 				RectModel.setRectColor(MapModel.getRoom());
+				
+//				index = Integer.parseInt(""+MapModel.getRoom().charAt(0))-1;
+				for(int i = 0; i<5; i++){
+				findViewById(keyNames[i]).setVisibility(GameController.key[MapModel.getMyX()][MapModel.getMyY()].isVisible);}
+//				if(GameController.key[MapModel.getMyX()][MapModel.getMyY()].isVisible == View.VISIBLE){
+//					findViewById(keyNames[index]).setBackgroundResource(keyImg[index]);
+//				}
 
 				for(int z = 0; z<4; z++){
 					findViewById(door[z]).setVisibility(View.VISIBLE);
