@@ -58,12 +58,13 @@ public class MapModel {
 	 */
 
 	protected static void moveUp(){
-		y -= 1;
-		if (y < 0)
-			y=0;
-		Log.v("MapModel", "MoveUp");
+		if(y-1 < 0 || mapArray[x][y-1].charAt(0)=='0'){
+			y=y; //You get the point... Don't move.
+			//Log.v("MapModel", "Moving out of bounds" + mapArray[x][y]);
+		}
+		else
+			y=y-1;
 	}
-
 
 	/**
 	 * Checks to see if the new value is acceptable, if it is, it adds one to the x-pos.
@@ -71,11 +72,14 @@ public class MapModel {
 	 */
 
 	public static void moveRight(){
-		if(x+1 >= mapArray.length)
-			x=mapArray.length-1;
+		if(x+1 >= mapArray.length || mapArray[x+1][y].charAt(0)=='0'){
+			x=x; //You get the point... Don't move.
+			//Log.v("MapModel", "Moving out of bounds" + mapArray[x][y]);
+		}
 		else
 			x=x+1;
 	}
+
 
 	/**
 	 * Checks to see if the new value is acceptable, if it is, it adds one to the y-pos.
@@ -83,8 +87,10 @@ public class MapModel {
 	 */
 
 	public static void moveDown(){
-		if(y+1>=mapArray[0].length)
-			y=mapArray[0].length-1;
+		if(y+1>=mapArray[0].length || mapArray[x][y+1].charAt(0)=='0'){
+			y=y;
+			//Log.v("MapModel", "Moving out of bounds" + mapArray[x][y]);
+		}
 		else
 			y=y+1;
 	}
@@ -95,12 +101,13 @@ public class MapModel {
 	 * it is called whenever the "West" door is clicked.
 	 */
 	protected static void moveLeft(){
-
-		x -= 1;
-		if (x < 0)
-			x=0;
+		if(x-1 < 0 || mapArray[x-1][y].charAt(0)=='0'){
+			x=x; //You get the point... Don't move.
+			//Log.v("MapModel", "Moving out of bounds" + mapArray[x][y]);
+		}
+		else
+			x=x-1;
 	}
-
 
 	/**
 	 * The method receives a String array, goes through the array to match the correct coordinates, and returns the correct color
@@ -209,6 +216,7 @@ public class MapModel {
 		//places the circle in the middle of the rect corresponding to the center y-position
 		else if (value==2) {
 			answer = ((botY-topY)/2)+(multi)*(mapHeight/(mapArray[0].length))+(mapHeight/(mapArray[0].length*20)) ;
+
 			//Log.v("CircY:", ""+answer);
 		}
 		//Radius

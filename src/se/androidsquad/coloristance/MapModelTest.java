@@ -10,64 +10,98 @@ import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
 
-/**
- * @author atommy
- *
- */
+
 public class MapModelTest extends TestCase{
 
-	/**
-	 * @throws java.lang.Exception
-	 */
 	@Before
-	//Write what you want to be initiated before the test starts here
 	public void setUp() throws Exception {
-		MapModel.setMap("lvl_1");
-	}
-
-	/**
-	 * @throws java.lang.Exception
-	 */
-	@After
-	//Write what you need to be sent after test, which in most cases for us is nothing
-	public void tearDown() throws Exception {
-		
-	}
-
-	/**
-	 * Test method for {@link se.androidsquad.coloristance.MapModel#moveRight()}.
-	 */
-	//What a test method looks like before it is implemented.
-	//Write the testcode and use assert to check the result
-//	@Test
-//	public final void testMoveRight() {
-//		fail("Not yet implemented"); // TODO
-//	}
-
-	/**
-	 * Test method for {@link se.androidsquad.coloristance.MapModel#moveDown()}.
-	 */
+		MapModel.setMap("map_1");
 	
-	//This method tests the MoveDown-method. We have added some code to assist us with 
-	//finding the error where we were getting a null-pointer exception
+
+	}
+	
 	@Test
-	public final void testMoveDown() {
-		System.out.println(MapModel.mapArray[0].length);
+	public void testCorrectArrayLength() {
+		assertEquals(8, MapModel.mapArray.length);
+		assertEquals(3, MapModel.mapArray[0].length);
+	}
+	@Test
+	public void testCodeOfRoom() {
+		MapModel.setPos(1, 1);
+		assertEquals(MapModel.getRoom(),"13027");
+	}
+	
+	
+	@Test
+	public void testMovementsOnMap() {
+		MapModel.setPos(0, 1);
+		MapModel.moveRight();
+		assertEquals(1, MapModel.getMyX());
+		assertEquals(1,MapModel.getMyY());
+	
+		MapModel.moveUp();
+		assertEquals(1, MapModel.getMyX());
+		assertEquals(0,MapModel.getMyY());
 		
-		System.out.print(MapModel.getMyY());
 		MapModel.moveDown();
+		assertEquals(1, MapModel.getMyX());
+		assertEquals(1,MapModel.getMyY());	
 		
-		System.out.print(MapModel.getMyY());
+		MapModel.moveUp();
+		assertEquals(1, MapModel.getMyX());
+		assertEquals(0,MapModel.getMyY());
+	
+		MapModel.moveRight();
+		assertEquals(2, MapModel.getMyX());
+		assertEquals(0,MapModel.getMyY());
+		
+		
+	}
+	
+	@Test
+	public void testOutOfBounds(){
+		MapModel.setMap("map_1");
+		MapModel.setPos(0, 1);
+		
+		MapModel.moveRight();
+		assertEquals(1, MapModel.getMyX());
+		assertEquals(1,MapModel.getMyY());
+		/*
+		 * This next block will test so that we are not able to go into a black=empty room,due to the conditions
+		 *  the position of the player should be equal to the position before the tried movement which was (1,1)
+		 */
+		MapModel.moveRight();					
+		assertEquals(1, MapModel.getMyX());		
+		assertEquals(1,MapModel.getMyY());
+		
+		MapModel.moveUp();
+		assertEquals(1, MapModel.getMyX());
+		assertEquals(0,MapModel.getMyY());
+		/*
+		 * This next block will test if you are able to move out of bounds, due to the conditions
+		 *  the position of the player should be equal to the position before the tried movement which was (1,0)
+		 */
+		MapModel.moveUp();						
+		assertEquals(1, MapModel.getMyX());		
+		assertEquals(0,MapModel.getMyY());
+		
 		MapModel.moveDown();
-
-		System.out.print(MapModel.getMyY());
+		assertEquals(1, MapModel.getMyX());
+		assertEquals(1,MapModel.getMyY());	
+		
 		MapModel.moveDown();
-
-		System.out.print(MapModel.getMyY());
-		MapModel.moveDown();
-
-		System.out.print(MapModel.getMyY());
-		assertTrue(MapModel.getMyY() == 2);
+		assertEquals(1, MapModel.getMyX());
+		assertEquals(2,MapModel.getMyY());
+		/*
+		 * This last block test if you are able to call moveDown() when you do not have any rooms under you, move out of bounds.
+		 * Due to our predetermined conditions on the movement the player should remain on the same position
+		 */
+		MapModel.moveDown();					
+		assertEquals(1, MapModel.getMyX());		
+		assertEquals(2,MapModel.getMyY());
+		
+		
+		
 	}
 
 }
