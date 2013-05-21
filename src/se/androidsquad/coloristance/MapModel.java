@@ -60,7 +60,7 @@ public class MapModel {
 	protected static void moveUp(){
 		if(y-1 < 0 || mapArray[x][y-1].charAt(0)=='0'){
 			y=y; //You get the point... Don't move.
-			Log.v("MapModel", "Moving out of bounds" + mapArray[x][y]);
+			//Log.v("MapModel", "Moving out of bounds" + mapArray[x][y]);
 		}
 		else
 			y=y-1;
@@ -74,7 +74,7 @@ public class MapModel {
 	public static void moveRight(){
 		if(x+1 >= mapArray.length || mapArray[x+1][y].charAt(0)=='0'){
 			x=x; //You get the point... Don't move.
-			Log.v("MapModel", "Moving out of bounds" + mapArray[x][y]);
+			//Log.v("MapModel", "Moving out of bounds" + mapArray[x][y]);
 		}
 		else
 			x=x+1;
@@ -89,7 +89,7 @@ public class MapModel {
 	public static void moveDown(){
 		if(y+1>=mapArray[0].length || mapArray[x][y+1].charAt(0)=='0'){
 			y=y;
-			Log.v("MapModel", "Moving out of bounds" + mapArray[x][y]);
+			//Log.v("MapModel", "Moving out of bounds" + mapArray[x][y]);
 		}
 		else
 			y=y+1;
@@ -103,7 +103,7 @@ public class MapModel {
 	protected static void moveLeft(){
 		if(x-1 < 0 || mapArray[x-1][y].charAt(0)=='0'){
 			x=x; //You get the point... Don't move.
-			Log.v("MapModel", "Moving out of bounds" + mapArray[x][y]);
+			//Log.v("MapModel", "Moving out of bounds" + mapArray[x][y]);
 		}
 		else
 			x=x-1;

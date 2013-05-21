@@ -31,8 +31,16 @@ public class FirstScreenTest {
 		assertEquals(1, MapModel.getMyX());
 		assertEquals(1,MapModel.getMyY());
 		
+		MapModel.moveRight();					//this row will test so that we are not able to go into a black=empty room
+		assertEquals(1, MapModel.getMyX());		//the result on the x and y positions should be the same as before the tried movement
+		assertEquals(1,MapModel.getMyY());
+		
 		MapModel.moveUp();
 		assertEquals(1, MapModel.getMyX());
+		assertEquals(0,MapModel.getMyY());
+		
+		MapModel.moveUp();						//this row will test if you are able to move out of bounds, this should return
+		assertEquals(1, MapModel.getMyX());		// the same position asthe player stood on before which was (1,0)
 		assertEquals(0,MapModel.getMyY());
 		
 		MapModel.moveDown();
@@ -48,6 +56,5 @@ public class FirstScreenTest {
 		assertEquals(0,MapModel.getMyY());
 		
 	}
-
 
 }
