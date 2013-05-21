@@ -57,7 +57,7 @@ public class DrawMap extends View {
 
 				
 		MapModel.setMap(mapWidth, mapHeight, mapTop, mapRight, mapBot, mapLeft);
-		MapModel.setMap("lvl_1");//this line sets the level to be played
+
 		
 		//Log.v("DrawMap", mapWidth+", "+mapHeight+", "+mapLeft+", "+mapTop+", "+mapRight+", "+mapBot);
 
