@@ -63,9 +63,17 @@ public class FirstScreen extends Activity {
 				RectModel.setRectColor(MapModel.getRoom());
 				//				index = Integer.parseInt(""+MapModel.getRoom().charAt(0))-1;
 				for(int i = 0; i<5; i++){
-					Log.v("Firstscreen", "Instansiering:" + keyNames[i]);
-					findViewById(keyNames[i]).setVisibility(GameController.key[MapModel.getMyX()][MapModel.getMyY()].isVisible);
-					findViewById(keyNames[i]).setBackgroundResource(keyImg[i]);
+					if(GameController.key[MapModel.getMyX()][MapModel.getMyY()].getKeyString().charAt(i) == '1'){
+						Log.v("Firstscreen", "Its visible:" + GameController.key[MapModel.getMyX()][MapModel.getMyY()].getImg());
+						findViewById(keyNames[GameController.key[MapModel.getMyX()][MapModel.getMyY()].getImg()]).setVisibility(View.VISIBLE);
+					}
+					else if(GameController.key[MapModel.getMyX()][MapModel.getMyY()].getKeyString().charAt(i) == '0'){
+						Log.v("Firstscreen", "Instansiering:" + "Nope, nothing");
+						findViewById(keyNames[i]).setVisibility(View.GONE);
+					}
+					else Log.v("Firstscreen", "Faulty input");
+
+					//findViewById(keyNames[i]).setBackgroundResource(keyImg[i]);
 				}
 				//				if(GameController.key[MapModel.getMyX()][MapModel.getMyY()].isVisible == View.VISIBLE){
 				//					findViewById(keyNames[index]).setBackgroundResource(keyImg[index]);
@@ -101,9 +109,17 @@ public class FirstScreen extends Activity {
 
 				//				index = Integer.parseInt(""+MapModel.getRoom().charAt(0))-1;
 				for(int i = 0; i<5; i++){
-					Log.v("Firstscreen", "Instansiering:" + keyNames[i]);
-					findViewById(keyNames[i]).setVisibility(GameController.key[MapModel.getMyX()][MapModel.getMyY()].isVisible);
-					findViewById(keyNames[i]).setBackgroundResource(keyImg[i]);
+					if(GameController.key[MapModel.getMyX()][MapModel.getMyY()].getKeyString().charAt(i) == '1'){
+						Log.v("Firstscreen", "Its visible:" + GameController.key[MapModel.getMyX()][MapModel.getMyY()].getImg());
+						findViewById(keyNames[GameController.key[MapModel.getMyX()][MapModel.getMyY()].getImg()]).setVisibility(View.VISIBLE);
+					}
+					else if(GameController.key[MapModel.getMyX()][MapModel.getMyY()].getKeyString().charAt(i) == '0'){
+						Log.v("Firstscreen", "Instansiering:" + "Nope, nothing");
+						findViewById(keyNames[i]).setVisibility(View.GONE);
+					}
+					else Log.v("Firstscreen", "Faulty input");
+
+					//findViewById(keyNames[i]).setBackgroundResource(keyImg[i]);
 				}
 				//				if(GameController.key[MapModel.getMyX()][MapModel.getMyY()].isVisible == View.VISIBLE){
 				//					findViewById(keyNames[index]).setBackgroundResource(keyImg[index]);
@@ -137,9 +153,17 @@ public class FirstScreen extends Activity {
 
 				//				index = Integer.parseInt(""+MapModel.getRoom().charAt(0))-1;
 				for(int i = 0; i<5; i++){
-					Log.v("Firstscreen", "Instansiering:" + keyNames[i]);
-					findViewById(keyNames[i]).setVisibility(GameController.key[MapModel.getMyX()][MapModel.getMyY()].isVisible);
-					findViewById(keyNames[i]).setBackgroundResource(keyImg[i]);
+					if(GameController.key[MapModel.getMyX()][MapModel.getMyY()].getKeyString().charAt(i) == '1'){
+						Log.v("Firstscreen", "Its visible:" + GameController.key[MapModel.getMyX()][MapModel.getMyY()].getImg());
+						findViewById(keyNames[GameController.key[MapModel.getMyX()][MapModel.getMyY()].getImg()]).setVisibility(View.VISIBLE);
+					}
+					else if(GameController.key[MapModel.getMyX()][MapModel.getMyY()].getKeyString().charAt(i) == '0'){
+						Log.v("Firstscreen", "Instansiering:" + "Nope, nothing");
+						findViewById(keyNames[i]).setVisibility(View.GONE);
+					}
+					else Log.v("Firstscreen", "Faulty input");
+
+					//findViewById(keyNames[i]).setBackgroundResource(keyImg[i]);
 				}
 				//				if(GameController.key[MapModel.getMyX()][MapModel.getMyY()].isVisible == View.VISIBLE){
 				//					
@@ -171,9 +195,17 @@ public class FirstScreen extends Activity {
 
 				//				index = Integer.parseInt(""+MapModel.getRoom().charAt(0))-1;
 				for(int i = 0; i<5; i++){
-					Log.v("Firstscreen", "Instansiering:" + keyNames[i]);
-					findViewById(keyNames[i]).setVisibility(GameController.key[MapModel.getMyX()][MapModel.getMyY()].isVisible);
-					findViewById(keyNames[i]).setBackgroundResource(keyImg[i]);
+					if(GameController.key[MapModel.getMyX()][MapModel.getMyY()].getKeyString().charAt(i) == '1'){
+						Log.v("Firstscreen", "Its visible:" + GameController.key[MapModel.getMyX()][MapModel.getMyY()].getImg());
+						findViewById(keyNames[GameController.key[MapModel.getMyX()][MapModel.getMyY()].getImg()]).setVisibility(View.VISIBLE);
+					}
+					else if(GameController.key[MapModel.getMyX()][MapModel.getMyY()].getKeyString().charAt(i) == '0'){
+						Log.v("Firstscreen", "Instansiering:" + "Nope, nothing");
+						findViewById(keyNames[i]).setVisibility(View.GONE);
+					}
+					else Log.v("Firstscreen", "Faulty input");
+
+					//findViewById(keyNames[i]).setBackgroundResource(keyImg[i]);
 				}
 				//				if(GameController.key[MapModel.getMyX()][MapModel.getMyY()].isVisible == View.VISIBLE){
 				//					findViewById(keyNames[index]).setBackgroundResource(keyImg[index]);

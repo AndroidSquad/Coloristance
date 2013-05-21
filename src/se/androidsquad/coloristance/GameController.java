@@ -45,6 +45,12 @@ public class GameController {
 		MapModel.setMap("map_1");
 		
 		key = KeyModel.getKeyArray();
+		
+//		for(int i = 0; i<key.length;i++){
+//			for(int j = 0; j<key[i].length;j++){
+//				Log.v("GameController",i +","+ j +":"+ key[i][j].getKeyString());
+//			}
+//		}
 
 		this.pos = new PositionModel();
 		this.rect = new RectModel();
