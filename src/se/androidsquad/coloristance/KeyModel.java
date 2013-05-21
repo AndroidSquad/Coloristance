@@ -14,19 +14,12 @@ public class KeyModel {
 
 	//position: Talar om var i rummet nyckeln befinner sig
 	//color: anger nycklens färg
-	int position, color;
 	int isVisible;
-	String key;
-
-	public KeyModel(){
-		position = 0;
-		color = 0;
-		isVisible = View.GONE; 
-	}
+	String keys;
+	int keyColor;
 	
 	public KeyModel(String room){
-		position = Integer.parseInt(""+room.charAt(3));
-		color = room.charAt(3);
+			keys = room;
 	}
 	
 	public static KeyModel[][] getKeyArray(){
@@ -34,13 +27,26 @@ public class KeyModel {
 		KeyModel[][] keyArray = new KeyModel[MapModel.getKeys().length][MapModel.getKeys()[0].length]; 
 
 		for(int i = 0; i<MapModel.getKeys().length;i++){
-			for(int j = 0; j<MapModel.getKeys()[0].length;j++){
-				Log.v("GameController", "Key making" +i+","+j);
-					keyArray[i][j] = new KeyModel();
-					String room = MapModel.keyArray[i][j];
-								
-					if(room.charAt(j) == '1') keyArray[i][j].setKey(j, true ); 
-					else keyArray[i][j].setKey(0, false);
+			for(int j = 0; j<MapModel.getKeys()[i].length;j++){
+				Log.v("KeyModel", "Key making1: " +i+","+j);
+					keyArray[i][j] = new KeyModel(MapModel.getKeys()[i][j]);
+					Log.v("KeyModel", "Key making2: " +i+","+j);
+					String room = keyArray[i][j].keyName();
+					Log.v("KeyModel", "Key making3: " +i+","+j);
+					for(int x = 0; x<5; x++){
+
+						if(room.charAt(x) == '1'){ 
+							keyArray[i][j].setKey(x, true );
+							Log.v("KeyModel", "Key making5: " +i+","+j);
+						}
+						else if(room.charAt(x) == '0'){ 
+							keyArray[i][j].setKey(x, false);
+							Log.v("KeyModel", "Key making6: " +i+","+j);
+						}
+						else{
+							Log.v("KeyModel", "You got 0, something is wrong");
+						}
+					}
 			}
 		}
 		
@@ -62,29 +68,29 @@ public class KeyModel {
 		this.color = RectModel.getRectColor();
 		key = col;*/
 		
-		if (col == 1){
-			color = drawable.key_blue;
+		if (col == 0){
+			keyColor = drawable.key_blue;
 		} 
-		else if (col == 2){
-			color = drawable.key_green;
+		else if (col == 1){
+			keyColor = drawable.key_green;
 		}
+		else if (col == 2){
+			keyColor = drawable.key_orange;
+		} 
 		else if (col == 3){
-			color = drawable.key_orange;
+			keyColor = drawable.key_purple;
 		} 
 		else if (col == 4){
-			color = drawable.key_purple;
-		} 
-		else if (col == 5){
-			color = drawable.key_red;
+			keyColor = drawable.key_red;
 		} 
 		else{
-			color = Color.BLACK;
+			keyColor = Color.BLACK;
 			Log.v("KeyModel", "No color was found");
 		}
 	}
 
 	public int getCol(){
-		return color;
+		return keyColor;
 	}
 /*
 	public int getPos(){
@@ -102,7 +108,7 @@ public class KeyModel {
 	}
 
 	public String keyName(){
-		return key;
+		return keys;
 	}
 	/*
 	public void setKeys(KeyModel key[][]){
