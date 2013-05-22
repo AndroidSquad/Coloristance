@@ -18,7 +18,7 @@ public class RectModel {
 	public static final int WHITE 		= 0xFFFFFFFF;
 
 	protected int pos = 0;
-	protected static int rectColor; // The color could be 0,1,2,3,4,5,6
+	public static int rectColor; // The color could be 0,1,2,3,4,5,6
 
 	/**
 	 * @param roomcode	this string is the code of the current room

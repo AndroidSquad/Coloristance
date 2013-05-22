@@ -12,7 +12,7 @@ import android.util.Log;
 
 public class MapModel {
 
-	static String[][] mapArray, keyArray;
+	public static String[][] mapArray, keyArray;
 	private static int x,y,mapWidth,mapHeight,mapTop, mapBot, mapRight, mapLeft;
 	private static int leftX, rightX, topY, botY;
 
@@ -46,7 +46,7 @@ public class MapModel {
 		}
 	}
 
-	protected static void setPos(int xPos, int yPos){
+	public static void setPos(int xPos, int yPos){
 		//Dessa skall anropas vid vare tryck på en dörr
 		x = xPos;
 		y = yPos;
@@ -57,7 +57,7 @@ public class MapModel {
 	 * it is called whenever the "North" door is clicked.
 	 */
 
-	protected static void moveUp(){
+	public static void moveUp(){
 		if(y-1 < 0 || mapArray[x][y-1].charAt(0)=='0'){
 			y=y; //You get the point... Don't move.
 			//Log.v("MapModel", "Moving out of bounds" + mapArray[x][y]);
