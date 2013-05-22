@@ -20,7 +20,8 @@ public class FirstScreen extends Activity {
 
 	MediaPlayer mp;
 	DrawMap map;
-	GameController game = new GameController();
+	GameController game;
+	protected int levelCounter=1;
 
 	int[] door = {R.id.top_door, R.id.right_door, R.id.bot_door,  R.id.left_door};
 	int[] keyNames = {R.id.key_button_blue, R.id.key_button_green, R.id.key_button_orange, R.id.key_button_purple, R.id.key_button_red};
@@ -32,14 +33,15 @@ public class FirstScreen extends Activity {
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
+		
 		map = new DrawMap(FirstScreen.this, null);
 		setContentView(R.layout.firstscreen);
-
+		game = new GameController(levelCounter);
 		mp = MediaPlayer.create(FirstScreen.this, R.raw.house_music);	
 		mp.start();
 		mp.setLooping(true);
 		MapModel.setPos(0, 1);
-
+		
 		//Looping what inital keys to show in the inventory
 		for(int i= 0; i<3; i++){
 			findViewById(invPos[i]).setBackgroundResource(keyImg[GameController.inv.getInv()[i]]);
@@ -182,11 +184,13 @@ public class FirstScreen extends Activity {
 				startActivity(new Intent(FirstScreen.this, MainActivity.class));
 			}
 		});
+		
 		View playNextLevel= view.findViewById(R.id.playNextLevel);
 		playNextLevel.setOnClickListener(new View.OnClickListener() {
 	
 		public void onClick(View clicked){
 			if(clicked.getId() == R.id.playNextLevel)
+				levelCounter++;
 				startActivity(new Intent(FirstScreen.this, FirstScreen.class));
 			}
 		});
