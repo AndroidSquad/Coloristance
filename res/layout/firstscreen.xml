@@ -167,18 +167,41 @@
         android:layout_alignParentBottom="true"
         android:background="@color/red_light" >
 
+
+
         <ImageButton
-            android:id="@+id/key1"
+            android:id="@+id/invKey2"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_alignLeft="@id/top_door"
+            android:layout_margin="30dp"
             android:layout_centerInParent="true"
-            android:background="@null"
+            android:background="@drawable/key_empty"
             android:clickable="true"
             android:contentDescription="@string/key_desc"
-            android:scaleX="0.75"
-            android:scaleY="0.75"
-            android:src="@drawable/key_blue"
+            android:visibility="visible" />
+        
+         <ImageButton
+            android:id="@+id/invKey1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="30dp"
+            android:layout_toLeftOf="@id/invKey2"
+            android:layout_centerInParent="true"
+            android:background="@drawable/key_empty"
+            android:clickable="true"
+            android:contentDescription="@string/key_desc"
+            android:visibility="visible" />
+
+        <ImageButton
+            android:id="@+id/invKey3"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="30dp"
+            android:layout_toRightOf="@id/invKey2"
+           	android:layout_centerInParent="true"
+            android:background="@drawable/key_empty"
+            android:clickable="true"
+            android:contentDescription="@string/key_desc"
             android:visibility="visible" />
 
     </RelativeLayout>

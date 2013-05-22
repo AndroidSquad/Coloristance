@@ -12,7 +12,7 @@ import android.util.Log;
 
 public class MapModel {
 
-	public static String[][] mapArray, keyArray;
+	public static String[][] mapArray, keyArray = null;
 	private static int x,y,mapWidth,mapHeight,mapTop, mapBot, mapRight, mapLeft;
 	private static int leftX, rightX, topY, botY;
 

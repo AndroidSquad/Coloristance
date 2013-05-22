@@ -36,6 +36,7 @@ public class GameController {
 	protected String roomcode;
 
 	public static KeyModel[][] key;
+	public static InventoryModel inv = new InventoryModel();
 		
 	/*
 	 * The empty constructor of GameController whcih creates an object of 
