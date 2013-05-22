@@ -28,9 +28,6 @@ public class FirstScreen extends Activity {
 
 	int[] invPos = {R.id.invKey1, R.id.invKey2, R.id.invKey3};
 
-	private Activity context;	//Nödvändig??
-	
-
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
@@ -171,9 +168,9 @@ public class FirstScreen extends Activity {
 	}
 	
 	public void mapDone(){
-		AlertDialog.Builder alertDialog = new AlertDialog.Builder(context);
-		alertDialog.setTitle(context.getText(R.string.finished));
-		LayoutInflater inflater = context.getLayoutInflater();
+		AlertDialog.Builder alertDialog = new AlertDialog.Builder(this);
+		alertDialog.setTitle(this.getText(R.string.finished));
+		LayoutInflater inflater = this.getLayoutInflater();
 		View view = inflater.inflate(R.layout.finish, null);
 		alertDialog.setView(view);
 //		View closeButton=view.findViewById(R.id.closeGame);
