@@ -50,8 +50,8 @@ public class FirstScreen extends Activity {
 		a.setOnClickListener(new View.OnClickListener() {
 			@Override
 			public void onClick(View v) {
-				
-			/*	Log.v("FirstScreen", 	"Index: "+index+ 
+
+				/*	Log.v("FirstScreen", 	"Index: "+index+ 
 						", KeyNames: "+keyNames[index]+
 						//", Parsed KeyValue: "+ GameController.key[MapModel.getMyX()][MapModel.getMyY()].isVisible+
 						", MyX: "+ MapModel.getMyX()+
@@ -61,13 +61,24 @@ public class FirstScreen extends Activity {
 				//game.doorClick(); At the moment we are not using this code line :)
 				DoorModel.setDoor(MapModel.getRoom());
 				RectModel.setRectColor(MapModel.getRoom());
-//				index = Integer.parseInt(""+MapModel.getRoom().charAt(0))-1;
+				//				index = Integer.parseInt(""+MapModel.getRoom().charAt(0))-1;
 				for(int i = 0; i<5; i++){
-				findViewById(keyNames[i]).setVisibility(GameController.key[MapModel.getMyX()][MapModel.getMyY()].isVisible);}
-//				if(GameController.key[MapModel.getMyX()][MapModel.getMyY()].isVisible == View.VISIBLE){
-//					findViewById(keyNames[index]).setBackgroundResource(keyImg[index]);
-//				}
-				
+					if(GameController.key[MapModel.getMyX()][MapModel.getMyY()].getKeyString().charAt(i) == '1'){
+						Log.v("Firstscreen", "Its visible:" + GameController.key[MapModel.getMyX()][MapModel.getMyY()].getImg());
+						findViewById(keyNames[GameController.key[MapModel.getMyX()][MapModel.getMyY()].getImg()]).setVisibility(View.VISIBLE);
+					}
+					else if(GameController.key[MapModel.getMyX()][MapModel.getMyY()].getKeyString().charAt(i) == '0'){
+						Log.v("Firstscreen", "Instansiering:" + "Nope, nothing");
+						findViewById(keyNames[i]).setVisibility(View.GONE);
+					}
+					else Log.v("Firstscreen", "Faulty input");
+
+					//findViewById(keyNames[i]).setBackgroundResource(keyImg[i]);
+				}
+				//				if(GameController.key[MapModel.getMyX()][MapModel.getMyY()].isVisible == View.VISIBLE){
+				//					findViewById(keyNames[index]).setBackgroundResource(keyImg[index]);
+				//				}
+
 				for(int z = 0; z<4; z++){
 					findViewById(door[z]).setVisibility(View.VISIBLE); //sets the visibility of the door to VISIBLE when it is initialized
 					findViewById(door[z]).setBackgroundColor(DoorModel.getDoor(pos[z]));//sets the door color to the color of the room it is connected to
@@ -95,14 +106,25 @@ public class FirstScreen extends Activity {
 				//game.doorClick();At the moment we are not using this code line :)
 				DoorModel.setDoor(MapModel.getRoom());
 				RectModel.setRectColor(MapModel.getRoom());
-				
-//				index = Integer.parseInt(""+MapModel.getRoom().charAt(0))-1;
+
+				//				index = Integer.parseInt(""+MapModel.getRoom().charAt(0))-1;
 				for(int i = 0; i<5; i++){
-				findViewById(keyNames[i]).setVisibility(GameController.key[MapModel.getMyX()][MapModel.getMyY()].isVisible);}
-//				if(GameController.key[MapModel.getMyX()][MapModel.getMyY()].isVisible == View.VISIBLE){
-//					findViewById(keyNames[index]).setBackgroundResource(keyImg[index]);
-//				}
-				
+					if(GameController.key[MapModel.getMyX()][MapModel.getMyY()].getKeyString().charAt(i) == '1'){
+						Log.v("Firstscreen", "Its visible:" + GameController.key[MapModel.getMyX()][MapModel.getMyY()].getImg());
+						findViewById(keyNames[GameController.key[MapModel.getMyX()][MapModel.getMyY()].getImg()]).setVisibility(View.VISIBLE);
+					}
+					else if(GameController.key[MapModel.getMyX()][MapModel.getMyY()].getKeyString().charAt(i) == '0'){
+						Log.v("Firstscreen", "Instansiering:" + "Nope, nothing");
+						findViewById(keyNames[i]).setVisibility(View.GONE);
+					}
+					else Log.v("Firstscreen", "Faulty input");
+
+					//findViewById(keyNames[i]).setBackgroundResource(keyImg[i]);
+				}
+				//				if(GameController.key[MapModel.getMyX()][MapModel.getMyY()].isVisible == View.VISIBLE){
+				//					findViewById(keyNames[index]).setBackgroundResource(keyImg[index]);
+				//				}
+
 
 				for(int z = 0; z<4; z++){
 					findViewById(door[z]).setVisibility(View.VISIBLE);
@@ -129,13 +151,24 @@ public class FirstScreen extends Activity {
 				DoorModel.setDoor(MapModel.getRoom());
 				RectModel.setRectColor(MapModel.getRoom());
 
-//				index = Integer.parseInt(""+MapModel.getRoom().charAt(0))-1;
+				//				index = Integer.parseInt(""+MapModel.getRoom().charAt(0))-1;
 				for(int i = 0; i<5; i++){
-				findViewById(keyNames[i]).setVisibility(GameController.key[MapModel.getMyX()][MapModel.getMyY()].isVisible);}
-//				if(GameController.key[MapModel.getMyX()][MapModel.getMyY()].isVisible == View.VISIBLE){
-//					findViewById(keyNames[index]).setBackgroundResource(keyImg[index]);
-//				}
-				
+					if(GameController.key[MapModel.getMyX()][MapModel.getMyY()].getKeyString().charAt(i) == '1'){
+						Log.v("Firstscreen", "Its visible:" + GameController.key[MapModel.getMyX()][MapModel.getMyY()].getImg());
+						findViewById(keyNames[GameController.key[MapModel.getMyX()][MapModel.getMyY()].getImg()]).setVisibility(View.VISIBLE);
+					}
+					else if(GameController.key[MapModel.getMyX()][MapModel.getMyY()].getKeyString().charAt(i) == '0'){
+						Log.v("Firstscreen", "Instansiering:" + "Nope, nothing");
+						findViewById(keyNames[i]).setVisibility(View.GONE);
+					}
+					else Log.v("Firstscreen", "Faulty input");
+
+					//findViewById(keyNames[i]).setBackgroundResource(keyImg[i]);
+				}
+				//				if(GameController.key[MapModel.getMyX()][MapModel.getMyY()].isVisible == View.VISIBLE){
+				//					
+				//				}
+
 				for(int z = 0; z<4; z++){
 					findViewById(door[z]).setVisibility(View.VISIBLE);
 					findViewById(door[z]).setBackgroundColor(DoorModel.getDoor(pos[z]));
@@ -159,13 +192,24 @@ public class FirstScreen extends Activity {
 				//game.doorClick();At the moment we are not using this code line :)
 				DoorModel.setDoor(MapModel.getRoom());
 				RectModel.setRectColor(MapModel.getRoom());
-				
-//				index = Integer.parseInt(""+MapModel.getRoom().charAt(0))-1;
+
+				//				index = Integer.parseInt(""+MapModel.getRoom().charAt(0))-1;
 				for(int i = 0; i<5; i++){
-				findViewById(keyNames[i]).setVisibility(GameController.key[MapModel.getMyX()][MapModel.getMyY()].isVisible);}
-//				if(GameController.key[MapModel.getMyX()][MapModel.getMyY()].isVisible == View.VISIBLE){
-//					findViewById(keyNames[index]).setBackgroundResource(keyImg[index]);
-//				}
+					if(GameController.key[MapModel.getMyX()][MapModel.getMyY()].getKeyString().charAt(i) == '1'){
+						Log.v("Firstscreen", "Its visible:" + GameController.key[MapModel.getMyX()][MapModel.getMyY()].getImg());
+						findViewById(keyNames[GameController.key[MapModel.getMyX()][MapModel.getMyY()].getImg()]).setVisibility(View.VISIBLE);
+					}
+					else if(GameController.key[MapModel.getMyX()][MapModel.getMyY()].getKeyString().charAt(i) == '0'){
+						Log.v("Firstscreen", "Instansiering:" + "Nope, nothing");
+						findViewById(keyNames[i]).setVisibility(View.GONE);
+					}
+					else Log.v("Firstscreen", "Faulty input");
+
+					//findViewById(keyNames[i]).setBackgroundResource(keyImg[i]);
+				}
+				//				if(GameController.key[MapModel.getMyX()][MapModel.getMyY()].isVisible == View.VISIBLE){
+				//					findViewById(keyNames[index]).setBackgroundResource(keyImg[index]);
+				//				}
 
 				for(int z = 0; z<4; z++){
 					findViewById(door[z]).setVisibility(View.VISIBLE);

@@ -100,7 +100,8 @@
             android:contentDescription="@string/key_desc"
             android:scaleX="0.75"
             android:scaleY="0.75"
-            android:src="@drawable/key_orange" />
+            android:src="@drawable/key_orange" 
+            android:visibility="gone"/>
 
         <ImageButton
             android:id="@+id/key_button_blue"
@@ -113,7 +114,8 @@
             android:contentDescription="@string/key_desc"
             android:scaleX="0.75"
             android:scaleY="0.75"
-            android:src="@drawable/key_blue" />
+            android:src="@drawable/key_blue" 
+            android:visibility="gone"/>
 
         <ImageButton
             android:id="@+id/key_button_red"
@@ -125,7 +127,8 @@
             android:contentDescription="@string/key_desc"
             android:scaleX="0.75"
             android:scaleY="0.75"
-            android:src="@drawable/key_red" />
+            android:src="@drawable/key_red" 
+            android:visibility="gone"/>
 
         <ImageButton
             android:id="@+id/key_button_purple"
@@ -138,7 +141,8 @@
             android:contentDescription="@string/key_desc"
             android:scaleX="0.75"
             android:scaleY="0.75"
-            android:src="@drawable/key_purple" />
+            android:src="@drawable/key_purple" 
+            android:visibility="gone"/>
 
         <ImageButton
             android:id="@+id/key_button_green"
@@ -151,7 +155,8 @@
             android:contentDescription="@string/key_desc"
             android:scaleX="0.75"
             android:scaleY="0.75"
-            android:src="@drawable/key_green" />
+            android:src="@drawable/key_green"
+            android:visibility="gone" />
 
     </RelativeLayout>
 

@@ -92,6 +92,8 @@ public class DrawMap extends View {
 		 * these two for-loops insert the values of the x,y-position and the corresponding color in the map
 		 */
 		
+
+		
 		for(int i = 0; i<MapModel.getMap().length;i++){
 			for(int j = 0; j<MapModel.getMap()[i].length;j++){
 				name = i+","+j;
