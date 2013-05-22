@@ -2,14 +2,12 @@ package se.androidsquad.coloristance;
 
 import se.androidsquad.coloristance.R.drawable;
 import android.app.Activity;
-
-
-
+import android.app.AlertDialog;
 import android.media.MediaPlayer;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.LayoutInflater;
 import android.view.View;
-
 import android.widget.ImageButton;
 /*
  * This class is the main window which the current room is created. It sets the screen to firstscreen.xml,
@@ -28,7 +26,9 @@ public class FirstScreen extends Activity {
 	int[] keyImg = {drawable.key_blue, drawable.key_green, drawable.key_orange, drawable.key_purple, drawable.key_red};
 	char[] pos = {'N','E','S','W'};
 	int index;
-
+	private Activity context;	
+	
+	
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -106,6 +106,23 @@ public class FirstScreen extends Activity {
 				//game.doorClick();At the moment we are not using this code line :)
 				DoorModel.setDoor(MapModel.getRoom());
 				RectModel.setRectColor(MapModel.getRoom());
+				if(MapModel.getRoom()=="70000"){
+					AlertDialog.Builder alertDialog = new AlertDialog.Builder(context);
+					alertDialog.setTitle(context.getText(R.string.finished));
+					LayoutInflater inflater = context.getLayoutInflater();
+					View view = inflater.inflate(R.layout.finish, null);
+					alertDialog.setView(view);
+//					View closeButton=view.findViewById(R.id.closeGame);
+//					closeButton.setOnClickListener(new OnClickListener() {
+//					
+//						public void onClick(View clicked){
+//							if(clicked.getId() == R.id.closeGame)
+//								
+//						}
+//					});
+					AlertDialog finishDialog = alertDialog.create();
+					finishDialog.show();
+				}
 
 				//				index = Integer.parseInt(""+MapModel.getRoom().charAt(0))-1;
 				for(int i = 0; i<5; i++){
