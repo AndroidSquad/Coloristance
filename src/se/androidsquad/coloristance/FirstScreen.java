@@ -2,15 +2,12 @@ package se.androidsquad.coloristance;
 
 import se.androidsquad.coloristance.R.drawable;
 import android.app.Activity;
-import android.graphics.drawable.Drawable;
-
-
-
+import android.app.AlertDialog;
 import android.media.MediaPlayer;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.LayoutInflater;
 import android.view.View;
-
 import android.widget.ImageButton;
 /*
  * This class is the main window which the current room is created. It sets the screen to firstscreen.xml,
@@ -28,7 +25,11 @@ public class FirstScreen extends Activity {
 	int[] keyNames = {R.id.key_button_blue, R.id.key_button_green, R.id.key_button_orange, R.id.key_button_purple, R.id.key_button_red};
 	int[] keyImg = {drawable.key_blue, drawable.key_green, drawable.key_orange, drawable.key_purple, drawable.key_red, drawable.key_empty};
 	char[] pos = {'N','E','S','W'};
+
 	int[] invPos = {R.id.invKey1, R.id.invKey2, R.id.invKey3};
+
+	private Activity context;	//Nödvändig??
+	
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -80,12 +81,16 @@ public class FirstScreen extends Activity {
 			public void onClick(View v) {
 
 				MapModel.moveRight();
+
 				//game.doorClick(); //Check need
 				setRoom();
 				setKeys();
 				setDoors();
 				setInventory();
-
+							
+				if(MapModel.getRoom()=="70000"){
+					mapDone();
+				}
 			}
 		});
 
@@ -164,6 +169,25 @@ public class FirstScreen extends Activity {
 	public void setInventory(){
 
 	}
+	
+	public void mapDone(){
+		AlertDialog.Builder alertDialog = new AlertDialog.Builder(context);
+		alertDialog.setTitle(context.getText(R.string.finished));
+		LayoutInflater inflater = context.getLayoutInflater();
+		View view = inflater.inflate(R.layout.finish, null);
+		alertDialog.setView(view);
+//		View closeButton=view.findViewById(R.id.closeGame);
+//		closeButton.setOnClickListener(new OnClickListener() {
+//		
+//			public void onClick(View clicked){
+//				if(clicked.getId() == R.id.closeGame)
+//					
+//			}
+//		});
+		AlertDialog finishDialog = alertDialog.create();
+		finishDialog.show();
+	}
+
 
 
 }

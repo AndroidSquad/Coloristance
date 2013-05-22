@@ -11,6 +11,6 @@
     <string name="room">Room</string>
     <string name="test">Herro Herro ima little test-objectz ^^</string>
     <string name="key_desc">This is a colored key you can use to get access to a room with the same color</string>
-    
+    <string name="finished">You have reached the goaaal!</string>
 
 </resources>
