@@ -6,12 +6,12 @@
     android:layout_gravity="center_horizontal" >
     
     <TextView 
-    android:text="Congratulazioni!"
+    android:text="@string/congrats"
     android:layout_width="fill_parent"
     android:layout_height="wrap_content"
     android:paddingLeft="10dp"/>
     <Button 
-    android:text="Ok slut haha"
+    android:text="@string/close"
     android:id="@+id/closeGame"
     android:layout_width="fill_parent"
     android:layout_height="wrap_content"/>    
