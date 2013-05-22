@@ -3,6 +3,7 @@ package se.androidsquad.coloristance;
 import se.androidsquad.coloristance.R.drawable;
 import android.app.Activity;
 import android.app.AlertDialog;
+import android.content.Intent;
 import android.media.MediaPlayer;
 import android.os.Bundle;
 import android.util.Log;
@@ -173,14 +174,22 @@ public class FirstScreen extends Activity {
 		LayoutInflater inflater = this.getLayoutInflater();
 		View view = inflater.inflate(R.layout.finish, null);
 		alertDialog.setView(view);
-//		View closeButton=view.findViewById(R.id.closeGame);
-//		closeButton.setOnClickListener(new OnClickListener() {
-//		
-//			public void onClick(View clicked){
-//				if(clicked.getId() == R.id.closeGame)
-//					
-//			}
-//		});
+		View closeButton=view.findViewById(R.id.endGame);
+		closeButton.setOnClickListener(new View.OnClickListener() {
+	
+		public void onClick(View clicked){
+			if(clicked.getId() == R.id.endGame)
+				startActivity(new Intent(FirstScreen.this, MainActivity.class));
+			}
+		});
+		View playNextLevel= view.findViewById(R.id.playNextLevel);
+		playNextLevel.setOnClickListener(new View.OnClickListener() {
+	
+		public void onClick(View clicked){
+			if(clicked.getId() == R.id.playNextLevel)
+				startActivity(new Intent(FirstScreen.this, FirstScreen.class));
+			}
+		});
 		AlertDialog finishDialog = alertDialog.create();
 		finishDialog.show();
 	}

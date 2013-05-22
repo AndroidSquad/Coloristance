@@ -11,9 +11,14 @@
     android:layout_height="wrap_content"
     android:paddingLeft="10dp"/>
     <Button 
-    android:text="@string/close"
-    android:id="@+id/closeGame"
+    android:text="@string/play_next_level"
+    android:id="@+id/playNextLevel"
     android:layout_width="fill_parent"
-    android:layout_height="wrap_content"/>    
+    android:layout_height="wrap_content"/>
+    <Button 
+    android:text="@string/end_game"
+    android:id="@+id/endGame"
+    android:layout_width="fill_parent"
+    android:layout_height="wrap_content"/> 
 
 </LinearLayout>
