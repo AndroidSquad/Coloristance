@@ -16,8 +16,6 @@ public class MapModelTest extends TestCase{
 	@Before
 	public void setUp() throws Exception {
 		MapModel.setMap("map_1");
-	
-
 	}
 	
 	@Test
