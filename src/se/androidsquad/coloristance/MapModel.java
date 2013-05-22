@@ -18,12 +18,12 @@ public class MapModel {
 
 
 	public static void setMap(String level){
-		if(level == "map_1") mapArray = Levels.mapArray;
+		if(level == "map_2") mapArray = Levels.map_2;
 	}
 
 	public static String[][] getKeys(){
-		if(mapArray == Levels.mapArray){
-			keyArray = Levels.keyArray;
+		if(mapArray == Levels.map_2){
+			keyArray = Levels.keys_1;
 		}
 
 		return keyArray;

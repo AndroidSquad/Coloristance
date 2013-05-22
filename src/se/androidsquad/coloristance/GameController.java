@@ -43,7 +43,7 @@ public class GameController {
 	 * each of the different models created
 	 */
 	public GameController(){ // Creates an object of each of the Models
-		MapModel.setMap("map_1");
+		MapModel.setMap("map_2");
 		
 		key = KeyModel.getKeyArray();
 		
