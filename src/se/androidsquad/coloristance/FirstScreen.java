@@ -38,10 +38,7 @@ public class FirstScreen extends Activity {
 	long startTime, stopTime = 0;
 
 	String timeResult;
-
-
 	int[] invPos = {R.id.invKeyLeft, R.id.invKeyMid, R.id.invKeyRight};
-
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
