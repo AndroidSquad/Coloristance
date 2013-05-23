@@ -38,21 +38,15 @@ public class GameController {
 	public static KeyModel[][] key;
 	public static InventoryModel inv = new InventoryModel();
 	
-	protected int levelCounter=1;
-	
 	/*
 	 * The empty constructor of GameController whcih creates an object of 
 	 * each of the different models created
 	 */
-	public GameController(int level){ // Creates an object of each of the Models
-		if(levelCounter == 1){
+	public GameController(){ // Creates an object of each of the Models
+	
 			MapModel.setMap("map_1");
 			key = KeyModel.getKeyArray();	
-		} else if (levelCounter == 2){
-			MapModel.setMap("map_2");
-			key = KeyModel.getKeyArray();
-		}
-		
+
 		
 //		for(int i = 0; i<key.length;i++){
 //			for(int j = 0; j<key[i].length;j++){
@@ -66,7 +60,7 @@ public class GameController {
 
 //		doorClick();
 //		Levels.initLevel();
-		levelCounter++;
+
 	}
 	
 	

@@ -97,7 +97,7 @@ Alla kommandon som har med git att göra börjar med git, följt av kommandonamn
 | git reset | Git reset är motsatsen till git add, dvs den berövar en fil dess stage:ade tillstånd till skillnad från git add som ger ett stage:at tillstånd”. När du har ställt ut varor på lastkajen men ångrar dig och vill ta tillbaka dom så anropar du git reset. Detta för att du ska kunna göra ändringar på varorna du trodde var redo att skickas, men inte var det.  |
 | git reset --hard | Kommer att ångra allt som gjorts, dvs återställa alla ändrade filer till senaste commit. |
 | git reset --hard HEAD^ | Återställer den senaste commiten och återställer working tree och alla pekare (VARNING!) |
-| git log | Listar alla tidigare commits och visare vem som postat dem i ordningen; senaste först |
+| git log | Listar alla tidigare commits och visare vem som postat dem i ordningen; senaste först. P� windows kommer du efter ett git log anrop fastna med ett ':' tryck d� 'q' och enter f�r att komma tillbaka till den vanliga terminalen.|
 | git branch | listar alla branches som finns |
 | git branch branchnamn | Skapar en ny branch kallad branchname |
 | git checkout branchname | Byter från nuvarande branch till branchname |

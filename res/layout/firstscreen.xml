@@ -170,7 +170,7 @@
 
 
         <ImageButton
-            android:id="@+id/invKey2"
+            android:id="@+id/invKeyMid"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_margin="30dp"
@@ -181,11 +181,11 @@
             android:visibility="visible" />
         
          <ImageButton
-            android:id="@+id/invKey1"
+            android:id="@+id/invKeyLeft"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_margin="30dp"
-            android:layout_toLeftOf="@id/invKey2"
+            android:layout_toLeftOf="@id/invKeyMid"
             android:layout_centerInParent="true"
             android:background="@drawable/key_empty"
             android:clickable="true"
@@ -193,11 +193,11 @@
             android:visibility="visible" />
 
         <ImageButton
-            android:id="@+id/invKey3"
+            android:id="@+id/invKeyRight"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_margin="30dp"
-            android:layout_toRightOf="@id/invKey2"
+            android:layout_toRightOf="@id/invKeyMid"
            	android:layout_centerInParent="true"
             android:background="@drawable/key_empty"
             android:clickable="true"

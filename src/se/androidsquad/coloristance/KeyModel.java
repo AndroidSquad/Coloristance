@@ -14,9 +14,9 @@ public class KeyModel {
 
 	//position: Talar om var i rummet nyckeln befinner sig
 	//color: anger nycklens färg
-	boolean isVisible;
-	String keys;
-	int keyColor;
+	private boolean isVisible;
+	private String keys;
+	private int keyColor;
 
 	public KeyModel(String room){
 		keys = room;
@@ -43,8 +43,7 @@ public class KeyModel {
 					}
 					else if(room.charAt(x) == '0'){ 
 						keyArray[i][j].setKeyVisibility(false);
-										
-						
+		
 						Log.v("KeyModel", "Key False: " +i+","+j+"keyCode: "+ MapModel.getKeys()[i][j]);
 					}
 					else{
@@ -74,26 +73,13 @@ public class KeyModel {
 	}
 	
 	public void setKeyImg(int color){
-		if(color<5)
+		if(color<5){
 			keyColor = color;
-		
-//		if (color == 0){
-//			//keyColor = drawable.key_blue;
-//		} 
-//		else if (color == 1){
-//			//keyColor = drawable.key_green;
-//		}
-//		else if (color == 2){
-//			//keyColor = drawable.key_orange;
-//		} 
-//		else if (color == 3){
-//			//keyColor = drawable.key_purple;
-//		} 
-//		else if (color == 4){
-//			//keyColor = drawable.key_red;
-//		} 
+			Log.v("KeyModel", "Declared: "+color);
+		}
+ 
 		else{
-			keyColor = Color.BLACK;
+			keyColor = 666;
 			Log.v("KeyModel", "No color was found");
 		}		
 	}
@@ -108,6 +94,10 @@ public class KeyModel {
 
 	public String getKeyString(){
 		return keys;
+	}
+	
+	public void setKeyString(String update){
+		keys = update;
 	}
 
 }
