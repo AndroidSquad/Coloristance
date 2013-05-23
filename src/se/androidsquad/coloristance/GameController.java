@@ -49,6 +49,7 @@ public class GameController {
 	public GameController(){ // Creates an object of each of the Models
 			MapModel.setMap(level);
 			key = KeyModel.getKeyArray();
+			
 	
 //			Log.v("GameController","Fel"+level);
 //		for(int i = 0; i<key.length;i++){

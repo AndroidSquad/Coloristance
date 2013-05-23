@@ -1,6 +1,7 @@
 package se.androidsquad.coloristance;
 
 import se.androidsquad.coloristance.R.drawable;
+import android.R.color;
 import android.app.Activity;
 import android.app.AlertDialog;
 import android.content.Intent;
@@ -21,11 +22,12 @@ public class FirstScreen extends Activity {
 
 	MediaPlayer mp;
 	DrawMap map;
+	DrawKeys drawKeys;
 	GameController game;
 	protected int levelCounter = 1;
 
 	int[] door = {R.id.top_door, R.id.right_door, R.id.bot_door,  R.id.left_door};
-	int[] keyNames = {R.id.key_button_blue, R.id.key_button_green, R.id.key_button_orange, R.id.key_button_purple, R.id.key_button_red};
+	int[] keyNames = {R.id.key_button_blue, R.id.key_button_green, R.id.key_button_orange, R.id.key_button_purple, R.id.key_button_red, 9};
 	int[] keyImg = {drawable.key_blue, drawable.key_green, drawable.key_orange, drawable.key_purple, drawable.key_red, drawable.key_empty};
 	char[] pos = {'N','E','S','W'};
 
@@ -44,6 +46,7 @@ public class FirstScreen extends Activity {
 
 		game = new GameController();
 		map = new DrawMap(FirstScreen.this, null);
+		drawKeys = new DrawKeys(FirstScreen.this, null);
 		setContentView(R.layout.firstscreen);
 
 		mp = MediaPlayer.create(FirstScreen.this, R.raw.house_music);	
@@ -68,6 +71,13 @@ public class FirstScreen extends Activity {
 		ImageButton invLeft = (ImageButton) findViewById(R.id.invKeyLeft);
 		ImageButton invMid = (ImageButton) findViewById(R.id.invKeyMid);
 		ImageButton invRight = (ImageButton) findViewById(R.id.invKeyRight);
+		ImageButton keyBlue = (ImageButton) findViewById(R.id.key_button_blue);
+		ImageButton keyGreen = (ImageButton) findViewById(R.id.key_button_green);
+		ImageButton keyOrange = (ImageButton) findViewById(R.id.key_button_orange);
+		ImageButton keyPurple = (ImageButton) findViewById(R.id.key_button_purple);
+		ImageButton keyRed = (ImageButton) findViewById(R.id.key_button_red);
+	
+		
 
 		//Top door
 		topDoor.setOnClickListener(new View.OnClickListener() {
@@ -194,6 +204,45 @@ public class FirstScreen extends Activity {
 
 			}
 		});
+		
+		keyBlue.setOnClickListener(new View.OnClickListener() {
+			@Override
+			public void onClick(View v) {
+
+
+			}
+		});
+		keyGreen.setOnClickListener(new View.OnClickListener() {
+			@Override
+			public void onClick(View v) {
+				//setInventory();
+				setKeys();
+			}
+		});
+		keyOrange.setOnClickListener(new View.OnClickListener() {
+			@Override
+			public void onClick(View v) {
+				//setInventory();
+				setKeys();
+
+			}
+		});
+		keyPurple.setOnClickListener(new View.OnClickListener() {
+			@Override
+			public void onClick(View v) {
+				//setInventory();
+				setKeys();
+
+			}
+		});
+		keyRed.setOnClickListener(new View.OnClickListener() {
+			@Override
+			public void onClick(View v) {
+				//setInventory();
+				setKeys();
+
+			}
+		});
 
 	}
 
@@ -226,23 +275,24 @@ public class FirstScreen extends Activity {
 		}
 		else{
 			Log.v("FirstScreen", "The key couldn't be dropped");
+			pos = 9;
 		}
 
 
 		//		else{
 		//			Log.v("FirstScreen", "The inventory spot was empty");
 		//		}
-
-		String updateKeys = GameController.key[MapModel.getMyX()][MapModel.getMyY()].getKeyString();
-		Log.v("FirstScreen", "updateKeys: " + updateKeys);
-		char[] bufferForKey = new char[7];
-
-
-		updateKeys.getChars(0, 4, bufferForKey, 0);
-		Log.v("FirstScreen", "chars: " + bufferForKey.toString());
-		bufferForKey[GameController.key[MapModel.getMyX()][MapModel.getMyY()].getImg()] = 1;
-		Log.v("FirstScreen", "chars after: " + bufferForKey.toString());
-		GameController.key[MapModel.getMyX()][MapModel.getMyY()].setKeyString(bufferForKey.toString());
+		
+		char[] buffer = GameController.key[MapModel.getMyX()][MapModel.getMyY()].getKeyString().toCharArray();
+		Log.v("FirstScreen", "input : " + GameController.key[MapModel.getMyX()][MapModel.getMyY()].getKeyString());
+		Log.v("FirstScreen", "buffer 1: " + buffer[0]+ buffer[1]+ buffer[2]+ buffer[3]+ buffer[4]);
+		buffer[GameController.inv.getInv(pos)] = '1';
+		String newKey = new String(buffer);
+		GameController.key[MapModel.getMyX()][MapModel.getMyY()].setKeyString(newKey);
+		findViewById(keyNames[GameController.inv.getInv(pos)]).setVisibility(View.VISIBLE);
+		GameController.inv.setInv(pos, 5);
+		//Log.v("FirstScreen", "buffer 1: " + buffer[0]+ buffer[1]+ buffer[2]+ buffer[3]+ buffer[4]);
+		//Log.v("FirstScreen", "String: " + newKey);
 
 	}
 

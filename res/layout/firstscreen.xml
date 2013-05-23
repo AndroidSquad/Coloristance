@@ -90,65 +90,23 @@
             android:visibility="gone" />
 
         <ImageButton
-            android:id="@+id/key_button_orange"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_centerInParent="true"
-            android:layout_toLeftOf="@+id/key_button_red"
-            android:background="@null"
-            android:clickable="true"
-            android:contentDescription="@string/key_desc"
-            android:scaleX="0.75"
-            android:scaleY="0.75"
-            android:src="@drawable/key_orange" 
-            android:visibility="gone"/>
-
-        <ImageButton
             android:id="@+id/key_button_blue"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_centerInParent="true"
-            android:layout_toRightOf="@+id/key_button_red"
             android:background="@null"
             android:clickable="true"
             android:contentDescription="@string/key_desc"
             android:scaleX="0.75"
             android:scaleY="0.75"
-            android:src="@drawable/key_blue" 
-            android:visibility="gone"/>
-
-        <ImageButton
-            android:id="@+id/key_button_red"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_centerInParent="true"
-            android:background="@null"
-            android:clickable="true"
-            android:contentDescription="@string/key_desc"
-            android:scaleX="0.75"
-            android:scaleY="0.75"
-            android:src="@drawable/key_red" 
-            android:visibility="gone"/>
-
-        <ImageButton
-            android:id="@+id/key_button_purple"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_above="@+id/key_button_red"
-            android:layout_centerInParent="true"
-            android:background="@null"
-            android:clickable="true"
-            android:contentDescription="@string/key_desc"
-            android:scaleX="0.75"
-            android:scaleY="0.75"
-            android:src="@drawable/key_purple" 
-            android:visibility="gone"/>
+            android:src="@drawable/key_blue"
+            android:visibility="visible" />
 
         <ImageButton
             android:id="@+id/key_button_green"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_below="@+id/key_button_red"
+            android:layout_above="@id/key_button_blue"
             android:layout_centerInParent="true"
             android:background="@null"
             android:clickable="true"
@@ -156,8 +114,49 @@
             android:scaleX="0.75"
             android:scaleY="0.75"
             android:src="@drawable/key_green"
-            android:visibility="gone" />
+            android:visibility="visible" />
 
+        <ImageButton
+            android:id="@+id/key_button_orange"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_toRightOf="@id/key_button_blue"
+            android:layout_centerInParent="true"
+            android:background="@null"
+            android:clickable="true"
+            android:contentDescription="@string/key_desc"
+            android:scaleX="0.75"
+            android:scaleY="0.75"
+            android:src="@drawable/key_orange"
+            android:visibility="visible" />
+
+        <ImageButton
+            android:id="@+id/key_button_purple"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/key_button_blue"
+            android:layout_centerInParent="true"
+            android:background="@null"
+            android:clickable="true"
+            android:contentDescription="@string/key_desc"
+            android:scaleX="0.75"
+            android:scaleY="0.75"
+            android:src="@drawable/key_purple"
+            android:visibility="visible" />
+
+        <ImageButton
+            android:id="@+id/key_button_red"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_toLeftOf="@id/key_button_blue"
+            android:layout_centerInParent="true"
+            android:background="@null"
+            android:clickable="true"
+            android:contentDescription="@string/key_desc"
+            android:scaleX="0.75"
+            android:scaleY="0.75"
+            android:src="@drawable/key_red"
+            android:visibility="visible" />
     </RelativeLayout>
 
     <RelativeLayout
@@ -167,26 +166,24 @@
         android:layout_alignParentBottom="true"
         android:background="@color/red_light" >
 
-
-
         <ImageButton
             android:id="@+id/invKeyMid"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_margin="30dp"
             android:layout_centerInParent="true"
+            android:layout_margin="30dp"
             android:background="@drawable/key_empty"
             android:clickable="true"
             android:contentDescription="@string/key_desc"
             android:visibility="visible" />
-        
-         <ImageButton
+
+        <ImageButton
             android:id="@+id/invKeyLeft"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
             android:layout_margin="30dp"
             android:layout_toLeftOf="@id/invKeyMid"
-            android:layout_centerInParent="true"
             android:background="@drawable/key_empty"
             android:clickable="true"
             android:contentDescription="@string/key_desc"
@@ -196,14 +193,13 @@
             android:id="@+id/invKeyRight"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
             android:layout_margin="30dp"
             android:layout_toRightOf="@id/invKeyMid"
-           	android:layout_centerInParent="true"
             android:background="@drawable/key_empty"
             android:clickable="true"
             android:contentDescription="@string/key_desc"
             android:visibility="visible" />
-
     </RelativeLayout>
 
 </RelativeLayout>
