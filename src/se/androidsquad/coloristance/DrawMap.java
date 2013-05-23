@@ -46,13 +46,12 @@ public class DrawMap extends View {
 		
 		String rectColor = "pl";
 		
-		int mapTop, mapBot, mapRight, mapLeft, mapWidth, mapHeight;
-		mapTop = findViewById(R.id.mapRect).getTop();
-		mapBot = findViewById(R.id.mapRect).getBottom();
-		mapRight = findViewById(R.id.mapRect).getRight();
-		mapLeft = findViewById(R.id.mapRect).getLeft();
-		mapHeight = findViewById(R.id.mapRect).getHeight();
-		mapWidth = findViewById(R.id.mapRect).getWidth();
+		int mapTop = findViewById(R.id.mapRect).getTop();
+		int mapBot = findViewById(R.id.mapRect).getBottom();
+		int mapRight = findViewById(R.id.mapRect).getRight();
+		int mapLeft = findViewById(R.id.mapRect).getLeft();
+		int mapHeight = findViewById(R.id.mapRect).getHeight();
+		int mapWidth = findViewById(R.id.mapRect).getWidth();
 
 
 				
