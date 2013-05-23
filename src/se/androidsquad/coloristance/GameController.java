@@ -38,7 +38,7 @@ public class GameController {
 	public static KeyModel[][] key;
 	public static InventoryModel inv = new InventoryModel();
 	
-	// The first level is always "map_1", why the variable level is initally defined as this
+	// The first level is always "map_1", why the variable level is initally defined as "map_1"
 	public static String level = "map_1"; 
 	
 	/*
@@ -70,8 +70,6 @@ public class GameController {
 			level = "map_1";
 		else if(lNr == 2)
 			level = "map_2";
-		else if(lNr == 3)
-			level = "map_3";
 		else
 			Log.v("GameController2","test "+level);
 	}
