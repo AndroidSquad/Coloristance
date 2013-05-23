@@ -10,6 +10,7 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.ImageButton;
+import android.widget.TextView;
 /*
  * This class is the main window which the current room is created. It sets the screen to firstscreen.xml,
  * contains the code for the music, and the information about the doors that the different rooms should contain and
@@ -26,15 +27,17 @@ public class FirstScreen extends Activity {
 	int[] keyNames = {R.id.key_button_blue, R.id.key_button_green, R.id.key_button_orange, R.id.key_button_purple, R.id.key_button_red};
 	int[] keyImg = {drawable.key_blue, drawable.key_green, drawable.key_orange, drawable.key_purple, drawable.key_red, drawable.key_empty};
 	char[] pos = {'N','E','S','W'};
-
+	long startTime, stopTime = 0;
 	int[] invPos = {R.id.invKey1, R.id.invKey2, R.id.invKey3};
-
+	String timeResult;
+	
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
+		startTime();
 		super.onCreate(savedInstanceState);
 		map = new DrawMap(FirstScreen.this, null);
 		setContentView(R.layout.firstscreen);
-
+		
 		mp = MediaPlayer.create(FirstScreen.this, R.raw.house_music);	
 		mp.start();
 		mp.setLooping(true);
@@ -127,6 +130,8 @@ public class FirstScreen extends Activity {
 
 	}
 
+	
+
 	@Override
 	protected void onPause() {
 		super.onPause();
@@ -169,9 +174,13 @@ public class FirstScreen extends Activity {
 	}
 	
 	public void mapDone(){
+		stopTime();
+		showTime();
 		AlertDialog.Builder alertDialog = new AlertDialog.Builder(this);
-		alertDialog.setTitle(this.getText(R.string.finished));
+		alertDialog.setTitle(this.getText(R.string.finished)+"\t"+"You finished in: "+ timeResult +" seconds");
+		//alertDialog.setTitle(showTime());
 		LayoutInflater inflater = this.getLayoutInflater();
+		
 		View view = inflater.inflate(R.layout.finish, null);
 		alertDialog.setView(view);
 		View closeButton=view.findViewById(R.id.endGame);
@@ -190,9 +199,31 @@ public class FirstScreen extends Activity {
 				startActivity(new Intent(FirstScreen.this, FirstScreen.class));
 			}
 		});
+		
 		AlertDialog finishDialog = alertDialog.create();
 		finishDialog.show();
+		
 	}
+	
+//	int i = showTime();
+	private void startTime() {
+		startTime = System.currentTimeMillis();		
+	}
+
+	private void stopTime() {
+		stopTime = System.currentTimeMillis();		
+	}
+
+	private void showTime(){
+		long totalTime = (stopTime - startTime)/1000;
+		timeResult = Long.toString(totalTime);
+//		int i = (int) totalTime/1000;
+//		String s = Integer.toString(i);
+//		showTime=s;
+//		return timeResult;
+	}
+
+	
 
 
 

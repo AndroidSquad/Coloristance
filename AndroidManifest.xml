@@ -26,7 +26,7 @@
         <activity
             android:name="se.androidsquad.coloristance.FirstScreen"
             android:theme="@android:style/Theme.NoTitleBar.Fullscreen" 
-            android:screenOrientation="portrait">
+           >
         </activity>
     </application>
 
