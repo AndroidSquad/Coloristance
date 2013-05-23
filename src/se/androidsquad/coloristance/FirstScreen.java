@@ -1,5 +1,7 @@
 package se.androidsquad.coloristance;
 
+import java.io.IOException;
+
 import se.androidsquad.coloristance.R.drawable;
 import android.R.color;
 import android.app.Activity;
@@ -17,13 +19,15 @@ import android.widget.TextView;
  * contains the code for the music, and the information about the doors that the different rooms should contain and
  * the color of the doors.
  */
+import android.widget.ToggleButton;
 
 public class FirstScreen extends Activity {
 
-	MediaPlayer mp;
+	MediaPlayer mp, finish_game;
 	DrawMap map;
 	DrawKeys drawKeys;
 	GameController game;
+	ToggleButton musicSwitchGame;
 	protected int levelCounter = 1;
 
 	int[] door = {R.id.top_door, R.id.right_door, R.id.bot_door,  R.id.left_door};
@@ -53,6 +57,39 @@ public class FirstScreen extends Activity {
 		mp.start();
 		mp.setLooping(true);
 		MapModel.setPos(0, 1);
+
+		musicSwitchGame = (ToggleButton) findViewById(R.id.musicgametogglebutton);
+		musicSwitchGame.setOnClickListener(new View.OnClickListener(){
+
+
+			@Override
+			public void onClick(View v) {
+				// TODO Auto-generated method stub
+				if(musicSwitchGame.isChecked()){
+					try {
+						mp.prepare();
+					} catch (IllegalStateException e) {
+						e.printStackTrace();
+					} catch (IOException e) {
+						e.printStackTrace();
+					}				 
+					mp.start();
+					mp.setLooping(true);
+				}else{
+					try {
+						mp.prepare();
+					} catch (IllegalStateException e) {
+						e.printStackTrace();
+					} catch (IOException e) {
+						e.printStackTrace();
+					}				 
+					mp.start();
+					mp.pause();	
+				}
+			}
+
+		});
+
 
 		//Looping what inital keys to show in the inventory
 		for(int i= 0; i<3; i++){
@@ -181,7 +218,7 @@ public class FirstScreen extends Activity {
 
 			}
 		});
-		
+
 		invLeft.setOnClickListener(new View.OnClickListener() {
 			@Override
 			public void onClick(View v) {
@@ -338,7 +375,10 @@ public class FirstScreen extends Activity {
 		//alertDialog.setTitle(showTime());
 		LayoutInflater inflater = this.getLayoutInflater();
 
-
+		mp.stop();
+		finish_game = MediaPlayer.create(FirstScreen.this, R.raw.super_mario_complete);	
+		finish_game.start();
+		//		finish_game.setLooping(true);
 
 		View dialogView = inflater.inflate(R.layout.finish, null);
 		alertDialog.setView(dialogView);
@@ -350,6 +390,7 @@ public class FirstScreen extends Activity {
 			public void onClick(View clicked){
 				if(clicked.getId() == R.id.endGame)
 					startActivity(new Intent(FirstScreen.this, MainActivity.class));
+				finish_game.stop();
 			}
 		});
 
@@ -361,6 +402,7 @@ public class FirstScreen extends Activity {
 					levelCounter++;
 				GameController.setLevel(levelCounter);
 				startActivity(new Intent(FirstScreen.this, FirstScreen.class));
+				finish_game.stop();
 			}
 		});
 
@@ -368,6 +410,7 @@ public class FirstScreen extends Activity {
 		finishDialog.show();
 
 	}
+
 
 	//	int i = showTime();
 	private void startTime() {
@@ -389,6 +432,29 @@ public class FirstScreen extends Activity {
 
 
 
+	@Override
+	protected void onResume() {
+		super.onResume();
+		musicSwitchGame.toggle();
+	}
 
+	@Override
+	protected void onRestart() {
+		super.onRestart();
+		mp = MediaPlayer.create(FirstScreen.this, R.raw.house_music);	
+		if(!musicSwitchGame.isChecked()){
+			musicSwitchGame.toggle();
+		}
+
+
+
+	}
+
+	protected void onStop() {
+		super.onStop();
+		mp.release();
+	}
 
 }
+
+

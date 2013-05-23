@@ -130,6 +130,7 @@
             android:src="@drawable/key_orange"
             android:visibility="visible" />
 
+
         <ImageButton
             android:id="@+id/key_button_purple"
             android:layout_width="wrap_content"
@@ -157,6 +158,7 @@
             android:scaleY="0.75"
             android:src="@drawable/key_red"
             android:visibility="visible" />
+
     </RelativeLayout>
 
     <RelativeLayout
@@ -200,6 +202,22 @@
             android:clickable="true"
             android:contentDescription="@string/key_desc"
             android:visibility="visible" />
+
+        <ToggleButton
+            android:id="@+id/musicgametogglebutton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentLeft="true"
+            android:layout_centerInParent="true"
+            android:layout_margin="10dp"
+            android:background="@drawable/check"
+            android:scaleX="0.7"
+            android:scaleY="0.7"
+            android:focusable="false"
+            android:focusableInTouchMode="false"
+            android:onClick="onToggleClicked"
+            android:textOff=""
+            android:textOn="" />
     </RelativeLayout>
 
 </RelativeLayout>
