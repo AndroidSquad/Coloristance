@@ -171,6 +171,30 @@ public class FirstScreen extends Activity {
 
 			}
 		});
+		
+		invLeft.setOnClickListener(new View.OnClickListener() {
+			@Override
+			public void onClick(View v) {
+
+
+				Log.v("FirstScreen", "Left was clicked");
+				dropKey("left");
+				setKeys();
+
+			}
+		});
+		invMid.setOnClickListener(new View.OnClickListener() {
+			@Override
+			public void onClick(View v) {
+
+
+				Log.v("FirstScreen", "Mid was clicked");
+				dropKey("mid");
+				setKeys();
+
+			}
+		});
+
 	}
 
 
@@ -190,15 +214,15 @@ public class FirstScreen extends Activity {
 		if(keyInvPos == "right"){
 
 			findViewById(invPos[2]).setBackgroundResource(emptyInventory);
-			pos = 0;
+			pos = 2;
 		}
 		else if(keyInvPos == "left"){
-			findViewById(invPos[1]).setBackgroundResource(emptyInventory);
-			pos = 1;
+			findViewById(invPos[0]).setBackgroundResource(emptyInventory);
+			pos = 0;
 		}
 		else if(keyInvPos == "mid"){
-			findViewById(invPos[0]).setBackgroundResource(emptyInventory);
-			pos = 2;
+			findViewById(invPos[1]).setBackgroundResource(emptyInventory);
+			pos = 1;
 		}
 		else{
 			Log.v("FirstScreen", "The key couldn't be dropped");
