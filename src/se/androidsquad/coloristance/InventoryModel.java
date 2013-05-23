@@ -9,9 +9,9 @@ public class InventoryModel {
 	
 	InventoryModel(){
 		//Initalize inventory with three empty slots
-		invKey[0] = 5;
+		invKey[0] = 3;
 		invKey[1] = 2;
-		invKey[2] = 5;
+		invKey[2] = 1;
 	}
 	
 	public int getInv(int pos){
