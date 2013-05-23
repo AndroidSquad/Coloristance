@@ -19,7 +19,7 @@ import android.widget.ToggleButton;
 public class MainActivity extends Activity {
 
 	MediaPlayer mp;
-	ToggleButton musicSwitch;
+	//ToggleButton musicSwitch;
 
 	/*
 	 * When the class is called the onCreate it sets the view to activity_main.xml, and it also creates different
@@ -29,22 +29,22 @@ public class MainActivity extends Activity {
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_main);
-		
+
 		mp = MediaPlayer.create(MainActivity.this, R.raw.house_music);				 
 
-		
+
 		Button newGame = (Button) findViewById(R.id.button1); // This row connect the button named button1 in main_activity.xml to the button newGame.
 		newGame.setOnClickListener(new View.OnClickListener() { 
-			
-			
+
+
 			@Override
 			public void onClick(View v) {
 				startActivity(new Intent(MainActivity.this, FirstScreen.class));
-				
+
 			}
 		});
-		
-		musicSwitch = (ToggleButton) findViewById(R.id.musictogglebutton);
+
+		/*musicSwitch = (ToggleButton) findViewById(R.id.musictogglebutton);
 		musicSwitch.setOnClickListener(new View.OnClickListener(){
 
 			@Override
@@ -73,29 +73,29 @@ public class MainActivity extends Activity {
 				}
 			}
 		});
-		
-	}
-	@Override
-	protected void onPause() {
-		super.onPause();
-		mp.release();
-	}
-	
 
-	@Override
-	public boolean onCreateOptionsMenu(Menu menu) {
-		// Inflate the menu; this adds items to the action bar if it is present.
-		getMenuInflater().inflate(R.menu.main, menu);
-		return true;
-	}
-	@Override
-	protected void onResume() {
-		super.onResume();
-		if(musicSwitch.isChecked()){
+	}*/
+		/*@Override
+		protected void onPause() {
+			super.onPause();
+			mp.release();
+		}
+
+
+		@Override
+		public boolean onCreateOptionsMenu(Menu menu) {
+			// Inflate the menu; this adds items to the action bar if it is present.
+			getMenuInflater().inflate(R.menu.main, menu);
+			return true;
+		}
+		@Override
+		protected void onResume() {
+			super.onResume();
+			/*if(musicSwitch.isChecked()){
 			musicSwitch.toggle();
 		}
-		mp = MediaPlayer.create(MainActivity.this, R.raw.house_music);				 
-
+			mp = MediaPlayer.create(MainActivity.this, R.raw.house_music);				 
+		 */
 	}
-	
+
 }
