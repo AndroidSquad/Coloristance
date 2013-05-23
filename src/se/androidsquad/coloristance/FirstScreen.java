@@ -21,6 +21,7 @@ public class FirstScreen extends Activity {
 	MediaPlayer mp;
 	DrawMap map;
 	GameController game;
+	protected int levelCounter = 1;
 
 	int[] door = {R.id.top_door, R.id.right_door, R.id.bot_door,  R.id.left_door};
 	int[] keyNames = {R.id.key_button_blue, R.id.key_button_green, R.id.key_button_orange, R.id.key_button_purple, R.id.key_button_red};
@@ -34,9 +35,9 @@ public class FirstScreen extends Activity {
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 
+		game = new GameController();
 		map = new DrawMap(FirstScreen.this, null);
 		setContentView(R.layout.firstscreen);
-		game = new GameController();
 		mp = MediaPlayer.create(FirstScreen.this, R.raw.house_music);	
 		mp.start();
 		mp.setLooping(true);
@@ -64,10 +65,10 @@ public class FirstScreen extends Activity {
 		topDoor.setOnClickListener(new View.OnClickListener() {
 			@Override
 			public void onClick(View v) {
-//				
-//				currentKey =  GameController.key[currentX][currentY];
-//				currentKeyColorPos = currentKey.getImg();
-//				currentKeyImgId = keyNames[currentKeyColorPos];
+				//				
+				//				currentKey =  GameController.key[currentX][currentY];
+				//				currentKeyColorPos = currentKey.getImg();
+				//				currentKeyImgId = keyNames[currentKeyColorPos];
 
 				MapModel.moveUp();
 				//game.doorClick(); //Check need
@@ -75,9 +76,14 @@ public class FirstScreen extends Activity {
 				setKeys();
 				setDoors();
 
+				if(MapModel.getRoom()=="70000"){
+					mapDone();
+				}
 			}
 
 		});
+
+
 
 
 		// Right door
@@ -85,10 +91,10 @@ public class FirstScreen extends Activity {
 
 			@Override
 			public void onClick(View v) {
-				
-//				currentKey =  GameController.key[currentX][currentY];
-//				currentKeyColorPos = currentKey.getImg();
-//				currentKeyImgId = keyNames[currentKeyColorPos];
+
+				//				currentKey =  GameController.key[currentX][currentY];
+				//				currentKeyColorPos = currentKey.getImg();
+				//				currentKeyImgId = keyNames[currentKeyColorPos];
 
 				MapModel.moveRight();
 
@@ -109,16 +115,20 @@ public class FirstScreen extends Activity {
 
 			@Override
 			public void onClick(View v) {
-				
-//				currentKey =  GameController.key[currentX][currentY];
-//				currentKeyColorPos = currentKey.getImg();
-//				currentKeyImgId = keyNames[currentKeyColorPos];
+
+				//				currentKey =  GameController.key[currentX][currentY];
+				//				currentKeyColorPos = currentKey.getImg();
+				//				currentKeyImgId = keyNames[currentKeyColorPos];
 
 				MapModel.moveDown();
 				//game.doorClick(); //Check need
 				setRoom();
 				setKeys();
 				setDoors();
+
+				if(MapModel.getRoom()=="70000"){
+					mapDone();
+				}
 
 			}
 		});
@@ -128,11 +138,11 @@ public class FirstScreen extends Activity {
 
 			@Override
 			public void onClick(View v) {
-				
-//				currentKey =  GameController.key[currentX][currentY];
-//				currentKeyColorPos = currentKey.getImg();
-//				currentKeyImgId = keyNames[currentKeyColorPos];
-//				
+
+				//				currentKey =  GameController.key[currentX][currentY];
+				//				currentKeyColorPos = currentKey.getImg();
+				//				currentKeyImgId = keyNames[currentKeyColorPos];
+				//				
 				MapModel.moveLeft();
 				//game.doorClick(); //Check need
 				setRoom();
@@ -145,7 +155,7 @@ public class FirstScreen extends Activity {
 		invRight.setOnClickListener(new View.OnClickListener() {
 			@Override
 			public void onClick(View v) {
-				
+
 
 				Log.v("FirstScreen", "Right was clicked");
 				dropKey("right");
@@ -188,7 +198,7 @@ public class FirstScreen extends Activity {
 		//		else{
 		//			Log.v("FirstScreen", "The inventory spot was empty");
 		//		}
-		
+
 		String updateKeys = GameController.key[MapModel.getMyX()][MapModel.getMyY()].getKeyString();
 		Log.v("FirstScreen", "updateKeys: " + updateKeys);
 		char[] bufferForKey = new char[7];
@@ -239,9 +249,10 @@ public class FirstScreen extends Activity {
 		AlertDialog.Builder alertDialog = new AlertDialog.Builder(this);
 		alertDialog.setTitle(this.getText(R.string.finished));
 		LayoutInflater inflater = this.getLayoutInflater();
-		View view = inflater.inflate(R.layout.finish, null);
-		alertDialog.setView(view);
-		View closeButton=view.findViewById(R.id.endGame);
+		View dialogView = inflater.inflate(R.layout.finish, null);
+		alertDialog.setView(dialogView);
+
+		View closeButton=dialogView.findViewById(R.id.endGame);
 		closeButton.setOnClickListener(new View.OnClickListener() {
 
 			public void onClick(View clicked){
@@ -250,11 +261,13 @@ public class FirstScreen extends Activity {
 			}
 		});
 
-		View playNextLevel= view.findViewById(R.id.playNextLevel);
+		View playNextLevel= dialogView.findViewById(R.id.playNextLevel);
 		playNextLevel.setOnClickListener(new View.OnClickListener() {
 
 			public void onClick(View clicked){
 				if(clicked.getId() == R.id.playNextLevel)
+					levelCounter++;
+				GameController.setLevel(levelCounter);
 				startActivity(new Intent(FirstScreen.this, FirstScreen.class));
 			}
 		});

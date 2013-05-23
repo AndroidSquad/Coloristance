@@ -37,17 +37,20 @@ public class GameController {
 	
 	public static KeyModel[][] key;
 	public static InventoryModel inv = new InventoryModel();
-	
+
+	// The first level is always "map_1", why the variable level is initally defined as "map_1"
+	public static String level = "map_1"; 
+
 	/*
 	 * The empty constructor of GameController whcih creates an object of 
 	 * each of the different models created
 	 */
-	public GameController(){ // Creates an object of each of the Models
-	
-			MapModel.setMap("map_1");
-			key = KeyModel.getKeyArray();	
 
-		
+	public GameController(){ // Creates an object of each of the Models
+			MapModel.setMap(level);
+			key = KeyModel.getKeyArray();
+	
+//			Log.v("GameController","Fel"+level);
 //		for(int i = 0; i<key.length;i++){
 //			for(int j = 0; j<key[i].length;j++){
 //				Log.v("GameController",i +","+ j +":"+ key[i][j].getKeyString());
@@ -60,6 +63,16 @@ public class GameController {
 
 //		doorClick();
 //		Levels.initLevel();
+
+	}
+	
+	public static void setLevel(int lvl){
+		if(lvl == 1)
+			level = "map_1";
+		else if(lvl == 2)
+			level = "map_2";
+		else
+			Log.v("GameController2","test "+level);
 
 	}
 	
