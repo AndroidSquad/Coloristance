@@ -20,7 +20,7 @@ import android.widget.ToggleButton;
 public class MainActivity extends Activity {
 
 	MediaPlayer mp;
-	ToggleButton musicSwitch;
+//	ToggleButton musicSwitch;
 
 	/*
 	 * When the class is called the onCreate it sets the view to activity_main.xml, and it also creates different
@@ -45,13 +45,14 @@ public class MainActivity extends Activity {
 			}
 		});
 
-		musicSwitch = (ToggleButton) findViewById(R.id.musictogglebutton);
+		ToggleButton musicSwitch = (ToggleButton) findViewById(R.id.musictogglebutton);
 		Log.v("MainActivity","value: " + musicSwitch);
 		musicSwitch.setOnClickListener(new View.OnClickListener(){
 
 			@Override
 			public void onClick(View v) {
 				// TODO Auto-generated method stub
+				ToggleButton musicSwitch = (ToggleButton) findViewById(R.id.musictogglebutton);
 				if(musicSwitch.isChecked()){
 					try {
 						mp.prepare();
@@ -93,6 +94,8 @@ public class MainActivity extends Activity {
 		@Override
 		protected void onResume() {
 			super.onResume();
+			ToggleButton musicSwitch = (ToggleButton) findViewById(R.id.musictogglebutton);
+
 			if(musicSwitch.isChecked()){
 			musicSwitch.toggle();
 		}
