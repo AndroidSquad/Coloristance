@@ -19,7 +19,7 @@ import android.widget.TextView;
 
 public class FirstScreen extends Activity {
 
-	MediaPlayer mp;
+	MediaPlayer mp, finish_game;
 	DrawMap map;
 	GameController game;
 	protected int levelCounter = 1;
@@ -288,7 +288,10 @@ public class FirstScreen extends Activity {
 		//alertDialog.setTitle(showTime());
 		LayoutInflater inflater = this.getLayoutInflater();
 
-
+		mp.stop();
+		finish_game = MediaPlayer.create(FirstScreen.this, R.raw.super_mario_complete);	
+		finish_game.start();
+//		finish_game.setLooping(true);
 
 		View dialogView = inflater.inflate(R.layout.finish, null);
 		alertDialog.setView(dialogView);
@@ -300,6 +303,7 @@ public class FirstScreen extends Activity {
 			public void onClick(View clicked){
 				if(clicked.getId() == R.id.endGame)
 					startActivity(new Intent(FirstScreen.this, MainActivity.class));
+				finish_game.stop();
 			}
 		});
 
@@ -311,6 +315,7 @@ public class FirstScreen extends Activity {
 					levelCounter++;
 				GameController.setLevel(levelCounter);
 				startActivity(new Intent(FirstScreen.this, FirstScreen.class));
+				finish_game.stop();
 			}
 		});
 
