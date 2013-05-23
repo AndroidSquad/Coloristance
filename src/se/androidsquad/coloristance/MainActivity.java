@@ -6,6 +6,7 @@ import android.media.MediaPlayer;
 import android.os.Bundle;
 import android.app.Activity;
 import android.content.Intent;
+import android.util.Log;
 import android.view.Menu;
 import android.view.View;
 import android.widget.Button;
@@ -19,7 +20,7 @@ import android.widget.ToggleButton;
 public class MainActivity extends Activity {
 
 	MediaPlayer mp;
-	//ToggleButton musicSwitch;
+	ToggleButton musicSwitch;
 
 	/*
 	 * When the class is called the onCreate it sets the view to activity_main.xml, and it also creates different
@@ -44,7 +45,8 @@ public class MainActivity extends Activity {
 			}
 		});
 
-		/*musicSwitch = (ToggleButton) findViewById(R.id.musictogglebutton);
+		musicSwitch = (ToggleButton) findViewById(R.id.musictogglebutton);
+		Log.v("MainActivity","value: " + musicSwitch);
 		musicSwitch.setOnClickListener(new View.OnClickListener(){
 
 			@Override
@@ -74,8 +76,8 @@ public class MainActivity extends Activity {
 			}
 		});
 
-	}*/
-		/*@Override
+	}
+		@Override
 		protected void onPause() {
 			super.onPause();
 			mp.release();
@@ -91,11 +93,11 @@ public class MainActivity extends Activity {
 		@Override
 		protected void onResume() {
 			super.onResume();
-			/*if(musicSwitch.isChecked()){
+			if(musicSwitch.isChecked()){
 			musicSwitch.toggle();
 		}
 			mp = MediaPlayer.create(MainActivity.this, R.raw.house_music);				 
-		 */
+		 
 	}
 
 }

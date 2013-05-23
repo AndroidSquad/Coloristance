@@ -204,7 +204,7 @@
             android:contentDescription="@string/key_desc"
             android:visibility="visible" />
 
-      <!--    <ToggleButton
+          <ToggleButton
             android:id="@+id/musicgametogglebutton"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -218,7 +218,7 @@
             android:focusableInTouchMode="false"
             android:onClick="onToggleClicked"
             android:textOff=""
-            android:textOn="" /> -->
+            android:textOn="" /> 
     </RelativeLayout>
 
 </RelativeLayout>
