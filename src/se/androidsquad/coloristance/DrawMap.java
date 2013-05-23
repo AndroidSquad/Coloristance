@@ -46,7 +46,6 @@ public class DrawMap extends View {
 		
 		String rectColor = "pl";
 		
-		
 		int mapTop, mapBot, mapRight, mapLeft, mapWidth, mapHeight;
 		mapTop = findViewById(R.id.mapRect).getTop();
 		mapBot = findViewById(R.id.mapRect).getBottom();
@@ -54,29 +53,26 @@ public class DrawMap extends View {
 		mapLeft = findViewById(R.id.mapRect).getLeft();
 		mapHeight = findViewById(R.id.mapRect).getHeight();
 		mapWidth = findViewById(R.id.mapRect).getWidth();
-
 				
 		MapModel.setMap(mapWidth, mapHeight, mapTop, mapRight, mapBot, mapLeft);
 
-		
 		//Log.v("DrawMap", mapWidth+", "+mapHeight+", "+mapLeft+", "+mapTop+", "+mapRight+", "+mapBot);
-
 
 		/*
 		 * the following code segment including the for-loop creates the map frame that the
 		 * levels will be painted on.
 		 */
-		Rect frameRect = new Rect();
+		/*Rect frameRect = new Rect();
 		frameRect.set(mapLeft, mapTop, mapRight, mapBot);
 		Paint blue = new Paint();
 		blue.setColor(Color.BLUE);
-		blue.setStyle(Paint.Style.FILL);
-		canvas.drawRect(frameRect, blue);
+		blue.setStyle(Paint.Style.STROKE);
+		canvas.drawRect(frameRect, blue);*/
 
-		for (int i = 1; i < getWidth() ; i++) {
+		/*for (int i = 1; i < getWidth() ; i++) {
 			canvas.drawLine(i*getWidth()/8, 0, i*getWidth()/8, getHeight(), col.get(rectColor));
 			canvas.drawLine(0, i*getHeight()/3, getWidth(), i*getHeight()/3, col.get(rectColor));
-		}
+		}*/
 
 		//for (int i = 0; i < getWidth()-1 ; i++){
 		//	canvas.drawLine(i+getWidth()/8, (i+getHeight()/3)+(1/2), (i+getWidth()/8)+(1/5), (i+getHeight()/3)+(1/2), dark);
@@ -91,8 +87,6 @@ public class DrawMap extends View {
 		/*
 		 * these two for-loops insert the values of the x,y-position and the corresponding color in the map
 		 */
-		
-
 		
 		for(int i = 0; i<MapModel.getMap().length;i++){
 			for(int j = 0; j<MapModel.getMap()[i].length;j++){
@@ -114,7 +108,6 @@ public class DrawMap extends View {
 		Paint colorTwo = new Paint();
 		colorTwo.setColor(RectModel.PURPLE_LIGHT);
 		canvas.drawRect(mapRectTwo, colorTwo);
-
 */
 		
 		//The following line draws the position of the player on the map 
