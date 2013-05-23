@@ -100,8 +100,8 @@
             android:contentDescription="@string/key_desc"
             android:scaleX="0.75"
             android:scaleY="0.75"
-            android:src="@drawable/key_orange" 
-            android:visibility="gone"/>
+            android:src="@drawable/key_orange"
+            android:visibility="gone" />
 
         <ImageButton
             android:id="@+id/key_button_blue"
@@ -114,8 +114,8 @@
             android:contentDescription="@string/key_desc"
             android:scaleX="0.75"
             android:scaleY="0.75"
-            android:src="@drawable/key_blue" 
-            android:visibility="gone"/>
+            android:src="@drawable/key_blue"
+            android:visibility="gone" />
 
         <ImageButton
             android:id="@+id/key_button_red"
@@ -127,8 +127,8 @@
             android:contentDescription="@string/key_desc"
             android:scaleX="0.75"
             android:scaleY="0.75"
-            android:src="@drawable/key_red" 
-            android:visibility="gone"/>
+            android:src="@drawable/key_red"
+            android:visibility="gone" />
 
         <ImageButton
             android:id="@+id/key_button_purple"
@@ -141,8 +141,8 @@
             android:contentDescription="@string/key_desc"
             android:scaleX="0.75"
             android:scaleY="0.75"
-            android:src="@drawable/key_purple" 
-            android:visibility="gone"/>
+            android:src="@drawable/key_purple"
+            android:visibility="gone" />
 
         <ImageButton
             android:id="@+id/key_button_green"
@@ -157,7 +157,6 @@
             android:scaleY="0.75"
             android:src="@drawable/key_green"
             android:visibility="gone" />
-
     </RelativeLayout>
 
     <RelativeLayout
@@ -167,26 +166,24 @@
         android:layout_alignParentBottom="true"
         android:background="@color/red_light" >
 
-
-
         <ImageButton
             android:id="@+id/invKeyMid"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_margin="30dp"
             android:layout_centerInParent="true"
+            android:layout_margin="30dp"
             android:background="@drawable/key_empty"
             android:clickable="true"
             android:contentDescription="@string/key_desc"
             android:visibility="visible" />
-        
-         <ImageButton
+
+        <ImageButton
             android:id="@+id/invKeyLeft"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
             android:layout_margin="30dp"
             android:layout_toLeftOf="@id/invKeyMid"
-            android:layout_centerInParent="true"
             android:background="@drawable/key_empty"
             android:clickable="true"
             android:contentDescription="@string/key_desc"
@@ -196,14 +193,29 @@
             android:id="@+id/invKeyRight"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
             android:layout_margin="30dp"
             android:layout_toRightOf="@id/invKeyMid"
-           	android:layout_centerInParent="true"
             android:background="@drawable/key_empty"
             android:clickable="true"
             android:contentDescription="@string/key_desc"
             android:visibility="visible" />
 
+        <ToggleButton
+            android:id="@+id/musicgametogglebutton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentLeft="true"
+            android:layout_centerInParent="true"
+            android:layout_margin="10dp"
+            android:background="@drawable/check"
+            android:scaleX="0.7"
+            android:scaleY="0.7"
+            android:focusable="false"
+            android:focusableInTouchMode="false"
+            android:onClick="onToggleClicked"
+            android:textOff=""
+            android:textOn="" />
     </RelativeLayout>
 
 </RelativeLayout>

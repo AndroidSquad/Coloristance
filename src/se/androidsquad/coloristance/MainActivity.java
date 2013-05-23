@@ -9,6 +9,7 @@ import android.content.Intent;
 import android.view.Menu;
 import android.view.View;
 import android.widget.Button;
+import android.widget.ToggleButton;
 /*
  * This class represent the first screen of our game, it should contain buttons to 
  * create a new game, start the music, pause the music. From this first screen you should
@@ -18,6 +19,7 @@ import android.widget.Button;
 public class MainActivity extends Activity {
 
 	MediaPlayer mp;
+	ToggleButton musicSwitch;
 
 	/*
 	 * When the class is called the onCreate it sets the view to activity_main.xml, and it also creates different
@@ -42,47 +44,33 @@ public class MainActivity extends Activity {
 			}
 		});
 		
-		Button sexyMusicOn = (Button) findViewById(R.id.button2);
-		sexyMusicOn.setOnClickListener(new View.OnClickListener() {
+		musicSwitch = (ToggleButton) findViewById(R.id.musictogglebutton);
+		musicSwitch.setOnClickListener(new View.OnClickListener(){
 
 			@Override
 			public void onClick(View v) {
-				/*
-				 * The following lines of codes is needed in order to change the state of
-				 *  the MediaPlayer from Initialized State to Prepared State.
-				 */
-				try {
-					mp.prepare();
-				} catch (IllegalStateException e) {
-					e.printStackTrace();
-				} catch (IOException e) {
-					e.printStackTrace();
-				}				 
-				mp.start();
-				mp.setLooping(true);
-			}
-		});
-
-		Button sexyMusicPause = (Button) findViewById(R.id.button3);
-		sexyMusicPause.setOnClickListener(new View.OnClickListener() {
-
-			@Override
-			public void onClick(View v) {
-				/*
-				 * The following lines of codes is needed to be able
-				 * to click on the button Sexy Music off the first time 
-				 * before Media Player is in Started State			
-				 */
-				
-				try {
-					mp.prepare();
-				} catch (IllegalStateException e) {
-					e.printStackTrace();
-				} catch (IOException e) {
-					e.printStackTrace();
-				}				 
-				mp.start();
-				mp.pause();	
+				// TODO Auto-generated method stub
+				if(musicSwitch.isChecked()){
+					try {
+						mp.prepare();
+					} catch (IllegalStateException e) {
+						e.printStackTrace();
+					} catch (IOException e) {
+						e.printStackTrace();
+					}				 
+					mp.start();
+					mp.setLooping(true);
+				}else{
+					try {
+						mp.prepare();
+					} catch (IllegalStateException e) {
+						e.printStackTrace();
+					} catch (IOException e) {
+						e.printStackTrace();
+					}				 
+					mp.start();
+					mp.pause();	
+				}
 			}
 		});
 		
@@ -103,12 +91,11 @@ public class MainActivity extends Activity {
 	@Override
 	protected void onResume() {
 		super.onResume();
+		if(musicSwitch.isChecked()){
+			musicSwitch.toggle();
+		}
 		mp = MediaPlayer.create(MainActivity.this, R.raw.house_music);				 
 
 	}
 	
-	
-	
-
-
 }
