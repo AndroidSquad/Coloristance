@@ -12,6 +12,7 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.ImageButton;
+import android.widget.TextView;
 /*
  * This class is the main window which the current room is created. It sets the screen to firstscreen.xml,
  * contains the code for the music, and the information about the doors that the different rooms should contain and
@@ -21,7 +22,7 @@ import android.widget.ToggleButton;
 
 public class FirstScreen extends Activity {
 
-	MediaPlayer mp;
+	MediaPlayer mp, finish_game;
 	DrawMap map;
 	GameController game;
 	ToggleButton musicSwitchGame;
@@ -31,17 +32,24 @@ public class FirstScreen extends Activity {
 	int[] keyNames = {R.id.key_button_blue, R.id.key_button_green, R.id.key_button_orange, R.id.key_button_purple, R.id.key_button_red};
 	int[] keyImg = {drawable.key_blue, drawable.key_green, drawable.key_orange, drawable.key_purple, drawable.key_red, drawable.key_empty};
 	char[] pos = {'N','E','S','W'};
-	int[] invPos = {R.id.invKeyLeft, R.id.invKeyMid, R.id.invKeyRight};
 
+	long startTime, stopTime = 0;
+
+	String timeResult;
+
+
+	int[] invPos = {R.id.invKeyLeft, R.id.invKeyMid, R.id.invKeyRight};
 
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
+		startTime();
 		super.onCreate(savedInstanceState);
 
 		game = new GameController();
 		map = new DrawMap(FirstScreen.this, null);
 		setContentView(R.layout.firstscreen);
+
 		mp = MediaPlayer.create(FirstScreen.this, R.raw.house_music);	
 		mp.start();
 		mp.setLooping(true);
@@ -226,6 +234,8 @@ public class FirstScreen extends Activity {
 
 	}
 
+
+
 	@Override
 	protected void onPause() {
 		super.onPause();
@@ -306,19 +316,31 @@ public class FirstScreen extends Activity {
 		}	
 	}
 
+
 	protected void mapDone(){
+		stopTime();
+		showTime();
 		AlertDialog.Builder alertDialog = new AlertDialog.Builder(this);
-		alertDialog.setTitle(this.getText(R.string.finished));
+		alertDialog.setTitle(this.getText(R.string.finished)+"\t"+"You finished in: "+ timeResult +" seconds");
+		//alertDialog.setTitle(showTime());
 		LayoutInflater inflater = this.getLayoutInflater();
+
+		mp.stop();
+		finish_game = MediaPlayer.create(FirstScreen.this, R.raw.super_mario_complete);	
+		finish_game.start();
+		//		finish_game.setLooping(true);
+
 		View dialogView = inflater.inflate(R.layout.finish, null);
 		alertDialog.setView(dialogView);
 
 		View closeButton=dialogView.findViewById(R.id.endGame);
+
 		closeButton.setOnClickListener(new View.OnClickListener() {
 
 			public void onClick(View clicked){
 				if(clicked.getId() == R.id.endGame)
 					startActivity(new Intent(FirstScreen.this, MainActivity.class));
+				finish_game.stop();
 			}
 		});
 
@@ -330,19 +352,42 @@ public class FirstScreen extends Activity {
 					levelCounter++;
 				GameController.setLevel(levelCounter);
 				startActivity(new Intent(FirstScreen.this, FirstScreen.class));
+				finish_game.stop();
 			}
 		});
+
 		AlertDialog finishDialog = alertDialog.create();
 		finishDialog.show();
+
 	}
+
+
+	//	int i = showTime();
+	private void startTime() {
+		startTime = System.currentTimeMillis();		
+	}
+
+	private void stopTime() {
+		stopTime = System.currentTimeMillis();		
+	}
+
+	private void showTime(){
+		long totalTime = (stopTime - startTime)/1000;
+		timeResult = Long.toString(totalTime);
+		//		int i = (int) totalTime/1000;
+		//		String s = Integer.toString(i);
+		//		showTime=s;
+		//		return timeResult;
+	}
+
+
 
 	@Override
 	protected void onResume() {
 		super.onResume();
 		musicSwitchGame.toggle();
-
 	}
-	
+
 	@Override
 	protected void onRestart() {
 		super.onRestart();
@@ -350,7 +395,7 @@ public class FirstScreen extends Activity {
 		if(!musicSwitchGame.isChecked()){
 			musicSwitchGame.toggle();
 		}
-			
+
 
 
 	}

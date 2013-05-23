@@ -53,6 +53,8 @@ public class DrawMap extends View {
 		mapLeft = findViewById(R.id.mapRect).getLeft();
 		mapHeight = findViewById(R.id.mapRect).getHeight();
 		mapWidth = findViewById(R.id.mapRect).getWidth();
+
+
 				
 		MapModel.setMap(mapWidth, mapHeight, mapTop, mapRight, mapBot, mapLeft);
 
@@ -67,12 +69,17 @@ public class DrawMap extends View {
 		Paint blue = new Paint();
 		blue.setColor(Color.BLUE);
 		blue.setStyle(Paint.Style.STROKE);
+
+		canvas.drawRect(frameRect, blue);
+
 		canvas.drawRect(frameRect, blue);*/
+
 
 		/*for (int i = 1; i < getWidth() ; i++) {
 			canvas.drawLine(i*getWidth()/8, 0, i*getWidth()/8, getHeight(), col.get(rectColor));
 			canvas.drawLine(0, i*getHeight()/3, getWidth(), i*getHeight()/3, col.get(rectColor));
-		}*/
+
+		} */
 
 		//for (int i = 0; i < getWidth()-1 ; i++){
 		//	canvas.drawLine(i+getWidth()/8, (i+getHeight()/3)+(1/2), (i+getWidth()/8)+(1/5), (i+getHeight()/3)+(1/2), dark);
