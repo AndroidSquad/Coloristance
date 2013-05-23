@@ -25,20 +25,20 @@ public class DrawKeys extends View {
 		super(context, attrs);
 	}
 
-//	@SuppressLint("DrawAllocation")
-//	@Override
-//	public void onDraw(Canvas canvas) { 
-//		super.onDraw(canvas);
-//		
-//		int mapHeight = findViewById(R.id.room_layout).getHeight();
-//		int mapWidth = findViewById(R.id.room_layout).getWidth();
-//		Log.v("DrawKeys","Höjd: "+mapHeight +" Bredd: "+ mapWidth);
-//		
-//		for(int i = 0; i<5;i++){
-//			findViewById(keyNames[i]).setScaleX((mapWidth/10)/mapWidth);
-//			findViewById(keyNames[i]).setScaleY((mapHeight/10)/mapHeight);
-//		}
-//		
-//	}
+	@SuppressLint("DrawAllocation")
+	@Override
+	public void onDraw(Canvas canvas) { 
+		super.onDraw(canvas);
+		
+		int mapHeight = findViewById(R.id.room_layout).getHeight();
+		int mapWidth = findViewById(R.id.room_layout).getWidth();
+		Log.v("DrawKeys","Höjd: "+mapHeight +" Bredd: "+ mapWidth);
+		
+		for(int i = 0; i<5;i++){
+			findViewById(keyNames[i]).setScaleX((mapWidth/10)/mapWidth);
+			findViewById(keyNames[i]).setScaleY((mapHeight/10)/mapHeight);
+		}
+		
+	}
 }
 

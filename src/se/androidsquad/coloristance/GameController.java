@@ -34,6 +34,7 @@ public class GameController {
 	protected RectModel rect;
 	protected DoorModel door;
 	protected String roomcode;
+
 	
 	public static KeyModel[][] key;
 	public static InventoryModel inv = new InventoryModel();

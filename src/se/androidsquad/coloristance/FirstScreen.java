@@ -34,6 +34,7 @@ public class FirstScreen extends Activity {
 	int[] keyNames = {R.id.key_button_blue, R.id.key_button_green, R.id.key_button_orange, R.id.key_button_purple, R.id.key_button_red, 9};
 	int[] keyImg = {drawable.key_blue, drawable.key_green, drawable.key_orange, drawable.key_purple, drawable.key_red, drawable.key_empty};
 	char[] pos = {'N','E','S','W'};
+	boolean allocatedInv[] = {false,false,false};
 
 	long startTime, stopTime = 0;
 
@@ -55,7 +56,9 @@ public class FirstScreen extends Activity {
 		mp.setLooping(true);
 		MapModel.setPos(0, 1);
 
-		ToggleButton musicSwitchGame = (ToggleButton) findViewById(R.id.musicgametogglebutton);
+		ToggleButton musicSwitchGame = new ToggleButton(this);
+		musicSwitchGame = (ToggleButton) findViewById(R.id.musicgametogglebutton);
+		
 		musicSwitchGame.setOnClickListener(new View.OnClickListener(){
 
 
@@ -179,7 +182,7 @@ public class FirstScreen extends Activity {
 				setKeys();
 				setDoors();
 
-				if(MapModel.getRoom()=="70000"){
+				if(MapModel.getRoom()=="90000"){
 					mapDone();
 				}
 
@@ -243,21 +246,21 @@ public class FirstScreen extends Activity {
 		keyBlue.setOnClickListener(new View.OnClickListener() {
 			@Override
 			public void onClick(View v) {
-
-
+				setInventory(0);
+				setKeys();
 			}
 		});
 		keyGreen.setOnClickListener(new View.OnClickListener() {
 			@Override
 			public void onClick(View v) {
-				//setInventory();
+				setInventory(1);
 				setKeys();
 			}
 		});
 		keyOrange.setOnClickListener(new View.OnClickListener() {
 			@Override
 			public void onClick(View v) {
-				//setInventory();
+				setInventory(2);
 				setKeys();
 
 			}
@@ -265,7 +268,7 @@ public class FirstScreen extends Activity {
 		keyPurple.setOnClickListener(new View.OnClickListener() {
 			@Override
 			public void onClick(View v) {
-				//setInventory();
+				setInventory(3);
 				setKeys();
 
 			}
@@ -273,7 +276,7 @@ public class FirstScreen extends Activity {
 		keyRed.setOnClickListener(new View.OnClickListener() {
 			@Override
 			public void onClick(View v) {
-				//setInventory();
+				setInventory(4);
 				setKeys();
 
 			}
@@ -288,6 +291,39 @@ public class FirstScreen extends Activity {
 		super.onPause();
 		mp.release();
 
+	}
+	
+protected void setInventory(int pos){
+		//Not working ATM
+		int clickedKey = keyImg[pos];
+		int putAtPosition = 0;
+		
+		if(allocatedInv[0] == false){
+			findViewById(invPos[0]).setBackgroundResource(clickedKey);
+			putAtPosition = 0;
+		}
+		else if(allocatedInv[1] == false){
+			findViewById(invPos[1]).setBackgroundResource(clickedKey);
+			putAtPosition = 1;
+		}
+		else if(allocatedInv[2] == false){
+			findViewById(invPos[2]).setBackgroundResource(clickedKey);
+			putAtPosition = 2;
+		}
+		else{
+			Log.v("FirstScreen", "You have a full inventory");
+		}
+		
+		char[] buffer = GameController.key[MapModel.getMyX()][MapModel.getMyY()].getKeyString().toCharArray();
+		Log.v("FirstScreen", "input setInventory : " + GameController.key[MapModel.getMyX()][MapModel.getMyY()].getKeyString());
+		Log.v("FirstScreen", "buffer setInventory 1: " + buffer[0]+ buffer[1]+ buffer[2]+ buffer[3]+ buffer[4]);
+		buffer[GameController.inv.getInv(pos)] = '0';
+		String newKey = new String(buffer);
+		GameController.key[MapModel.getMyX()][MapModel.getMyY()].setKeyString(newKey);
+		findViewById(keyNames[pos]).setVisibility(View.VISIBLE);
+		GameController.inv.setInv(putAtPosition, pos);
+		
+		
 	}
 
 	protected void dropKey(String keyInvPos){
@@ -312,11 +348,8 @@ public class FirstScreen extends Activity {
 			Log.v("FirstScreen", "The key couldn't be dropped");
 			pos = 9;
 		}
-
-
-		//		else{
-		//			Log.v("FirstScreen", "The inventory spot was empty");
-		//		}
+		
+		allocatedInv[pos] = false;
 		
 		char[] buffer = GameController.key[MapModel.getMyX()][MapModel.getMyY()].getKeyString().toCharArray();
 		Log.v("FirstScreen", "input : " + GameController.key[MapModel.getMyX()][MapModel.getMyY()].getKeyString());
@@ -326,10 +359,10 @@ public class FirstScreen extends Activity {
 		GameController.key[MapModel.getMyX()][MapModel.getMyY()].setKeyString(newKey);
 		findViewById(keyNames[GameController.inv.getInv(pos)]).setVisibility(View.VISIBLE);
 		GameController.inv.setInv(pos, 5);
-		//Log.v("FirstScreen", "buffer 1: " + buffer[0]+ buffer[1]+ buffer[2]+ buffer[3]+ buffer[4]);
-		//Log.v("FirstScreen", "String: " + newKey);
 
 	}
+	
+	
 
 
 	protected void setRoom(){
