@@ -27,7 +27,7 @@ public class FirstScreen extends Activity {
 	DrawMap map;
 	DrawKeys drawKeys;
 	GameController game;
-	ToggleButton musicSwitchGame;
+//	ToggleButton musicSwitchGame;
 	protected int levelCounter = 1;
 
 	int[] door = {R.id.top_door, R.id.right_door, R.id.bot_door,  R.id.left_door};
@@ -55,7 +55,7 @@ public class FirstScreen extends Activity {
 		mp.setLooping(true);
 		MapModel.setPos(0, 1);
 
-		musicSwitchGame = (ToggleButton) findViewById(R.id.musicgametogglebutton);
+/*		musicSwitchGame = (ToggleButton) findViewById(R.id.musicgametogglebutton);
 		musicSwitchGame.setOnClickListener(new View.OnClickListener(){
 
 
@@ -86,7 +86,7 @@ public class FirstScreen extends Activity {
 			}
 
 		});
-
+*/
 
 		//Looping what inital keys to show in the inventory
 		for(int i= 0; i<3; i++){
@@ -432,16 +432,16 @@ public class FirstScreen extends Activity {
 	@Override
 	protected void onResume() {
 		super.onResume();
-		musicSwitchGame.toggle();
+//		musicSwitchGame.toggle();
 	}
 
 	@Override
 	protected void onRestart() {
 		super.onRestart();
 		mp = MediaPlayer.create(FirstScreen.this, R.raw.house_music);	
-		if(!musicSwitchGame.isChecked()){
-			musicSwitchGame.toggle();
-		}
+//		if(!musicSwitchGame.isChecked()){
+//			musicSwitchGame.toggle();
+//		}
 
 
 
