@@ -33,10 +33,9 @@ public class FirstScreen extends Activity {
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
-		
+		game = new GameController(GameController.level);
 		map = new DrawMap(FirstScreen.this, null);
 		setContentView(R.layout.firstscreen);
-		game = new GameController(levelCounter);
 		mp = MediaPlayer.create(FirstScreen.this, R.raw.house_music);	
 		mp.start();
 		mp.setLooping(true);
@@ -68,6 +67,10 @@ public class FirstScreen extends Activity {
 				setKeys();
 				setDoors();
 				setInventory();
+				
+				if(MapModel.getRoom()=="70000"){
+					mapDone();
+				}
 			}
 
 		});
@@ -107,6 +110,10 @@ public class FirstScreen extends Activity {
 				setKeys();
 				setDoors();
 				setInventory();
+				
+				if(MapModel.getRoom()=="70000"){
+					mapDone();
+				}
 			}
 		});
 
@@ -174,9 +181,10 @@ public class FirstScreen extends Activity {
 		AlertDialog.Builder alertDialog = new AlertDialog.Builder(this);
 		alertDialog.setTitle(this.getText(R.string.finished));
 		LayoutInflater inflater = this.getLayoutInflater();
-		View view = inflater.inflate(R.layout.finish, null);
-		alertDialog.setView(view);
-		View closeButton=view.findViewById(R.id.endGame);
+		View dialogView = inflater.inflate(R.layout.finish, null);
+		alertDialog.setView(dialogView);
+		
+		View closeButton=dialogView.findViewById(R.id.endGame);
 		closeButton.setOnClickListener(new View.OnClickListener() {
 	
 		public void onClick(View clicked){
@@ -185,12 +193,13 @@ public class FirstScreen extends Activity {
 			}
 		});
 		
-		View playNextLevel= view.findViewById(R.id.playNextLevel);
+		View playNextLevel= dialogView.findViewById(R.id.playNextLevel);
 		playNextLevel.setOnClickListener(new View.OnClickListener() {
 	
 		public void onClick(View clicked){
 			if(clicked.getId() == R.id.playNextLevel)
 				levelCounter++;
+				GameController.setLevelNr(levelCounter);
 				startActivity(new Intent(FirstScreen.this, FirstScreen.class));
 			}
 		});
