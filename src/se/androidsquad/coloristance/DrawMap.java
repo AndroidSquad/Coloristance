@@ -54,11 +54,11 @@ public class DrawMap extends View {
 		int mapHeight = findViewById(R.id.mapRect).getHeight();
 		int mapWidth = findViewById(R.id.mapRect).getWidth();
 		
-		if(getResources().getConfiguration().orientation == Configuration.ORIENTATION_LANDSCAPE){
-			MapModel.setMap(mapHeight, mapWidth, mapRight, mapBot, mapLeft, mapTop);
-		} else {
+//		if(getResources().getConfiguration().orientation == Configuration.ORIENTATION_LANDSCAPE){
+//			MapModel.setMap(mapHeight, mapWidth, mapRight, mapBot, mapLeft, mapTop);
+//		} else {
 			MapModel.setMap(mapWidth, mapHeight, mapTop, mapRight, mapBot, mapLeft);
-		}		
+//		}		
 		
 
 		//Log.v("DrawMap", mapWidth+", "+mapHeight+", "+mapLeft+", "+mapTop+", "+mapRight+", "+mapBot);
