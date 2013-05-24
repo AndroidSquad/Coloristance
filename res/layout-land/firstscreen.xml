@@ -214,7 +214,8 @@
             android:contentDescription="@string/key_desc"
             android:visibility="visible" />
 
-        <ImageButton
+
+          <ImageButton
             android:id="@+id/musicbutton"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
