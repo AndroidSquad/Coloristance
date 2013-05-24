@@ -19,7 +19,7 @@ import android.view.View;
  */
 public class DrawMap extends View { 
 
-
+	
 	public DrawMap(Context context, AttributeSet attrs) {
 		super(context, attrs);
 	}
@@ -53,14 +53,8 @@ public class DrawMap extends View {
 		int mapLeft = findViewById(R.id.mapRect).getLeft();
 		int mapHeight = findViewById(R.id.mapRect).getHeight();
 		int mapWidth = findViewById(R.id.mapRect).getWidth();
-
-		if(getResources().getConfiguration().orientation == Configuration.ORIENTATION_LANDSCAPE){
-			MapModel.setMap(8*mapWidth/3, 55*mapHeight/144, mapTop, mapRight, mapBot, mapLeft);
-		} else {
-			MapModel.setMap(mapWidth, mapHeight, mapTop, mapRight, mapBot, mapLeft);
-		}		
-
-
+		int xPos = MapModel.getMyX();
+		int yPos = MapModel.getMyY();
 		//Log.v("DrawMap", mapWidth+", "+mapHeight+", "+mapLeft+", "+mapTop+", "+mapRight+", "+mapBot);
 
 		/*
@@ -95,9 +89,12 @@ public class DrawMap extends View {
 
 		String name = "Ej startat";
 		/*
-		 * these two for-loops insert the values of the x,y-position and the corresponding color in the map
+		 * These two for-loops insert the values of the x,y-position and draws the map differently depending on if the device
+		 * is tilted or not. Then it draws the player on the correct position on the map.
 		 */
-		if(getResources().getConfiguration().orientation == Configuration.ORIENTATION_LANDSCAPE){
+		
+		if(getResources().getConfiguration().orientation == Configuration.ORIENTATION_LANDSCAPE){//if we turn the phone the map should be rendered differently
+			MapModel.setMap(8*mapWidth/3, 55*mapHeight/144, mapTop, mapRight, mapBot, mapLeft);
 			for(int i = 0; i<MapModel.getMap()[i].length;i++){
 				for(int j = 0; j<MapModel.getMap().length;j++){
 					name = i+","+j;
@@ -110,10 +107,11 @@ public class DrawMap extends View {
 					canvas.drawRect( map.get(name), col.get(rectColor));
 				}
 			}
-			canvas.drawCircle(MapModel.getCircPos(1, MapModel.getMyY()), MapModel.getCircPos(2, MapModel.getMyX()), MapModel.getCircPos(4, MapModel.getMyY()), col.get("white"));
+			canvas.drawCircle(MapModel.getCircPos(1, yPos), MapModel.getCircPos(2, xPos), MapModel.getCircPos(4, yPos), col.get("white"));
 			invalidate();// Calls the onDraw again as soon as it has painted everything
 		}
 		else{
+			MapModel.setMap(mapWidth, mapHeight, mapTop, mapRight, mapBot, mapLeft);
 			for(int i = 0; i<MapModel.getMap().length;i++){
 				for(int j = 0; j<MapModel.getMap()[i].length;j++){
 					name = i+","+j;
@@ -126,7 +124,7 @@ public class DrawMap extends View {
 					canvas.drawRect( map.get(name), col.get(rectColor));
 				}
 			}
-			canvas.drawCircle(MapModel.getCircPos(1, MapModel.getMyX()), MapModel.getCircPos(2, MapModel.getMyY()), MapModel.getCircPos(3, MapModel.getMyY()), col.get("white"));
+			canvas.drawCircle(MapModel.getCircPos(1, xPos), MapModel.getCircPos(2, yPos), MapModel.getCircPos(3, yPos), col.get("white"));
 			invalidate();// Calls the onDraw again as soon as it has painted everything
 
 		}

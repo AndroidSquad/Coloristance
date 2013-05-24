@@ -46,6 +46,12 @@ public class MainActivity extends Activity {
 				startActivity(new Intent(MainActivity.this, FirstScreen.class));
 			}
 		});
+		
+		/**
+		 * An ImageButton that gives the player ability to pause and start the game music.
+		 * Depending on the state two different pictures show so the user know if the music is playing 
+		 * 
+		 */
 
 		musicMenuButton = (ImageButton) findViewById(R.id.musicmenubutton);
 		Log.v("MainActivity","value 1: " + musicMenuButton);
