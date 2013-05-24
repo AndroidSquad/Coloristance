@@ -14,6 +14,8 @@
     <string name="finished">Congratulations!</string>
     <string name="play_next_level">Play next level</string>
     <string name="end_game">End game</string>
+    <string name="try_again">Try again</string>
+    <string name="lost_game">YOU LOST YOU LOOSER!!</string>
     <string name="congrats">Congratulations</string>
     <string name="time">your time is: </string>
     <string name="speaker">Speaker buttons</string>
