@@ -54,13 +54,6 @@ public class DrawMap extends View {
 		int mapHeight = findViewById(R.id.mapRect).getHeight();
 		int mapWidth = findViewById(R.id.mapRect).getWidth();
 
-		if(getResources().getConfiguration().orientation == Configuration.ORIENTATION_LANDSCAPE){
-			MapModel.setMap(8*mapWidth/3, 55*mapHeight/144, mapTop, mapRight, mapBot, mapLeft);
-		} else {
-			MapModel.setMap(mapWidth, mapHeight, mapTop, mapRight, mapBot, mapLeft);
-		}		
-
-
 		//Log.v("DrawMap", mapWidth+", "+mapHeight+", "+mapLeft+", "+mapTop+", "+mapRight+", "+mapBot);
 
 		/*
@@ -98,6 +91,7 @@ public class DrawMap extends View {
 		 * these two for-loops insert the values of the x,y-position and the corresponding color in the map
 		 */
 		if(getResources().getConfiguration().orientation == Configuration.ORIENTATION_LANDSCAPE){
+			MapModel.setMap(8*mapWidth/3, 55*mapHeight/144, mapTop, mapRight, mapBot, mapLeft);
 			for(int i = 0; i<MapModel.getMap()[i].length;i++){
 				for(int j = 0; j<MapModel.getMap().length;j++){
 					name = i+","+j;
@@ -114,6 +108,7 @@ public class DrawMap extends View {
 			invalidate();// Calls the onDraw again as soon as it has painted everything
 		}
 		else{
+			MapModel.setMap(mapWidth, mapHeight, mapTop, mapRight, mapBot, mapLeft);
 			for(int i = 0; i<MapModel.getMap().length;i++){
 				for(int j = 0; j<MapModel.getMap()[i].length;j++){
 					name = i+","+j;
