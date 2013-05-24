@@ -56,9 +56,9 @@
             android:background="@color/red_light"
             android:clickable="true"
             android:contentDescription="@string/door"
-            android:rotation="180"
+            android:rotation="90"
             android:src="@drawable/ic_door"
-            android:visibility="visible" />
+            android:visibility="invisible" />
 
         <ImageButton
             
@@ -72,7 +72,7 @@
             android:contentDescription="@string/door"
             android:rotation="270"
             android:src="@drawable/ic_door"
-            android:visibility="visible" />
+            android:visibility="invisible" />
 
         <ImageButton
             android:id="@+id/left_door"
@@ -85,7 +85,7 @@
             android:contentDescription="@string/door"
             android:rotation="180"
             android:src="@drawable/ic_door"
-            android:visibility="visible" />
+            android:visibility="invisible" />
         
          <ImageButton
             android:id="@+id/room"
