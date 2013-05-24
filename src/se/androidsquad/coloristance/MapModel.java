@@ -230,6 +230,9 @@ public class MapModel {
 			answer = (botY-topY)/2;
 			//Log.v("Rad:", ""+answer);
 		}
+		else if(value==4){
+			answer = (rightX-leftX)/2;
+		}
 
 		else answer = 0;
 

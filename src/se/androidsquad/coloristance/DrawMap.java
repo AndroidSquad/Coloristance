@@ -110,7 +110,7 @@ public class DrawMap extends View {
 					canvas.drawRect( map.get(name), col.get(rectColor));
 				}
 			}
-			canvas.drawCircle(MapModel.getCircPos(1, MapModel.getMyY()), MapModel.getCircPos(2, MapModel.getMyX()), MapModel.getCircPos(3, MapModel.getMyY()), col.get("white"));
+			canvas.drawCircle(MapModel.getCircPos(1, MapModel.getMyY()), MapModel.getCircPos(2, MapModel.getMyX()), MapModel.getCircPos(4, MapModel.getMyY()), col.get("white"));
 			invalidate();// Calls the onDraw again as soon as it has painted everything
 		}
 		else{
