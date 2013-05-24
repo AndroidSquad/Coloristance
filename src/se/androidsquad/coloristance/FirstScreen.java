@@ -475,7 +475,6 @@ public class FirstScreen extends Activity {
 		mp.release();
 		visSpeak = false;
 	}
-
 }
 
 
