@@ -56,7 +56,7 @@ public class MainActivity extends Activity {
 				startActivity(new Intent(MainActivity.this, GameRules.class));
 			}
 		});
-
+		
 		musicMenuButton = (ImageButton) findViewById(R.id.musicmenubutton);
 		Log.v("MainActivity","value 1: " + musicMenuButton);
 		visMenuSpeak = false;
@@ -93,6 +93,8 @@ public class MainActivity extends Activity {
 				}
 			}
 		});
+		
+
 
 	}
 

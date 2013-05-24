@@ -214,21 +214,18 @@
             android:contentDescription="@string/key_desc"
             android:visibility="visible" />
 
-          <ToggleButton
-            android:id="@+id/musicgametogglebutton"
+          <ImageButton
+            android:id="@+id/musicbutton"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_alignParentBottom="true"
-            android:layout_margin="10dp"
-            android:layout_below="@id/invKeyMid"
-            android:background="@drawable/check"
-            android:scaleX="0.5"
-            android:scaleY="0.5"
-            android:focusable="false"
-            android:focusableInTouchMode="false"
-            android:onClick="onToggleClicked"
-            android:textOff=""
-            android:textOn="" /> 
+            android:layout_alignParentLeft="true"
+            android:layout_centerHorizontal="true"
+            android:layout_margin="15dp"
+            android:clickable="true"
+            android:contentDescription="@string/speaker"
+            android:scaleX="0.7"
+            android:scaleY="0.7"
+            android:visibility="visible" />
             
     </RelativeLayout>
 
