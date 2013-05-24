@@ -55,7 +55,7 @@ public class DrawMap extends View {
 		int mapWidth = findViewById(R.id.mapRect).getWidth();
 
 		if(getResources().getConfiguration().orientation == Configuration.ORIENTATION_LANDSCAPE){
-			MapModel.setMap(8*mapWidth/3, mapHeight/3, mapTop, mapRight, mapBot, mapLeft);
+			MapModel.setMap(8*mapWidth/3, 55*mapHeight/144, mapTop, mapRight, mapBot, mapLeft);
 		} else {
 			MapModel.setMap(mapWidth, mapHeight, mapTop, mapRight, mapBot, mapLeft);
 		}		
