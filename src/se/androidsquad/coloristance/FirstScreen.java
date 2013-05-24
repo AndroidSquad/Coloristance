@@ -18,10 +18,7 @@ import android.widget.ImageButton;
  * contains the code for the music, and the information about the doors that the different rooms should contain and
  * the color of the doors.
  */
-<<<<<<< HEAD
-=======
 
->>>>>>> cc22c18e612c3a310646285b2b0cf333fafbdffc
 
 public class FirstScreen extends Activity {
 
