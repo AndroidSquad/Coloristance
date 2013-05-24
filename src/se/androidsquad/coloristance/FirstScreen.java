@@ -394,7 +394,7 @@ public class FirstScreen extends Activity {
 			currentView.setVisibility(View.VISIBLE);
 			currentView.setBackgroundColor(DoorModel.getDoor(pos[z]));
 			if(DoorModel.getDoor(pos[z]) == RectModel.BLACK){
-				currentView.setVisibility(View.GONE);
+				currentView.setVisibility(View.INVISIBLE);
 			}
 		}	
 	}
@@ -409,7 +409,7 @@ public class FirstScreen extends Activity {
 			}
 			else if(thisKey.getKeyString().charAt(i) == '0'){
 				Log.v("Firstscreen", i+ " Instansiering:" + "Nope, nothing");
-				findViewById(keyNames[i]).setVisibility(View.GONE);
+				findViewById(keyNames[i]).setVisibility(View.INVISIBLE);
 			}
 			else Log.v("Firstscreen", "Incorrect input");
 		}	
