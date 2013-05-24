@@ -282,15 +282,6 @@ public class FirstScreen extends Activity {
 
 	}
 
-
-
-	@Override
-	protected void onPause() {
-		super.onPause();
-		mp.release();
-
-	}
-
 	protected void setInventory(int pos){
 		//Not working ATM
 		int clickedKey = keyImg[pos];
@@ -470,13 +461,19 @@ public class FirstScreen extends Activity {
 		super.onRestart();
 		mp = MediaPlayer.create(FirstScreen.this, R.raw.house_music);
 		musicButton = (ImageButton) findViewById(R.id.musicbutton);
-		visSpeak = false;
+		musicButton.setBackgroundResource(drawable.mutespeaker);
 
+	}
+	
+	protected void onPause() {
+		super.onPause();
+		mp.release();
 	}
 
 	protected void onStop() {
 		super.onStop();
 		mp.release();
+		visSpeak = false;
 	}
 
 }
