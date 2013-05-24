@@ -91,6 +91,18 @@
             android:visibility="gone" />
 
         <ImageButton
+            android:id="@+id/musicbutton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentBottom="true"
+            android:clickable="true"
+            android:contentDescription="@string/speaker"
+            android:scaleX="0.4"
+            android:scaleY="0.4"
+            android:visibility="visible" />
+        
+        <ImageButton
             android:id="@+id/key_button_blue"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -202,18 +214,7 @@
             android:contentDescription="@string/key_desc"
             android:visibility="visible" />
 
-        <ImageButton
-            android:id="@+id/musicbutton"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignParentLeft="true"
-            android:layout_centerHorizontal="true"
-            android:layout_margin="15dp"
-            android:clickable="true"
-            android:contentDescription="@string/speaker"
-            android:scaleX="0.7"
-            android:scaleY="0.7"
-            android:visibility="visible" />
+
     </RelativeLayout>
 
 </RelativeLayout>
