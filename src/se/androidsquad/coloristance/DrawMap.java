@@ -18,7 +18,7 @@ import android.view.View;
  * the player position.
  */
 public class DrawMap extends View { 
-	
+
 
 	public DrawMap(Context context, AttributeSet attrs) {
 		super(context, attrs);
@@ -28,7 +28,7 @@ public class DrawMap extends View {
 	@Override
 	public void onDraw(Canvas canvas) { 
 		super.onDraw(canvas);
-		
+
 		HashMap<String, Paint> col = new HashMap<String, Paint>();
 		col.put("bl", new Paint());
 		col.get("bl").setColor(RectModel.BLUE_LIGHT);
@@ -44,7 +44,7 @@ public class DrawMap extends View {
 		col.get("white").setColor(RectModel.WHITE);
 		col.put("black", new Paint());
 		col.get("black").setColor(RectModel.BLACK);
-		
+
 		String rectColor = "pl";
 
 		int mapTop = findViewById(R.id.mapRect).getTop();
@@ -53,13 +53,13 @@ public class DrawMap extends View {
 		int mapLeft = findViewById(R.id.mapRect).getLeft();
 		int mapHeight = findViewById(R.id.mapRect).getHeight();
 		int mapWidth = findViewById(R.id.mapRect).getWidth();
-		
-//		if(getResources().getConfiguration().orientation == Configuration.ORIENTATION_LANDSCAPE){
-//			MapModel.setMap(mapHeight, mapWidth, mapRight, mapBot, mapLeft, mapTop);
-//		} else {
+
+		if(getResources().getConfiguration().orientation == Configuration.ORIENTATION_LANDSCAPE){
+			MapModel.setMap(8*mapWidth/3, mapHeight/3, mapTop, mapRight, mapBot, mapLeft);
+		} else {
 			MapModel.setMap(mapWidth, mapHeight, mapTop, mapRight, mapBot, mapLeft);
-//		}		
-		
+		}		
+
 
 		//Log.v("DrawMap", mapWidth+", "+mapHeight+", "+mapLeft+", "+mapTop+", "+mapRight+", "+mapBot);
 
@@ -86,7 +86,7 @@ public class DrawMap extends View {
 
 		//for (int i = 0; i < getWidth()-1 ; i++){
 		//	canvas.drawLine(i+getWidth()/8, (i+getHeight()/3)+(1/2), (i+getWidth()/8)+(1/5), (i+getHeight()/3)+(1/2), dark);
-		
+
 		/*
 		 * creates a HashMap to be able to store a certain x,y position with the corresponding color of the room.
 		 * The String is the key to the specific room.
@@ -97,35 +97,58 @@ public class DrawMap extends View {
 		/*
 		 * these two for-loops insert the values of the x,y-position and the corresponding color in the map
 		 */
-		
-		for(int i = 0; i<MapModel.getMap().length;i++){
-			for(int j = 0; j<MapModel.getMap()[i].length;j++){
-				name = i+","+j;
-				map.put(name, new Rect());
-				map.get(name).set(MapModel.getRectPos(1, i), MapModel.getRectPos(2, j),  
-				MapModel.getRectPos(3, i), MapModel.getRectPos(4, j)); 
-				RectModel.setRectColor(MapModel.getMap()[i][j]);
+		if(getResources().getConfiguration().orientation == Configuration.ORIENTATION_LANDSCAPE){
+			for(int i = 0; i<MapModel.getMap()[i].length;i++){
+				for(int j = 0; j<MapModel.getMap().length;j++){
+					name = i+","+j;
+					map.put(name, new Rect());
+					map.get(name).set(MapModel.getRectPos(1, i), MapModel.getRectPos(2, j),  
+							MapModel.getRectPos(3, i), MapModel.getRectPos(4, j)); 
+					RectModel.setRectColor(MapModel.getMap()[j][i]);
 
-				rectColor = RectModel.getRoomColor();
-				canvas.drawRect( map.get(name), col.get(rectColor));
+					rectColor = RectModel.getRoomColor();
+					canvas.drawRect( map.get(name), col.get(rectColor));
+				}
 			}
+			canvas.drawCircle(MapModel.getCircPos(1, MapModel.getMyY()), MapModel.getCircPos(2, MapModel.getMyX()), MapModel.getCircPos(3, MapModel.getMyY()), col.get("white"));
+			invalidate();// Calls the onDraw again as soon as it has painted everything
+		}
+		else{
+			for(int i = 0; i<MapModel.getMap().length;i++){
+				for(int j = 0; j<MapModel.getMap()[i].length;j++){
+					name = i+","+j;
+					map.put(name, new Rect());
+					map.get(name).set(MapModel.getRectPos(1, i), MapModel.getRectPos(2, j),  
+							MapModel.getRectPos(3, i), MapModel.getRectPos(4, j)); 
+					RectModel.setRectColor(MapModel.getMap()[i][j]);
+
+					rectColor = RectModel.getRoomColor();
+					canvas.drawRect( map.get(name), col.get(rectColor));
+				}
+			}
+			canvas.drawCircle(MapModel.getCircPos(1, MapModel.getMyX()), MapModel.getCircPos(2, MapModel.getMyY()), MapModel.getCircPos(3, MapModel.getMyY()), col.get("white"));
+			invalidate();// Calls the onDraw again as soon as it has painted everything
+
 		}
 			
-/*
+
+
+
+	/*
 		//Map Rectangle Two
 		Rect mapRectTwo = new Rect();
 		mapRectTwo.set(9*getWidth()/64, 9*getHeight()/24, 15*getWidth()/64,15*getHeight()/24); 
 		Paint colorTwo = new Paint();
 		colorTwo.setColor(RectModel.PURPLE_LIGHT);
 		canvas.drawRect(mapRectTwo, colorTwo);
-*/
-		
-		//The following line draws the position of the player on the map 
-		canvas.drawCircle(MapModel.getCircPos(1, MapModel.getMyX()), MapModel.getCircPos(2, MapModel.getMyY()), MapModel.getCircPos(3, MapModel.getMyY()), col.get("white"));
-		invalidate();// Calls the onDraw again as soon as it has painted everything
-	}
-		
-	/**Refera till xml-filen i javan istŠllet fšr tvŠrtom som vi trodde annars
+	 */
+
+	//The following line draws the position of the player on the map 
+//	canvas.drawCircle(MapModel.getCircPos(1, MapModel.getMyY()), MapModel.getCircPos(2, MapModel.getMyX()), MapModel.getCircPos(3, MapModel.getMyY()), col.get("white"));
+//	invalidate();// Calls the onDraw again as soon as it has painted everything
+}
+
+/**Refera till xml-filen i javan istŠllet fšr tvŠrtom som vi trodde annars
 
 			View p = view.getRootView();
 	    	TextView greenRect = (TextView)p.findViewById(R.id.toggleButton2); */
