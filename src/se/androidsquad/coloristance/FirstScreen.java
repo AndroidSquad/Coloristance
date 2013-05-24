@@ -3,7 +3,6 @@ package se.androidsquad.coloristance;
 import java.io.IOException;
 
 import se.androidsquad.coloristance.R.drawable;
-import android.R.color;
 import android.app.Activity;
 import android.app.AlertDialog;
 import android.content.Intent;
@@ -13,13 +12,13 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.ImageButton;
-import android.widget.TextView;
+
 /*
  * This class is the main window which the current room is created. It sets the screen to firstscreen.xml,
  * contains the code for the music, and the information about the doors that the different rooms should contain and
  * the color of the doors.
  */
-import android.widget.ToggleButton;
+
 
 public class FirstScreen extends Activity {
 
@@ -27,7 +26,6 @@ public class FirstScreen extends Activity {
 	DrawMap map;
 	DrawKeys drawKeys;
 	GameController game;
-
 	//	ToggleButton musicSwitchGame;
 	ImageButton musicButton;
 	boolean visSpeak; //state of the ImageButton musicButton
@@ -40,31 +38,33 @@ public class FirstScreen extends Activity {
 	char[] pos = {'N','E','S','W'};
 	boolean allocatedInv[] = {false,false,false};
 
-	long startTime, stopTime = 0;
+	long startTime = 0;
+	long stopTime = 0;
 
 	String timeResult;
 	int[] invPos = {R.id.invKeyLeft, R.id.invKeyMid, R.id.invKeyRight};
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
-		startTime();
 		super.onCreate(savedInstanceState);
-
+		setContentView(R.layout.firstscreen);
+		startTime();
+		
 		game = new GameController();
 		map = new DrawMap(FirstScreen.this, null);
 		drawKeys = new DrawKeys(FirstScreen.this, null);
-		setContentView(R.layout.firstscreen);
+		
 
 		mp = MediaPlayer.create(FirstScreen.this, R.raw.house_music);	
 		mp.start();
 		mp.setLooping(true);
 		MapModel.setPos(0, 1);
 
-		musicButton = (ImageButton) findViewById(R.id.musicbutton);
+		musicButton  = (ImageButton) findViewById(R.id.musicbutton);
+		Log.v("MainActivity","value 1: " + musicButton);
 		visSpeak = true;
 		musicButton.setBackgroundResource(drawable.speaker);
 		musicButton.setOnClickListener(new View.OnClickListener() {
-
 			@Override
 			public void onClick(View v) {
 				// TODO Auto-generated method stub
@@ -473,7 +473,7 @@ public class FirstScreen extends Activity {
 
 
 	}
-	
+
 	protected void onPause() {
 		super.onPause();
 		mp.release();

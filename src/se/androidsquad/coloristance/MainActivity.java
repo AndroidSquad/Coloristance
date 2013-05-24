@@ -37,24 +37,19 @@ public class MainActivity extends Activity {
 
 		mp = MediaPlayer.create(MainActivity.this, R.raw.house_music);				 
 
-
 		Button newGame = (Button) findViewById(R.id.button1); // This row connect the button named button1 in main_activity.xml to the button newGame.
 		newGame.setOnClickListener(new View.OnClickListener() { 
-
-
 			@Override
 			public void onClick(View v) {
 				startActivity(new Intent(MainActivity.this, FirstScreen.class));
-
 			}
 		});
-		
+
 		musicMenuButton = (ImageButton) findViewById(R.id.musicmenubutton);
 		Log.v("MainActivity","value 1: " + musicMenuButton);
 		visMenuSpeak = false;
 		musicMenuButton.setBackgroundResource(drawable.mutespeaker);
 		musicMenuButton.setOnClickListener(new View.OnClickListener(){
-
 			@Override
 			public void onClick(View v) {
 				// TODO Auto-generated method stub
@@ -109,7 +104,7 @@ public class MainActivity extends Activity {
 		musicMenuButton.setBackgroundResource(drawable.mutespeaker);
 
 	}
-	
+
 	protected void onPause() {
 		super.onPause();
 		mp.release();
