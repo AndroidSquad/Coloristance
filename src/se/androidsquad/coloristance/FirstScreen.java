@@ -27,14 +27,14 @@ public class FirstScreen extends Activity {
 	DrawMap map;
 	DrawKeys drawKeys;
 	GameController game;
-//	ToggleButton musicSwitchGame;
+	//	ToggleButton musicSwitchGame;
 	protected int levelCounter = 1;
 
 	int[] door = {R.id.top_door, R.id.right_door, R.id.bot_door,  R.id.left_door};
-	int[] keyNames = {R.id.key_button_blue, R.id.key_button_green, R.id.key_button_orange, R.id.key_button_purple, R.id.key_button_red, 9};
+	int[] keyNames = {R.id.key_button_blue, R.id.key_button_green, R.id.key_button_orange, R.id.key_button_purple, R.id.key_button_red};
 	int[] keyImg = {drawable.key_blue, drawable.key_green, drawable.key_orange, drawable.key_purple, drawable.key_red, drawable.key_empty};
 	char[] pos = {'N','E','S','W'};
-	boolean allocatedInv[] = {false,false,false};
+	boolean allocatedInv[] = {true,true,true};
 
 	long startTime, stopTime = 0;
 
@@ -58,7 +58,7 @@ public class FirstScreen extends Activity {
 
 		ToggleButton musicSwitchGame = new ToggleButton(this);
 		musicSwitchGame = (ToggleButton) findViewById(R.id.musicgametogglebutton);
-		
+
 		musicSwitchGame.setOnClickListener(new View.OnClickListener(){
 
 
@@ -114,8 +114,8 @@ public class FirstScreen extends Activity {
 		ImageButton keyOrange = (ImageButton) findViewById(R.id.key_button_orange);
 		ImageButton keyPurple = (ImageButton) findViewById(R.id.key_button_purple);
 		ImageButton keyRed = (ImageButton) findViewById(R.id.key_button_red);
-	
-		
+
+
 
 		//Top door
 		topDoor.setOnClickListener(new View.OnClickListener() {
@@ -214,7 +214,7 @@ public class FirstScreen extends Activity {
 
 
 				Log.v("FirstScreen", "Right was clicked");
-				dropKey("right");
+				dropKey(2);
 				setKeys();
 
 			}
@@ -226,7 +226,7 @@ public class FirstScreen extends Activity {
 
 
 				Log.v("FirstScreen", "Left was clicked");
-				dropKey("left");
+				dropKey(0);
 				setKeys();
 
 			}
@@ -237,12 +237,12 @@ public class FirstScreen extends Activity {
 
 
 				Log.v("FirstScreen", "Mid was clicked");
-				dropKey("mid");
+				dropKey(1);
 				setKeys();
 
 			}
 		});
-		
+
 		keyBlue.setOnClickListener(new View.OnClickListener() {
 			@Override
 			public void onClick(View v) {
@@ -292,77 +292,80 @@ public class FirstScreen extends Activity {
 		mp.release();
 
 	}
-	
-protected void setInventory(int pos){
-		//Not working ATM
+
+	protected void setInventory(int pos){
+
+		//Set the requested drawable key
 		int clickedKey = keyImg[pos];
+
+		//Inventory position to put key at
 		int putAtPosition = 0;
-		
-		if(allocatedInv[0] == false){
-			findViewById(invPos[0]).setBackgroundResource(clickedKey);
-			putAtPosition = 0;
+		boolean placed = false;
+
+		//AllocatedInv checks the three spots a key could fit in and put it at the first available
+		for(int i =0; i<3;i++){
+			if(allocatedInv[i] == false && placed == false){
+				findViewById(invPos[i]).setBackgroundResource(clickedKey);
+				putAtPosition = i;
+				Log.v("FirstScreen", "Key put in: "+i);
+				placed =true;
+			}
+			else if (allocatedInv[i] == true && placed == false){
+				Log.v("FirstScreen", "Spot: "+i+" was full.");
+			}
+			else Log.v("FirstScreen", "Key placed");
+
 		}
-		else if(allocatedInv[1] == false){
-			findViewById(invPos[1]).setBackgroundResource(clickedKey);
-			putAtPosition = 1;
-		}
-		else if(allocatedInv[2] == false){
-			findViewById(invPos[2]).setBackgroundResource(clickedKey);
-			putAtPosition = 2;
-		}
-		else{
-			Log.v("FirstScreen", "You have a full inventory");
-		}
-		
+
 		char[] buffer = GameController.key[MapModel.getMyX()][MapModel.getMyY()].getKeyString().toCharArray();
 		Log.v("FirstScreen", "input setInventory : " + GameController.key[MapModel.getMyX()][MapModel.getMyY()].getKeyString());
 		Log.v("FirstScreen", "buffer setInventory 1: " + buffer[0]+ buffer[1]+ buffer[2]+ buffer[3]+ buffer[4]);
+		Log.v("FirstScreen", "set InvPos: " + GameController.inv.getInv(pos));
 		buffer[GameController.inv.getInv(pos)] = '0';
 		String newKey = new String(buffer);
 		GameController.key[MapModel.getMyX()][MapModel.getMyY()].setKeyString(newKey);
-		findViewById(keyNames[pos]).setVisibility(View.VISIBLE);
+		findViewById(invPos[putAtPosition]).setBackgroundResource(keyImg[pos]);
 		GameController.inv.setInv(putAtPosition, pos);
-		
-		
+		Log.v("FirstScreen", "newKey: " + newKey);
+
+
 	}
 
-	protected void dropKey(String keyInvPos){
+	protected void dropKey(int keyInvPos){
 
 		int emptyInventory = keyImg[5];
-		int pos;
+		int pos = 9;
+		boolean droped = false;
 
-		if(keyInvPos == "right"){
+		for(int i =0; i<3; i++){
+			if(keyInvPos == i && droped == false){
+				findViewById(invPos[i]).setBackgroundResource(emptyInventory);
+				pos = i;
+				droped = true;
+			}
+			else if(keyInvPos == i && droped == true){
+				Log.v("FirstScreen", "The key has been dropped");
+			}
+			else Log.v("FirstScreen", "Something went wrong");
 
-			findViewById(invPos[2]).setBackgroundResource(emptyInventory);
-			pos = 2;
 		}
-		else if(keyInvPos == "left"){
-			findViewById(invPos[0]).setBackgroundResource(emptyInventory);
-			pos = 0;
-		}
-		else if(keyInvPos == "mid"){
-			findViewById(invPos[1]).setBackgroundResource(emptyInventory);
-			pos = 1;
-		}
-		else{
-			Log.v("FirstScreen", "The key couldn't be dropped");
-			pos = 9;
-		}
-		
+
 		allocatedInv[pos] = false;
-		
+
 		char[] buffer = GameController.key[MapModel.getMyX()][MapModel.getMyY()].getKeyString().toCharArray();
 		Log.v("FirstScreen", "input : " + GameController.key[MapModel.getMyX()][MapModel.getMyY()].getKeyString());
 		Log.v("FirstScreen", "buffer 1: " + buffer[0]+ buffer[1]+ buffer[2]+ buffer[3]+ buffer[4]);
+		Log.v("FirstScreen", "InvPos: " + GameController.inv.getInv(pos));
 		buffer[GameController.inv.getInv(pos)] = '1';
 		String newKey = new String(buffer);
 		GameController.key[MapModel.getMyX()][MapModel.getMyY()].setKeyString(newKey);
 		findViewById(keyNames[GameController.inv.getInv(pos)]).setVisibility(View.VISIBLE);
-		GameController.inv.setInv(pos, 5);
+		GameController.inv.setInv(keyInvPos, 5);
+		Log.v("FirstScreen", "input : " + GameController.key[MapModel.getMyX()][MapModel.getMyY()].getKeyString());
 
 	}
-	
-	
+
+
 
 
 	protected void setRoom(){
@@ -478,7 +481,7 @@ protected void setInventory(int pos){
 		if(!musicSwitchGame.isChecked()){
 			musicSwitchGame.toggle();
 		}
-		
+
 	}
 
 	protected void onStop() {
