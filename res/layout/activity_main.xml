@@ -32,21 +32,18 @@
         android:textColor="@color/white"
         android:textStyle="bold" />
 
-    <ToggleButton
-        android:id="@+id/musictogglebutton"
+    <ImageButton
+        android:id="@+id/musicmenubutton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
         android:layout_alignParentLeft="true"
-        android:layout_margin="10dp"
-        android:background="@drawable/check"
-        android:focusable="false"
-        android:focusableInTouchMode="false"
-        android:onClick="onToggleClicked"
+        android:layout_centerHorizontal="true"
+        android:layout_margin="15dp"
+        android:clickable="true"
         android:scaleX="0.7"
         android:scaleY="0.7"
-        android:textOff=""
-        android:textOn="" /> 
- />
+        android:visibility="visible"
+        android:contentDescription="@string/speaker"/>
 
 </RelativeLayout>

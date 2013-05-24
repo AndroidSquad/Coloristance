@@ -7,11 +7,11 @@
 
     <RelativeLayout
         android:id="@+id/top_layout"
-        android:minWidth="200dp"
         android:layout_width="match_parent"
         android:layout_height="100dp"
         android:layout_alignParentTop="true"
-        android:background="@color/black" >
+        android:background="@color/black"
+        android:minWidth="200dp" >
 
         <se.androidsquad.coloristance.DrawMap
             android:id="@+id/mapRect"
@@ -121,8 +121,8 @@
             android:id="@+id/key_button_orange"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_toRightOf="@id/key_button_blue"
             android:layout_centerInParent="true"
+            android:layout_toRightOf="@id/key_button_blue"
             android:background="@null"
             android:clickable="true"
             android:contentDescription="@string/key_desc"
@@ -130,7 +130,6 @@
             android:scaleY="0.75"
             android:src="@drawable/key_orange"
             android:visibility="visible" />
-
 
         <ImageButton
             android:id="@+id/key_button_purple"
@@ -150,8 +149,8 @@
             android:id="@+id/key_button_red"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_toLeftOf="@id/key_button_blue"
             android:layout_centerInParent="true"
+            android:layout_toLeftOf="@id/key_button_blue"
             android:background="@null"
             android:clickable="true"
             android:contentDescription="@string/key_desc"
@@ -159,7 +158,6 @@
             android:scaleY="0.75"
             android:src="@drawable/key_red"
             android:visibility="visible" />
-
     </RelativeLayout>
 
     <RelativeLayout
@@ -203,17 +201,19 @@
             android:clickable="true"
             android:contentDescription="@string/key_desc"
             android:visibility="visible" />
-        
+
         <ImageButton
             android:id="@+id/musicbutton"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_centerHorizontal="true"
             android:layout_alignParentLeft="true"
+            android:layout_centerHorizontal="true"
+            android:layout_margin="15dp"
             android:clickable="true"
-            android:visibility="visible" 
- />
-
+            android:contentDescription="@string/speaker"
+            android:scaleX="0.7"
+            android:scaleY="0.7"
+            android:visibility="visible" />
     </RelativeLayout>
 
 </RelativeLayout>

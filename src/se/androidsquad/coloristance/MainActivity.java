@@ -2,6 +2,8 @@ package se.androidsquad.coloristance;
 
 import java.io.IOException;
 
+import se.androidsquad.coloristance.R.drawable;
+
 import android.media.MediaPlayer;
 import android.os.Bundle;
 import android.app.Activity;
@@ -10,17 +12,19 @@ import android.util.Log;
 import android.view.Menu;
 import android.view.View;
 import android.widget.Button;
-import android.widget.ToggleButton;
+import android.widget.ImageButton;
 /*
  * This class represent the first screen of our game, it should contain buttons to 
  * create a new game, start the music, pause the music. From this first screen you should
- * be routed to the firstscreen.xml when you click on the newGame button.
+ * be routed to the MainActivity.xml when you click on the newGame button.
  */
 
 public class MainActivity extends Activity {
 
 	MediaPlayer mp;
-//	ToggleButton musicSwitch;
+	ImageButton musicMenuButton = (ImageButton) findViewById(R.id.musicmenubutton);;
+	boolean visMenuSpeak; //state of the ImageButton musicMenuButton
+
 
 	/*
 	 * When the class is called the onCreate it sets the view to activity_main.xml, and it also creates different
@@ -45,18 +49,16 @@ public class MainActivity extends Activity {
 			}
 		});
 
-		ToggleButton musicSwitch = new ToggleButton(this); 
-		musicSwitch = (ToggleButton) findViewById(R.id.musictogglebutton);
-		Log.v("MainActivity","value 1: " + musicSwitch);
-		musicSwitch.setOnClickListener(new View.OnClickListener(){
+		Log.v("MainActivity","value 1: " + musicMenuButton);
+		visMenuSpeak = false;
+		musicMenuButton.setBackgroundResource(drawable.mutespeaker);
+		musicMenuButton.setOnClickListener(new View.OnClickListener(){
 
 			@Override
 			public void onClick(View v) {
 				// TODO Auto-generated method stub
-				ToggleButton musicSwitch = (ToggleButton) findViewById(R.id.musictogglebutton);
-				Log.v("MainActivity","value 2: " + musicSwitch);
-				
-				if(musicSwitch.isChecked()){
+				if(!visMenuSpeak){
+					musicMenuButton.setBackgroundResource(drawable.speaker);
 					try {
 						mp.prepare();
 					} catch (IllegalStateException e) {
@@ -66,7 +68,9 @@ public class MainActivity extends Activity {
 					}				 
 					mp.start();
 					mp.setLooping(true);
+					visMenuSpeak = true;
 				}else{
+					musicMenuButton.setBackgroundResource(drawable.mutespeaker);
 					try {
 						mp.prepare();
 					} catch (IllegalStateException e) {
@@ -76,34 +80,44 @@ public class MainActivity extends Activity {
 					}				 
 					mp.start();
 					mp.pause();	
+					visMenuSpeak = false;
 				}
 			}
 		});
 
 	}
-		@Override
-		protected void onPause() {
-			super.onPause();
-			mp.release();
-		}
 
 
-		@Override
-		public boolean onCreateOptionsMenu(Menu menu) {
-			// Inflate the menu; this adds items to the action bar if it is present.
-			getMenuInflater().inflate(R.menu.main, menu);
-			return true;
-		}
-		@Override
-		protected void onResume() {
-			super.onResume();
-			ToggleButton musicSwitch = (ToggleButton) findViewById(R.id.musictogglebutton);
+	@Override
+	public boolean onCreateOptionsMenu(Menu menu) {
+		// Inflate the menu; this adds items to the action bar if it is present.
+		getMenuInflater().inflate(R.menu.main, menu);
+		return true;
+	}
+	@Override
+	protected void onResume() {
+		super.onResume();
+		musicMenuButton = (ImageButton) findViewById(R.id.musicmenubutton);
+	}
 
-			if(musicSwitch.isChecked()){
-			musicSwitch.toggle();
-		}
-			mp = MediaPlayer.create(MainActivity.this, R.raw.house_music);				 
-		 
+	@Override
+	protected void onRestart() {
+		super.onRestart();
+		mp = MediaPlayer.create(MainActivity.this, R.raw.house_music);
+		musicMenuButton = (ImageButton) findViewById(R.id.musicmenubutton);
+		musicMenuButton.setBackgroundResource(drawable.mutespeaker);
+
+	}
+	
+	protected void onPause() {
+		super.onPause();
+		mp.release();
+	}
+
+	protected void onStop() {
+		super.onStop();
+		mp.release();
+		visMenuSpeak = false;
 	}
 
 }
