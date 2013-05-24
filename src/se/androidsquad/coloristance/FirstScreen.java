@@ -27,14 +27,18 @@ public class FirstScreen extends Activity {
 	DrawMap map;
 	DrawKeys drawKeys;
 	GameController game;
+
 	//	ToggleButton musicSwitchGame;
+	ImageButton musicButton;
+	boolean visSpeak; //state of the ImageButton musicButton
+
 	protected int levelCounter = 1;
 
 	int[] door = {R.id.top_door, R.id.right_door, R.id.bot_door,  R.id.left_door};
 	int[] keyNames = {R.id.key_button_blue, R.id.key_button_green, R.id.key_button_orange, R.id.key_button_purple, R.id.key_button_red};
 	int[] keyImg = {drawable.key_blue, drawable.key_green, drawable.key_orange, drawable.key_purple, drawable.key_red, drawable.key_empty};
 	char[] pos = {'N','E','S','W'};
-	boolean allocatedInv[] = {true,true,true};
+	boolean allocatedInv[] = {false,false,false};
 
 	long startTime, stopTime = 0;
 
@@ -56,17 +60,17 @@ public class FirstScreen extends Activity {
 		mp.setLooping(true);
 		MapModel.setPos(0, 1);
 
-		ToggleButton musicSwitchGame = new ToggleButton(this);
-		musicSwitchGame = (ToggleButton) findViewById(R.id.musicgametogglebutton);
-
-		musicSwitchGame.setOnClickListener(new View.OnClickListener(){
-
+		musicButton = (ImageButton) findViewById(R.id.musicbutton);
+		visSpeak = true;
+		musicButton.setBackgroundResource(drawable.speaker);
+		musicButton.setOnClickListener(new View.OnClickListener() {
 
 			@Override
 			public void onClick(View v) {
 				// TODO Auto-generated method stub
-				ToggleButton musicSwitchGame = (ToggleButton) findViewById(R.id.musicgametogglebutton);
-				if(musicSwitchGame.isChecked()){
+
+				if(!visSpeak){
+					musicButton.setBackgroundResource(drawable.speaker);
 					try {
 						mp.prepare();
 					} catch (IllegalStateException e) {
@@ -76,7 +80,10 @@ public class FirstScreen extends Activity {
 					}				 
 					mp.start();
 					mp.setLooping(true);
+					visSpeak = true;
+
 				}else{
+					musicButton.setBackgroundResource(drawable.mutespeaker);
 					try {
 						mp.prepare();
 					} catch (IllegalStateException e) {
@@ -86,11 +93,11 @@ public class FirstScreen extends Activity {
 					}				 
 					mp.start();
 					mp.pause();	
+					visSpeak = false;
 				}
+
 			}
-
 		});
-
 
 		//Looping what inital keys to show in the inventory
 		for(int i= 0; i<3; i++){
@@ -136,11 +143,7 @@ public class FirstScreen extends Activity {
 					mapDone();
 				}
 			}
-
 		});
-
-
-
 
 		// Right door
 		rightDoor.setOnClickListener(new View.OnClickListener() {
@@ -185,7 +188,6 @@ public class FirstScreen extends Activity {
 				if(MapModel.getRoom()=="90000"){
 					mapDone();
 				}
-
 			}
 		});
 
@@ -207,11 +209,9 @@ public class FirstScreen extends Activity {
 			}
 		});
 
-
 		invRight.setOnClickListener(new View.OnClickListener() {
 			@Override
 			public void onClick(View v) {
-
 
 				Log.v("FirstScreen", "Right was clicked");
 				dropKey(2);
@@ -295,11 +295,13 @@ public class FirstScreen extends Activity {
 
 	protected void setInventory(int pos){
 
+
 		//Set the requested drawable key
 		int clickedKey = keyImg[pos];
 
 		//Inventory position to put key at
 		int putAtPosition = 0;
+
 		boolean placed = false;
 
 		//AllocatedInv checks the three spots a key could fit in and put it at the first available
@@ -309,57 +311,57 @@ public class FirstScreen extends Activity {
 				putAtPosition = i;
 				Log.v("FirstScreen", "Key put in: "+i);
 				placed =true;
+				allocatedInv[i] = true;
 			}
 			else if (allocatedInv[i] == true && placed == false){
 				Log.v("FirstScreen", "Spot: "+i+" was full.");
 			}
-			else Log.v("FirstScreen", "Key placed");
+			else Log.v("FirstScreen", "Key has values: "+allocatedInv[i]+" and "+placed);
 
 		}
 
 		char[] buffer = GameController.key[MapModel.getMyX()][MapModel.getMyY()].getKeyString().toCharArray();
 		Log.v("FirstScreen", "input setInventory : " + GameController.key[MapModel.getMyX()][MapModel.getMyY()].getKeyString());
 		Log.v("FirstScreen", "buffer setInventory 1: " + buffer[0]+ buffer[1]+ buffer[2]+ buffer[3]+ buffer[4]);
-		Log.v("FirstScreen", "set InvPos: " + GameController.inv.getInv(pos));
-		buffer[GameController.inv.getInv(pos)] = '0';
+		Log.v("FirstScreen", "set InvPos: " + GameController.inv.getInv(putAtPosition));
+		buffer[GameController.inv.getInv(putAtPosition)] = '0';
 		String newKey = new String(buffer);
 		GameController.key[MapModel.getMyX()][MapModel.getMyY()].setKeyString(newKey);
 		findViewById(invPos[putAtPosition]).setBackgroundResource(keyImg[pos]);
 		GameController.inv.setInv(putAtPosition, pos);
+
 		Log.v("FirstScreen", "newKey: " + newKey);
-
-
 	}
 
 	protected void dropKey(int keyInvPos){
 
 		int emptyInventory = keyImg[5];
-		int pos = 9;
+		//int pos = 9;
 		boolean droped = false;
 
 		for(int i =0; i<3; i++){
 			if(keyInvPos == i && droped == false){
 				findViewById(invPos[i]).setBackgroundResource(emptyInventory);
-				pos = i;
+				//pos = i;
 				droped = true;
 			}
 			else if(keyInvPos == i && droped == true){
-				Log.v("FirstScreen", "The key has been dropped");
+				Log.v("FirstScreen", "The key has been dropped: " + i);
 			}
 			else Log.v("FirstScreen", "Something went wrong");
 
 		}
 
-		allocatedInv[pos] = false;
+		allocatedInv[keyInvPos] = false;
 
 		char[] buffer = GameController.key[MapModel.getMyX()][MapModel.getMyY()].getKeyString().toCharArray();
 		Log.v("FirstScreen", "input : " + GameController.key[MapModel.getMyX()][MapModel.getMyY()].getKeyString());
 		Log.v("FirstScreen", "buffer 1: " + buffer[0]+ buffer[1]+ buffer[2]+ buffer[3]+ buffer[4]);
-		Log.v("FirstScreen", "InvPos: " + GameController.inv.getInv(pos));
-		buffer[GameController.inv.getInv(pos)] = '1';
+		Log.v("FirstScreen", "InvPos: " + GameController.inv.getInv(keyInvPos));
+		buffer[GameController.inv.getInv(keyInvPos)] = '1';
 		String newKey = new String(buffer);
 		GameController.key[MapModel.getMyX()][MapModel.getMyY()].setKeyString(newKey);
-		findViewById(keyNames[GameController.inv.getInv(pos)]).setVisibility(View.VISIBLE);
+		findViewById(keyNames[GameController.inv.getInv(keyInvPos)]).setVisibility(View.VISIBLE);
 		GameController.inv.setInv(keyInvPos, 5);
 		Log.v("FirstScreen", "input : " + GameController.key[MapModel.getMyX()][MapModel.getMyY()].getKeyString());
 
@@ -442,9 +444,7 @@ public class FirstScreen extends Activity {
 
 		AlertDialog finishDialog = alertDialog.create();
 		finishDialog.show();
-
 	}
-
 
 	//	int i = showTime();
 	private void startTime() {
@@ -469,18 +469,17 @@ public class FirstScreen extends Activity {
 	@Override
 	protected void onResume() {
 		super.onResume();
-		ToggleButton musicSwitchGame = (ToggleButton) findViewById(R.id.musicgametogglebutton);
-		musicSwitchGame.toggle();
+		musicButton = (ImageButton) findViewById(R.id.musicbutton);
 	}
 
 	@Override
 	protected void onRestart() {
 		super.onRestart();
 		mp = MediaPlayer.create(FirstScreen.this, R.raw.house_music);
-		ToggleButton musicSwitchGame = (ToggleButton) findViewById(R.id.musicgametogglebutton);
-		if(!musicSwitchGame.isChecked()){
-			musicSwitchGame.toggle();
-		}
+
+		musicButton = (ImageButton) findViewById(R.id.musicbutton);
+		visSpeak = false;
+
 
 	}
 

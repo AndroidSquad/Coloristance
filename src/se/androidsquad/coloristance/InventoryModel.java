@@ -10,16 +10,16 @@ public class InventoryModel {
 
 	InventoryModel(){
 		//Initalize inventory with three empty slots
-		invKey[0] = 3;
-		invKey[1] = 2;
-		invKey[2] = 1;
+		invKey[0] = 5;
+		invKey[1] = 5;
+		invKey[2] = 5;
 	}
 
 	public int getInv(int pos){
 		if(invKey[pos]<5)
 			return invKey[pos];
 		else{ 
-			Log.v("InventoryModel", "Coludn't return value: " + invKey[pos]);
+			Log.v("InventoryModel", "Couldn't return value: " + invKey[pos]);
 			return 0;
 		}
 	}

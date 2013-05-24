@@ -4,6 +4,7 @@ import java.util.HashMap;
 
 import android.annotation.SuppressLint;
 import android.content.Context;
+import android.content.res.Configuration;
 import android.graphics.Canvas;
 import android.graphics.Color;
 import android.graphics.Paint;
@@ -45,17 +46,20 @@ public class DrawMap extends View {
 		col.get("black").setColor(RectModel.BLACK);
 		
 		String rectColor = "pl";
-		
+
 		int mapTop = findViewById(R.id.mapRect).getTop();
 		int mapBot = findViewById(R.id.mapRect).getBottom();
 		int mapRight = findViewById(R.id.mapRect).getRight();
 		int mapLeft = findViewById(R.id.mapRect).getLeft();
 		int mapHeight = findViewById(R.id.mapRect).getHeight();
 		int mapWidth = findViewById(R.id.mapRect).getWidth();
-
-
-				
-		MapModel.setMap(mapWidth, mapHeight, mapTop, mapRight, mapBot, mapLeft);
+		
+		if(getResources().getConfiguration().orientation == Configuration.ORIENTATION_LANDSCAPE){
+			MapModel.setMap(mapHeight, mapWidth, mapRight, mapBot, mapLeft, mapTop);
+		} else {
+			MapModel.setMap(mapWidth, mapHeight, mapTop, mapRight, mapBot, mapLeft);
+		}		
+		
 
 		//Log.v("DrawMap", mapWidth+", "+mapHeight+", "+mapLeft+", "+mapTop+", "+mapRight+", "+mapBot);
 
