@@ -38,14 +38,22 @@ public class MainActivity extends Activity {
 		mp = MediaPlayer.create(MainActivity.this, R.raw.house_music);				 
 
 
-		Button newGame = (Button) findViewById(R.id.button1); // This row connect the button named button1 in main_activity.xml to the button newGame.
+		Button newGame = (Button) findViewById(R.id.new_game); // This row connect the button named new_game in main_activity.xml to the button newGame.
 		newGame.setOnClickListener(new View.OnClickListener() { 
-
 
 			@Override
 			public void onClick(View v) {
 				startActivity(new Intent(MainActivity.this, FirstScreen.class));
 
+			}
+		});
+		
+		Button gameRules = (Button) findViewById(R.id.gamerules); // This row connect the button named Game Rules in main_activity.xml to the button Game Rules.
+		gameRules.setOnClickListener(new View.OnClickListener() { 
+
+			@Override
+			public void onClick(View v) {
+				startActivity(new Intent(MainActivity.this, GameRules.class));
 			}
 		});
 

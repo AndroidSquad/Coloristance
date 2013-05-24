@@ -17,5 +17,6 @@
     <string name="congrats">Congratulations</string>
     <string name="time">your time is: </string>
     <string name="speaker">Speaker buttons</string>
+    <string name="rules">Game Rules</string>
 
 </resources>
