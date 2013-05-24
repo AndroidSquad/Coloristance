@@ -44,25 +44,14 @@ public class MainActivity extends Activity {
 			@Override
 			public void onClick(View v) {
 				startActivity(new Intent(MainActivity.this, FirstScreen.class));
-
 			}
 		});
-		
-		Button gameRules = (Button) findViewById(R.id.gamerules); // This row connect the button named Game Rules in main_activity.xml to the button Game Rules.
-		gameRules.setOnClickListener(new View.OnClickListener() { 
 
-			@Override
-			public void onClick(View v) {
-				startActivity(new Intent(MainActivity.this, GameRules.class));
-			}
-		});
-		
 		musicMenuButton = (ImageButton) findViewById(R.id.musicmenubutton);
 		Log.v("MainActivity","value 1: " + musicMenuButton);
 		visMenuSpeak = false;
 		musicMenuButton.setBackgroundResource(drawable.mutespeaker);
 		musicMenuButton.setOnClickListener(new View.OnClickListener(){
-
 			@Override
 			public void onClick(View v) {
 				// TODO Auto-generated method stub
@@ -94,7 +83,14 @@ public class MainActivity extends Activity {
 			}
 		});
 		
+		Button gameRules = (Button) findViewById(R.id.gamerules); // This row connect the button named Game Rules in main_activity.xml to the button Game Rules.
+		gameRules.setOnClickListener(new View.OnClickListener() { 
 
+			@Override
+			public void onClick(View v) {
+				startActivity(new Intent(MainActivity.this, GameRules.class));
+			}
+		});
 
 	}
 
@@ -119,7 +115,7 @@ public class MainActivity extends Activity {
 		musicMenuButton.setBackgroundResource(drawable.mutespeaker);
 
 	}
-	
+
 	protected void onPause() {
 		super.onPause();
 		mp.release();
