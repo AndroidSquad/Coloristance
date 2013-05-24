@@ -22,7 +22,7 @@ import android.widget.ImageButton;
 public class MainActivity extends Activity {
 
 	MediaPlayer mp;
-	ImageButton musicMenuButton = (ImageButton) findViewById(R.id.musicmenubutton);;
+	ImageButton musicMenuButton;
 	boolean visMenuSpeak; //state of the ImageButton musicMenuButton
 
 
@@ -48,7 +48,8 @@ public class MainActivity extends Activity {
 
 			}
 		});
-
+		
+		musicMenuButton = (ImageButton) findViewById(R.id.musicmenubutton);
 		Log.v("MainActivity","value 1: " + musicMenuButton);
 		visMenuSpeak = false;
 		musicMenuButton.setBackgroundResource(drawable.mutespeaker);
