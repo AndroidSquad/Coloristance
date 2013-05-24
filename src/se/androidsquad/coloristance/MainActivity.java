@@ -45,14 +45,17 @@ public class MainActivity extends Activity {
 			}
 		});
 
-		ToggleButton musicSwitch = (ToggleButton) findViewById(R.id.musictogglebutton);
-		Log.v("MainActivity","value: " + musicSwitch);
+		ToggleButton musicSwitch = new ToggleButton(this); 
+		musicSwitch = (ToggleButton) findViewById(R.id.musictogglebutton);
+		Log.v("MainActivity","value 1: " + musicSwitch);
 		musicSwitch.setOnClickListener(new View.OnClickListener(){
 
 			@Override
 			public void onClick(View v) {
 				// TODO Auto-generated method stub
 				ToggleButton musicSwitch = (ToggleButton) findViewById(R.id.musictogglebutton);
+				Log.v("MainActivity","value 2: " + musicSwitch);
+				
 				if(musicSwitch.isChecked()){
 					try {
 						mp.prepare();
