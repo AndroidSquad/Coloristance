@@ -215,7 +215,7 @@ public class FirstScreen extends Activity {
 
 				Log.v("FirstScreen", "Right was clicked");
 				dropKey(2);
-				setKeys();
+				
 
 			}
 		});
@@ -227,7 +227,7 @@ public class FirstScreen extends Activity {
 
 				Log.v("FirstScreen", "Left was clicked");
 				dropKey(0);
-				setKeys();
+			
 
 			}
 		});
@@ -238,7 +238,7 @@ public class FirstScreen extends Activity {
 
 				Log.v("FirstScreen", "Mid was clicked");
 				dropKey(1);
-				setKeys();
+			
 
 			}
 		});
@@ -247,21 +247,21 @@ public class FirstScreen extends Activity {
 			@Override
 			public void onClick(View v) {
 				setInventory(0);
-				setKeys();
+			
 			}
 		});
 		keyGreen.setOnClickListener(new View.OnClickListener() {
 			@Override
 			public void onClick(View v) {
 				setInventory(1);
-				setKeys();
+			
 			}
 		});
 		keyOrange.setOnClickListener(new View.OnClickListener() {
 			@Override
 			public void onClick(View v) {
 				setInventory(2);
-				setKeys();
+		
 
 			}
 		});
@@ -269,7 +269,7 @@ public class FirstScreen extends Activity {
 			@Override
 			public void onClick(View v) {
 				setInventory(3);
-				setKeys();
+				
 
 			}
 		});
@@ -277,7 +277,7 @@ public class FirstScreen extends Activity {
 			@Override
 			public void onClick(View v) {
 				setInventory(4);
-				setKeys();
+				
 
 			}
 		});
@@ -285,15 +285,19 @@ public class FirstScreen extends Activity {
 	}
 
 	protected void setInventory(int pos){
-
-
+		//Set inventory takes 0-4
+		
 		//Set the requested drawable key
 		int clickedKey = keyImg[pos];
 
-		//Inventory position to put key at
-		int putAtPosition = 0;
-
+		//Inventory position to put key at, if something isn't declared 9 will make it go out of bounds.
+		int putAtPosition = 9;
+		
+		KeyModel thisKey = GameController.key[MapModel.getMyX()][MapModel.getMyY()];
+		
 		boolean placed = false;
+		char[] buffer = thisKey.getKeyString().toCharArray();
+		String newKey = new String(buffer);
 
 		//AllocatedInv checks the three spots a key could fit in and put it at the first available
 		for(int i =0; i<3;i++){
@@ -301,65 +305,64 @@ public class FirstScreen extends Activity {
 				findViewById(invPos[i]).setBackgroundResource(clickedKey);
 				putAtPosition = i;
 				Log.v("FirstScreen", "Key put in: "+i);
+				
 				placed =true;
 				allocatedInv[i] = true;
+				
+				buffer[GameController.inv.getInv(putAtPosition)] = '0';
+				thisKey.setKeyString(newKey);
+				thisKey.setKeyVisibility(false);
+				findViewById(invPos[putAtPosition]).setBackgroundResource(keyImg[pos]);
+				GameController.inv.setInv(putAtPosition, pos);
+				
+				setKeys();
 			}
 			else if (allocatedInv[i] == true && placed == false){
 				Log.v("FirstScreen", "Spot: "+i+" was full.");
 			}
-			else Log.v("FirstScreen", "Key has values: "+allocatedInv[i]+" and "+placed);
+			else Log.v("FirstScreen", "Key has value has been placed");
 
 		}
 
-		char[] buffer = GameController.key[MapModel.getMyX()][MapModel.getMyY()].getKeyString().toCharArray();
-		Log.v("FirstScreen", "input setInventory : " + GameController.key[MapModel.getMyX()][MapModel.getMyY()].getKeyString());
+/*		Log.v("FirstScreen", "input setInventory : " + GameController.key[MapModel.getMyX()][MapModel.getMyY()].getKeyString());
 		Log.v("FirstScreen", "buffer setInventory 1: " + buffer[0]+ buffer[1]+ buffer[2]+ buffer[3]+ buffer[4]);
 		Log.v("FirstScreen", "set InvPos: " + GameController.inv.getInv(putAtPosition));
-		buffer[GameController.inv.getInv(putAtPosition)] = '0';
-		String newKey = new String(buffer);
-		GameController.key[MapModel.getMyX()][MapModel.getMyY()].setKeyString(newKey);
-		findViewById(invPos[putAtPosition]).setBackgroundResource(keyImg[pos]);
-		GameController.inv.setInv(putAtPosition, pos);
+		Log.v("FirstScreen", "newKey: " + newKey);*/
 
-		Log.v("FirstScreen", "newKey: " + newKey);
 	}
 
 	protected void dropKey(int keyInvPos){
+		//keyInvPos takes 0-2
+		
+		KeyModel thisKey = GameController.key[MapModel.getMyX()][MapModel.getMyY()];
 
 		int emptyInventory = keyImg[5];
-		//int pos = 9;
-		boolean droped = false;
-
+		char[] buffer = thisKey.getKeyString().toCharArray();
+		String newKey = new String(buffer);
+				
 		for(int i =0; i<3; i++){
-			if(keyInvPos == i && droped == false){
+			if(keyInvPos == i && allocatedInv[i] == true){
 				findViewById(invPos[i]).setBackgroundResource(emptyInventory);
-				//pos = i;
-				droped = true;
+				allocatedInv[i] = false;
+				buffer[GameController.inv.getInv(keyInvPos)] = '1';
+				thisKey.setKeyString(newKey);
+				thisKey.setKeyVisibility(true);
+				GameController.inv.setInv(keyInvPos, 5);
+				
+				setKeys();
 			}
-			else if(keyInvPos == i && droped == true){
-				Log.v("FirstScreen", "The key has been dropped: " + i);
+			else if(keyInvPos == i && allocatedInv[i] == false){
+				Log.v("FirstScreen", "The key has been dropped/Was never there: " + i);
 			}
 			else Log.v("FirstScreen", "Something went wrong");
-
 		}
-
-		allocatedInv[keyInvPos] = false;
-
-		char[] buffer = GameController.key[MapModel.getMyX()][MapModel.getMyY()].getKeyString().toCharArray();
-		Log.v("FirstScreen", "input : " + GameController.key[MapModel.getMyX()][MapModel.getMyY()].getKeyString());
+		
+		/*Log.v("FirstScreen", "input : " + GameController.key[MapModel.getMyX()][MapModel.getMyY()].getKeyString());
 		Log.v("FirstScreen", "buffer 1: " + buffer[0]+ buffer[1]+ buffer[2]+ buffer[3]+ buffer[4]);
 		Log.v("FirstScreen", "InvPos: " + GameController.inv.getInv(keyInvPos));
-		buffer[GameController.inv.getInv(keyInvPos)] = '1';
-		String newKey = new String(buffer);
-		GameController.key[MapModel.getMyX()][MapModel.getMyY()].setKeyString(newKey);
-		findViewById(keyNames[GameController.inv.getInv(keyInvPos)]).setVisibility(View.VISIBLE);
-		GameController.inv.setInv(keyInvPos, 5);
-		Log.v("FirstScreen", "input : " + GameController.key[MapModel.getMyX()][MapModel.getMyY()].getKeyString());
+		Log.v("FirstScreen", "input : " + GameController.key[MapModel.getMyX()][MapModel.getMyY()].getKeyString());*/
 
 	}
-
-
-
 
 	protected void setRoom(){
 		DoorModel.setDoor(MapModel.getRoom());
