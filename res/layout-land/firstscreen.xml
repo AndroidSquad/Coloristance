@@ -42,12 +42,12 @@
                 android:id="@+id/bot_door"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_alignParentRight="true"
+                android:layout_alignParentLeft="true"
                 android:layout_centerVertical="true"
                 android:background="@color/red_light"
                 android:clickable="true"
                 android:contentDescription="@string/door"
-                android:rotation="90"
+                android:rotation="270"
                 android:src="@drawable/ic_door"
                 android:visibility="invisible" />
 
@@ -55,12 +55,12 @@
                 android:id="@+id/top_door"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_alignParentLeft="true"
+                android:layout_alignParentRight="true"
                 android:layout_centerVertical="true"
                 android:background="@color/purple_light"
                 android:clickable="true"
                 android:contentDescription="@string/door"
-                android:rotation="270"
+                android:rotation="90"
                 android:src="@drawable/ic_door"
                 android:visibility="invisible" />
 
@@ -84,8 +84,8 @@
                 android:layout_above="@id/left_door"
                 android:layout_below="@id/right_door"
                 android:layout_centerInParent="true"
-                android:layout_toLeftOf="@id/bot_door"
-                android:layout_toRightOf="@id/top_door"
+                android:layout_toLeftOf="@id/top_door"
+                android:layout_toRightOf="@id/bot_door"
                 android:background="@color/white"
                 android:contentDescription="@string/room" />
 
