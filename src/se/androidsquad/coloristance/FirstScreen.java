@@ -183,15 +183,10 @@ public class FirstScreen extends Activity {
 			public void onClick(View v) {
 
 				for(int i =0; i<3; i++){
-					if(inventories[i].equals(v) == true && i == 0){Log.v("FirstScreen", whatKey[i]);}
-					else if(inventories[i].equals(v) == true && i == 1){Log.v("FirstScreen", whatKey[i]);}
-					else if(inventories[i].equals(v) == true && i == 2){Log.v("FirstScreen", whatKey[i]);}
-
-					dropKey(i);
+					if(inventories[i].equals(v) == true && i == 0){dropKey(i);}
+					else if(inventories[i].equals(v) == true && i == 1){dropKey(i);}
+					else if(inventories[i].equals(v) == true && i == 2){dropKey(i);}
 				}
-
-
-
 			}
 		};
 
@@ -284,12 +279,17 @@ public class FirstScreen extends Activity {
 		String newKey = new String(buffer);
 		Log.v("FirstScreen", "DropKey newKey init: " + newKey);
 		Log.v("FirstScreen", ""+allocatedInv[0]+""+allocatedInv[1]+""+allocatedInv[2]);
-		
-			if(allocatedInv[invPosition] == true){
+		int keyPos = GameController.inv.getInv(invPosition);
+			
+			if(newKey.charAt(keyPos) == '1'){
+				//TODO Visa ett snabbt felmeddelande att nyckeln redan finns i rummet
+				Log.v("FirstScreen", "The key already exist in the room");
+			}
+			else if(allocatedInv[invPosition] == true ){
 				findViewById(invPos[invPosition]).setBackgroundResource(emptyInventory);
 				allocatedInv[invPosition] = false;
-				if(GameController.inv.getInv(invPosition)!= 5){
-					buffer[GameController.inv.getInv(invPosition)] = '1';
+				if(keyPos != 5){
+					buffer[keyPos] = '1';
 					Log.v("FirstScreen", "Set 1");
 				}
 
