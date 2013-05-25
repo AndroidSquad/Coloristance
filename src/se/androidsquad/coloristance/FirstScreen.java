@@ -35,7 +35,7 @@ public class FirstScreen extends Activity {
 	boolean visSpeak; //state of the ImageButton musicButton
 	Runnable runnable;
 	protected int levelCounter = 1;
-	CountDownTimer countDown;
+
 
 	int[] door = {R.id.top_door, R.id.right_door, R.id.bot_door,  R.id.left_door};
 	int[] keyNames = {R.id.key_button_blue, R.id.key_button_green, R.id.key_button_orange, R.id.key_button_purple, R.id.key_button_red};
@@ -49,10 +49,16 @@ public class FirstScreen extends Activity {
 	String timeResult;
 	int[] invPos = {R.id.invKeyLeft, R.id.invKeyMid, R.id.invKeyRight};
 
+	TextView textTimer;		
+	CountDown timer;
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.firstscreen);
+		
+		textTimer = (TextView) findViewById(R.id.texttime);
+		timer = new CountDown(10000,1000);
+		timer.start();
 		startTime();
 		
 		game = new GameController();
@@ -72,20 +78,7 @@ public class FirstScreen extends Activity {
 				MapModel.setPos(x,y);
 			}
 
-		final TextView textTimer = (TextView) findViewById(R.id.texttime);		
-		final CountDownTimer timer = new CountDownTimer (10000,1000){
-
-			@Override
-			public void onFinish() {
-				textTimer.setText("GAME OVER");
-				gameLost();
-			}
-
-			@Override
-			public void onTick(long millisUntilFinished) {
-				textTimer.setText((millisUntilFinished/1000)+ "");
-			}
-		};
+		
 		
 		
 		musicButton  = (ImageButton) findViewById(R.id.musicbutton);
@@ -571,18 +564,38 @@ public class FirstScreen extends Activity {
 		musicButton = (ImageButton) findViewById(R.id.musicbutton);
 		musicButton.setBackgroundResource(drawable.mutespeaker);
 
-
 	}
 
 	protected void onPause() {
 		super.onPause();
-		mp.release();
+		mp.release(); 
 	}
 
 	protected void onStop() {
 		super.onStop();
 		mp.release();
 		visSpeak = false;
+		timer.cancel();
+	}
+	
+	
+	class CountDown extends CountDownTimer{
+		
+		public CountDown(long millisInFuture, long countDownInterval){
+			super(millisInFuture,countDownInterval);
+		}
+			
+		@Override
+		public void onFinish() {	
+			textTimer.setText("GAME OVER");
+			gameLost();
+			Log.v("Firstscreentimer","fel timer");
+		}
+
+		@Override
+		public void onTick(long millisUntilFinished) {
+			textTimer.setText((millisUntilFinished/1000)+ "");
+		}
 	}
 }
 
