@@ -10,6 +10,7 @@ public class RectModel {
 	 */
 
 	public static final int BLACK 		= 0xFF000000;
+	public static final int BLUE_DARK 	= 0xFF0099CC;
 	public static final int BLUE_LIGHT 	= 0xFF33B5E5;
 	public static final int GREEN_LIGHT	= 0xFF669900;
 	public static final int ORANGE_LIGHT= 0xFFFF8800;
