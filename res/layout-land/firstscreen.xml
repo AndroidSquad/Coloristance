@@ -18,7 +18,7 @@
         android:id="@+id/room_container"
         android:layout_width="0dp"
         android:layout_height="match_parent"
-        android:layout_weight="0.75" >
+        android:layout_weight="0.70" >
 
         <RelativeLayout
             android:id="@+id/room_layout"
@@ -184,7 +184,7 @@
         android:id="@+id/bot_layout"
         android:layout_width="0dp"
         android:layout_height="match_parent"
-        android:layout_weight="0.10"
+        android:layout_weight="0.15"
         android:background="@color/red_light" >
 
         <ImageButton
