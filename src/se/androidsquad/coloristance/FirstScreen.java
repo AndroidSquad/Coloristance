@@ -63,7 +63,14 @@ public class FirstScreen extends Activity {
 		mp = MediaPlayer.create(FirstScreen.this, R.raw.house_music);	
 		mp.start();
 		mp.setLooping(true);
-		MapModel.setPos(0, 1);
+		int x= MapModel.getMyX();
+		int y= MapModel.getMyY();
+		if(x==0 && y == 0){
+			MapModel.setPos(0, 1);
+			}
+			else {
+				MapModel.setPos(x,y);
+			}
 
 		final TextView textTimer = (TextView) findViewById(R.id.texttime);		
 		final CountDownTimer timer = new CountDownTimer (10000,1000){
