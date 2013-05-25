@@ -147,6 +147,8 @@ public class FirstScreen extends Activity {
 		final ImageButton keyPurple = (ImageButton) findViewById(R.id.key_button_purple);
 		final ImageButton keyRed = (ImageButton) findViewById(R.id.key_button_red);
 		final View[] keys = {keyBlue, keyGreen, keyOrange, keyPurple, keyRed};
+		final View[] inventories = {invLeft, invMid, invRight};
+		final String[] whatKey = {"Left was clicked","Mid as clicked","Right was clicked"}; 
 
 
 
@@ -154,11 +156,7 @@ public class FirstScreen extends Activity {
 		topDoor.setOnClickListener(new View.OnClickListener() {
 			@Override
 			public void onClick(View v) {
-				//				
-				//				currentKey =  GameController.key[currentX][currentY];
-				//				currentKeyColorPos = currentKey.getImg();
-				//				currentKeyImgId = keyNames[currentKeyColorPos];
-
+	
 				MapModel.moveUp();
 				//game.doorClick(); //Check need
 				setRoom();
@@ -179,19 +177,14 @@ public class FirstScreen extends Activity {
 			@Override
 			public void onClick(View v) {
 
-				//				currentKey =  GameController.key[currentX][currentY];
-				//				currentKeyColorPos = currentKey.getImg();
-				//				currentKeyImgId = keyNames[currentKeyColorPos];
-
 				MapModel.moveRight();
 
-				//game.doorClick(); //Check need
 				setRoom();
 				setKeys();
 				setDoors();
 				timer.start();
 				
-				if(MapModel.getRoom()=="70000"){
+				if(MapModel.getRoom()=="90000"){
 					timer.cancel();
 					mapDone();
 					
@@ -205,12 +198,9 @@ public class FirstScreen extends Activity {
 			@Override
 			public void onClick(View v) {
 
-				//				currentKey =  GameController.key[currentX][currentY];
-				//				currentKeyColorPos = currentKey.getImg();
-				//				currentKeyImgId = keyNames[currentKeyColorPos];
 
 				MapModel.moveDown();
-				//game.doorClick(); //Check need
+		
 				setRoom();
 				setKeys();
 				setDoors();
@@ -228,13 +218,9 @@ public class FirstScreen extends Activity {
 
 			@Override
 			public void onClick(View v) {
-
-				//				currentKey =  GameController.key[currentX][currentY];
-				//				currentKeyColorPos = currentKey.getImg();
-				//				currentKeyImgId = keyNames[currentKeyColorPos];
-				//				
+			
 				MapModel.moveLeft();
-				//game.doorClick(); //Check need
+			
 				setRoom();
 				setKeys();
 				setDoors();
@@ -242,39 +228,50 @@ public class FirstScreen extends Activity {
 			}
 		});
 
-		invRight.setOnClickListener(new View.OnClickListener() {
+//		invRight.setOnClickListener(new View.OnClickListener() {
+//			@Override
+//			public void onClick(View v) {
+//
+//				Log.v("FirstScreen", "Right was clicked");
+//				dropKey(2);
+//				
+//
+//			}
+//		});
+//
+//		invLeft.setOnClickListener(new View.OnClickListener() {
+//			@Override
+//			public void onClick(View v) {
+//
+//
+//				Log.v("FirstScreen", "Left was clicked");
+//				dropKey(0);
+//			
+//
+//			}
+//		});
+
+		View.OnClickListener inventoryClick = new View.OnClickListener() {
 			@Override
 			public void onClick(View v) {
-
-				Log.v("FirstScreen", "Right was clicked");
-				dropKey(2);
 				
-
-			}
-		});
-
-		invLeft.setOnClickListener(new View.OnClickListener() {
-			@Override
-			public void onClick(View v) {
-
-
-				Log.v("FirstScreen", "Left was clicked");
-				dropKey(0);
+				for(int i =0; i<3; i++){
+				if(inventories[i].equals(v) == true && i == 0){Log.v("FirstScreen", whatKey[i]);}
+				else if(inventories[i].equals(v) == true && i == 1){Log.v("FirstScreen", whatKey[i]);}
+				else if(inventories[i].equals(v) == true && i == 2){Log.v("FirstScreen", whatKey[i]);}
+				
+					dropKey(i);
+				}
+					
 			
 
 			}
-		});
-		invMid.setOnClickListener(new View.OnClickListener() {
-			@Override
-			public void onClick(View v) {
+		};
+		
+		for(int i = 0; i<3;i++){
+			inventories[i].setOnClickListener(inventoryClick);
+		}
 
-
-				Log.v("FirstScreen", "Mid was clicked");
-				dropKey(1);
-			
-
-			}
-		});
 		
 		View.OnClickListener keyClick = new View.OnClickListener() {
 			@Override
