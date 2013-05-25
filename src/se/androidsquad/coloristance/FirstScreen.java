@@ -55,6 +55,7 @@ public class FirstScreen extends Activity {
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.firstscreen);
+		findViewById(R.id.bot_layout).setBackgroundColor(RectModel.RED_LIGHT);
 
 		textTimer = (TextView) findViewById(R.id.texttime);
 		timer = new CountDown(10000,1000);
