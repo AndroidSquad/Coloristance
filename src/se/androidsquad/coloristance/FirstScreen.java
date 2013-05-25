@@ -39,7 +39,7 @@ public class FirstScreen extends Activity {
 	int[] door = {R.id.top_door, R.id.right_door, R.id.bot_door,  R.id.left_door};
 	int[] keyNames = {R.id.key_button_blue, R.id.key_button_green, R.id.key_button_orange, R.id.key_button_purple, R.id.key_button_red};
 	int[] keyImg = {drawable.key_blue, drawable.key_green, drawable.key_orange, drawable.key_purple, drawable.key_red, drawable.key_empty};
-	
+
 	char[] pos = {'N','E','S','W'};
 	boolean allocatedInv[] = {false,false,false};
 
@@ -54,11 +54,11 @@ public class FirstScreen extends Activity {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.firstscreen);
 		startTime();
-		
+
 		game = new GameController();
 		map = new DrawMap(FirstScreen.this, null);
 		drawKeys = new DrawKeys(FirstScreen.this, null);
-		
+
 
 		mp = MediaPlayer.create(FirstScreen.this, R.raw.house_music);	
 		mp.start();
@@ -82,9 +82,9 @@ public class FirstScreen extends Activity {
 				textTimer.setText((millisUntilFinished/1000)+ "");
 			}
 		}
-		
+
 		final CountDown timer = new CountDown(10000,1000);
-		
+
 		musicButton  = (ImageButton) findViewById(R.id.musicbutton);
 		Log.v("MainActivity","value 1: " + musicButton);
 		visSpeak = true;
@@ -148,131 +148,122 @@ public class FirstScreen extends Activity {
 		final ImageButton keyRed = (ImageButton) findViewById(R.id.key_button_red);
 		final View[] keys = {keyBlue, keyGreen, keyOrange, keyPurple, keyRed};
 		final View[] inventories = {invLeft, invMid, invRight};
+		final View[] doors = {topDoor, rightDoor, botDoor, leftDoor};
 		final String[] whatKey = {"Left was clicked","Mid as clicked","Right was clicked"}; 
 
+//
+//
+//		//Top door
+//		topDoor.setOnClickListener(new View.OnClickListener() {
+//			@Override
+//			public void onClick(View v) {
+//
+//				MapModel.moveUp();
+//				//game.doorClick(); //Check need
+//				setRoom();
+//				setKeys();
+//				setDoors();
+//				timer.start();
+//
+//				if(MapModel.getRoom()=="70000"){
+//					timer.cancel();
+//					mapDone();
+//				}
+//			}
+//		});
+//
+//		// Right door
+//		rightDoor.setOnClickListener(new View.OnClickListener() {
+//
+//			@Override
+//			public void onClick(View v) {
+//
+//				MapModel.moveRight();
+//
+//				setRoom();
+//				setKeys();
+//				setDoors();
+//				timer.start();
+//
+//				if(MapModel.getRoom()=="90000"){
+//					timer.cancel();
+//					mapDone();
+//
+//				}
+//			}
+//		});
+//
+//		// Bottom door
+//		botDoor.setOnClickListener(new View.OnClickListener() {
+//
+//			@Override
+//			public void onClick(View v) {
+//
+//
+//				MapModel.moveDown();
+//
+//				setRoom();
+//				setKeys();
+//				setDoors();
+//				timer.start();
+//
+//				if(MapModel.getRoom()=="90000"){
+//					timer.cancel();
+//					mapDone();
+//				}
+//			}
+//		});
 
-
-		//Top door
-		topDoor.setOnClickListener(new View.OnClickListener() {
-			@Override
-			public void onClick(View v) {
-	
-				MapModel.moveUp();
-				//game.doorClick(); //Check need
-				setRoom();
-				setKeys();
-				setDoors();
-				timer.start();
-				
-				if(MapModel.getRoom()=="70000"){
-					timer.cancel();
-					mapDone();
-				}
-			}
-		});
-
-		// Right door
-		rightDoor.setOnClickListener(new View.OnClickListener() {
-
-			@Override
-			public void onClick(View v) {
-
-				MapModel.moveRight();
-
-				setRoom();
-				setKeys();
-				setDoors();
-				timer.start();
-				
-				if(MapModel.getRoom()=="90000"){
-					timer.cancel();
-					mapDone();
-					
-				}
-			}
-		});
-
-		// Bottom door
-		botDoor.setOnClickListener(new View.OnClickListener() {
-
-			@Override
-			public void onClick(View v) {
-
-
-				MapModel.moveDown();
-		
-				setRoom();
-				setKeys();
-				setDoors();
-				timer.start();
-			
-				if(MapModel.getRoom()=="90000"){
-					timer.cancel();
-					mapDone();
-				}
-			}
-		});
 
 		//Left door
-		leftDoor.setOnClickListener(new View.OnClickListener() {
+		View.OnClickListener doorClick = new View.OnClickListener(){
 
 			@Override
 			public void onClick(View v) {
-			
-				MapModel.moveLeft();
-			
+				
+				if(doors[0].equals(v)== true){MapModel.moveUp();}
+				else if(doors[1].equals(v)== true){MapModel.moveRight();}
+				else if(doors[2].equals(v)== true){MapModel.moveDown();}
+				else if(doors[3].equals(v)== true){MapModel.moveLeft();}
+				
 				setRoom();
 				setKeys();
 				setDoors();
 				timer.start();
-			}
-		});
 
-//		invRight.setOnClickListener(new View.OnClickListener() {
-//			@Override
-//			public void onClick(View v) {
-//
-//				Log.v("FirstScreen", "Right was clicked");
-//				dropKey(2);
-//				
-//
-//			}
-//		});
-//
-//		invLeft.setOnClickListener(new View.OnClickListener() {
-//			@Override
-//			public void onClick(View v) {
-//
-//
-//				Log.v("FirstScreen", "Left was clicked");
-//				dropKey(0);
-//			
-//
-//			}
-//		});
+				if(MapModel.getRoom()=="90000"){
+					timer.cancel();
+					mapDone();
+				}
+			}
+		};
+
+		for(int i = 0; i<4; i++){
+			doors[i].setOnClickListener(doorClick);
+		}
 
 		View.OnClickListener inventoryClick = new View.OnClickListener() {
 			@Override
 			public void onClick(View v) {
-				
+
 				for(int i =0; i<3; i++){
-				if(inventories[i].equals(v) == true && i == 0){Log.v("FirstScreen", whatKey[i]);}
-				else if(inventories[i].equals(v) == true && i == 1){Log.v("FirstScreen", whatKey[i]);}
-				else if(inventories[i].equals(v) == true && i == 2){Log.v("FirstScreen", whatKey[i]);}
-				
+					if(inventories[i].equals(v) == true && i == 0){Log.v("FirstScreen", whatKey[i]);}
+					else if(inventories[i].equals(v) == true && i == 1){Log.v("FirstScreen", whatKey[i]);}
+					else if(inventories[i].equals(v) == true && i == 2){Log.v("FirstScreen", whatKey[i]);}
+
 					dropKey(i);
 				}
-					
-			
+
+
 
 			}
 		};
-		
+
 		for(int i = 0; i<3;i++){
 			inventories[i].setOnClickListener(inventoryClick);
 		}
 
-		
+
 		View.OnClickListener keyClick = new View.OnClickListener() {
 			@Override
 			public void onClick(View v) {
@@ -281,11 +272,11 @@ public class FirstScreen extends Activity {
 					if(keys[i].equals(v) == true){clickedKeyColor = i;}
 				}
 				setInventory(clickedKeyColor);
-				
+
 
 			}
 		};
-		
+
 		for(int i = 0; i<5; i++){
 			keys[i].setOnClickListener(keyClick);
 		}
@@ -294,15 +285,15 @@ public class FirstScreen extends Activity {
 
 	protected void setInventory(int keyPos){
 		//Set inventory takes 0-4, in the variable keyPos
-		
+
 		//Set the requested drawable key
 		int clickedKey = keyImg[keyPos];
-		
+
 		//Inventory position to put key at, if something isn't declared 9 will make it go out of bounds.
 		int invPosition = 9;
-		
+
 		thisKey = GameController.key[MapModel.getMyX()][MapModel.getMyY()];
-		
+
 		boolean placed = false;
 		char[] buffer = thisKey.getKeyString().toCharArray();
 		String newKey = new String(buffer);
@@ -314,21 +305,21 @@ public class FirstScreen extends Activity {
 				findViewById(invPos[i]).setBackgroundResource(clickedKey);
 				invPosition = i;
 				Log.v("FirstScreen", "Key put in: "+i);
-				
+
 				placed =true;
 				allocatedInv[i] = true;
-				
+
 				if(keyPos != 5){
 					buffer[keyPos] = '0';
 					Log.v("FirstScreen", "Tried to set 0");
 				}
-				
+
 				newKey = new String(buffer);
 				thisKey.setKeyString(newKey);
 				thisKey.setKeyVisibility(false);
 				findViewById(invPos[invPosition]).setBackgroundResource(keyImg[keyPos]);
 				GameController.inv.setInv(invPosition, keyPos);
-				
+
 				setKeys();
 			}
 			else if (allocatedInv[i] == true && placed == false){
@@ -339,8 +330,8 @@ public class FirstScreen extends Activity {
 		}
 
 		Log.v("FirstScreen", "setInventory newKey ending: " + newKey);
-		
-/*		Log.v("FirstScreen", "input setInventory : " + GameController.key[MapModel.getMyX()][MapModel.getMyY()].getKeyString());
+
+		/*		Log.v("FirstScreen", "input setInventory : " + GameController.key[MapModel.getMyX()][MapModel.getMyY()].getKeyString());
 		Log.v("FirstScreen", "buffer setInventory 1: " + buffer[0]+ buffer[1]+ buffer[2]+ buffer[3]+ buffer[4]);
 		Log.v("FirstScreen", "set InvPos: " + GameController.inv.getInv(putAtPosition));
 		Log.v("FirstScreen", "newKey: " + newKey);*/
@@ -349,14 +340,14 @@ public class FirstScreen extends Activity {
 
 	protected void dropKey(int invPosition){
 		//keyInvPos takes 0-2
-		
+
 		thisKey = GameController.key[MapModel.getMyX()][MapModel.getMyY()];
 
 		int emptyInventory = keyImg[5];
 		char[] buffer = thisKey.getKeyString().toCharArray();
 		String newKey = new String(buffer);
 		Log.v("FirstScreen", "DropKey newKey init: " + newKey);
-					
+
 		for(int i =0; i<3; i++){
 			if(invPosition == i && allocatedInv[i] == true){
 				findViewById(invPos[i]).setBackgroundResource(emptyInventory);
@@ -370,7 +361,7 @@ public class FirstScreen extends Activity {
 				thisKey.setKeyString(newKey);
 				thisKey.setKeyVisibility(true);
 				GameController.inv.setInv(invPosition, 5);
-				
+
 				setKeys();
 			}
 			else if(invPosition == i && allocatedInv[i] == false){
@@ -378,9 +369,9 @@ public class FirstScreen extends Activity {
 			}
 			else Log.v("FirstScreen", "Something went wrong");
 		}
-		
+
 		Log.v("FirstScreen", "DropKey newKey ending: " + newKey);
-		
+
 		/*Log.v("FirstScreen", "input : " + GameController.key[MapModel.getMyX()][MapModel.getMyY()].getKeyString());
 		Log.v("FirstScreen", "buffer 1: " + buffer[0]+ buffer[1]+ buffer[2]+ buffer[3]+ buffer[4]);
 		Log.v("FirstScreen", "InvPos: " + GameController.inv.getInv(keyInvPos));
@@ -408,7 +399,7 @@ public class FirstScreen extends Activity {
 
 	protected void setKeys(){
 		thisKey = GameController.key[MapModel.getMyX()][MapModel.getMyY()];
-		
+
 		for(int i = 0; i<5; i++){
 			if(thisKey.getKeyString().charAt(i) == '1'){
 				Log.v("Firstscreen", i+ " Its visible:" + thisKey.getImg());
@@ -474,10 +465,10 @@ public class FirstScreen extends Activity {
 		AlertDialog.Builder loseDialog = new AlertDialog.Builder(this);
 		loseDialog.setTitle(R.string.lost_game);
 		LayoutInflater inflater = this.getLayoutInflater();
-		
+
 		View loseView = inflater.inflate(R.layout.lose, null);
 		loseDialog.setView(loseView);
-		
+
 		View retryButton=loseView.findViewById(R.id.retry);
 		retryButton.setOnClickListener(new View.OnClickListener() {
 
@@ -497,9 +488,9 @@ public class FirstScreen extends Activity {
 		});
 		AlertDialog gameOverDialog = loseDialog.create();
 		gameOverDialog.show();
-		
+
 	}
-	
+
 	//	int i = showTime();
 	private void startTime() {
 		startTime = System.currentTimeMillis();		
