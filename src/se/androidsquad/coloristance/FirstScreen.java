@@ -446,12 +446,12 @@ public class FirstScreen extends Activity {
 	protected void mapDone(){
 		stopTime();
 		showTime();
-		
+		MapModel.setPos(0,1);
 		AlertDialog.Builder alertDialog = new AlertDialog.Builder(this);
 		alertDialog.setTitle(this.getText(R.string.finished)+"\t"+"You finished in: "+ timeResult +" seconds");
 		//alertDialog.setTitle(showTime());
 		LayoutInflater inflater = this.getLayoutInflater();
-
+ 
 		mp.stop();
 		finish_game = MediaPlayer.create(FirstScreen.this, R.raw.super_mario_complete);	
 		finish_game.start();
