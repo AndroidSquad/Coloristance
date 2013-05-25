@@ -66,10 +66,7 @@ public class FirstScreen extends Activity {
 		MapModel.setPos(0, 1);
 
 		final TextView textTimer = (TextView) findViewById(R.id.texttime);		
-		class CountDown extends CountDownTimer {
-			public CountDown(long millisInFuture, long countDownInt){
-				super(millisInFuture, countDownInt);
-			}
+		final CountDownTimer timer = new CountDownTimer (10000,1000){
 
 			@Override
 			public void onFinish() {
@@ -81,9 +78,8 @@ public class FirstScreen extends Activity {
 			public void onTick(long millisUntilFinished) {
 				textTimer.setText((millisUntilFinished/1000)+ "");
 			}
-		}
+		};
 		
-		final CountDown timer = new CountDown(10000,1000);
 		
 		musicButton  = (ImageButton) findViewById(R.id.musicbutton);
 		Log.v("MainActivity","value 1: " + musicButton);
@@ -248,7 +244,7 @@ public class FirstScreen extends Activity {
 				Log.v("FirstScreen", "Right was clicked");
 				dropKey(2);
 				
-
+		
 			}
 		});
 
@@ -450,6 +446,7 @@ public class FirstScreen extends Activity {
 	protected void mapDone(){
 		stopTime();
 		showTime();
+		
 		AlertDialog.Builder alertDialog = new AlertDialog.Builder(this);
 		alertDialog.setTitle(this.getText(R.string.finished)+"\t"+"You finished in: "+ timeResult +" seconds");
 		//alertDialog.setTitle(showTime());
@@ -468,10 +465,14 @@ public class FirstScreen extends Activity {
 		closeButton.setOnClickListener(new View.OnClickListener() {
 
 			public void onClick(View clicked){
-				if(clicked.getId() == R.id.endGame)
-					startActivity(new Intent(FirstScreen.this, MainActivity.class));
+				if(clicked.getId() == R.id.endGame){
+					Intent intent = new Intent(getApplicationContext(), MainActivity.class);
+					intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+					startActivity(intent);
 				finish_game.stop();
+				finish();
 			}
+			}	
 		});
 
 		View playNextLevel= dialogView.findViewById(R.id.playNextLevel);
@@ -495,6 +496,7 @@ public class FirstScreen extends Activity {
 	protected void gameLost(){ 
 		mp.stop();
 		stopTime();
+		
 		AlertDialog.Builder loseDialog = new AlertDialog.Builder(this);
 		loseDialog.setTitle(R.string.lost_game);
 		LayoutInflater inflater = this.getLayoutInflater();
@@ -515,8 +517,12 @@ public class FirstScreen extends Activity {
 		playAgainButton.setOnClickListener(new View.OnClickListener() {
 
 			public void onClick(View clicked){
-				if(clicked.getId() == R.id.endGame)
-					startActivity(new Intent(FirstScreen.this, MainActivity.class));
+				if(clicked.getId() == R.id.endGame){
+					Intent intent = new Intent(getApplicationContext(), MainActivity.class);
+					intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+					startActivity(intent);
+					finish();
+				}
 			}
 		});
 		AlertDialog gameOverDialog = loseDialog.create();
