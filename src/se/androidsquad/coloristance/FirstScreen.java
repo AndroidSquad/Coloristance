@@ -466,6 +466,8 @@ public class FirstScreen extends Activity {
 
 			public void onClick(View clicked){
 				if(clicked.getId() == R.id.endGame){
+					levelCounter=1;
+					GameController.setLevel(levelCounter);
 					Intent intent = new Intent(getApplicationContext(), MainActivity.class);
 					intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
 					startActivity(intent);
@@ -508,8 +510,10 @@ public class FirstScreen extends Activity {
 		retryButton.setOnClickListener(new View.OnClickListener() {
 
 			public void onClick(View clicked){
-				if(clicked.getId() == R.id.retry)
+				if(clicked.getId() == R.id.retry){
 					startActivity(new Intent(FirstScreen.this, FirstScreen.class));
+					GameController.setLevel(levelCounter);
+				}	
 			}
 		});
 
@@ -518,6 +522,8 @@ public class FirstScreen extends Activity {
 
 			public void onClick(View clicked){
 				if(clicked.getId() == R.id.endGame){
+					levelCounter=1;
+					GameController.setLevel(levelCounter);
 					Intent intent = new Intent(getApplicationContext(), MainActivity.class);
 					intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
 					startActivity(intent);
