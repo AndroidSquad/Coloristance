@@ -108,6 +108,19 @@
                 android:scaleY="0.4"
                 android:visibility="visible" />
 
+            <TextView
+                android:id="@+id/texttime"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentBottom="true"
+                android:layout_alignParentRight="true"
+                android:layout_marginBottom="20dp"
+                android:layout_marginRight="20dp"
+                android:textColor="@color/white"
+                android:textSize="30sp"
+                android:textStyle="bold"
+                android:visibility="visible" />
+
             <ImageButton
                 android:id="@+id/key_button_blue"
                 android:layout_width="wrap_content"

@@ -8,10 +8,13 @@ import android.app.AlertDialog;
 import android.content.Intent;
 import android.media.MediaPlayer;
 import android.os.Bundle;
+import android.os.CountDownTimer;
+import android.os.Handler;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.ImageButton;
+import android.widget.TextView;
 
 /*
  * This class is the main window which the current room is created. It sets the screen to firstscreen.xml,
@@ -30,8 +33,9 @@ public class FirstScreen extends Activity {
 	ImageButton musicButton;
 	KeyModel thisKey;
 	boolean visSpeak; //state of the ImageButton musicButton
-
+	Runnable runnable;
 	protected int levelCounter = 1;
+	CountDownTimer countDown;
 
 	int[] door = {R.id.top_door, R.id.right_door, R.id.bot_door,  R.id.left_door};
 	int[] keyNames = {R.id.key_button_blue, R.id.key_button_green, R.id.key_button_orange, R.id.key_button_purple, R.id.key_button_red};
@@ -61,11 +65,31 @@ public class FirstScreen extends Activity {
 		mp.setLooping(true);
 		MapModel.setPos(0, 1);
 
+		final TextView textTimer = (TextView) findViewById(R.id.texttime);		
+		class CountDown extends CountDownTimer {
+			public CountDown(long millisInFuture, long countDownInt){
+				super(millisInFuture, countDownInt);
+			}
+
+			@Override
+			public void onFinish() {
+				textTimer.setText("GAME OVER");
+				gameLost();
+			}
+
+			@Override
+			public void onTick(long millisUntilFinished) {
+				textTimer.setText((millisUntilFinished/1000)+ "");
+			}
+		}
+		
+		final CountDown timer = new CountDown(10000,1000);
+		
 		musicButton  = (ImageButton) findViewById(R.id.musicbutton);
 		Log.v("MainActivity","value 1: " + musicButton);
 		visSpeak = true;
 		musicButton.setBackgroundResource(drawable.speaker);
-		musicButton.setOnClickListener(new View.OnClickListener() {
+		musicButton.setOnClickListener(new View.OnClickListener(){
 			@Override
 			public void onClick(View v) {
 				// TODO Auto-generated method stub
@@ -139,8 +163,10 @@ public class FirstScreen extends Activity {
 				setRoom();
 				setKeys();
 				setDoors();
-
+				timer.start();
+				
 				if(MapModel.getRoom()=="70000"){
+					timer.cancel();
 					mapDone();
 				}
 			}
@@ -162,10 +188,12 @@ public class FirstScreen extends Activity {
 				setRoom();
 				setKeys();
 				setDoors();
-
-
+				timer.start();
+				
 				if(MapModel.getRoom()=="70000"){
+					timer.cancel();
 					mapDone();
+					
 				}
 			}
 		});
@@ -185,8 +213,10 @@ public class FirstScreen extends Activity {
 				setRoom();
 				setKeys();
 				setDoors();
-
+				timer.start();
+			
 				if(MapModel.getRoom()=="90000"){
+					timer.cancel();
 					mapDone();
 				}
 			}
@@ -207,6 +237,7 @@ public class FirstScreen extends Activity {
 				setRoom();
 				setKeys();
 				setDoors();
+				timer.start();
 			}
 		});
 
@@ -349,7 +380,7 @@ public class FirstScreen extends Activity {
 		char[] buffer = thisKey.getKeyString().toCharArray();
 		String newKey = new String(buffer);
 		Log.v("FirstScreen", "DropKey newKey init: " + newKey);
-				
+					
 		for(int i =0; i<3; i++){
 			if(invPosition == i && allocatedInv[i] == true){
 				findViewById(invPos[i]).setBackgroundResource(emptyInventory);
@@ -459,6 +490,40 @@ public class FirstScreen extends Activity {
 		finishDialog.show();
 	}
 
+	// The method that is called when you fail to move from a room in under 10 seconds.
+	// Currently some very similar code as the method above, as they treat similar scenarios
+	protected void gameLost(){ 
+		mp.stop();
+		stopTime();
+		AlertDialog.Builder loseDialog = new AlertDialog.Builder(this);
+		loseDialog.setTitle(R.string.lost_game);
+		LayoutInflater inflater = this.getLayoutInflater();
+		
+		View loseView = inflater.inflate(R.layout.lose, null);
+		loseDialog.setView(loseView);
+		
+		View retryButton=loseView.findViewById(R.id.retry);
+		retryButton.setOnClickListener(new View.OnClickListener() {
+
+			public void onClick(View clicked){
+				if(clicked.getId() == R.id.retry)
+					startActivity(new Intent(FirstScreen.this, FirstScreen.class));
+			}
+		});
+
+		View playAgainButton=loseView.findViewById(R.id.endGame);
+		playAgainButton.setOnClickListener(new View.OnClickListener() {
+
+			public void onClick(View clicked){
+				if(clicked.getId() == R.id.endGame)
+					startActivity(new Intent(FirstScreen.this, MainActivity.class));
+			}
+		});
+		AlertDialog gameOverDialog = loseDialog.create();
+		gameOverDialog.show();
+		
+	}
+	
 	//	int i = showTime();
 	private void startTime() {
 		startTime = System.currentTimeMillis();		
