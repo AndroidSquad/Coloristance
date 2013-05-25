@@ -471,6 +471,7 @@ public class FirstScreen extends Activity {
 				if(clicked.getId() == R.id.endGame){
 					levelCounter=1;
 					GameController.setLevel(levelCounter);
+					MapModel.setPos(0,1);
 					Intent intent = new Intent(getApplicationContext(), MainActivity.class);
 					intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
 					startActivity(intent);
@@ -527,6 +528,7 @@ public class FirstScreen extends Activity {
 				if(clicked.getId() == R.id.endGame){
 					levelCounter=1;
 					GameController.setLevel(levelCounter);
+					MapModel.setPos(0,1);
 					Intent intent = new Intent(getApplicationContext(), MainActivity.class);
 					intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
 					startActivity(intent);
