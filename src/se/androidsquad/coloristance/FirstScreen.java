@@ -150,72 +150,7 @@ public class FirstScreen extends Activity {
 		final View[] inventories = {invLeft, invMid, invRight};
 		final View[] doors = {topDoor, rightDoor, botDoor, leftDoor};
 		final String[] whatKey = {"Left was clicked","Mid as clicked","Right was clicked"}; 
-
-//
-//
-//		//Top door
-//		topDoor.setOnClickListener(new View.OnClickListener() {
-//			@Override
-//			public void onClick(View v) {
-//
-//				MapModel.moveUp();
-//				//game.doorClick(); //Check need
-//				setRoom();
-//				setKeys();
-//				setDoors();
-//				timer.start();
-//
-//				if(MapModel.getRoom()=="70000"){
-//					timer.cancel();
-//					mapDone();
-//				}
-//			}
-//		});
-//
-//		// Right door
-//		rightDoor.setOnClickListener(new View.OnClickListener() {
-//
-//			@Override
-//			public void onClick(View v) {
-//
-//				MapModel.moveRight();
-//
-//				setRoom();
-//				setKeys();
-//				setDoors();
-//				timer.start();
-//
-//				if(MapModel.getRoom()=="90000"){
-//					timer.cancel();
-//					mapDone();
-//
-//				}
-//			}
-//		});
-//
-//		// Bottom door
-//		botDoor.setOnClickListener(new View.OnClickListener() {
-//
-//			@Override
-//			public void onClick(View v) {
-//
-//
-//				MapModel.moveDown();
-//
-//				setRoom();
-//				setKeys();
-//				setDoors();
-//				timer.start();
-//
-//				if(MapModel.getRoom()=="90000"){
-//					timer.cancel();
-//					mapDone();
-//				}
-//			}
-//		});
-
-
-		//Left door
+		
 		View.OnClickListener doorClick = new View.OnClickListener(){
 
 			@Override
