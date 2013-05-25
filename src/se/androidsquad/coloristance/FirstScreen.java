@@ -149,7 +149,7 @@ public class FirstScreen extends Activity {
 		final View[] keys = {keyBlue, keyGreen, keyOrange, keyPurple, keyRed};
 		final View[] inventories = {invLeft, invMid, invRight};
 		final View[] doors = {topDoor, rightDoor, botDoor, leftDoor};
-		final String[] whatKey = {"Left was clicked","Mid as clicked","Right was clicked"}; 
+		final String[] whatKey = {"Left was clicked","Mid was clicked","Right was clicked"}; 
 		
 		View.OnClickListener doorClick = new View.OnClickListener(){
 
@@ -167,6 +167,7 @@ public class FirstScreen extends Activity {
 				timer.start();
 
 				if(MapModel.getRoom()=="90000"){
+					Log.v("FirstScreen", "Aset var här ändå");
 					timer.cancel();
 					mapDone();
 				}
@@ -246,7 +247,7 @@ public class FirstScreen extends Activity {
 
 				if(keyPos != 5){
 					buffer[keyPos] = '0';
-					Log.v("FirstScreen", "Tried to set 0");
+					Log.v("FirstScreen", "Set 0");
 				}
 
 				newKey = new String(buffer);
@@ -282,14 +283,14 @@ public class FirstScreen extends Activity {
 		char[] buffer = thisKey.getKeyString().toCharArray();
 		String newKey = new String(buffer);
 		Log.v("FirstScreen", "DropKey newKey init: " + newKey);
-
-		for(int i =0; i<3; i++){
-			if(invPosition == i && allocatedInv[i] == true){
-				findViewById(invPos[i]).setBackgroundResource(emptyInventory);
-				allocatedInv[i] = false;
+		Log.v("FirstScreen", ""+allocatedInv[0]+""+allocatedInv[1]+""+allocatedInv[2]);
+		
+			if(allocatedInv[invPosition] == true){
+				findViewById(invPos[invPosition]).setBackgroundResource(emptyInventory);
+				allocatedInv[invPosition] = false;
 				if(GameController.inv.getInv(invPosition)!= 5){
 					buffer[GameController.inv.getInv(invPosition)] = '1';
-					Log.v("FirstScreen", "Tried to set 1");
+					Log.v("FirstScreen", "Set 1");
 				}
 
 				newKey = new String(buffer);
@@ -299,20 +300,20 @@ public class FirstScreen extends Activity {
 
 				setKeys();
 			}
-			else if(invPosition == i && allocatedInv[i] == false){
-				Log.v("FirstScreen", "The key has been dropped/Was never there: " + i);
+			else if(allocatedInv[invPosition] == false){
+				Log.v("FirstScreen", "The key has been dropped/Was never there: " + invPosition);
 			}
-			else Log.v("FirstScreen", "Something went wrong");
+			else{ Log.v("FirstScreen", "Something went wrong");}
+			
+			Log.v("FirstScreen", "DropKey newKey ending: " + newKey);
 		}
-
-		Log.v("FirstScreen", "DropKey newKey ending: " + newKey);
 
 		/*Log.v("FirstScreen", "input : " + GameController.key[MapModel.getMyX()][MapModel.getMyY()].getKeyString());
 		Log.v("FirstScreen", "buffer 1: " + buffer[0]+ buffer[1]+ buffer[2]+ buffer[3]+ buffer[4]);
 		Log.v("FirstScreen", "InvPos: " + GameController.inv.getInv(keyInvPos));
 		Log.v("FirstScreen", "input : " + GameController.key[MapModel.getMyX()][MapModel.getMyY()].getKeyString());*/
 
-	}
+	
 
 	protected void setRoom(){
 		DoorModel.setDoor(MapModel.getRoom());
@@ -337,11 +338,12 @@ public class FirstScreen extends Activity {
 
 		for(int i = 0; i<5; i++){
 			if(thisKey.getKeyString().charAt(i) == '1'){
+				thisKey.setKeyImg(i);
 				Log.v("Firstscreen", i+ " Its visible:" + thisKey.getImg());
 				findViewById(keyNames[thisKey.getImg()]).setVisibility(View.VISIBLE);
 			}
 			else if(thisKey.getKeyString().charAt(i) == '0'){
-				Log.v("Firstscreen", i+ " Instansiering:" + "Nope, nothing");
+				Log.v("Firstscreen","Instansiering:" + "Nope, nothing" + i);
 				findViewById(keyNames[i]).setVisibility(View.INVISIBLE);
 			}
 			else Log.v("Firstscreen", "Incorrect input");
