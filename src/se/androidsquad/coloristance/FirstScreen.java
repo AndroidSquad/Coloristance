@@ -9,7 +9,6 @@ import android.content.Intent;
 import android.media.MediaPlayer;
 import android.os.Bundle;
 import android.os.CountDownTimer;
-import android.os.Handler;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -40,6 +39,7 @@ public class FirstScreen extends Activity {
 	int[] door = {R.id.top_door, R.id.right_door, R.id.bot_door,  R.id.left_door};
 	int[] keyNames = {R.id.key_button_blue, R.id.key_button_green, R.id.key_button_orange, R.id.key_button_purple, R.id.key_button_red};
 	int[] keyImg = {drawable.key_blue, drawable.key_green, drawable.key_orange, drawable.key_purple, drawable.key_red, drawable.key_empty};
+	
 	char[] pos = {'N','E','S','W'};
 	boolean allocatedInv[] = {false,false,false};
 
@@ -134,18 +134,19 @@ public class FirstScreen extends Activity {
 		 * rooms on the map.
 		 */
 
-		ImageButton topDoor = (ImageButton) findViewById(R.id.top_door);
-		ImageButton rightDoor = (ImageButton) findViewById(R.id.right_door);
-		ImageButton botDoor = (ImageButton) findViewById(R.id.bot_door);
-		ImageButton leftDoor = (ImageButton) findViewById(R.id.left_door);
-		ImageButton invLeft = (ImageButton) findViewById(R.id.invKeyLeft);
-		ImageButton invMid = (ImageButton) findViewById(R.id.invKeyMid);
-		ImageButton invRight = (ImageButton) findViewById(R.id.invKeyRight);
-		ImageButton keyBlue = (ImageButton) findViewById(R.id.key_button_blue);
-		ImageButton keyGreen = (ImageButton) findViewById(R.id.key_button_green);
-		ImageButton keyOrange = (ImageButton) findViewById(R.id.key_button_orange);
-		ImageButton keyPurple = (ImageButton) findViewById(R.id.key_button_purple);
-		ImageButton keyRed = (ImageButton) findViewById(R.id.key_button_red);
+		final ImageButton topDoor = (ImageButton) findViewById(R.id.top_door);
+		final ImageButton rightDoor = (ImageButton) findViewById(R.id.right_door);
+		final ImageButton botDoor = (ImageButton) findViewById(R.id.bot_door);
+		final ImageButton leftDoor = (ImageButton) findViewById(R.id.left_door);
+		final ImageButton invLeft = (ImageButton) findViewById(R.id.invKeyLeft);
+		final ImageButton invMid = (ImageButton) findViewById(R.id.invKeyMid);
+		final ImageButton invRight = (ImageButton) findViewById(R.id.invKeyRight);
+		final ImageButton keyBlue = (ImageButton) findViewById(R.id.key_button_blue);
+		final ImageButton keyGreen = (ImageButton) findViewById(R.id.key_button_green);
+		final ImageButton keyOrange = (ImageButton) findViewById(R.id.key_button_orange);
+		final ImageButton keyPurple = (ImageButton) findViewById(R.id.key_button_purple);
+		final ImageButton keyRed = (ImageButton) findViewById(R.id.key_button_red);
+		final View[] keys = {keyBlue, keyGreen, keyOrange, keyPurple, keyRed};
 
 
 
@@ -274,45 +275,23 @@ public class FirstScreen extends Activity {
 
 			}
 		});
-
-		keyBlue.setOnClickListener(new View.OnClickListener() {
-			@Override
-			public void onClick(View v) {
-				setInventory(0);
-			
-			}
-		});
-		keyGreen.setOnClickListener(new View.OnClickListener() {
-			@Override
-			public void onClick(View v) {
-				setInventory(1);
-			
-			}
-		});
-		keyOrange.setOnClickListener(new View.OnClickListener() {
-			@Override
-			public void onClick(View v) {
-				setInventory(2);
 		
-
-			}
-		});
-		keyPurple.setOnClickListener(new View.OnClickListener() {
+		View.OnClickListener keyClick = new View.OnClickListener() {
 			@Override
 			public void onClick(View v) {
-				setInventory(3);
+				int clickedKeyColor = 6;
+				for(int i = 0; i<5; i++){
+					if(keys[i].equals(v) == true){clickedKeyColor = i;}
+				}
+				setInventory(clickedKeyColor);
 				
 
 			}
-		});
-		keyRed.setOnClickListener(new View.OnClickListener() {
-			@Override
-			public void onClick(View v) {
-				setInventory(4);
-				
-
-			}
-		});
+		};
+		
+		for(int i = 0; i<5; i++){
+			keys[i].setOnClickListener(keyClick);
+		}
 
 	}
 

@@ -19,7 +19,8 @@
         android:layout_width="0dp"
         android:layout_height="match_parent"
         android:layout_weight="0.75" >
-
+        
+        <!--  OBS! Nedanstående gula markering är felaktig, det gör skillnad! -->
         <RelativeLayout
             android:id="@+id/room_layout"
             android:layout_width="match_parent"
@@ -101,7 +102,7 @@
                 android:scaleX="0.75"
                 android:scaleY="0.75"
                 android:src="@drawable/key_blue"
-                android:visibility="visible" />
+                android:visibility="invisible" />
 
             <ImageButton
                 android:id="@+id/key_button_green"
@@ -116,7 +117,7 @@
                 android:scaleX="0.75"
                 android:scaleY="0.75"
                 android:src="@drawable/key_green"
-                android:visibility="visible" />
+                android:visibility="invisible" />
 
             <ImageButton
                 android:id="@+id/key_button_orange"
@@ -131,7 +132,7 @@
                 android:scaleX="0.75"
                 android:scaleY="0.75"
                 android:src="@drawable/key_orange"
-                android:visibility="visible" />
+                android:visibility="invisible" />
 
             <ImageButton
                 android:id="@+id/key_button_purple"
@@ -146,7 +147,7 @@
                 android:scaleX="0.75"
                 android:scaleY="0.75"
                 android:src="@drawable/key_purple"
-                android:visibility="visible" />
+                android:visibility="invisible" />
 
             <ImageButton
                 android:id="@+id/key_button_red"
@@ -161,7 +162,7 @@
                 android:scaleX="0.75"
                 android:scaleY="0.75"
                 android:src="@drawable/key_red"
-                android:visibility="visible" />
+                android:visibility="invisible" />
 
             <ImageButton
                 android:id="@+id/musicbutton"
