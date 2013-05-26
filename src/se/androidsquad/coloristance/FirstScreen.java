@@ -78,15 +78,14 @@ public class FirstScreen extends Activity {
 		int y= MapModel.getMyY();
 		if(x==0 && y == 0){
 			MapModel.setPos(0, 1);
-
 		}
 		else {
 			MapModel.setPos(x,y);
 
 		}
 
-		setRoom();
-		setDoors();
+		setRoom();//is needed to get the right room when you start a new level or tilt the screen
+		setDoors();// is needed to get the corresponding doors to the right room when a new level is started or screen is tilted
 
 		musicButton  = (ImageButton) findViewById(R.id.musicbutton);
 		Log.v("MainActivity","value 1: " + musicButton);
@@ -384,7 +383,6 @@ public class FirstScreen extends Activity {
 				if(clicked.getId() == R.id.endGame){
 					levelCounter=1;
 					GameController.setLevel(levelCounter);
-					MapModel.setPos(0,1);
 					Intent intent = new Intent(getApplicationContext(), MainActivity.class);
 					intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
 					startActivity(intent);
