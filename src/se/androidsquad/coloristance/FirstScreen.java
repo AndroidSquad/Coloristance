@@ -5,6 +5,7 @@ import java.io.IOException;
 import se.androidsquad.coloristance.R.drawable;
 import android.app.Activity;
 import android.app.AlertDialog;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.media.MediaPlayer;
 import android.os.Bundle;
@@ -29,6 +30,7 @@ public class FirstScreen extends Activity {
 	DrawMap map;
 	DrawKeys drawKeys;
 	GameController game;
+	MainActivity main;
 	//	ToggleButton musicSwitchGame;
 	ImageButton musicButton;
 	KeyModel thisKey;
@@ -49,6 +51,8 @@ public class FirstScreen extends Activity {
 	String timeResult;
 	int[] invPos = {R.id.invKeyLeft, R.id.invKeyMid, R.id.invKeyRight};
 
+	
+	
 	TextView textTimer;		
 	CountDown timer;
 	@Override
@@ -516,6 +520,8 @@ public class FirstScreen extends Activity {
 
 			public void onClick(View clicked){
 				if(clicked.getId() == R.id.retry){
+					GameController.setLevel(levelCounter);
+					MapModel.setPos(0,1);
 					startActivity(new Intent(FirstScreen.this, FirstScreen.class));
 					GameController.setLevel(levelCounter);
 				}	
@@ -546,6 +552,33 @@ public class FirstScreen extends Activity {
 	private void startTime() {
 		startTime = System.currentTimeMillis();		
 	}
+	
+	@Override
+	public void onBackPressed() {   
+		new AlertDialog.Builder(this)
+	           .setMessage("Are you sure you want to exit already??")
+	           .setCancelable(true)
+	           .setNegativeButton("No", null)
+	           .setNeutralButton("Let me take a break", new DialogInterface.OnClickListener(){
+	        	   public void onClick(DialogInterface dialog, int i){
+	        		   FirstScreen.this.finish();
+	        		   startActivity(new Intent(getApplicationContext(), MainActivity.class));
+	        	   }
+	           })
+	           .setPositiveButton("Let me restart",new DialogInterface.OnClickListener(){
+	        	   public void onClick(DialogInterface dialog, int i){
+	        		   MapModel.setPos(0,1);
+	        		   FirstScreen.this.finish();
+//	        		   main.resumeButton.setVisibility(View.VISIBLE);
+	        		   Intent intent = new Intent(getApplicationContext(), MainActivity.class);
+//					   intent.putExtra("makeButtonVisible",true);
+	        		   startActivity(intent);
+	        	   }
+	           })
+	           .show();
+	}
+	
+	
 
 	private void stopTime() {
 		stopTime = System.currentTimeMillis();		
@@ -601,7 +634,6 @@ public class FirstScreen extends Activity {
 		public void onFinish() {	
 			textTimer.setText("GAME OVER");
 			gameLost();
-			Log.v("Firstscreentimer","fel timer");
 		}
 
 		@Override
