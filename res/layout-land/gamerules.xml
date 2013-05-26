@@ -13,57 +13,90 @@
     <RelativeLayout
         android:id="@+id/relative"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content" >
+        android:layout_height="wrap_content"
+        android:paddingTop="10dp" >
 
+        <RelativeLayout
+            android:id="@+id/first"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentTop="true" 
+            android:layout_marginTop="10dp">
 
-        <ImageView
-            android:id="@+id/map"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:src="@drawable/map"
-            android:layout_alignTop="@id/relative" />
+            <ImageView
+                android:id="@+id/map"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentLeft="true"
+                android:layout_centerInParent="true"
+                android:layout_marginRight="10dp"
+                android:src="@drawable/map" />
 
-        <TextView
-            android:id="@+id/map_explanation"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="@string/maptext"
-            android:textColor="@color/white" 
-            android:layout_marginTop="10dp"
-            android:layout_below="@id/map"/>
-        
-        <ImageView
-            android:id="@+id/room"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:src="@drawable/room"
-            android:layout_marginTop="10dp"
-            android:layout_below="@id/map_explanation" />
+            <TextView
+                android:id="@+id/map_explanation"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentRight="true"
+                android:layout_centerInParent="true"
+                android:layout_toRightOf="@id/map"
+                android:text="@string/maptext"
+                android:textColor="@color/white" />
+        </RelativeLayout>
 
-        <TextView
-            android:id="@+id/room_explanation"
-            android:layout_width="match_parent"
+        <RelativeLayout
+            android:id="@+id/second"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@string/roomtext"
-            android:textColor="@color/white" 
-            android:layout_marginTop="10dp"
-            android:layout_below="@id/room"/>
-        <ImageView
-            android:id="@+id/room_inventory"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:src="@drawable/room_inventory"
-            android:layout_marginTop="10dp"
-            android:layout_below="@id/room_explanation" />
+            android:layout_below="@id/first" >
 
-        <TextView
-            android:id="@+id/room_inv_explanation"
-            android:layout_width="match_parent"
+            <ImageView
+                android:id="@+id/room"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentLeft="true"
+                android:layout_below="@id/map"
+                android:layout_centerInParent="true"
+                android:layout_marginRight="10dp"
+                android:src="@drawable/room" />
+
+            <TextView
+                android:id="@+id/room_explanation"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentRight="true"
+                android:layout_centerInParent="true"
+                android:layout_toRightOf="@id/room"
+                android:text="@string/roomtext"
+                android:textColor="@color/white" />
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:id="@+id/third"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@string/roominvtext"
-            android:textColor="@color/white" 
-            android:layout_marginTop="10dp"
-            android:layout_below="@id/room_inventory"/>
+            android:layout_below="@id/second"
+            android:layout_marginTop="15dp" >
+
+            <ImageView
+                android:id="@+id/room_inventory"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentLeft="true"
+                android:layout_below="@id/room"
+                android:layout_centerInParent="true"
+                android:layout_marginRight="10dp"
+                android:src="@drawable/room_inventory" />
+
+            <TextView
+                android:id="@+id/room_inv_explanation"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentRight="true"
+                android:layout_centerInParent="true"
+                android:layout_toRightOf="@id/room_inventory"
+                android:text="@string/roominvtext"
+                android:textColor="@color/white" />
+        </RelativeLayout>
     </RelativeLayout>
 
 </ScrollView>
