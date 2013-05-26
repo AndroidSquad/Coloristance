@@ -173,8 +173,8 @@
                 android:layout_margin="5dp"
                 android:clickable="true"
                 android:contentDescription="@string/speaker"
-                android:scaleX="0.7"
-                android:scaleY="0.7"
+                android:scaleX="0.6"
+                android:scaleY="0.6"
                 android:visibility="visible" />
             
             <TextView
@@ -182,9 +182,9 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_alignParentTop="true"
-                android:layout_alignParentRight="true"
-                android:layout_marginBottom="20dp"
-                android:layout_marginRight="20dp"
+                android:layout_alignParentLeft="true"
+                android:layout_marginTop="15dp"
+                android:layout_marginLeft="30dp"
                 android:textColor="@color/white"
                 android:textSize="30sp"
                 android:textStyle="bold"

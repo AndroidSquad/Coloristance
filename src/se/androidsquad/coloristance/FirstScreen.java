@@ -30,13 +30,11 @@ public class FirstScreen extends Activity {
 	DrawKeys drawKeys;
 	GameController game;
 	MainActivity main;
-	//	ToggleButton musicSwitchGame;
 	ImageButton musicButton;
 	KeyModel thisKey;
-	boolean visSpeak; //state of the ImageButton musicButton
+	int visSpeak; //state of the ImageButton musicButton, 0 = not playing, 1 = is playing, 2 = not defined
 	Runnable runnable;
 	protected int levelCounter = 1;
-
 
 	int[] door = {R.id.top_door, R.id.right_door, R.id.bot_door,  R.id.left_door};
 	int[] keyNames = {R.id.key_button_blue, R.id.key_button_green, R.id.key_button_orange, R.id.key_button_purple, R.id.key_button_red};
@@ -45,35 +43,47 @@ public class FirstScreen extends Activity {
 	char[] pos = {'N','E','S','W'};
 	boolean allocatedInv[] = {false,false,false};
 
-	long startTime = 0;
-	long stopTime = 0;
+	long startTime, stopTime, playedTime, savedTime;
+	long roomStartTime, roomStopTime, roomPlayedTime, roomSavedTime;
 
 	String timeResult;
 	int[] invPos = {R.id.invKeyLeft, R.id.invKeyMid, R.id.invKeyRight};
 
-	
-	
 	TextView textTimer;		
-	CountDown timer;
+	CountDown timer, timerRotation;
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
+
+		if (savedInstanceState != null) {
+			// Restore value of members from saved state
+			visSpeak = savedInstanceState.getInt("visiblespeaker");
+			savedTime = savedInstanceState.getLong("savedtime");
+			roomSavedTime =savedInstanceState.getLong("roomsavedtime");
+			startTime = System.currentTimeMillis();
+			timerRotation = new CountDown (10000 - (roomSavedTime*1000),1000);
+			timer = new CountDown(10000,1000);
+			Log.d("Simon hälsar","Vi räknar ner på nytt");
+			timerRotation.start();
+		} else {
+			visSpeak = 2;
+			startTime = System.currentTimeMillis();
+			savedTime = 0;
+			timer = new CountDown(10000,1000);
+		}
+
 		setContentView(R.layout.firstscreen);
 		findViewById(R.id.bot_layout).setBackgroundColor(RectModel.BLUE_DARK);
 
-		textTimer = (TextView) findViewById(R.id.texttime);
-		timer = new CountDown(10000,1000);
-		timer.start();
-		startTime();
+		textTimer = (TextView) findViewById(R.id.texttime);		
 
 		game = new GameController();
 		map = new DrawMap(FirstScreen.this, null);
 		drawKeys = new DrawKeys(FirstScreen.this, null);
 
 
-		mp = MediaPlayer.create(FirstScreen.this, R.raw.house_music);	
-		mp.start();
-		mp.setLooping(true);
+
+
 		int x= MapModel.getMyX();
 		int y= MapModel.getMyY();
 		if(x==0 && y == 0){
@@ -88,16 +98,31 @@ public class FirstScreen extends Activity {
 		setDoors();// is needed to get the corresponding doors to the right room when a new level is started or screen is tilted
 
 		musicButton  = (ImageButton) findViewById(R.id.musicbutton);
-		Log.v("MainActivity","value 1: " + musicButton);
-		visSpeak = true;
-		musicButton.setBackgroundResource(drawable.speaker);
+
+		mp = MediaPlayer.create(FirstScreen.this, R.raw.house_music);	
+
+		if (visSpeak == 2){
+			mp.start();
+			mp.setLooping(true);
+			Log.d("Mafi", "VisSpeak FIRST value is " + visSpeak);
+			visSpeak = 1;
+			musicButton.setBackgroundResource(drawable.speaker);
+		}
+
+		else if(visSpeak ==1){
+			musicButton.setBackgroundResource(drawable.speaker);
+			mp.start();
+			mp.setLooping(true);
+		}
+		else
+			musicButton.setBackgroundResource(drawable.mutespeaker);
+
 		musicButton.setOnClickListener(new View.OnClickListener(){
 			@Override
 			public void onClick(View v) {
 				// TODO Auto-generated method stub
-
-				if(!visSpeak){
-					musicButton.setBackgroundResource(drawable.speaker);
+				Log.d("Mafi", "VisSpeak Value before if " + visSpeak);
+				if(visSpeak==0){
 					try {
 						mp.prepare();
 					} catch (IllegalStateException e) {
@@ -107,20 +132,24 @@ public class FirstScreen extends Activity {
 					}				 
 					mp.start();
 					mp.setLooping(true);
-					visSpeak = true;
+					musicButton.setBackgroundResource(drawable.speaker);
+					visSpeak = 1;
+					Log.d("Mafi", "VisSpeak Value AFTER if " + visSpeak);
 
 				}else{
 					musicButton.setBackgroundResource(drawable.mutespeaker);
-					try {
-						mp.prepare();
-					} catch (IllegalStateException e) {
-						e.printStackTrace();
-					} catch (IOException e) {
-						e.printStackTrace();
-					}				 
-					mp.start();
+					//					try {
+					//						mp.prepare();
+					//					} catch (IllegalStateException e) {
+					//						e.printStackTrace();
+					//					} catch (IOException e) {
+					//						e.printStackTrace();
+					//					}				 
+					//					mp.start();
 					mp.pause();	
-					visSpeak = false;
+					visSpeak = 0;
+					Log.d("Mafi", "VisSpeak Value AFTER if " + visSpeak);
+
 				}
 
 			}
@@ -163,7 +192,11 @@ public class FirstScreen extends Activity {
 						if((allocatedInv[i] && DoorModel.getDoorColorNr(0) == GameController.inv.getInv(i))|| DoorModel.getDoorColorNr(0) == 6){
 							MapModel.moveUp();
 							Log.v("FirstScreen", "Up");
+							if(timerRotation!=null)
+								timerRotation.cancel();
 							timer.start();
+							Log.d("Simon hälsar","ny tid i rummet");
+							roomStartTime = System.currentTimeMillis();
 							break;
 						}
 						else if (DoorModel.getDoorColorNr(0) == 5){
@@ -176,7 +209,11 @@ public class FirstScreen extends Activity {
 						if(allocatedInv[i] && DoorModel.getDoorColorNr(1) == GameController.inv.getInv(i)){
 							MapModel.moveRight();
 							Log.v("FirstScreen", "Right");
+							if(timerRotation!=null)
+								timerRotation.cancel();
 							timer.start();
+							roomStartTime = System.currentTimeMillis();
+							Log.d("Simon hälsar","ny tid i rummet");
 							break;
 						}
 						else if (DoorModel.getDoorColorNr(1) == 5){
@@ -189,7 +226,11 @@ public class FirstScreen extends Activity {
 						if(allocatedInv[i] && DoorModel.getDoorColorNr(2) == GameController.inv.getInv(i)){
 							MapModel.moveDown();
 							Log.v("FirstScreen", "Down");
+							if(timerRotation!=null)
+								timerRotation.cancel();
 							timer.start();
+							Log.d("Simon hälsar","ny tid i rummet");
+							roomStartTime = System.currentTimeMillis();
 							break;
 						}
 						else if (DoorModel.getDoorColorNr(2) == 5){
@@ -202,7 +243,11 @@ public class FirstScreen extends Activity {
 						if(allocatedInv[i] && DoorModel.getDoorColorNr(3) == GameController.inv.getInv(i)){
 							MapModel.moveLeft();
 							Log.v("FirstScreen", "Left");
+							if(timerRotation!=null)
+								timerRotation.cancel();
 							timer.start();
+							Log.d("Simon hälsar","ny tid i rummet");
+							roomStartTime = System.currentTimeMillis();
 							break;
 						}
 						else if (DoorModel.getDoorColorNr(3) == 5){
@@ -255,11 +300,8 @@ public class FirstScreen extends Activity {
 					if(keys[i].equals(v) == true){clickedKeyColor = i;}
 				}
 				setInventory(clickedKeyColor);
-
-
 			}
 		};
-
 		for(int i = 0; i<5; i++){
 			keys[i].setOnClickListener(keyClick);
 		}
@@ -321,11 +363,25 @@ public class FirstScreen extends Activity {
 
 	}
 
+	/** 
+	 * onSaveInstanceState saves valueble information that should not be lost in a screen rotation
+	 * */
+
+	
+	@Override
+	protected void onSaveInstanceState(Bundle outState) {
+		// TODO Auto-generated method stub
+		super.onSaveInstanceState(outState);
+		outState.putInt("visiblespeaker",visSpeak);
+		outState.putLong("savedtime", savedTime);
+		outState.putLong("roomsavedtime", roomSavedTime);
+		Log.d("Mafi","Visible speaker state: " + visSpeak + " saved");
+	}
+
 	protected void dropKey(int invPosition){
 		//keyInvPos takes 0-2
 
 		thisKey = GameController.key[MapModel.getMyX()][MapModel.getMyY()];
-
 		int emptyInventory = keyImg[5];
 		char[] buffer = thisKey.getKeyString().toCharArray();
 		String newKey = new String(buffer);
@@ -406,11 +462,11 @@ public class FirstScreen extends Activity {
 
 
 	protected void mapDone(){
-		stopTime();
+		getPlayedTime();
 		showTime();
 		MapModel.setPos(0,1); //TODO
 		AlertDialog.Builder alertDialog = new AlertDialog.Builder(this);
-		alertDialog.setTitle(this.getText(R.string.finished)+"\t"+"You finished in: "+ timeResult +" seconds");
+		alertDialog.setTitle(this.getText(R.string.finished)+"\t"+"You finished in: "+ timeResult +" seconds" );
 		//alertDialog.setTitle(showTime());
 		LayoutInflater inflater = this.getLayoutInflater();
 
@@ -461,8 +517,7 @@ public class FirstScreen extends Activity {
 	// Currently some very similar code as the method above, as they treat similar scenarios
 	protected void gameLost(){ 
 		mp.stop();
-		stopTime();
-
+		
 		AlertDialog.Builder loseDialog = new AlertDialog.Builder(this);
 		loseDialog.setTitle(R.string.lost_game);
 		LayoutInflater inflater = this.getLayoutInflater();
@@ -505,11 +560,7 @@ public class FirstScreen extends Activity {
 
 	}
 
-	//	int i = showTime();
-	private void startTime() {
-		startTime = System.currentTimeMillis();		
-	}
-	
+
 	@Override
 	public void onBackPressed() {   
 		new AlertDialog.Builder(this)
@@ -535,16 +586,24 @@ public class FirstScreen extends Activity {
 	           })
 	           .show();
 	}
-	
-	
 
-	private void stopTime() {
-		stopTime = System.currentTimeMillis();		
+//	private long getRoomTime() {
+//		roomStopTime = System.currentTimeMillis();
+//		return playedTime = (roomStopTime - roomStartTime)/1000 - roomSavedTime;
+//	}
+	
+	
+	private long getPlayedTime() {
+		stopTime = System.currentTimeMillis();
+		Log.d("Mafi","" + "stopTime-startTime milli" + (stopTime-startTime));
+		Log.d("Mafi","savedTime" + savedTime);
+		return playedTime = (stopTime - startTime)/1000 + savedTime;
 	}
 
+
 	private void showTime(){
-		long totalTime = (stopTime - startTime)/1000;
-		timeResult = Long.toString(totalTime);
+		playedTime = getPlayedTime();
+		timeResult = Long.toString(playedTime);
 		//		int i = (int) totalTime/1000;
 		//		String s = Integer.toString(i);
 		//		showTime=s;
@@ -552,6 +611,11 @@ public class FirstScreen extends Activity {
 	}
 
 
+	private long getPlayedRoomTime() {
+		roomStopTime = System.currentTimeMillis();
+		return roomPlayedTime = (roomStopTime - roomStartTime)/1000;
+	}
+	
 
 	@Override
 	protected void onResume() {
@@ -572,12 +636,18 @@ public class FirstScreen extends Activity {
 	protected void onPause() {
 		super.onPause();
 		mp.release(); 
+		Log.d("Mafi","" + savedTime + " innan");
+		savedTime = getPlayedTime();
+		Log.d("Mafi","" + savedTime + " efter");
+		roomStopTime = System.currentTimeMillis();
+		roomSavedTime = getPlayedRoomTime();
+		Log.d("Simon hälsar","roomsavedtime är "+roomSavedTime);
 	}
 
 	protected void onStop() {
 		super.onStop();
 		mp.release();
-		visSpeak = false;
+		visSpeak = 0;
 		timer.cancel();
 	}
 
@@ -599,7 +669,6 @@ public class FirstScreen extends Activity {
 			textTimer.setText((millisUntilFinished/1000)+ "");
 		}
 		
-	
 	}	
 	private void cleanInventory(){
 			for(int i = 0; i<3;i++){
