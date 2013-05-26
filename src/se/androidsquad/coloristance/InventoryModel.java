@@ -1,9 +1,8 @@
 package se.androidsquad.coloristance;
 
 import android.util.Log;
-import se.androidsquad.coloristance.R.drawable;
 
-public class InventoryModel {
+public class InventoryModel{
 
 	static int[] invKey = new int[3];
 	//int[] img = {drawable.key_blue, drawable.key_green, drawable.key_orange, drawable.key_purple, drawable.key_red};

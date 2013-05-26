@@ -1,34 +1,69 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/white"
+    android:background="@color/black"
     android:paddingBottom="@dimen/activity_vertical_margin"
     android:paddingLeft="@dimen/activity_horizontal_margin"
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin"
     tools:context=".MainActivity" >
 
-    <TextView
-        android:id="@+id/textView2"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_centerHorizontal="true"
-        android:text="@string/rules"
-        android:textAppearance="?android:attr/textAppearanceLarge"
-        android:textColor="@color/black"
-        android:textSize="@android:dimen/app_icon_size" />
-
-
-    
-    <ImageView
-        android:id="@+id/gameinstructions"
+    <RelativeLayout
+        android:id="@+id/relative"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_alignParentBottom="true"
-        android:layout_below="@id/textView2"
-        android:src="@drawable/gameinstructions"
-        android:contentDescription="@string/rules" />
+        android:layout_height="wrap_content" >
 
-</RelativeLayout>
+
+        <ImageView
+            android:id="@+id/map"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:src="@drawable/map"
+            android:layout_alignTop="@id/relative" />
+
+        <TextView
+            android:id="@+id/map_explanation"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/maptext"
+            android:textColor="@color/white" 
+            android:layout_marginTop="10dp"
+            android:layout_below="@id/map"/>
+        
+        <ImageView
+            android:id="@+id/room"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:src="@drawable/room"
+            android:layout_marginTop="10dp"
+            android:layout_below="@id/map_explanation" />
+
+        <TextView
+            android:id="@+id/room_explanation"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/roomtext"
+            android:textColor="@color/white" 
+            android:layout_marginTop="10dp"
+            android:layout_below="@id/room"/>
+        <ImageView
+            android:id="@+id/room_inventory"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:src="@drawable/room_inventory"
+            android:layout_marginTop="10dp"
+            android:layout_below="@id/room_explanation" />
+
+        <TextView
+            android:id="@+id/room_inv_explanation"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/roominvtext"
+            android:textColor="@color/white" 
+            android:layout_marginTop="10dp"
+            android:layout_below="@id/room_inventory"/>
+    </RelativeLayout>
+
+</ScrollView>

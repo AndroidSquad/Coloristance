@@ -21,5 +21,8 @@
     <string name="time">your time is: </string>
     <string name="speaker">Speaker buttons</string>
     <string name="rules">Game Rules</string>
+    <string name="maptext">You start in the white square to the left and finish the level in the white square on the right. The white dot represents your current position in the level. Move through the map as fast as you can! </string>
+    <string name="roomtext">The color of the square is the room that you are currently in. The color of the doors correspond to the adjacent rooms, you need a key with the same color as the door to open the door to the adjacent room. Click the speaker to pause the sexy music. The ticking number is the time you got left in the room.</string>
+    <string name="roominvtext">Your inventory is below the room in this picture, see the red key in your inventory? You need it to move through to the red room! You can only carry three keys, so choose wisely. Click a key in your inventory to drop it in the room which gives space to a different key.</string>
 
 </resources>
