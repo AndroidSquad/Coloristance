@@ -160,11 +160,14 @@ public class FirstScreen extends Activity {
 
 				if(doors[0].equals(v)== true){
 					for(int i = 0; i<3;i++){
-						if(allocatedInv[i] && DoorModel.getDoorColorNr(0) == GameController.inv.getInv(i)){
+						if((allocatedInv[i] && DoorModel.getDoorColorNr(0) == GameController.inv.getInv(i))|| DoorModel.getDoorColorNr(0) == 6){
 							MapModel.moveUp();
 							Log.v("FirstScreen", "Up");
 							timer.start();
 							break;
+						}
+						else if (DoorModel.getDoorColorNr(0) == 5){
+							MapModel.moveUp();
 						}
 					}
 				}
@@ -176,6 +179,9 @@ public class FirstScreen extends Activity {
 							timer.start();
 							break;
 						}
+						else if (DoorModel.getDoorColorNr(1) == 5){
+							MapModel.moveRight();
+						}
 					}
 				}
 				else if(doors[2].equals(v)== true){
@@ -186,6 +192,9 @@ public class FirstScreen extends Activity {
 							timer.start();
 							break;
 						}
+						else if (DoorModel.getDoorColorNr(2) == 5){
+							MapModel.moveDown();
+						}
 					}
 				}
 				else if(doors[3].equals(v)== true){
@@ -195,6 +204,9 @@ public class FirstScreen extends Activity {
 							Log.v("FirstScreen", "Left");
 							timer.start();
 							break;
+						}
+						else if (DoorModel.getDoorColorNr(3) == 5){
+							MapModel.moveLeft();
 						}
 					}
 				}
@@ -423,6 +435,7 @@ public class FirstScreen extends Activity {
 					startActivity(intent);
 					finish_game.stop();
 					finish();
+					cleanInventory();
 				}
 			}	
 		});
@@ -436,6 +449,7 @@ public class FirstScreen extends Activity {
 				GameController.setLevel(levelCounter);
 				startActivity(new Intent(FirstScreen.this, FirstScreen.class));
 				finish_game.stop();
+				cleanInventory();
 			}
 		});
 
