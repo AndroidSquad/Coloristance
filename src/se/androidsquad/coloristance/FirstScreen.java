@@ -163,6 +163,7 @@ public class FirstScreen extends Activity {
 						if(allocatedInv[i] && DoorModel.getDoorColorNr(0) == GameController.inv.getInv(i)){
 							MapModel.moveUp();
 							Log.v("FirstScreen", "Up");
+							timer.start();
 							break;
 						}
 					}
@@ -172,6 +173,7 @@ public class FirstScreen extends Activity {
 						if(allocatedInv[i] && DoorModel.getDoorColorNr(1) == GameController.inv.getInv(i)){
 							MapModel.moveRight();
 							Log.v("FirstScreen", "Right");
+							timer.start();
 							break;
 						}
 					}
@@ -181,6 +183,7 @@ public class FirstScreen extends Activity {
 						if(allocatedInv[i] && DoorModel.getDoorColorNr(2) == GameController.inv.getInv(i)){
 							MapModel.moveDown();
 							Log.v("FirstScreen", "Down");
+							timer.start();
 							break;
 						}
 					}
@@ -190,16 +193,16 @@ public class FirstScreen extends Activity {
 						if(allocatedInv[i] && DoorModel.getDoorColorNr(3) == GameController.inv.getInv(i)){
 							MapModel.moveLeft();
 							Log.v("FirstScreen", "Left");
+							timer.start();
 							break;
 						}
 					}
 				}
 
-
 				setRoom();
 				setKeys();
 				setDoors();
-				timer.start();
+				
 
 				if(MapModel.getRoom()=="70000"){
 					Log.v("FirstScreen", "Aset var här ändå");
@@ -462,6 +465,7 @@ public class FirstScreen extends Activity {
 					MapModel.setPos(0,1);
 					startActivity(new Intent(FirstScreen.this, FirstScreen.class));
 					GameController.setLevel(levelCounter);
+					cleanInventory();
 				}	
 			}
 		});
@@ -478,6 +482,7 @@ public class FirstScreen extends Activity {
 					intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
 					startActivity(intent);
 					finish();
+					cleanInventory();
 				}
 			}
 		});
@@ -511,6 +516,7 @@ public class FirstScreen extends Activity {
 	        		   Intent intent = new Intent(getApplicationContext(), MainActivity.class);
 //					   intent.putExtra("makeButtonVisible",true);
 	        		   startActivity(intent);
+	        		   cleanInventory();
 	        	   }
 	           })
 	           .show();
@@ -578,7 +584,14 @@ public class FirstScreen extends Activity {
 		public void onTick(long millisUntilFinished) {
 			textTimer.setText((millisUntilFinished/1000)+ "");
 		}
-	}
+		
+	
+	}	
+	private void cleanInventory(){
+			for(int i = 0; i<3;i++){
+				dropKey(i);
+			}
+		}
 }
 
 

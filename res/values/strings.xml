@@ -3,7 +3,7 @@
 
     <string name="app_name">Coloristance</string>
     <string name="action_settings">Settings</string>
-    <string name="new_game">New Game</string>
+    <string name="new_game">Play Game</string>
     <string name="resume_game">Resume Game</string>
     <string name="music_pause">Sexy music pause</string>
     <string name="name_game">Coloristance</string>
@@ -16,7 +16,7 @@
     <string name="play_next_level">Play next level</string>
     <string name="end_game">End game</string>
     <string name="try_again">Try again</string>
-    <string name="lost_game">YOU LOST YOU LOOSER!!</string>
+    <string name="lost_game">You ran out of time and got colorested with a very bad colorickness.</string>
     <string name="congrats">Congratulations</string>
     <string name="time">your time is: </string>
     <string name="speaker">Speaker buttons</string>
