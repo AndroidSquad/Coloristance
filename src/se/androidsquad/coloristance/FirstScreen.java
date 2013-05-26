@@ -466,7 +466,7 @@ public class FirstScreen extends Activity {
 		showTime();
 		MapModel.setPos(0,1); //TODO
 		AlertDialog.Builder alertDialog = new AlertDialog.Builder(this);
-		alertDialog.setTitle(this.getText(R.string.finished)+"\t"+"You finished in: "+ timeResult +" seconds" );
+		alertDialog.setTitle(this.getText(R.string.finished)+"\t"+" You finished in: "+ timeResult +" seconds" );
 		//alertDialog.setTitle(showTime());
 		LayoutInflater inflater = this.getLayoutInflater();
 
@@ -586,11 +586,6 @@ public class FirstScreen extends Activity {
 	           })
 	           .show();
 	}
-
-//	private long getRoomTime() {
-//		roomStopTime = System.currentTimeMillis();
-//		return playedTime = (roomStopTime - roomStartTime)/1000 - roomSavedTime;
-//	}
 	
 	
 	private long getPlayedTime() {
