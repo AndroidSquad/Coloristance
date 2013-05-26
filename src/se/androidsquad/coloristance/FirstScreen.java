@@ -156,20 +156,40 @@ public class FirstScreen extends Activity {
 			public void onClick(View v) {
 
 				if(doors[0].equals(v)== true){
-					MapModel.moveUp();
-					Log.v("FirstScreen_Doors", "DoorNr: "+ DoorModel.getDoorColorNr(0));
+					for(int i = 0; i<3;i++){
+						if(allocatedInv[i] && DoorModel.getDoorColorNr(0) == GameController.inv.getInv(i)){
+							MapModel.moveUp();
+							Log.v("FirstScreen", "Up");
+							break;
+						}
+					}
 				}
 				else if(doors[1].equals(v)== true){
-					MapModel.moveRight();
-					Log.v("FirstScreen_Doors", "DoorNr: "+ DoorModel.getDoorColorNr(1));
+					for(int i = 0; i<3;i++){
+						if(allocatedInv[i] && DoorModel.getDoorColorNr(1) == GameController.inv.getInv(i)){
+							MapModel.moveRight();
+							Log.v("FirstScreen", "Right");
+							break;
+						}
+					}
 				}
 				else if(doors[2].equals(v)== true){
-					MapModel.moveDown();
-					Log.v("FirstScreen_Doors", "DoorNr: "+ DoorModel.getDoorColorNr(2));
+					for(int i = 0; i<3;i++){
+						if(allocatedInv[i] && DoorModel.getDoorColorNr(2) == GameController.inv.getInv(i)){
+							MapModel.moveDown();
+							Log.v("FirstScreen", "Down");
+							break;
+						}
+					}
 				}
 				else if(doors[3].equals(v)== true){
-					MapModel.moveLeft();
-					Log.v("FirstScreen_Doors", "DoorNr: "+ DoorModel.getDoorColorNr(3));
+					for(int i = 0; i<3;i++){
+						if(allocatedInv[i] && DoorModel.getDoorColorNr(3) == GameController.inv.getInv(i)){
+							MapModel.moveLeft();
+							Log.v("FirstScreen", "Left");
+							break;
+						}
+					}
 				}
 
 

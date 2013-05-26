@@ -133,7 +133,7 @@
                 android:scaleX="0.75"
                 android:scaleY="0.75"
                 android:src="@drawable/key_blue"
-                android:visibility="invisible" />
+                android:visibility="visible" />
 
             <ImageButton
                 android:id="@+id/key_button_green"
