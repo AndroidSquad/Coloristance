@@ -155,10 +155,22 @@ public class FirstScreen extends Activity {
 			@Override
 			public void onClick(View v) {
 
-				if(doors[0].equals(v)== true){MapModel.moveUp();}
-				else if(doors[1].equals(v)== true){MapModel.moveRight();}
-				else if(doors[2].equals(v)== true){MapModel.moveDown();}
-				else if(doors[3].equals(v)== true){MapModel.moveLeft();}
+				if(doors[0].equals(v)== true){
+					MapModel.moveUp();
+					Log.v("FirstScreen_Doors", "DoorNr: "+ DoorModel.getDoorColorNr(0));
+				}
+				else if(doors[1].equals(v)== true){
+					MapModel.moveRight();
+					Log.v("FirstScreen_Doors", "DoorNr: "+ DoorModel.getDoorColorNr(1));
+				}
+				else if(doors[2].equals(v)== true){
+					MapModel.moveDown();
+					Log.v("FirstScreen_Doors", "DoorNr: "+ DoorModel.getDoorColorNr(2));
+				}
+				else if(doors[3].equals(v)== true){
+					MapModel.moveLeft();
+					Log.v("FirstScreen_Doors", "DoorNr: "+ DoorModel.getDoorColorNr(3));
+				}
 
 
 				setRoom();
