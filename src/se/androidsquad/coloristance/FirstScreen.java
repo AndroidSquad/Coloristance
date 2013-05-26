@@ -34,7 +34,7 @@ public class FirstScreen extends Activity {
 	boolean visSpeak; //state of the ImageButton musicButton
 	Runnable runnable;
 	protected int levelCounter = 1;
-	CountDownTimer countDown;
+
 
 	int[] door = {R.id.top_door, R.id.right_door, R.id.bot_door,  R.id.left_door};
 	int[] keyNames = {R.id.key_button_blue, R.id.key_button_green, R.id.key_button_orange, R.id.key_button_purple, R.id.key_button_red};
@@ -49,10 +49,17 @@ public class FirstScreen extends Activity {
 	String timeResult;
 	int[] invPos = {R.id.invKeyLeft, R.id.invKeyMid, R.id.invKeyRight};
 
+	TextView textTimer;		
+	CountDown timer;
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.firstscreen);
+		findViewById(R.id.bot_layout).setBackgroundColor(RectModel.BLUE_DARK);
+
+		textTimer = (TextView) findViewById(R.id.texttime);
+		timer = new CountDown(10000,1000);
+		timer.start();
 		startTime();
 
 		game = new GameController();
@@ -63,27 +70,19 @@ public class FirstScreen extends Activity {
 		mp = MediaPlayer.create(FirstScreen.this, R.raw.house_music);	
 		mp.start();
 		mp.setLooping(true);
-		MapModel.setPos(0, 1);
+		int x= MapModel.getMyX();
+		int y= MapModel.getMyY();
+		if(x==0 && y == 0){
+			MapModel.setPos(0, 1);
 
-		final TextView textTimer = (TextView) findViewById(R.id.texttime);		
-		class CountDown extends CountDownTimer {
-			public CountDown(long millisInFuture, long countDownInt){
-				super(millisInFuture, countDownInt);
-			}
+		}
+		else {
+			MapModel.setPos(x,y);
 
-			@Override
-			public void onFinish() {
-				textTimer.setText("GAME OVER");
-				gameLost();
-			}
-
-			@Override
-			public void onTick(long millisUntilFinished) {
-				textTimer.setText((millisUntilFinished/1000)+ "");
-			}
 		}
 
-		final CountDown timer = new CountDown(10000,1000);
+		setRoom();
+		setDoors();
 
 		musicButton  = (ImageButton) findViewById(R.id.musicbutton);
 		Log.v("MainActivity","value 1: " + musicButton);
@@ -150,29 +149,32 @@ public class FirstScreen extends Activity {
 		final View[] inventories = {invLeft, invMid, invRight};
 		final View[] doors = {topDoor, rightDoor, botDoor, leftDoor};
 		final String[] whatKey = {"Left was clicked","Mid was clicked","Right was clicked"}; 
-		
+
 		View.OnClickListener doorClick = new View.OnClickListener(){
 
 			@Override
 			public void onClick(View v) {
-				
+
 				if(doors[0].equals(v)== true){MapModel.moveUp();}
 				else if(doors[1].equals(v)== true){MapModel.moveRight();}
 				else if(doors[2].equals(v)== true){MapModel.moveDown();}
 				else if(doors[3].equals(v)== true){MapModel.moveLeft();}
-				
+
+
 				setRoom();
 				setKeys();
 				setDoors();
 				timer.start();
 
-				if(MapModel.getRoom()=="90000"){
+				if(MapModel.getRoom()=="70000"){
 					Log.v("FirstScreen", "Aset var här ändå");
 					timer.cancel();
 					mapDone();
 				}
 			}
+
 		};
+
 
 		for(int i = 0; i<4; i++){
 			doors[i].setOnClickListener(doorClick);
@@ -187,13 +189,13 @@ public class FirstScreen extends Activity {
 					else if(inventories[i].equals(v) == true && i == 1){dropKey(i);}
 					else if(inventories[i].equals(v) == true && i == 2){dropKey(i);}
 				}
+
 			}
 		};
 
 		for(int i = 0; i<3;i++){
 			inventories[i].setOnClickListener(inventoryClick);
 		}
-
 
 		View.OnClickListener keyClick = new View.OnClickListener() {
 			@Override
@@ -278,42 +280,44 @@ public class FirstScreen extends Activity {
 		char[] buffer = thisKey.getKeyString().toCharArray();
 		String newKey = new String(buffer);
 		Log.v("FirstScreen", "DropKey newKey init: " + newKey);
+
 		Log.v("FirstScreen", ""+allocatedInv[0]+""+allocatedInv[1]+""+allocatedInv[2]);
 		int keyPos = GameController.inv.getInv(invPosition);
-			
-			if(newKey.charAt(keyPos) == '1'){
-				//TODO Visa ett snabbt felmeddelande att nyckeln redan finns i rummet
-				Log.v("FirstScreen", "The key already exist in the room");
-			}
-			else if(allocatedInv[invPosition] == true ){
-				findViewById(invPos[invPosition]).setBackgroundResource(emptyInventory);
-				allocatedInv[invPosition] = false;
-				if(keyPos != 5){
-					buffer[keyPos] = '1';
-					Log.v("FirstScreen", "Set 1");
-				}
 
-				newKey = new String(buffer);
-				thisKey.setKeyString(newKey);
-				thisKey.setKeyVisibility(true);
-				GameController.inv.setInv(invPosition, 5);
-
-				setKeys();
-			}
-			else if(allocatedInv[invPosition] == false){
-				Log.v("FirstScreen", "The key has been dropped/Was never there: " + invPosition);
-			}
-			else{ Log.v("FirstScreen", "Something went wrong");}
-			
-			Log.v("FirstScreen", "DropKey newKey ending: " + newKey);
+		if(newKey.charAt(keyPos) == '1'){
+			//TODO Visa ett snabbt felmeddelande att nyckeln redan finns i rummet
+			Log.v("FirstScreen", "The key already exist in the room");
 		}
+		else if(allocatedInv[invPosition] == true ){
+			findViewById(invPos[invPosition]).setBackgroundResource(emptyInventory);
+			allocatedInv[invPosition] = false;
+			if(keyPos != 5){
+				buffer[keyPos] = '1';
+				Log.v("FirstScreen", "Set 1");
 
-		/*Log.v("FirstScreen", "input : " + GameController.key[MapModel.getMyX()][MapModel.getMyY()].getKeyString());
+			}
+
+			newKey = new String(buffer);
+			thisKey.setKeyString(newKey);
+			thisKey.setKeyVisibility(true);
+			GameController.inv.setInv(invPosition, 5);
+
+			setKeys();
+		}
+		else if(allocatedInv[invPosition] == false){
+			Log.v("FirstScreen", "The key has been dropped/Was never there: " + invPosition);
+		}
+		else{ Log.v("FirstScreen", "Something went wrong");}
+
+		Log.v("FirstScreen", "DropKey newKey ending: " + newKey);
+	}
+
+	/*Log.v("FirstScreen", "input : " + GameController.key[MapModel.getMyX()][MapModel.getMyY()].getKeyString());
 		Log.v("FirstScreen", "buffer 1: " + buffer[0]+ buffer[1]+ buffer[2]+ buffer[3]+ buffer[4]);
 		Log.v("FirstScreen", "InvPos: " + GameController.inv.getInv(keyInvPos));
 		Log.v("FirstScreen", "input : " + GameController.key[MapModel.getMyX()][MapModel.getMyY()].getKeyString());*/
 
-	
+
 
 	protected void setRoom(){
 		DoorModel.setDoor(MapModel.getRoom());
@@ -354,6 +358,7 @@ public class FirstScreen extends Activity {
 	protected void mapDone(){
 		stopTime();
 		showTime();
+		MapModel.setPos(0,1); //TODO
 		AlertDialog.Builder alertDialog = new AlertDialog.Builder(this);
 		alertDialog.setTitle(this.getText(R.string.finished)+"\t"+"You finished in: "+ timeResult +" seconds");
 		//alertDialog.setTitle(showTime());
@@ -372,10 +377,17 @@ public class FirstScreen extends Activity {
 		closeButton.setOnClickListener(new View.OnClickListener() {
 
 			public void onClick(View clicked){
-				if(clicked.getId() == R.id.endGame)
-					startActivity(new Intent(FirstScreen.this, MainActivity.class));
-				finish_game.stop();
-			}
+				if(clicked.getId() == R.id.endGame){
+					levelCounter=1;
+					GameController.setLevel(levelCounter);
+					MapModel.setPos(0,1);
+					Intent intent = new Intent(getApplicationContext(), MainActivity.class);
+					intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+					startActivity(intent);
+					finish_game.stop();
+					finish();
+				}
+			}	
 		});
 
 		View playNextLevel= dialogView.findViewById(R.id.playNextLevel);
@@ -399,6 +411,7 @@ public class FirstScreen extends Activity {
 	protected void gameLost(){ 
 		mp.stop();
 		stopTime();
+
 		AlertDialog.Builder loseDialog = new AlertDialog.Builder(this);
 		loseDialog.setTitle(R.string.lost_game);
 		LayoutInflater inflater = this.getLayoutInflater();
@@ -410,8 +423,10 @@ public class FirstScreen extends Activity {
 		retryButton.setOnClickListener(new View.OnClickListener() {
 
 			public void onClick(View clicked){
-				if(clicked.getId() == R.id.retry)
+				if(clicked.getId() == R.id.retry){
 					startActivity(new Intent(FirstScreen.this, FirstScreen.class));
+					GameController.setLevel(levelCounter);
+				}	
 			}
 		});
 
@@ -419,8 +434,15 @@ public class FirstScreen extends Activity {
 		playAgainButton.setOnClickListener(new View.OnClickListener() {
 
 			public void onClick(View clicked){
-				if(clicked.getId() == R.id.endGame)
-					startActivity(new Intent(FirstScreen.this, MainActivity.class));
+				if(clicked.getId() == R.id.endGame){
+					levelCounter=1;
+					GameController.setLevel(levelCounter);
+					MapModel.setPos(0,1);
+					Intent intent = new Intent(getApplicationContext(), MainActivity.class);
+					intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+					startActivity(intent);
+					finish();
+				}
 			}
 		});
 		AlertDialog gameOverDialog = loseDialog.create();
@@ -462,18 +484,38 @@ public class FirstScreen extends Activity {
 		musicButton = (ImageButton) findViewById(R.id.musicbutton);
 		musicButton.setBackgroundResource(drawable.mutespeaker);
 
-
 	}
 
 	protected void onPause() {
 		super.onPause();
-		mp.release();
+		mp.release(); 
 	}
 
 	protected void onStop() {
 		super.onStop();
 		mp.release();
 		visSpeak = false;
+		timer.cancel();
+	}
+
+
+	class CountDown extends CountDownTimer{
+
+		public CountDown(long millisInFuture, long countDownInterval){
+			super(millisInFuture,countDownInterval);
+		}
+
+		@Override
+		public void onFinish() {	
+			textTimer.setText("GAME OVER");
+			gameLost();
+			Log.v("Firstscreentimer","fel timer");
+		}
+
+		@Override
+		public void onTick(long millisUntilFinished) {
+			textTimer.setText((millisUntilFinished/1000)+ "");
+		}
 	}
 }
 

@@ -18,7 +18,7 @@
         android:id="@+id/room_container"
         android:layout_width="0dp"
         android:layout_height="match_parent"
-        android:layout_weight="0.75" >
+        android:layout_weight="0.70" >
         
         <!--  OBS! Nedanstående gula markering är felaktig, det gör skillnad! -->
         <RelativeLayout
@@ -197,7 +197,7 @@
         android:id="@+id/bot_layout"
         android:layout_width="0dp"
         android:layout_height="match_parent"
-        android:layout_weight="0.10"
+        android:layout_weight="0.15"
         android:background="@color/red_light" >
 
         <ImageButton
@@ -205,11 +205,12 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_centerInParent="true"
-            android:layout_margin="30dp"
+            android:layout_margin="15dp"
             android:background="@drawable/key_empty"
             android:clickable="true"
             android:contentDescription="@string/key_desc"
-            android:visibility="visible" />
+            android:visibility="visible"
+            android:rotation="270" />
 
         <ImageButton
             android:id="@+id/invKeyLeft"
@@ -217,11 +218,12 @@
             android:layout_height="wrap_content"
             android:layout_below="@id/invKeyMid"
             android:layout_centerInParent="true"
-            android:layout_margin="30dp"
+            android:layout_margin="15dp"
             android:background="@drawable/key_empty"
             android:clickable="true"
             android:contentDescription="@string/key_desc"
-            android:visibility="visible" />
+            android:visibility="visible"
+            android:rotation="270" />
 
         <ImageButton
             android:id="@+id/invKeyRight"
@@ -229,11 +231,12 @@
             android:layout_height="wrap_content"
             android:layout_above="@id/invKeyMid"
             android:layout_centerInParent="true"
-            android:layout_margin="30dp"
+            android:layout_margin="15dp"
             android:background="@drawable/key_empty"
             android:clickable="true"
             android:contentDescription="@string/key_desc"
-            android:visibility="visible" />
+            android:visibility="visible"
+            android:rotation="270" />
     </RelativeLayout>
 
 </LinearLayout>
