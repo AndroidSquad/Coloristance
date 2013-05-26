@@ -23,6 +23,7 @@ public class MainActivity extends Activity {
 
 	MediaPlayer mp;
 	ImageButton musicMenuButton;
+	Button resumeButton;
 	boolean visMenuSpeak; //state of the ImageButton musicMenuButton
 
 
@@ -37,7 +38,7 @@ public class MainActivity extends Activity {
 
 		mp = MediaPlayer.create(MainActivity.this, R.raw.house_music);				 
 
-
+		
 		Button newGame = (Button) findViewById(R.id.new_game); // This row connect the button named new_game in main_activity.xml to the button newGame.
 		newGame.setOnClickListener(new View.OnClickListener() { 
 
@@ -46,6 +47,15 @@ public class MainActivity extends Activity {
 				startActivity(new Intent(MainActivity.this, FirstScreen.class));
 			}
 		});
+		
+//		resumeButton = (Button) findViewById(R.id.resume_game);	
+//		resumeButton.setOnClickListener(new View.OnClickListener() {
+//		
+//			public void onClick(View v){
+//				startActivity(new Intent(MainActivity.this, FirstScreen.class));
+//			}
+//			
+//		});
 		
 		/**
 		 * An ImageButton that gives the player ability to pause and start the game music.
