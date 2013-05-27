@@ -5,14 +5,18 @@ import java.io.IOException;
 import se.androidsquad.coloristance.R.drawable;
 
 import android.media.MediaPlayer;
+import android.opengl.Visibility;
 import android.os.Bundle;
 import android.app.Activity;
 import android.content.Intent;
 import android.util.Log;
 import android.view.Menu;
 import android.view.View;
+import android.view.View.OnClickListener;
 import android.widget.Button;
 import android.widget.ImageButton;
+import android.view.KeyEvent;
+
 /*
  * This class represent the first screen of our game, it should contain buttons to 
  * create a new game, start the music, pause the music. From this first screen you should
@@ -25,6 +29,7 @@ public class MainActivity extends Activity {
 	ImageButton musicMenuButton;
 	Button resumeButton;
 	boolean visMenuSpeak; //state of the ImageButton musicMenuButton
+	public static boolean visResume = false;
 
 
 	/*
@@ -40,22 +45,54 @@ public class MainActivity extends Activity {
 
 		
 		Button newGame = (Button) findViewById(R.id.new_game); // This row connect the button named new_game in main_activity.xml to the button newGame.
-		newGame.setOnClickListener(new View.OnClickListener() { 
+		Button resumeButton = (Button) findViewById(R.id.resume_game);
+		
+
+				
+		View.OnClickListener startNewGame = new View.OnClickListener(){ 
 
 			@Override
 			public void onClick(View v) {
+				FirstScreen.levelCounter=1;
+				GameController.setLevel(1);
+				MapModel.setPos(0,1);
+				Intent intent = new Intent(getApplicationContext(), MainActivity.class);
+				intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+				startActivity(intent);
+				finish();
 				startActivity(new Intent(MainActivity.this, FirstScreen.class));
 			}
-		});
+			
+		};
 		
-//		resumeButton = (Button) findViewById(R.id.resume_game);	
-//		resumeButton.setOnClickListener(new View.OnClickListener() {
-//		
-//			public void onClick(View v){
-//				startActivity(new Intent(MainActivity.this, FirstScreen.class));
-//			}
-//			
-//		});
+		View.OnClickListener resumeGame = new View.OnClickListener(){ 
+
+			@Override
+			public void onClick(View v){
+				finish();
+			}
+		};
+		
+		newGame.setOnClickListener(startNewGame);
+		resumeButton.setOnClickListener(resumeGame);
+		
+		
+	if(visResume == true){
+		findViewById(R.id.resume_game).setVisibility(View.VISIBLE);
+	}
+	else{
+		findViewById(R.id.resume_game).setVisibility(View.GONE);
+	}
+
+		
+			
+		resumeButton.setOnClickListener(new View.OnClickListener() {
+		
+			public void onClick(View v){
+				startActivity(new Intent(MainActivity.this, FirstScreen.class));
+			}
+			
+		});
 		
 		/**
 		 * An ImageButton that gives the player ability to pause and start the game music.

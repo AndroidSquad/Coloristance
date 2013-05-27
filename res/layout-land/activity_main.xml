@@ -33,11 +33,24 @@
         android:textStyle="bold" />
 
     <Button
-        android:id="@+id/gamerules"
+        android:id="@+id/resume_game"
         style="@style/button_layout.highlight"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_below="@id/new_game"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="15dp"
+        android:text="@string/resume_game"
+        android:textColor="@color/white"
+        android:textStyle="bold"
+        android:visibility="gone" />
+
+    <Button
+        android:id="@+id/gamerules"
+        style="@style/button_layout.highlight"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/resume_game"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="30dp"
         android:text="@string/rules"
