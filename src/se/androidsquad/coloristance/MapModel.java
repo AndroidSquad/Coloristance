@@ -24,7 +24,7 @@ public class MapModel {
 		else if(level == 2){
 			mapArray = Levels.map_2;
 		} 
-		else if(level == 2){
+		else if(level == 3){
 			mapArray = Levels.map_3;
 		}
 		else{
