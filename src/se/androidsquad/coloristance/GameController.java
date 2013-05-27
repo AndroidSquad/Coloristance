@@ -76,6 +76,12 @@ public class GameController {
 
 	}
 	
+	public static int getLevel(){
+		Log.v("GameController","The level returned was: "+level);
+		return level;	
+	}
+	
+	
 	
 	/* Do we really need this constructor?
 	 * 

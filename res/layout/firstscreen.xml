@@ -106,82 +106,81 @@
                 android:layout_alignParentLeft="true"
                 android:clickable="true"
                 android:contentDescription="@string/speaker"
-                android:scaleX="0.4"
-                android:scaleY="0.4"
+                android:scaleX="0.6"
+                android:scaleY="0.6"
                 android:visibility="visible" />
 
             <TextView
                 android:id="@+id/texttime"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_alignParentBottom="true"
                 android:layout_alignParentRight="true"
-                android:layout_marginBottom="20dp"
-                android:layout_marginRight="20dp"
+                android:layout_alignParentTop="true"
+                android:layout_marginRight="30dp"
+                android:layout_marginTop="15dp"
                 android:textColor="@color/white"
                 android:textSize="30sp"
                 android:textStyle="bold"
                 android:visibility="visible" />
 
-                 <ImageButton
-                    android:id="@+id/key_button_blue"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_centerInParent="true"
-                    android:background="@null"
-                    android:clickable="true"
-                    android:contentDescription="@string/key_desc"
-                    android:rotation="90"
-                    android:scaleX="0.75"
-                    android:scaleY="0.75"
-                    android:src="@drawable/key_blue"
-                    android:visibility="visible" />
+            <ImageButton
+                android:id="@+id/key_button_blue"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerInParent="true"
+                android:background="@null"
+                android:clickable="true"
+                android:contentDescription="@string/key_desc"
+                android:rotation="90"
+                android:scaleX="0.75"
+                android:scaleY="0.75"
+                android:src="@drawable/key_blue"
+                android:visibility="visible" />
 
-                <ImageButton
-                    android:id="@+id/key_button_green"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_above="@id/key_button_blue"
-                    android:layout_centerInParent="true"
-                    android:background="@null"
-                    android:clickable="true"
-                    android:contentDescription="@string/key_desc"
-                    android:rotation="90"
-                    android:scaleX="0.75"
-                    android:scaleY="0.75"
-                    android:src="@drawable/key_green"
-                    android:visibility="invisible" />
+            <ImageButton
+                android:id="@+id/key_button_green"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_above="@id/key_button_blue"
+                android:layout_centerInParent="true"
+                android:background="@null"
+                android:clickable="true"
+                android:contentDescription="@string/key_desc"
+                android:rotation="90"
+                android:scaleX="0.75"
+                android:scaleY="0.75"
+                android:src="@drawable/key_green"
+                android:visibility="invisible" />
 
-                <ImageButton
-                    android:id="@+id/key_button_orange"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_centerInParent="true"
-                    android:layout_toRightOf="@id/key_button_blue"
-                    android:background="@null"
-                    android:clickable="true"
-                    android:contentDescription="@string/key_desc"
-                    android:rotation="90"
-                    android:scaleX="0.75"
-                    android:scaleY="0.75"
-                    android:src="@drawable/key_orange"
-                    android:visibility="invisible" />
+            <ImageButton
+                android:id="@+id/key_button_orange"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerInParent="true"
+                android:layout_toRightOf="@id/key_button_blue"
+                android:background="@null"
+                android:clickable="true"
+                android:contentDescription="@string/key_desc"
+                android:rotation="90"
+                android:scaleX="0.75"
+                android:scaleY="0.75"
+                android:src="@drawable/key_orange"
+                android:visibility="invisible" />
 
-                <ImageButton
-                    android:id="@+id/key_button_purple"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_below="@id/key_button_blue"
-                    android:layout_centerInParent="true"
-                    android:background="@null"
-                    android:clickable="true"
-                    android:contentDescription="@string/key_desc"
-                    android:rotation="90"
-                    android:scaleX="0.75"
-                    android:scaleY="0.75"
-                    android:src="@drawable/key_purple"
-                    android:visibility="invisible" />
-          
+            <ImageButton
+                android:id="@+id/key_button_purple"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/key_button_blue"
+                android:layout_centerInParent="true"
+                android:background="@null"
+                android:clickable="true"
+                android:contentDescription="@string/key_desc"
+                android:rotation="90"
+                android:scaleX="0.75"
+                android:scaleY="0.75"
+                android:src="@drawable/key_purple"
+                android:visibility="invisible" />
 
             <ImageButton
                 android:id="@+id/key_button_red"
