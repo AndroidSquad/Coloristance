@@ -76,6 +76,7 @@ public class MapModel {
 		y = yPos;
 	}
 
+	
 	/**
 	 * Checks to see if the new value is acceptable, if it is, it removes one from the y-pos.
 	 * it is called whenever the "North" door is clicked.
