@@ -20,18 +20,26 @@ public class MapModelTest extends TestCase{
 		MapModel.setMap(1);
 	}
 	
+	
 	@Test
 	public void testCorrectArrayLength() {
 		assertEquals(8, MapModel.mapArray.length);
 		assertEquals(3, MapModel.mapArray[0].length);
 	}
+	/*
+	 * this test examine if the you have moved to the position (1,1) on the map
+	 * the roomcode should be 13027
+	 */
 	@Test
 	public void testCodeOfRoom() {
 		MapModel.setPos(1, 1);
 		assertEquals(MapModel.getRoom(),"13027");
 	}
 	
-	
+	/*
+	 * this test help us investigate if the player can move on the map and
+	 * that the position is correct after each movement.
+	 */	
 	@Test
 	public void testMovementsOnMap() {
 		MapModel.setPos(0, 1);
@@ -57,7 +65,10 @@ public class MapModelTest extends TestCase{
 		
 		
 	}
-	
+	/*
+	 * this test helped us investigate if our set preconditions on the movements
+	 * worked as intended
+	 */
 	@Test
 	public void testOutOfBounds(){
 		MapModel.setMap(1);

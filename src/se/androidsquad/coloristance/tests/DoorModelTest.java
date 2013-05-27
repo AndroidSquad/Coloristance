@@ -8,7 +8,12 @@ import se.androidsquad.coloristance.DoorModel;
 import se.androidsquad.coloristance.MapModel;
 import se.androidsquad.coloristance.RectModel;
 
+
 public class DoorModelTest {
+	/*
+	 * We need to instantiate the colors that we use in the game as
+	 * an int in order to test so the doors get the right color
+	 */
 	int zero=RectModel.BLACK;
 	int two = RectModel.GREEN_LIGHT;
 	int tre = RectModel.ORANGE_LIGHT;
@@ -20,6 +25,9 @@ public class DoorModelTest {
 		MapModel.setPos(1, 1);
 	}
 
+	/*
+	 * Investigates if we set the value of a door the getDoor returns the right color
+	 */
 	@Test
 	public void testSetDoor() {
 		DoorModel.setDoor("13027");
