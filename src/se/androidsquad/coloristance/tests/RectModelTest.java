@@ -32,7 +32,7 @@ public class RectModelTest {
 	}
 	@Test
 	public void testMoveColor(){
-		MapModel.setMap("1");
+		MapModel.setMap(1);
 		MapModel.setPos(0, 1);
 		MapModel.moveRight();
 		MapModel.moveUp();
