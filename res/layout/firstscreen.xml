@@ -128,12 +128,11 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_centerInParent="true"
+                android:layout_margin="10dp"
                 android:background="@null"
                 android:clickable="true"
                 android:contentDescription="@string/key_desc"
                 android:rotation="90"
-                android:scaleX="0.75"
-                android:scaleY="0.75"
                 android:src="@drawable/key_blue"
                 android:visibility="visible" />
 
@@ -143,12 +142,11 @@
                 android:layout_height="wrap_content"
                 android:layout_above="@id/key_button_blue"
                 android:layout_centerInParent="true"
+                android:layout_margin="10dp"
                 android:background="@null"
                 android:clickable="true"
                 android:contentDescription="@string/key_desc"
                 android:rotation="90"
-                android:scaleX="0.75"
-                android:scaleY="0.75"
                 android:src="@drawable/key_green"
                 android:visibility="invisible" />
 
@@ -157,13 +155,12 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_centerInParent="true"
+                android:layout_margin="10dp"
                 android:layout_toRightOf="@id/key_button_blue"
                 android:background="@null"
                 android:clickable="true"
                 android:contentDescription="@string/key_desc"
                 android:rotation="90"
-                android:scaleX="0.75"
-                android:scaleY="0.75"
                 android:src="@drawable/key_orange"
                 android:visibility="invisible" />
 
@@ -173,12 +170,11 @@
                 android:layout_height="wrap_content"
                 android:layout_below="@id/key_button_blue"
                 android:layout_centerInParent="true"
+                android:layout_margin="10dp"
                 android:background="@null"
                 android:clickable="true"
                 android:contentDescription="@string/key_desc"
                 android:rotation="90"
-                android:scaleX="0.75"
-                android:scaleY="0.75"
                 android:src="@drawable/key_purple"
                 android:visibility="invisible" />
 
@@ -187,13 +183,12 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_centerInParent="true"
+                android:layout_margin="10dp"
                 android:layout_toLeftOf="@id/key_button_blue"
                 android:background="@null"
                 android:clickable="true"
                 android:contentDescription="@string/key_desc"
                 android:rotation="90"
-                android:scaleX="0.75"
-                android:scaleY="0.75"
                 android:src="@drawable/key_red"
                 android:visibility="invisible" />
         </RelativeLayout>

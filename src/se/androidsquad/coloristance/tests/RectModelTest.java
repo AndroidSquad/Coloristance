@@ -35,12 +35,17 @@ public class RectModelTest {
 		MapModel.setMap(1);
 		MapModel.setPos(0, 1);
 		MapModel.moveRight();
+		RectModel.setRectColor(MapModel.getRoom());
+		assertEquals(RectModel.BLUE_LIGHT, RectModel.getRectColor());
 		MapModel.moveUp();
+		RectModel.setRectColor(MapModel.getRoom());
 		assertEquals(RectModel.rectColor, RectModel.getRectColor());
+		assertEquals(RectModel.ORANGE_LIGHT, RectModel.getRectColor());
+		
 	}
 	@Test
 	public void testGetRoomColor() {
-		assertEquals("gl", RectModel.getRoomColor());
+		assertEquals("ol", RectModel.getRoomColor());
 		
 	}
 

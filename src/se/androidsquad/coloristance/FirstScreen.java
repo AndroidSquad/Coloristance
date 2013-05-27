@@ -61,10 +61,21 @@ public class FirstScreen extends Activity {
 			savedTime = savedInstanceState.getLong("savedtime");
 			roomSavedTime =savedInstanceState.getLong("roomsavedtime");
 			startTime = System.currentTimeMillis();
-			timerRotation = new CountDown (10000 - (roomSavedTime*1000),1000);
-			timer = new CountDown(10000,1000);
-			Log.d("FirstScreen","Vi räknar ner på nytt");
-			timerRotation.start();
+
+			Log.d("Simon h‰lsar","innan if");
+			Log.d("Simon h‰lsar",""+MapModel.getMyX()+MapModel.getMyY());
+			if((MapModel.getMyX() != 0) || (MapModel.getMyY() != 1)){
+				Log.d("Simon h‰lsar","if rad 1");
+				roomStartTime = System.currentTimeMillis();
+				timerRotation = new CountDown (10000 - (roomSavedTime*1000),1000);
+				Log.d("Simon h‰lsar","if rad 2");
+				timerRotation.start();
+				Log.d("Simon h‰lsar","funkar ej");
+				timer = new CountDown(10000,1000);
+				Log.d("Simon hälsar","Vi räknar ner på nytt");
+			} else
+				timer =new CountDown(10000,1000);
+
 		} else {
 			visSpeak = 2;
 			startTime = System.currentTimeMillis();
@@ -259,7 +270,7 @@ public class FirstScreen extends Activity {
 				setRoom();
 				setKeys();
 				setDoors();
-				
+
 
 				if(MapModel.getRoom()=="70000"){
 					Log.v("FirstScreen", "Aset var h‰r ‰ndÂ");
@@ -367,7 +378,7 @@ public class FirstScreen extends Activity {
 	 * onSaveInstanceState saves valueble information that should not be lost in a screen rotation
 	 * */
 
-	
+
 	@Override
 	protected void onSaveInstanceState(Bundle outState) {
 		// TODO Auto-generated method stub
@@ -517,7 +528,7 @@ public class FirstScreen extends Activity {
 	// Currently some very similar code as the method above, as they treat similar scenarios
 	protected void gameLost(){ 
 		mp.stop();
-		
+
 		AlertDialog.Builder loseDialog = new AlertDialog.Builder(this);
 		loseDialog.setTitle(R.string.lost_game);
 		LayoutInflater inflater = this.getLayoutInflater();
@@ -563,30 +574,30 @@ public class FirstScreen extends Activity {
 	@Override
 	public void onBackPressed() {   
 		new AlertDialog.Builder(this)
-	           .setMessage("Do you want to exit already?")
-	           .setCancelable(true)
-	           .setNegativeButton("No", null)
-	           .setNeutralButton("Main screen", new DialogInterface.OnClickListener(){
-	        	   public void onClick(DialogInterface dialog, int i){
-	        		   MainActivity.visResume = true;
-	        		   startActivity(new Intent(getApplicationContext(), MainActivity.class));
-	        	  }
-	           })
-	           .setPositiveButton("Restart",new DialogInterface.OnClickListener(){
-	        	   public void onClick(DialogInterface dialog, int i){
-	        		   
-	        		   MapModel.setPos(0,1);
-	        		   FirstScreen.this.finish();
-	        		   cleanInventory();
-	        		   Intent intent = new Intent(getApplicationContext(), FirstScreen.class);
-	        		   startActivity(intent);
-	        		  
-	        	   }
-	           })
-	           .show();
+		.setMessage("Do you want to exit already?")
+		.setCancelable(true)
+		.setNegativeButton("No", null)
+		.setNeutralButton("Main screen", new DialogInterface.OnClickListener(){
+			public void onClick(DialogInterface dialog, int i){
+				MainActivity.visResume = true;
+				startActivity(new Intent(getApplicationContext(), MainActivity.class));
+			}
+		})
+		.setPositiveButton("Restart",new DialogInterface.OnClickListener(){
+			public void onClick(DialogInterface dialog, int i){
+
+				MapModel.setPos(0,1);
+				FirstScreen.this.finish();
+				cleanInventory();
+				Intent intent = new Intent(getApplicationContext(), FirstScreen.class);
+				startActivity(intent);
+
+			}
+		})
+		.show();
 	}
-	
-	
+
+
 	private long getPlayedTime() {
 		stopTime = System.currentTimeMillis();
 		Log.d("Mafi","" + "stopTime-startTime milli" + (stopTime-startTime));
@@ -609,7 +620,7 @@ public class FirstScreen extends Activity {
 		roomStopTime = System.currentTimeMillis();
 		return roomPlayedTime = (roomStopTime - roomStartTime)/1000;
 	}
-	
+
 
 	@Override
 	protected void onResume() {
@@ -630,6 +641,9 @@ public class FirstScreen extends Activity {
 	protected void onPause() {
 		super.onPause();
 		mp.release(); 
+		if (timerRotation != null) {
+			timerRotation.cancel();
+		}
 		Log.d("Mafi","" + savedTime + " innan");
 		savedTime = getPlayedTime();
 		Log.d("Mafi","" + savedTime + " efter");
@@ -662,13 +676,14 @@ public class FirstScreen extends Activity {
 		public void onTick(long millisUntilFinished) {
 			textTimer.setText((millisUntilFinished/1000)+ "");
 		}
-		
+
 	}	
+
 	protected void cleanInventory(){
-			for(int i = 0; i<3;i++){
-				dropKey(i);
-			}
+		for(int i = 0; i<3;i++){
+			dropKey(i);
 		}
+	}
 }
 
 

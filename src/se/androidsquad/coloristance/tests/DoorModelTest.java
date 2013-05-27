@@ -2,11 +2,8 @@ package se.androidsquad.coloristance.tests;
 
 import static org.junit.Assert.*;
 
-import org.junit.After;
 import org.junit.Before;
-import org.junit.BeforeClass;
 import org.junit.Test;
-
 import se.androidsquad.coloristance.DoorModel;
 import se.androidsquad.coloristance.MapModel;
 import se.androidsquad.coloristance.RectModel;
