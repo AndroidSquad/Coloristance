@@ -205,7 +205,7 @@
             android:background="@drawable/key_empty"
             android:clickable="true"
             android:contentDescription="@string/key_desc"
-            android:rotation="270"
+            android:rotation="90"
             android:visibility="visible" />
 
         <ImageButton
@@ -218,7 +218,7 @@
             android:background="@drawable/key_empty"
             android:clickable="true"
             android:contentDescription="@string/key_desc"
-            android:rotation="270"
+            android:rotation="90"
             android:visibility="visible" />
 
         <ImageButton
@@ -231,7 +231,7 @@
             android:background="@drawable/key_empty"
             android:clickable="true"
             android:contentDescription="@string/key_desc"
-            android:rotation="270"
+            android:rotation="90"
             android:visibility="visible" />
     </RelativeLayout>
 

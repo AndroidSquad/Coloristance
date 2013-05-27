@@ -40,7 +40,7 @@ public class GameController {
 	public static InventoryModel inv = new InventoryModel();
 
 	// The first level is always "map_1", why the variable level is initally defined as "map_1"
-	public static String level = "map_1"; 
+	public static int level = 1; 
 
 	/*
 	 * The empty constructor of GameController whcih creates an object of 
@@ -69,14 +69,18 @@ public class GameController {
 	}
 	
 	public static void setLevel(int lvl){
-		if(lvl == 1)
-			level = "map_1";
-		else if(lvl == 2)
-			level = "map_2";
+		if(1 <= lvl)
+			level = lvl;
 		else
-			Log.v("GameController2","test "+level);
+			Log.v("GameController","The level couldn't be set to "+lvl);
 
 	}
+	
+	public static int getLevel(){
+		Log.v("GameController","The level returned was: "+level);
+		return level;	
+	}
+	
 	
 	
 	/* Do we really need this constructor?

@@ -17,7 +17,7 @@ public class MapModelTest extends TestCase{
 
 	@Before
 	public void setUp() throws Exception {
-		MapModel.setMap("map_1");
+		MapModel.setMap(1);
 	}
 	
 	@Test
@@ -60,7 +60,7 @@ public class MapModelTest extends TestCase{
 	
 	@Test
 	public void testOutOfBounds(){
-		MapModel.setMap("map_1");
+		MapModel.setMap(1);
 		MapModel.setPos(0, 1);
 		
 		MapModel.moveRight();

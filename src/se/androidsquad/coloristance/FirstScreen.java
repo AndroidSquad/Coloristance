@@ -538,10 +538,9 @@ public class FirstScreen extends Activity {
 
 			public void onClick(View clicked){
 				if(clicked.getId() == R.id.retry){
-					GameController.setLevel(levelCounter);
 					MapModel.setPos(0,1);
 					startActivity(new Intent(FirstScreen.this, FirstScreen.class));
-					GameController.setLevel(levelCounter);
+					levelCounter = GameController.getLevel();
 					cleanInventory();
 				}	
 			}
@@ -572,27 +571,29 @@ public class FirstScreen extends Activity {
 	@Override
 	public void onBackPressed() {   
 		new AlertDialog.Builder(this)
-		.setMessage("Are you sure you want to exit already??")
-		.setCancelable(true)
-		.setNegativeButton("No", null)
-		.setNeutralButton("Let me take a break", new DialogInterface.OnClickListener(){
-			public void onClick(DialogInterface dialog, int i){
-				FirstScreen.this.finish();
-				startActivity(new Intent(getApplicationContext(), MainActivity.class));
-			}
-		})
-		.setPositiveButton("Let me restart",new DialogInterface.OnClickListener(){
-			public void onClick(DialogInterface dialog, int i){
-				MapModel.setPos(0,1);
-				FirstScreen.this.finish();
-				//	        		   main.resumeButton.setVisibility(View.VISIBLE);
-				Intent intent = new Intent(getApplicationContext(), MainActivity.class);
-				//					   intent.putExtra("makeButtonVisible",true);
-				startActivity(intent);
-				cleanInventory();
-			}
-		})
-		.show();
+	           .setMessage("Do you want to exit already?")
+	           .setCancelable(true)
+	           .setNegativeButton("No", null)
+	           .setNeutralButton("Main screen", new DialogInterface.OnClickListener(){
+	        	   public void onClick(DialogInterface dialog, int i){
+	        		   FirstScreen.this.finish();
+	        		   startActivity(new Intent(getApplicationContext(), MainActivity.class));
+	        		   cleanInventory();
+	        	   }
+	           })
+	           .setPositiveButton("Restart",new DialogInterface.OnClickListener(){
+	        	   public void onClick(DialogInterface dialog, int i){
+	        		   MapModel.setPos(0,1);
+	        		   FirstScreen.this.finish();
+	        		   cleanInventory();
+//	        		   main.resumeButton.setVisibility(View.VISIBLE);
+	        		   Intent intent = new Intent(getApplicationContext(), FirstScreen.class);
+//					   intent.putExtra("makeButtonVisible",true);
+	        		   startActivity(intent);
+	        		  
+	        	   }
+	           })
+	           .show();
 	}
 
 

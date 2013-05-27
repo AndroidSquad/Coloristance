@@ -12,7 +12,7 @@ public class DrawMapTest {
 
 	@Before
 	public void setUp() throws Exception {
-		MapModel.setMap("lvl_1");
+		MapModel.setMap(1);
 	}
 
 	@After

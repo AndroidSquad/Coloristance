@@ -7,6 +7,7 @@ import org.junit.Before;
 import org.junit.BeforeClass;
 import org.junit.Test;
 
+import se.androidsquad.coloristance.MapModel;
 import se.androidsquad.coloristance.RectModel;
 
 public class RectModelTest {
@@ -28,6 +29,14 @@ public class RectModelTest {
 		RectModel.setRectColor("2");
 		assertEquals(RectModel.rectColor, RectModel.getRectColor());
 		
+	}
+	@Test
+	public void testMoveColor(){
+		MapModel.setMap(1);
+		MapModel.setPos(0, 1);
+		MapModel.moveRight();
+		MapModel.moveUp();
+		assertEquals(RectModel.rectColor, RectModel.getRectColor());
 	}
 	@Test
 	public void testGetRoomColor() {
