@@ -30,7 +30,6 @@ public class GameController {
 	 *  
 	 *  Om du får ett fel kan du trycka på det och därefter Ctrl+1 för förlag på lösningar*/
 
-	protected PositionModel pos;
 	protected RectModel rect;
 	protected DoorModel door;
 	protected String roomcode;
@@ -59,7 +58,6 @@ public class GameController {
 //			}
 //		}
 
-		this.pos = new PositionModel();
 		this.rect = new RectModel();
 		this.door = new DoorModel();
 
