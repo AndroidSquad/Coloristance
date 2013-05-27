@@ -17,7 +17,15 @@ import android.widget.ImageButton;
 import android.widget.TextView;
 
 /*
- * This class is the main window which the current room is created. It sets the screen to firstscreen.xml,
+ * This class is the main window which the current room is created. 
+ * This class is responsible for the majority of the communication with the other classes. This class acts 
+ * both as a View and a Controller. 
+ * 
+ * This class sets the screen to firstscreen.xml. If the orienation is in landscape mode, a landscape version
+ * of first
+ * 
+ * 
+ * It sets the screen to firstscreen.xml,
  * contains the code for the music, and the information about the doors that the different rooms should contain and
  * the color of the doors.
  * 
