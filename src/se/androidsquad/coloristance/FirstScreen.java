@@ -16,13 +16,13 @@ import android.view.View;
 import android.widget.ImageButton;
 import android.widget.TextView;
 
-/*
+/**
  * This class is the main window which the current room is created. 
  * This class is responsible for the majority of the communication with the other classes. This class acts 
  * both as a View and a Controller. 
  * 
  * This class sets the screen to firstscreen.xml. If the orienation is in landscape mode, a landscape version
- * of firstscreen xml is used. This class sends information to DrawMap to retrieve information from the 
+ * of firstscreen.xml is used. This class sends information to DrawMap to retrieve information from the 
  * database (Levels.java) which level is to be played. This class handles information regarding the room and its
  * related doors. It also handles the color of the inventory stack at the bottom of the screen.
  * 
@@ -45,8 +45,8 @@ public class FirstScreen extends Activity {
 	KeyModel thisKey;
 	int visSpeak; //state of the ImageButton musicButton, 0 = not playing, 1 = is playing, 2 = not defined
 	Runnable runnable;
-	protected static int levelCounter = 1;
-
+	protected static int levelCounter = 1; //variable that keeps track of which level is to be played
+	
 	int[] door = {R.id.top_door, R.id.right_door, R.id.bot_door,  R.id.left_door}; 
 	int[] keyNames = {R.id.key_button_blue, R.id.key_button_green, R.id.key_button_orange, R.id.key_button_purple, R.id.key_button_red};
 	int[] keyImg = {drawable.key_blue, drawable.key_green, drawable.key_orange, drawable.key_purple, drawable.key_red, drawable.key_empty};
@@ -221,7 +221,7 @@ public class FirstScreen extends Activity {
 					for(int i = 0; i<3;i++){
 						if((allocatedInv[i] && DoorModel.getDoorColorNr(0) == GameController.inv.getInv(i))|| DoorModel.getDoorColorNr(0) == 6){
 							MapModel.moveUp();
-							Log.v("FirstScreen", "Up");
+							Log.d("FirstScreen", "Up");
 							if(timerRotation!=null) 	//If the instance timerRotation is used, this instance has 
 								timerRotation.cancel();	//to be canceled in order not to cause problems for the regular timer instance
 							timer.start();
@@ -238,7 +238,7 @@ public class FirstScreen extends Activity {
 					for(int i = 0; i<3;i++){
 						if(allocatedInv[i] && DoorModel.getDoorColorNr(1) == GameController.inv.getInv(i)){
 							MapModel.moveRight();
-							Log.v("FirstScreen", "Right");
+							Log.d("FirstScreen", "Right");
 							if(timerRotation!=null)
 								timerRotation.cancel();
 							timer.start();
@@ -255,7 +255,7 @@ public class FirstScreen extends Activity {
 					for(int i = 0; i<3;i++){
 						if(allocatedInv[i] && DoorModel.getDoorColorNr(2) == GameController.inv.getInv(i)){
 							MapModel.moveDown();
-							Log.v("FirstScreen", "Down");
+							Log.d("FirstScreen", "Down");
 							if(timerRotation!=null)
 								timerRotation.cancel();
 							timer.start();
@@ -272,7 +272,7 @@ public class FirstScreen extends Activity {
 					for(int i = 0; i<3;i++){
 						if(allocatedInv[i] && DoorModel.getDoorColorNr(3) == GameController.inv.getInv(i)){
 							MapModel.moveLeft();
-							Log.v("FirstScreen", "Left");
+							Log.d("FirstScreen", "Left");
 							if(timerRotation!=null)
 								timerRotation.cancel();
 							timer.start();
@@ -293,7 +293,7 @@ public class FirstScreen extends Activity {
 
 				//If the player is in the last room of the map, the method mapDone() is called which ends the level
 				if(MapModel.getRoom()=="70000"){
-					Log.v("FirstScreen", "Aset var här ändå");
+					Log.d("FirstScreen", "Aset var här ändå");
 					timer.cancel();
 					mapDone();
 				}
@@ -341,35 +341,40 @@ public class FirstScreen extends Activity {
 
 	}
 
+	/**
+	 * Sets the inventory on the screen.
+	 * @param int keyPos, values between 0 - 4 
+	 */
+	
 	protected void setInventory(int keyPos){
-		//Set inventory takes 0-4, in the variable keyPos
 
 		//Set the requested drawable key
 		int clickedKey = keyImg[keyPos];
 
-		//Inventory position to put key at, if something isn't declared 9 will make it go out of bounds.
+		//Inventory position to put key at. If something is not declared, 9 will make it go out of bounds.
 		int invPosition = 9;
 
 		thisKey = GameController.key[MapModel.getMyX()][MapModel.getMyY()];
-
+		// TODO vad gör egentligen denna?
+		
 		boolean placed = false;
 		char[] buffer = thisKey.getKeyString().toCharArray();
 		String newKey = new String(buffer);
-		Log.v("FirstScreen", "setInventory newKey init: " + newKey);
+		Log.d("FirstScreen", "setInventory newKey init: " + newKey);
 
 		//AllocatedInv checks the three spots a key could fit in and put it at the first available
 		for(int i =0; i<3;i++){
 			if(allocatedInv[i] == false && placed == false){
 				findViewById(invPos[i]).setBackgroundResource(clickedKey);
 				invPosition = i;
-				Log.v("FirstScreen", "Key put in: "+i);
+				Log.d("FirstScreen", "Key put in: "+i);
 
 				placed =true;
 				allocatedInv[i] = true;
 
 				if(keyPos != 5){
 					buffer[keyPos] = '0';
-					Log.v("FirstScreen", "Set 0");
+					Log.d("FirstScreen", "Set 0");
 				}
 
 				newKey = new String(buffer);
@@ -381,23 +386,23 @@ public class FirstScreen extends Activity {
 				setKeys();
 			}
 			else if (allocatedInv[i] == true && placed == false){
-				Log.v("FirstScreen", "Spot: "+i+" was full.");
+				Log.d("FirstScreen", "Spot: "+i+" was full.");
 			}
-			else Log.v("FirstScreen", "Key has value has been placed");
+			else Log.d("FirstScreen", "Key has value has been placed");
 
 		}
 
-		Log.v("FirstScreen", "setInventory newKey ending: " + newKey);
+		Log.d("FirstScreen", "setInventory newKey ending: " + newKey);
 
-		/*		Log.v("FirstScreen", "input setInventory : " + GameController.key[MapModel.getMyX()][MapModel.getMyY()].getKeyString());
-		Log.v("FirstScreen", "buffer setInventory 1: " + buffer[0]+ buffer[1]+ buffer[2]+ buffer[3]+ buffer[4]);
-		Log.v("FirstScreen", "set InvPos: " + GameController.inv.getInv(putAtPosition));
-		Log.v("FirstScreen", "newKey: " + newKey);*/
+		/*		Log.d("FirstScreen", "input setInventory : " + GameController.key[MapModel.getMyX()][MapModel.getMyY()].getKeyString());
+		Log.d("FirstScreen", "buffer setInventory 1: " + buffer[0]+ buffer[1]+ buffer[2]+ buffer[3]+ buffer[4]);
+		Log.d("FirstScreen", "set InvPos: " + GameController.inv.getInv(putAtPosition));
+		Log.d("FirstScreen", "newKey: " + newKey);*/
 
 	}
 
 	/** 
-	 * onSaveInstanceState saves valueble information that should not be lost in a screen rotation
+	 * onSaveInstanceState saves valuable information that should not be lost in a screen rotation
 	 * */
 
 
@@ -418,21 +423,21 @@ public class FirstScreen extends Activity {
 		int emptyInventory = keyImg[5];
 		char[] buffer = thisKey.getKeyString().toCharArray();
 		String newKey = new String(buffer);
-		Log.v("FirstScreen", "DropKey newKey init: " + newKey);
+		Log.d("FirstScreen", "DropKey newKey init: " + newKey);
 
-		Log.v("FirstScreen", ""+allocatedInv[0]+""+allocatedInv[1]+""+allocatedInv[2]);
+		Log.d("FirstScreen", ""+allocatedInv[0]+""+allocatedInv[1]+""+allocatedInv[2]);
 		int keyPos = GameController.inv.getInv(invPosition);
 
 		if(newKey.charAt(keyPos) == '1'){
 			//TODO Visa ett snabbt felmeddelande att nyckeln redan finns i rummet
-			Log.v("FirstScreen", "The key already exist in the room");
+			Log.d("FirstScreen", "The key already exist in the room");
 		}
 		else if(allocatedInv[invPosition] == true ){
 			findViewById(invPos[invPosition]).setBackgroundResource(emptyInventory);
 			allocatedInv[invPosition] = false;
 			if(keyPos != 5){
 				buffer[keyPos] = '1';
-				Log.v("FirstScreen", "Set 1");
+				Log.d("FirstScreen", "Set 1");
 
 			}
 
@@ -444,26 +449,33 @@ public class FirstScreen extends Activity {
 			setKeys();
 		}
 		else if(allocatedInv[invPosition] == false){
-			Log.v("FirstScreen", "The key has been dropped/Was never there: " + invPosition);
+			Log.d("FirstScreen", "The key has been dropped/Was never there: " + invPosition);
 		}
-		else{ Log.v("FirstScreen", "Something went wrong");}
+		else{ Log.d("FirstScreen", "Something went wrong");}
 
-		Log.v("FirstScreen", "DropKey newKey ending: " + newKey);
+		Log.d("FirstScreen", "DropKey newKey ending: " + newKey);
 	}
 
-	/*Log.v("FirstScreen", "input : " + GameController.key[MapModel.getMyX()][MapModel.getMyY()].getKeyString());
-		Log.v("FirstScreen", "buffer 1: " + buffer[0]+ buffer[1]+ buffer[2]+ buffer[3]+ buffer[4]);
-		Log.v("FirstScreen", "InvPos: " + GameController.inv.getInv(keyInvPos));
-		Log.v("FirstScreen", "input : " + GameController.key[MapModel.getMyX()][MapModel.getMyY()].getKeyString());*/
+	/*Log.d("FirstScreen", "input : " + GameController.key[MapModel.getMyX()][MapModel.getMyY()].getKeyString());
+		Log.d("FirstScreen", "buffer 1: " + buffer[0]+ buffer[1]+ buffer[2]+ buffer[3]+ buffer[4]);
+		Log.d("FirstScreen", "InvPos: " + GameController.inv.getInv(keyInvPos));
+		Log.d("FirstScreen", "input : " + GameController.key[MapModel.getMyX()][MapModel.getMyY()].getKeyString());*/
+	//TODO
 
-
-
+	/**
+	 * This method controls that DoorModel appoints the correct doors to each room
+	 * This method controls that the room is set to its corresponding color. 
+	 */
 	protected void setRoom(){
 		DoorModel.setDoor(MapModel.getRoom());
 		RectModel.setRectColor(MapModel.getRoom());
 		findViewById(R.id.room).setBackgroundColor(RectModel.getRectColor());
 	}
 
+	/**
+	 * This method handles that the doors are appointed to the right locations in a room
+	 * If a door is initially defined as being black, then that door is made invisible
+	 */
 	protected void setDoors(){
 		for(int z = 0; z<4; z++){
 			View currentView = findViewById(door[z]);
@@ -476,31 +488,58 @@ public class FirstScreen extends Activity {
 		}	
 	}
 
+	/**
+	 * This method defines the keys within a room as being visible or invisible, depending on what keys
+	 * are supposed to be in a room, as defined in the database (Levels.java)
+	 */
+	
 	protected void setKeys(){
 		thisKey = GameController.key[MapModel.getMyX()][MapModel.getMyY()];
 
 		for(int i = 0; i<5; i++){
 			if(thisKey.getKeyString().charAt(i) == '1'){
 				thisKey.setKeyImg(i);
-				Log.v("Firstscreen", i+ " Its visible:" + thisKey.getImg());
+				Log.d("Firstscreen", i+ " Its visible:" + thisKey.getImg());
 				findViewById(keyNames[thisKey.getImg()]).setVisibility(View.VISIBLE);
 			}
 			else if(thisKey.getKeyString().charAt(i) == '0'){
-				Log.v("Firstscreen","Instansiering:" + "Nope, nothing" + i);
+				Log.d("Firstscreen","Instansiering:" + "Nope, nothing" + i);
 				findViewById(keyNames[i]).setVisibility(View.INVISIBLE);
 			}
-			else Log.v("Firstscreen", "Incorrect input");
+			else Log.d("Firstscreen", "Incorrect input");
 		}	
 	}
 
-
+	/**
+	 * Cleans the current inventory, so that no keys are displayed as being the inventory
+	 */
+	private void cleanInventory(){
+		for(int i = 0; i<3;i++){
+			dropKey(i);
+		}
+	}
+	
+	/**
+	 * This method is called when the player is in the final room of the level. The method first registers 
+	 * and counts the time it took for the player to complete the level. Then the method sets the position of the 
+	 * player to the first room in the level, to be able to play again or proceed to the next level. The inventory 
+	 * is cleaned to show no keys. 
+	 * 
+	 *  An AlertDialog is used to present the player with two options: to play the next level or to 
+	 *  end their game and return to the main menu. The buttons in this AlertDialog are represented
+	 *  in an .xml file named "finish".
+	 *  
+	 *  Also, the music playing during the level is stopped, and a special melody, signalling that the player 
+	 *  has completed the level, is initiated
+	 */
+	
 	protected void mapDone(){
 		getPlayedTime();
 		showTime();
-		MapModel.setPos(0,1); //TODO
+		MapModel.setPos(0,1); //TODO vad ska TODOas här??
 		AlertDialog.Builder alertDialog = new AlertDialog.Builder(this);
 		alertDialog.setTitle(this.getText(R.string.finished)+"\t"+" You finished in: "+ timeResult +" seconds" );
-		//alertDialog.setTitle(showTime());
+		//alertDialog.setTitle(showTime()); TODO kan detta tas bort?
 		LayoutInflater inflater = this.getLayoutInflater();
 
 		mp.stop();
@@ -511,8 +550,20 @@ public class FirstScreen extends Activity {
 		View dialogView = inflater.inflate(R.layout.finish, null);
 		alertDialog.setView(dialogView);
 
-		View closeButton=dialogView.findViewById(R.id.endGame);
+		View playNextLevel= dialogView.findViewById(R.id.playNextLevel);
+		playNextLevel.setOnClickListener(new View.OnClickListener() {
 
+			public void onClick(View clicked){
+				if(clicked.getId() == R.id.playNextLevel)
+					levelCounter++;
+				GameController.setLevel(levelCounter);
+				startActivity(new Intent(FirstScreen.this, FirstScreen.class));
+				finish_game.stop();
+				cleanInventory();
+			}
+		});
+		
+		View closeButton=dialogView.findViewById(R.id.endGame);
 		closeButton.setOnClickListener(new View.OnClickListener() {
 
 			public void onClick(View clicked){
@@ -529,25 +580,19 @@ public class FirstScreen extends Activity {
 			}	
 		});
 
-		View playNextLevel= dialogView.findViewById(R.id.playNextLevel);
-		playNextLevel.setOnClickListener(new View.OnClickListener() {
-
-			public void onClick(View clicked){
-				if(clicked.getId() == R.id.playNextLevel)
-					levelCounter++;
-				GameController.setLevel(levelCounter);
-				startActivity(new Intent(FirstScreen.this, FirstScreen.class));
-				finish_game.stop();
-				cleanInventory();
-			}
-		});
-
 		AlertDialog finishDialog = alertDialog.create();
 		finishDialog.show();
 	}
 
-	// The method that is called when you fail to move from a room in under 10 seconds.
-	// Currently some very similar code as the method above, as they treat similar scenarios
+	/**
+	 * This method is called when the CountDownTimer reaches zero, and the player therefore has failed to move
+	 * from a room in under 10 seconds. Similar code to the mapDone(). The music from the level is stopped. The 
+	 * inventory is cleaned.
+	 * 
+	 * An AlertDialog is used to present the player with two options: either to retry the current level, or
+	 * to return to the main menu. The buttons in the AlertDialog are represented in a .xml file named "lose"
+	 */
+
 	protected void gameLost(){ 
 		mp.stop();
 
@@ -592,6 +637,13 @@ public class FirstScreen extends Activity {
 
 	}
 
+	/**
+	 * This method handles what happens when the user presses the back button. Using an AlertDialog, the user
+	 * is presented with three options: to continue playing, to return to the main screen or to restart 
+	 * the current level
+	 * (non-Javadoc)
+	 * @see android.app.Activity#onBackPressed() TODO Vet inte riktigt vad detta innebär, kom automatiskt
+	 */
 
 	@Override
 	public void onBackPressed() {   
@@ -608,12 +660,10 @@ public class FirstScreen extends Activity {
 	           })
 	           .setPositiveButton("Restart",new DialogInterface.OnClickListener(){
 	        	   public void onClick(DialogInterface dialog, int i){
-	        		   MapModel.setPos(0,1);
+	        		   MapModel.setPos(0,1); 
 	        		   FirstScreen.this.finish();
 	        		   cleanInventory();
-//	        		   main.resumeButton.setVisibility(View.VISIBLE);
 	        		   Intent intent = new Intent(getApplicationContext(), FirstScreen.class);
-//					   intent.putExtra("makeButtonVisible",true);
 	        		   startActivity(intent);
 	        		  
 	        	   }
@@ -622,6 +672,12 @@ public class FirstScreen extends Activity {
 	}
 
 
+	/**
+	 * Returns the total time for the player to complete a level, in seconds
+	 * @return long playedTime 
+	 * TODO är detta rätt sätt med Javadoc @param?
+	 */
+	
 	private long getPlayedTime() {
 		stopTime = System.currentTimeMillis();
 		Log.d("Mafi","" + "stopTime-startTime milli" + (stopTime-startTime));
@@ -629,18 +685,24 @@ public class FirstScreen extends Activity {
 		return playedTime = (stopTime - startTime)/1000 + savedTime;
 	}
 
-
+	/**
+	 * Presents the variable playedTime as a String that can be showed to the user
+	 */
 	private void showTime(){
 		playedTime = getPlayedTime();
 		timeResult = Long.toString(playedTime);
-		//		int i = (int) totalTime/1000;
+		//		int i = (int) totalTime/1000; TODO
 		//		String s = Integer.toString(i);
 		//		showTime=s;
 		//		return timeResult;
 	}
 
 
-	private long getPlayedRoomTime() {
+	/**
+	 * Returns the time the player has spent in the current room, in seconds
+	 * @return long roomPlayedTime
+	 */
+	private long getRoomPlayedTime() {
 		roomStopTime = System.currentTimeMillis();
 		return roomPlayedTime = (roomStopTime - roomStartTime)/1000;
 	}
@@ -656,7 +718,6 @@ public class FirstScreen extends Activity {
 	protected void onRestart() {
 		super.onRestart();
 		mp = MediaPlayer.create(FirstScreen.this, R.raw.house_music);
-
 		musicButton = (ImageButton) findViewById(R.id.musicbutton);
 		musicButton.setBackgroundResource(drawable.mutespeaker);
 
@@ -665,15 +726,15 @@ public class FirstScreen extends Activity {
 	protected void onPause() {
 		super.onPause();
 		mp.release(); 
-		if (timerRotation != null) {
+		if (timerRotation != null) {//Sets timerRotation to cancel its countdown, so not to interfere with the instance 'timer'
 			timerRotation.cancel();
 		}
 		Log.d("Mafi","" + savedTime + " innan");
 		savedTime = getPlayedTime();
 		Log.d("Mafi","" + savedTime + " efter");
-		roomStopTime = System.currentTimeMillis();
-		roomSavedTime = getPlayedRoomTime();
-		Log.d("Simon hŠlsar","roomsavedtime Šr "+roomSavedTime);
+		roomStopTime = System.currentTimeMillis(); 
+		roomSavedTime = getRoomPlayedTime();
+		Log.d("FirstScreen","roomsavedtime Šr "+roomSavedTime);
 	}
 
 	protected void onStop() {
@@ -684,29 +745,31 @@ public class FirstScreen extends Activity {
 	}
 
 
+	/**
+	 * This private class extends the abstract class CountDownTimer, and handles the countdown that is in
+	 * place for every room (except for the first room) of each map. This implementation has overwritten 
+	 * two of the methods from the super class: onFinish() and onTick().
+	 */
 	private class CountDown extends CountDownTimer{
 
 		public CountDown(long millisInFuture, long countDownInterval){
 			super(millisInFuture,countDownInterval);
 		}
 
+		// Sets the text to Game Over in the textTimer TextView, and calls the gameLost() method
 		@Override
 		public void onFinish() {	
-			textTimer.setText("GAME OVER");
+			textTimer.setText("GAME OVER");//TODO ska detta tas bort?
 			gameLost();
 		}
 
+		//Each second, the text in the textTimer TextView is updated with the next number in the count down
 		@Override
 		public void onTick(long millisUntilFinished) {
 			textTimer.setText((millisUntilFinished/1000)+ "");
 		}
 
 	}	
-	private void cleanInventory(){
-		for(int i = 0; i<3;i++){
-			dropKey(i);
-		}
-	}
 }
 
 
