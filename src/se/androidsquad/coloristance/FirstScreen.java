@@ -513,24 +513,26 @@ public class FirstScreen extends Activity {
 	@Override
 	public void onBackPressed() {   
 		new AlertDialog.Builder(this)
-	           .setMessage("Are you sure you want to exit already??")
+	           .setMessage("Do you want to exit already?")
 	           .setCancelable(true)
 	           .setNegativeButton("No", null)
-	           .setNeutralButton("Let me take a break", new DialogInterface.OnClickListener(){
+	           .setNeutralButton("Main screen", new DialogInterface.OnClickListener(){
 	        	   public void onClick(DialogInterface dialog, int i){
 	        		   FirstScreen.this.finish();
 	        		   startActivity(new Intent(getApplicationContext(), MainActivity.class));
+	        		   cleanInventory();
 	        	   }
 	           })
-	           .setPositiveButton("Let me restart",new DialogInterface.OnClickListener(){
+	           .setPositiveButton("Restart",new DialogInterface.OnClickListener(){
 	        	   public void onClick(DialogInterface dialog, int i){
 	        		   MapModel.setPos(0,1);
 	        		   FirstScreen.this.finish();
+	        		   cleanInventory();
 //	        		   main.resumeButton.setVisibility(View.VISIBLE);
-	        		   Intent intent = new Intent(getApplicationContext(), MainActivity.class);
+	        		   Intent intent = new Intent(getApplicationContext(), FirstScreen.class);
 //					   intent.putExtra("makeButtonVisible",true);
 	        		   startActivity(intent);
-	        		   cleanInventory();
+	        		  
 	        	   }
 	           })
 	           .show();

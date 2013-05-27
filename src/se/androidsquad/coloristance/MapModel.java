@@ -17,21 +17,39 @@ public class MapModel {
 	private static int leftX, rightX, topY, botY;
 
 
-	public static void setMap(String level){
-		if(level == "map_1") {
+	public static void setMap(int level){
+		if(level == 1) {
 			mapArray = Levels.map_1;
-		} else if(level == "map_2"){
+		}
+		else if(level == 2){
 			mapArray = Levels.map_2;
+		} 
+		else if(level == 2){
+			mapArray = Levels.map_3;
+		}
+		else{
+			Log.v("MapModel", "The map-level doesn't exist");
+		}
+		
+		setKeys(level);
+	}
+	
+	private static void setKeys(int level){
+		if(level == 1){
+			keyArray = Levels.keys_1;
+		}
+		else if(level == 2){
+			keyArray = Levels.keys_2;
+		}
+		else if(level== 3){
+			keyArray = Levels.keys_3;
+		}
+		else{
+			Log.v("MapModel", "The key-level doesn't exist");
 		}
 	}
 
 	public static String[][] getKeys(){
-		if(mapArray == Levels.map_1){
-			keyArray = Levels.keys_1;
-		} else if(mapArray == Levels.map_2){
-			keyArray = Levels.keys_2;
-		}
-
 		return keyArray;
 	}
 

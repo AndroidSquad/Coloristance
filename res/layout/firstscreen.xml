@@ -26,7 +26,8 @@
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:layout_weight="0.70" >
-	<!--  OBS! Nedanstående gula markering är felaktig, det gör skillnad! -->
+
+        <!-- OBS! Nedanstående gula markering är felaktig, det gör skillnad! -->
 
         <RelativeLayout
             android:id="@+id/room_layout"
@@ -122,60 +123,65 @@
                 android:textStyle="bold"
                 android:visibility="visible" />
 
-            <ImageButton
-                android:id="@+id/key_button_blue"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_centerInParent="true"
-                android:background="@null"
-                android:clickable="true"
-                android:contentDescription="@string/key_desc"
-                android:scaleX="0.75"
-                android:scaleY="0.75"
-                android:src="@drawable/key_blue"
-                android:visibility="visible" />
+                 <ImageButton
+                    android:id="@+id/key_button_blue"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerInParent="true"
+                    android:background="@null"
+                    android:clickable="true"
+                    android:contentDescription="@string/key_desc"
+                    android:rotation="90"
+                    android:scaleX="0.75"
+                    android:scaleY="0.75"
+                    android:src="@drawable/key_blue"
+                    android:visibility="visible" />
 
-            <ImageButton
-                android:id="@+id/key_button_green"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_above="@id/key_button_blue"
-                android:layout_centerInParent="true"
-                android:background="@null"
-                android:clickable="true"
-                android:contentDescription="@string/key_desc"
-                android:scaleX="0.75"
-                android:scaleY="0.75"
-                android:src="@drawable/key_green"
-                android:visibility="invisible" />
+                <ImageButton
+                    android:id="@+id/key_button_green"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_above="@id/key_button_blue"
+                    android:layout_centerInParent="true"
+                    android:background="@null"
+                    android:clickable="true"
+                    android:contentDescription="@string/key_desc"
+                    android:rotation="90"
+                    android:scaleX="0.75"
+                    android:scaleY="0.75"
+                    android:src="@drawable/key_green"
+                    android:visibility="invisible" />
 
-            <ImageButton
-                android:id="@+id/key_button_orange"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_centerInParent="true"
-                android:layout_toRightOf="@id/key_button_blue"
-                android:background="@null"
-                android:clickable="true"
-                android:contentDescription="@string/key_desc"
-                android:scaleX="0.75"
-                android:scaleY="0.75"
-                android:src="@drawable/key_orange"
-                android:visibility="invisible" />
+                <ImageButton
+                    android:id="@+id/key_button_orange"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerInParent="true"
+                    android:layout_toRightOf="@id/key_button_blue"
+                    android:background="@null"
+                    android:clickable="true"
+                    android:contentDescription="@string/key_desc"
+                    android:rotation="90"
+                    android:scaleX="0.75"
+                    android:scaleY="0.75"
+                    android:src="@drawable/key_orange"
+                    android:visibility="invisible" />
 
-            <ImageButton
-                android:id="@+id/key_button_purple"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_below="@id/key_button_blue"
-                android:layout_centerInParent="true"
-                android:background="@null"
-                android:clickable="true"
-                android:contentDescription="@string/key_desc"
-                android:scaleX="0.75"
-                android:scaleY="0.75"
-                android:src="@drawable/key_purple"
-                android:visibility="invisible" />
+                <ImageButton
+                    android:id="@+id/key_button_purple"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/key_button_blue"
+                    android:layout_centerInParent="true"
+                    android:background="@null"
+                    android:clickable="true"
+                    android:contentDescription="@string/key_desc"
+                    android:rotation="90"
+                    android:scaleX="0.75"
+                    android:scaleY="0.75"
+                    android:src="@drawable/key_purple"
+                    android:visibility="invisible" />
+          
 
             <ImageButton
                 android:id="@+id/key_button_red"
@@ -186,6 +192,7 @@
                 android:background="@null"
                 android:clickable="true"
                 android:contentDescription="@string/key_desc"
+                android:rotation="90"
                 android:scaleX="0.75"
                 android:scaleY="0.75"
                 android:src="@drawable/key_red"

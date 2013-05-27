@@ -19,7 +19,7 @@ public class DoorModelTest {
 	
 	@Before
 	public void setUp() throws Exception {
-		MapModel.setMap("map_1");
+		MapModel.setMap(1);
 		MapModel.setPos(1, 1);
 	}
 
