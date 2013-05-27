@@ -34,7 +34,7 @@ public class FirstScreen extends Activity {
 	KeyModel thisKey;
 	int visSpeak; //state of the ImageButton musicButton, 0 = not playing, 1 = is playing, 2 = not defined
 	Runnable runnable;
-	protected int levelCounter = 1;
+	protected static int levelCounter = 1;
 
 	int[] door = {R.id.top_door, R.id.right_door, R.id.bot_door,  R.id.left_door};
 	int[] keyNames = {R.id.key_button_blue, R.id.key_button_green, R.id.key_button_orange, R.id.key_button_purple, R.id.key_button_red};
@@ -63,7 +63,7 @@ public class FirstScreen extends Activity {
 			startTime = System.currentTimeMillis();
 			timerRotation = new CountDown (10000 - (roomSavedTime*1000),1000);
 			timer = new CountDown(10000,1000);
-			Log.d("Simon hälsar","Vi räknar ner på nytt");
+			Log.d("FirstScreen","Vi räknar ner på nytt");
 			timerRotation.start();
 		} else {
 			visSpeak = 2;
@@ -546,11 +546,11 @@ public class FirstScreen extends Activity {
 					levelCounter=1;
 					GameController.setLevel(levelCounter);
 					MapModel.setPos(0,1);
+					cleanInventory();
 					Intent intent = new Intent(getApplicationContext(), MainActivity.class);
 					intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
 					startActivity(intent);
 					finish();
-					cleanInventory();
 				}
 			}
 		});
@@ -568,19 +568,17 @@ public class FirstScreen extends Activity {
 	           .setNegativeButton("No", null)
 	           .setNeutralButton("Main screen", new DialogInterface.OnClickListener(){
 	        	   public void onClick(DialogInterface dialog, int i){
-	        		   FirstScreen.this.finish();
+	        		   MainActivity.visResume = true;
 	        		   startActivity(new Intent(getApplicationContext(), MainActivity.class));
-	        		   cleanInventory();
-	        	   }
+	        	  }
 	           })
 	           .setPositiveButton("Restart",new DialogInterface.OnClickListener(){
 	        	   public void onClick(DialogInterface dialog, int i){
+	        		   
 	        		   MapModel.setPos(0,1);
 	        		   FirstScreen.this.finish();
 	        		   cleanInventory();
-//	        		   main.resumeButton.setVisibility(View.VISIBLE);
 	        		   Intent intent = new Intent(getApplicationContext(), FirstScreen.class);
-//					   intent.putExtra("makeButtonVisible",true);
 	        		   startActivity(intent);
 	        		  
 	        	   }
@@ -666,7 +664,7 @@ public class FirstScreen extends Activity {
 		}
 		
 	}	
-	private void cleanInventory(){
+	protected void cleanInventory(){
 			for(int i = 0; i<3;i++){
 				dropKey(i);
 			}
