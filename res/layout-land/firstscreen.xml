@@ -12,15 +12,17 @@
         android:layout_width="0dp"
         android:layout_height="match_parent"
         android:layout_weight="0.15"
-        android:rotation="180" />
+        android:rotation="180"
+        android:rotationY="180" />
 
     <LinearLayout
         android:id="@+id/room_container"
         android:layout_width="0dp"
         android:layout_height="match_parent"
         android:layout_weight="0.70" >
-        
-        <!--  OBS! Nedanstående gula markering är felaktig, det gör skillnad! -->
+
+        <!-- OBS! Nedanstående gula markering är felaktig, det gör skillnad! -->
+
         <RelativeLayout
             android:id="@+id/room_layout"
             android:layout_width="match_parent"
@@ -43,12 +45,12 @@
                 android:id="@+id/bot_door"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_alignParentLeft="true"
+                android:layout_alignParentRight="true"
                 android:layout_centerVertical="true"
                 android:background="@color/red_light"
                 android:clickable="true"
                 android:contentDescription="@string/door"
-                android:rotation="270"
+                android:rotation="90"
                 android:src="@drawable/ic_door"
                 android:visibility="invisible" />
 
@@ -56,12 +58,12 @@
                 android:id="@+id/top_door"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_alignParentRight="true"
+                android:layout_alignParentLeft="true"
                 android:layout_centerVertical="true"
                 android:background="@color/purple_light"
                 android:clickable="true"
                 android:contentDescription="@string/door"
-                android:rotation="90"
+                android:rotation="270"
                 android:src="@drawable/ic_door"
                 android:visibility="invisible" />
 
@@ -85,8 +87,8 @@
                 android:layout_above="@id/left_door"
                 android:layout_below="@id/right_door"
                 android:layout_centerInParent="true"
-                android:layout_toRightOf="@id/bot_door"
-                android:layout_toLeftOf="@id/top_door"
+                android:layout_toRightOf="@id/top_door"
+                android:layout_toLeftOf="@id/bot_door"
                 android:background="@color/white"
                 android:contentDescription="@string/room" />
 
@@ -98,7 +100,6 @@
                 android:background="@null"
                 android:clickable="true"
                 android:contentDescription="@string/key_desc"
-                
                 android:scaleX="0.75"
                 android:scaleY="0.75"
                 android:src="@drawable/key_blue"
@@ -113,7 +114,6 @@
                 android:background="@null"
                 android:clickable="true"
                 android:contentDescription="@string/key_desc"
-               
                 android:scaleX="0.75"
                 android:scaleY="0.75"
                 android:src="@drawable/key_green"
@@ -128,7 +128,6 @@
                 android:background="@null"
                 android:clickable="true"
                 android:contentDescription="@string/key_desc"
-            
                 android:scaleX="0.75"
                 android:scaleY="0.75"
                 android:src="@drawable/key_orange"
@@ -143,7 +142,6 @@
                 android:background="@null"
                 android:clickable="true"
                 android:contentDescription="@string/key_desc"
-    
                 android:scaleX="0.75"
                 android:scaleY="0.75"
                 android:src="@drawable/key_purple"
@@ -158,7 +156,6 @@
                 android:background="@null"
                 android:clickable="true"
                 android:contentDescription="@string/key_desc"
-             
                 android:scaleX="0.75"
                 android:scaleY="0.75"
                 android:src="@drawable/key_red"
@@ -168,28 +165,27 @@
                 android:id="@+id/musicbutton"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_alignParentBottom="true"
                 android:layout_alignParentRight="true"
-				android:layout_alignParentBottom="true"
                 android:layout_margin="5dp"
                 android:clickable="true"
                 android:contentDescription="@string/speaker"
                 android:scaleX="0.6"
                 android:scaleY="0.6"
                 android:visibility="visible" />
-            
+
             <TextView
                 android:id="@+id/texttime"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_alignParentTop="true"
                 android:layout_alignParentLeft="true"
-                android:layout_marginTop="15dp"
+                android:layout_alignParentTop="true"
                 android:layout_marginLeft="30dp"
+                android:layout_marginTop="15dp"
                 android:textColor="@color/white"
                 android:textSize="30sp"
                 android:textStyle="bold"
                 android:visibility="visible" />
-            
         </RelativeLayout>
     </LinearLayout>
 
@@ -209,8 +205,8 @@
             android:background="@drawable/key_empty"
             android:clickable="true"
             android:contentDescription="@string/key_desc"
-            android:visibility="visible"
-            android:rotation="270" />
+            android:rotation="270"
+            android:visibility="visible" />
 
         <ImageButton
             android:id="@+id/invKeyLeft"
@@ -222,8 +218,8 @@
             android:background="@drawable/key_empty"
             android:clickable="true"
             android:contentDescription="@string/key_desc"
-            android:visibility="visible"
-            android:rotation="270" />
+            android:rotation="270"
+            android:visibility="visible" />
 
         <ImageButton
             android:id="@+id/invKeyRight"
@@ -235,8 +231,8 @@
             android:background="@drawable/key_empty"
             android:clickable="true"
             android:contentDescription="@string/key_desc"
-            android:visibility="visible"
-            android:rotation="270" />
+            android:rotation="270"
+            android:visibility="visible" />
     </RelativeLayout>
 
 </LinearLayout>
