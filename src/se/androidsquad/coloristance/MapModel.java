@@ -252,7 +252,7 @@ public class MapModel {
 		else if(value==4){
 			answer = (rightX-leftX)/2;
 		}
-
+		
 		else answer = 0;
 
 		return answer;

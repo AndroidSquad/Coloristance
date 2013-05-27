@@ -20,6 +20,9 @@ import android.widget.TextView;
  * This class is the main window which the current room is created. It sets the screen to firstscreen.xml,
  * contains the code for the music, and the information about the doors that the different rooms should contain and
  * the color of the doors.
+ * 
+ * Klassen gˆr en sjuk j‰vla massa
+ * 
  */
 
 
@@ -61,7 +64,6 @@ public class FirstScreen extends Activity {
 			savedTime = savedInstanceState.getLong("savedtime");
 			roomSavedTime =savedInstanceState.getLong("roomsavedtime");
 			startTime = System.currentTimeMillis();
-
 			Log.d("Simon h‰lsar","innan if");
 			Log.d("Simon h‰lsar",""+MapModel.getMyX()+MapModel.getMyY());
 			if((MapModel.getMyX() != 0) || (MapModel.getMyY() != 1)){
@@ -75,7 +77,6 @@ public class FirstScreen extends Activity {
 				Log.d("Simon hälsar","Vi räknar ner på nytt");
 			} else
 				timer =new CountDown(10000,1000);
-
 		} else {
 			visSpeak = 2;
 			startTime = System.currentTimeMillis();
@@ -557,11 +558,11 @@ public class FirstScreen extends Activity {
 					levelCounter=1;
 					GameController.setLevel(levelCounter);
 					MapModel.setPos(0,1);
-					cleanInventory();
 					Intent intent = new Intent(getApplicationContext(), MainActivity.class);
 					intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
 					startActivity(intent);
 					finish();
+					cleanInventory();
 				}
 			}
 		});
@@ -574,27 +575,29 @@ public class FirstScreen extends Activity {
 	@Override
 	public void onBackPressed() {   
 		new AlertDialog.Builder(this)
-		.setMessage("Do you want to exit already?")
-		.setCancelable(true)
-		.setNegativeButton("No", null)
-		.setNeutralButton("Main screen", new DialogInterface.OnClickListener(){
-			public void onClick(DialogInterface dialog, int i){
-				MainActivity.visResume = true;
-				startActivity(new Intent(getApplicationContext(), MainActivity.class));
-			}
-		})
-		.setPositiveButton("Restart",new DialogInterface.OnClickListener(){
-			public void onClick(DialogInterface dialog, int i){
-
-				MapModel.setPos(0,1);
-				FirstScreen.this.finish();
-				cleanInventory();
-				Intent intent = new Intent(getApplicationContext(), FirstScreen.class);
-				startActivity(intent);
-
-			}
-		})
-		.show();
+	           .setMessage("Do you want to exit already?")
+	           .setCancelable(true)
+	           .setNegativeButton("No", null)
+	           .setNeutralButton("Main screen", new DialogInterface.OnClickListener(){
+	        	   public void onClick(DialogInterface dialog, int i){
+	        		   FirstScreen.this.finish();
+	        		   startActivity(new Intent(getApplicationContext(), MainActivity.class));
+	        		   cleanInventory();
+	        	   }
+	           })
+	           .setPositiveButton("Restart",new DialogInterface.OnClickListener(){
+	        	   public void onClick(DialogInterface dialog, int i){
+	        		   MapModel.setPos(0,1);
+	        		   FirstScreen.this.finish();
+	        		   cleanInventory();
+//	        		   main.resumeButton.setVisibility(View.VISIBLE);
+	        		   Intent intent = new Intent(getApplicationContext(), FirstScreen.class);
+//					   intent.putExtra("makeButtonVisible",true);
+	        		   startActivity(intent);
+	        		  
+	        	   }
+	           })
+	           .show();
 	}
 
 
@@ -678,8 +681,7 @@ public class FirstScreen extends Activity {
 		}
 
 	}	
-
-	protected void cleanInventory(){
+	private void cleanInventory(){
 		for(int i = 0; i<3;i++){
 			dropKey(i);
 		}

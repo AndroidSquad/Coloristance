@@ -24,6 +24,7 @@ public class DrawMap extends View {
 		super(context, attrs);
 	}
 
+	Paint border;
 	@SuppressLint("DrawAllocation")
 	@Override
 	public void onDraw(Canvas canvas) { 
@@ -44,6 +45,11 @@ public class DrawMap extends View {
 		col.get("white").setColor(RectModel.WHITE);
 		col.put("black", new Paint());
 		col.get("black").setColor(RectModel.BLACK);
+		col.put("black2", border = new Paint());
+		col.get("black2").setColor(RectModel.BLACK);
+		border.setStyle(Paint.Style.STROKE);
+		border.setStrokeWidth(3);
+		
 
 		String rectColor = "pl";
 
@@ -107,7 +113,8 @@ public class DrawMap extends View {
 					canvas.drawRect( map.get(name), col.get(rectColor));
 				}
 			}
-			canvas.drawCircle(MapModel.getCircPos(1, yPos), MapModel.getCircPos(2, xPos), MapModel.getCircPos(4, yPos), col.get("white"));
+			canvas.drawCircle(MapModel.getCircPos(1, yPos), MapModel.getCircPos(2, xPos), MapModel.getCircPos(3, yPos), col.get("white"));
+			canvas.drawCircle(MapModel.getCircPos(1, yPos), MapModel.getCircPos(2, xPos), MapModel.getCircPos(3, yPos), col.get("black2"));
 			invalidate();// Calls the onDraw again as soon as it has painted everything
 		}
 		else{
@@ -125,6 +132,7 @@ public class DrawMap extends View {
 				}
 			}
 			canvas.drawCircle(MapModel.getCircPos(1, xPos), MapModel.getCircPos(2, yPos), MapModel.getCircPos(3, yPos), col.get("white"));
+			canvas.drawCircle(MapModel.getCircPos(1, xPos), MapModel.getCircPos(2, yPos), MapModel.getCircPos(3, yPos), col.get("black2"));
 			invalidate();// Calls the onDraw again as soon as it has painted everything
 
 		}
