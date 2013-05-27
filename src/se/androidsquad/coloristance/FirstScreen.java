@@ -72,7 +72,8 @@ public class FirstScreen extends Activity {
 				Log.d("Simon h‰lsar","funkar ej");
 				timer = new CountDown(10000,1000);
 				Log.d("Simon hälsar","Vi räknar ner på nytt");
-			}
+			} else
+				timer =new CountDown(10000,1000);
 		} else {
 			visSpeak = 2;
 			startTime = System.currentTimeMillis();
