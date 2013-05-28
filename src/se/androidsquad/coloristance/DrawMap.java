@@ -28,14 +28,14 @@ public class DrawMap extends View {
 	 */
 
 	//A Paint object used to paint the black border on the circle representing the player position
-	Paint border; 
+	private Paint border; 
 	@SuppressLint("DrawAllocation")
 	@Override
 	public void onDraw(Canvas canvas) { 
 		super.onDraw(canvas);
 
 		/**
-		 * Creates a HashMap which pairs up the String representing a room with the corresponding color
+		 * Creates a HashMap which pairs up the String representing a room with the corresponding color defined as a Paint object
 		 */
 		
 		HashMap<String, Paint> col = new HashMap<String, Paint>();
@@ -60,8 +60,7 @@ public class DrawMap extends View {
 		border.setStyle(Paint.Style.STROKE); 
 		border.setStrokeWidth(3);
 
-
-		String rectColor = "pl";
+		String rectColor = "";
 		//TODO vad händer här?
 
 		int mapTop = findViewById(R.id.mapRect).getTop();
@@ -81,6 +80,7 @@ public class DrawMap extends View {
 		HashMap<String, Rect> map = new HashMap<String, Rect>();
 
 		String name = "Ej startat";
+		
 		/**
 		 * These two for-loops insert the values of the x,y-position and draws the map differently depending on if the device
 		 * is tilted or not. Then it draws the player on the correct position on the map.
