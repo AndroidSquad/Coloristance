@@ -8,7 +8,7 @@ import android.view.View;
 public class KeyModel {
 
 	/**
-	 * 
+	 *TODO beskriva vad denna klassen gör
 	 */
 	
 	//Nytt key_object för varjerum. Läs in från levels 
@@ -29,7 +29,7 @@ public class KeyModel {
 	}
 
 	/**
-	 * Whaddafack?
+	 * 
 	 * @return keyArray
 	 */
 	public static KeyModel[][] getKeyArray(){

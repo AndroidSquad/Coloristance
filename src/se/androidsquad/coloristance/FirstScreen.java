@@ -43,9 +43,8 @@ public class FirstScreen extends Activity {
 	Runnable runnable;
 	TextView textTimer;		
 	CountDown timer, timerRotation; //two separate instances of the private class CountDown, 
-	
-	//used to handle the count down in each room. 
-	//The second variable handles the count down in the case of a change of orientation 
+									//used to handle the count down in each room. 
+									//The second variable handles the count down in the case of a change of orientation 
 	int visSpeak; //state of the ImageButton musicButton, 0 = not playing, 1 = is playing, 2 = not defined
 	protected static int levelCounter = 1; //variable that keeps track of which level is to be played
 	int[] door = {R.id.top_door, R.id.right_door, R.id.bot_door,  R.id.left_door}; 
@@ -77,7 +76,7 @@ public class FirstScreen extends Activity {
 				Log.v("FirstScreen","funkar ej");
 				timer = new CountDown(10000,1000);
 				Log.v("FirstScreen","Vi räknar ner på nytt");
-			} else //If the player is in the first room, the other instance of CountDown is not needed
+			} else //If the player is in the first room, the instance timerRotation is not needed, since the countdown does not start in the first room
 				timer = new CountDown(10000,1000); 
 		} else {
 			visSpeak = 2;
@@ -90,7 +89,7 @@ public class FirstScreen extends Activity {
 		findViewById(R.id.bot_layout).setBackgroundColor(RectModel.BLUE_DARK);
 
 		textTimer = (TextView) findViewById(R.id.texttime);		
-
+		
 		game = new GameController();
 		map = new DrawMap(FirstScreen.this, null);
 
@@ -106,7 +105,7 @@ public class FirstScreen extends Activity {
 
 		setRoom();	//is needed to get the right room when you start a new level or tilt the screen
 		setDoors();	// is needed to get the corresponding doors to the right room when a new level is started 
-		//or screen is tilted
+					//or screen is tilted
 
 		musicButton  = (ImageButton) findViewById(R.id.musicbutton); //graphical representation of the "speaker" in
 		//the lower left corner, signalling if music is being player or not		
