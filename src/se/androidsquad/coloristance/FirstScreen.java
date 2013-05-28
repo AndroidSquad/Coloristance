@@ -52,7 +52,7 @@ public class FirstScreen extends Activity {
 	int[] keyImg = {drawable.key_blue, drawable.key_green, drawable.key_orange, drawable.key_purple, drawable.key_red, drawable.key_empty};
 
 	char[] pos = {'N','E','S','W'};
-	boolean allocatedInv[] = {false,false,false};
+//	boolean allocatedInv[] = {false,false,false};
 
 	long startTime, stopTime, playedTime, savedTime; //variables used for counting the total time it takes for a player to finish a level
 	long roomStartTime, roomStopTime, roomPlayedTime, roomSavedTime; //variables used for keeping track of the countdown time in each room
@@ -220,7 +220,7 @@ public class FirstScreen extends Activity {
 				for(int doorCount = 0; doorCount<4 ;doorCount++){
 					if(doors[doorCount].equals(v)== true){
 						for(int i = 0; i<3;i++){
-							if((allocatedInv[i] && DoorModel.getDoorColorNr(doorCount) == GameController.inv.getInv(i))|| DoorModel.getDoorColorNr(doorCount) == 5){
+							if((InventoryModel.alloc[i] && DoorModel.getDoorColorNr(doorCount) == GameController.inv.getInv(i))|| DoorModel.getDoorColorNr(doorCount) == 5){
 								if(doorCount == 0){
 									MapModel.moveUp();
 									Log.v("FirstScreen", "Up");
@@ -331,13 +331,14 @@ public class FirstScreen extends Activity {
 
 		//AllocatedInv checks the three spots a key could fit in and put it at the first available
 		for(int i =0; i<3;i++){
-			if(allocatedInv[i] == false && placed == false){
+			boolean allocated = InventoryModel.alloc[i];
+			if(allocated == false && placed == false){
 				findViewById(invPos[i]).setBackgroundResource(clickedKey);
 				invPosition = i;
 				Log.v("FirstScreen", "Key put in: "+i);
 
 				placed =true;
-				allocatedInv[i] = true;
+				allocated = true;
 
 				if(keyPos != 5){
 					buffer[keyPos] = '0';
@@ -352,11 +353,14 @@ public class FirstScreen extends Activity {
 
 				setKeys();
 			}
-			else if (allocatedInv[i] == true && placed == false){
+			else if (allocated == true && placed == false){
 				Log.v("FirstScreen", "Spot: "+i+" was full.");
 			}
-			else Log.v("FirstScreen", "Key has value has been placed");
-
+			else{
+				Log.v("FirstScreen", "Key has value has been placed");
+			}
+			
+			InventoryModel.alloc[i] = allocated;
 		}
 
 		Log.v("FirstScreen", "setInventory newKey ending: " + newKey);
@@ -390,18 +394,19 @@ public class FirstScreen extends Activity {
 		int emptyInventory = keyImg[5];
 		char[] buffer = thisKey.getKeyString().toCharArray();
 		String newKey = new String(buffer);
-		Log.v("FirstScreen", "DropKey newKey init: " + newKey);
-
-		Log.v("FirstScreen", ""+allocatedInv[0]+""+allocatedInv[1]+""+allocatedInv[2]);
 		int keyPos = GameController.inv.getInv(invPosition);
+		boolean alloc = InventoryModel.alloc[invPosition];
+		Log.v("FirstScreen", "DropKey newKey init: " + newKey);
+		Log.v("FirstScreen", "Allocations: "+InventoryModel.alloc);
+		
 
 		if(newKey.charAt(keyPos) == '1'){
 			//TODO Visa ett snabbt felmeddelande att nyckeln redan finns i rummet
 			Log.v("FirstScreen", "The key already exist in the room");
 		}
-		else if(allocatedInv[invPosition] == true ){
+		else if(alloc == true ){
 			findViewById(invPos[invPosition]).setBackgroundResource(emptyInventory);
-			allocatedInv[invPosition] = false;
+			alloc = false;
 			if(keyPos != 5){
 				buffer[keyPos] = '1';
 				Log.v("FirstScreen", "Set 1");
@@ -415,10 +420,14 @@ public class FirstScreen extends Activity {
 
 			setKeys();
 		}
-		else if(allocatedInv[invPosition] == false){
+		else if(alloc== false){
 			Log.v("FirstScreen", "The key has been dropped/Was never there: " + invPosition);
 		}
-		else{ Log.v("FirstScreen", "Something went wrong");}
+		else{ 
+			Log.v("FirstScreen", "Something went wrong when calling dropKey");
+		}
+		
+		InventoryModel.alloc[invPosition] = alloc;
 
 		Log.v("FirstScreen", "DropKey newKey ending: " + newKey);
 	}
