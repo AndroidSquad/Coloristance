@@ -7,16 +7,15 @@ import org.junit.Before;
 import org.junit.Test;
 
 import se.androidsquad.coloristance.MapModel;
-
+/**
+ * This test checks the length and width of the array
+ * for the map, and makes sure that it is given the correct values.
+ */
 public class DrawMapTest {
 
 	@Before
 	public void setUp() throws Exception {
 		MapModel.setMap(1);
-	}
-
-	@After
-	public void tearDown() throws Exception {
 	}
 
 	@Test

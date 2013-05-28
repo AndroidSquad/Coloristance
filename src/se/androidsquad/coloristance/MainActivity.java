@@ -45,7 +45,7 @@ public class MainActivity extends Activity {
 
 		Button newGame = (Button) findViewById(R.id.new_game); 
 		Button resumeButton = (Button) findViewById(R.id.resume_game);
-		
+
 		View.OnClickListener startNewGame = new View.OnClickListener(){ 
 
 			@Override
@@ -58,10 +58,10 @@ public class MainActivity extends Activity {
 				startActivity(intent);
 				finish();
 				startActivity(new Intent(MainActivity.this, FirstScreen.class));
-			}
-			
-		};
-		
+			}//onClick
+
+		};//startNewGame
+
 		/**
 		 * A button that, in the case of the game being exited by pressing the backwards button while playing,
 		 * allows the player to resume the game from the previous position
@@ -72,29 +72,29 @@ public class MainActivity extends Activity {
 			public void onClick(View v){
 				finish();
 			}
-		};
-		
+		};//resumeGame
+
 		newGame.setOnClickListener(startNewGame);
 		resumeButton.setOnClickListener(resumeGame);
-		
-	/*
-	 * The button resumeButton is only visible if the variable visResume is defined as true	
-	 */
-	if(visResume == true){ 
-		findViewById(R.id.resume_game).setVisibility(View.VISIBLE);
-	}
-	else{
-		findViewById(R.id.resume_game).setVisibility(View.GONE);
-	}
+
+		/*
+		 * The button resumeButton is only visible if the variable visResume is defined as true	
+		 */
+		if(visResume == true){ 
+			findViewById(R.id.resume_game).setVisibility(View.VISIBLE);
+		}
+		else{
+			findViewById(R.id.resume_game).setVisibility(View.GONE);
+		}
 
 		resumeButton.setOnClickListener(new View.OnClickListener() {
-		
+
 			public void onClick(View v){
 				startActivity(new Intent(MainActivity.this, FirstScreen.class));
 			}
-			
-		});
-		
+
+		});//resumeButton
+
 		/**
 		 * An ImageButton that gives the player ability to pause and start the game music.
 		 * Depending on the state two different pictures show so the user know if the music is playing 
@@ -121,7 +121,8 @@ public class MainActivity extends Activity {
 					mp.start();
 					mp.setLooping(true);
 					visMenuSpeak = true;
-				}else{
+				}//if
+				else{
 					musicMenuButton.setBackgroundResource(drawable.mutespeaker);
 					try {
 						mp.prepare();
@@ -133,10 +134,10 @@ public class MainActivity extends Activity {
 					mp.start();
 					mp.pause();	
 					visMenuSpeak = false;
-				}
-			}
-		});
-		
+				}//else
+			}//onClick
+		});//musicMenuButton
+
 		/**
 		 * A button that starts the activity GameRules, and allows the user to view the game rules as presented in
 		 * gamerules.xml
@@ -147,10 +148,10 @@ public class MainActivity extends Activity {
 			@Override
 			public void onClick(View v) {
 				startActivity(new Intent(MainActivity.this, GameRules.class));
-			}
-		});
+			}//onClick
+		});//gameRules
 
-	}
+	}//onCreate
 
 
 	@Override
@@ -158,12 +159,12 @@ public class MainActivity extends Activity {
 		// Inflate the menu; this adds items to the action bar if it is present.
 		getMenuInflater().inflate(R.menu.main, menu);
 		return true;
-	}
+	}//onCreateOptionsMenu
 	@Override
 	protected void onResume() {
 		super.onResume();
 		musicMenuButton = (ImageButton) findViewById(R.id.musicmenubutton);
-	}
+	}//onResume
 
 	@Override
 	protected void onRestart() {
@@ -172,17 +173,17 @@ public class MainActivity extends Activity {
 		musicMenuButton = (ImageButton) findViewById(R.id.musicmenubutton);
 		musicMenuButton.setBackgroundResource(drawable.mutespeaker);
 
-	}
+	}//onRestart
 
 	protected void onPause() {
 		super.onPause();
 		mp.release(); //kills the MediaPlayer
-	}
+	}//onPause
 
 	protected void onStop() {
 		super.onStop();
 		mp.release();
 		visMenuSpeak = false;
-	}
+	}//onStop
 
-}
+}//MainActivity

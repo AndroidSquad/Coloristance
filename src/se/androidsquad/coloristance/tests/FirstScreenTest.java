@@ -9,7 +9,10 @@ import org.junit.Test;
 import se.androidsquad.coloristance.MapModel;
 
 //diskutera licenses:)
-
+/**
+ * This test is performed to assert that the player is given a correct position after 
+ * a movement on the map.
+ */
 
 public class FirstScreenTest {
 
@@ -20,10 +23,6 @@ public class FirstScreenTest {
 		MapModel.setMap(1);
 		MapModel.setPos(0, 1);
 
-	}
-
-	@After
-	public void tearDown() throws Exception {
 	}
 
 	/*

@@ -31,7 +31,7 @@ public class DoorModel{
 			else if(pos.charAt(i+1)== '5') position[i] = colors[5];
 			else if(pos.charAt(i+1)== '7') position[i] = colors[6];
 		}
-	}
+	}//setDoor
 
 	/**
 	 * @param loc a char which represent the door and its position
@@ -39,7 +39,7 @@ public class DoorModel{
 	 */
 	public static int getDoor(int loc){
 				return position[loc];
-	}
+	}//getDoor
 
 	public static int getDoorColorNr(int pos){
 
@@ -51,7 +51,7 @@ public class DoorModel{
 		}
 		return doorNr-1;
 
-	}
+	}//getDoorColorNr
 
-}
+}//DoorModel
 
