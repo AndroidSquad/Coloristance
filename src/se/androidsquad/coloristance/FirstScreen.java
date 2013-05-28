@@ -21,7 +21,7 @@ import android.widget.TextView;
  * This class is responsible for the majority of the communication with the other classes. This class acts 
  * both as a View and a Controller. 
  * 
- * This class sets the screen to firstscreen.xml. If the orienation is in landscape mode, a landscape version
+ * This class sets the screen to firstscreen.xml. If the orientation is in landscape mode, a landscape version
  * of firstscreen.xml is used. This class sends information to DrawMap to retrieve information from the 
  * database (Levels.java) which level is to be played. This class handles information regarding the room and its
  * related doors. It also handles the color of the inventory stack at the bottom of the screen.
@@ -61,7 +61,7 @@ public class FirstScreen extends Activity {
 	TextView textTimer;		
 	CountDown timer, timerRotation; //two separate instances of the private class CountDown, 
 	//used to handle the count down in each room. 
-	//The second variable handles the count down in the case of a change of orientation 
+	//The second variable handles the count down in the case of a change of screen orientation 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
@@ -123,7 +123,7 @@ public class FirstScreen extends Activity {
 		if (visSpeak == 2){
 			mp.start();
 			mp.setLooping(true);
-			Log.v("Mafi", "VisSpeak FIRST value is " + visSpeak);
+			Log.v("FirstScreen", "VisSpeak FIRST value is " + visSpeak);
 			visSpeak = 1;
 			musicButton.setBackgroundResource(drawable.speaker);
 		}
@@ -382,7 +382,7 @@ public class FirstScreen extends Activity {
 		outState.putInt("visiblespeaker",visSpeak);
 		outState.putLong("savedtime", savedTime);
 		outState.putLong("roomsavedtime", roomSavedTime);
-		Log.v("Mafi","Visible speaker state: " + visSpeak + " saved");
+		Log.v("FirstScreen","Visible speaker state: " + visSpeak + " saved");
 	}
 
 	protected void dropKey(int invPosition){
@@ -682,8 +682,8 @@ public class FirstScreen extends Activity {
 
 	private long getPlayedTime() {
 		stopTime = System.currentTimeMillis();
-		Log.v("Mafi","" + "stopTime-startTime milli" + (stopTime-startTime));
-		Log.v("Mafi","savedTime" + savedTime);
+		Log.v("FirstScreen","" + "stopTime-startTime milli" + (stopTime-startTime));
+		Log.v("FirstScreen","savedTime" + savedTime);
 		return playedTime = (stopTime - startTime)/1000 + savedTime;
 	}
 
@@ -731,9 +731,9 @@ public class FirstScreen extends Activity {
 		if (timerRotation != null) {//Sets timerRotation to cancel its countdown, so not to interfere with the instance 'timer'
 			timerRotation.cancel();
 		}
-		Log.v("Mafi","" + savedTime + " innan");
+		Log.v("FirstScreen","" + savedTime + " innan");
 		savedTime = getPlayedTime();
-		Log.v("Mafi","" + savedTime + " efter");
+		Log.v("FirstScreen","" + savedTime + " efter");
 		roomStopTime = System.currentTimeMillis(); 
 		roomSavedTime = getRoomPlayedTime();
 		Log.v("FirstScreen","roomsavedtime Šr "+roomSavedTime);
@@ -761,7 +761,7 @@ public class FirstScreen extends Activity {
 		// Sets the text to Game Over in the textTimer TextView, and calls the gameLost() method
 		@Override
 		public void onFinish() {	
-			textTimer.setText("0");//TODO ska detta tas bort?
+			textTimer.setText("0");
 			gameLost();
 		}
 

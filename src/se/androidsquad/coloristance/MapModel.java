@@ -4,8 +4,8 @@ import se.androidsquad.coloristance.database.Levels;
 import android.util.Log;
 
 
-/*
- * This class should contain methods to be able to read which color each rectangle has from RectModel, looping the strings
+/**
+ * This class contains methods which read what color each rectangle has from RectModel, looping the strings
  * and telling which color it has, and also the logic for moving the player
  */
 
@@ -16,7 +16,11 @@ public class MapModel {
 	private static int x,y,mapWidth,mapHeight,mapTop, mapBot, mapRight, mapLeft;
 	private static int leftX, rightX, topY, botY;
 
-
+	/**
+	 * Sets the map that is to be played by retrieving the corresponding array from the database (Levels.java)
+	 * @param level an int representing what level is to be played
+	 */
+	
 	public static void setMap(int level){
 		if(level == 1) {
 			mapArray = Levels.map_1;
@@ -34,6 +38,12 @@ public class MapModel {
 		setKeys(level);
 	}
 	
+	/**
+	 * Sets the keys to the corresponding map by retrieving the corresponding array for keys from the
+	 * database (Levels.java)
+	 * @param level the same int as previously defining what level is to be played, this time also
+	 * defining what keys are associated with that level
+	 */
 	private static void setKeys(int level){
 		if(level == 1){
 			keyArray = Levels.keys_1;
@@ -49,57 +59,59 @@ public class MapModel {
 		}
 	}
 
+
+	/**
+	 * 
+	 * @return mapArray the array containing information about the rooms in a certain level, and the doors in each room
+	 */
+	
+	public static String[][] getMap(){
+		return mapArray;		
+	}
+	
+	/**
+	 * @return keyArray the array containing the keys for the specific level
+	 */
+	
 	public static String[][] getKeys(){
 		return keyArray;
 	}
 
-	public static String[][] getMap(){
-		return mapArray;		
-	}
-
-	public static void renderMap(){
-		//Skall innehålla funktioner som gör instanser av alla element 
-		for(int i = 0; i<mapArray.length;i++){
-			for(int j = 0; j<mapArray[i].length;j++){
-
-				//Log.v(mapArray[i][j], "i:"+i+" j:"+j);
-
-				//mapArray[i][j].charAt(0) denna snippet är char-siffran på rummet 
-				//och skall sändas till rederaren av färgen tillsammans med positionen som är i och j 
-			}
-		}
-	}
-
+	/**
+	 * 
+	 * @param xPos an int describing the position of the player on the x-axis
+	 * @param yPos an int describing the position of the player on the y-axis
+	 */
+	
 	public static void setPos(int xPos, int yPos){
-		//Dessa skall anropas vid vare tryck på en dörr
 		x = xPos;
 		y = yPos;
 	}
 
 	
 	/**
-	 * Checks to see if the new value is acceptable, if it is, it removes one from the y-pos.
+	 * Checks to see if the new value is acceptable, if it is, it removes one from the y-position.
 	 * it is called whenever the "North" door is clicked.
 	 */
 
 	public static void moveUp(){
 		if(y-1 < 0 || mapArray[x][y-1].charAt(0)=='0'){
 			y=y; //You get the point... Don't move.
-			//Log.v("MapModel", "Moving out of bounds" + mapArray[x][y]);
+			Log.v("MapModel", "Moving out of bounds" + mapArray[x][y]);
 		}
 		else
 			y=y-1;
 	}
 
 	/**
-	 * Checks to see if the new value is acceptable, if it is, it adds one to the x-pos.
+	 * Checks to see if the new value is acceptable, if it is, it adds one to the x-position.
 	 * it is called whenever the "East" door is clicked.
 	 */
 
 	public static void moveRight(){
 		if(x+1 >= mapArray.length || mapArray[x+1][y].charAt(0)=='0'){
 			x=x; //You get the point... Don't move.
-			//Log.v("MapModel", "Moving out of bounds" + mapArray[x][y]);
+			Log.v("MapModel", "Moving out of bounds" + mapArray[x][y]);
 		}
 		else
 			x=x+1;
@@ -128,28 +140,12 @@ public class MapModel {
 	protected static void moveLeft(){
 		if(x-1 < 0 || mapArray[x-1][y].charAt(0)=='0'){
 			x=x; //You get the point... Don't move.
-			//Log.v("MapModel", "Moving out of bounds" + mapArray[x][y]);
+			Log.v("MapModel", "Moving out of bounds" + mapArray[x][y]);
 		}
 		else
 			x=x-1;
 	}
 
-	/**
-	 * The method receives a String array, goes through the array to match the correct coordinates, and returns the correct color
-	 * of the room. This method will be called every time we click on a door.
-	 * @param roomId the String which contain the information of the rooms
-	 * @return the correct color for the given coordinates
-	 */
-	//	protected static int getRoomColor(String roomId){
-	//		for(int i = 0; i<mapArray.length;i++){
-	//			for(int j = 0; j<mapArray[i].length;j++){
-	//					if(roomId == mapArray[i][j]){
-	//						RectModel.setRectColor(mapArray[x][y]);
-	//					}
-	//			}
-	//		}
-	//		return RectModel.getRectColor();
-	//	}
 
 	/**
 	 * @return the current position in the array
@@ -159,15 +155,31 @@ public class MapModel {
 		return mapArray[x][y];
 	}
 
-
+	/**
+	 * 
+	 * @return the current position on the x-axis
+	 */
 	public static int getMyX(){
 		return x;
 	}
 
+	/**
+	 * 
+	 * @return the current position on the y-axis
+	 */
 	public static int getMyY(){
 		return y;
 	}
 
+	/**
+	 * Sets the values for the map, in order for the map to be able to be painted
+	 * @param sizeX an int describing the width of the map
+	 * @param sizeY an int describing the height of the map
+	 * @param top an int representing the topmost position in the graphical representation of the map
+	 * @param right an int representing the rightmost position in the graphical representation of the map
+	 * @param bot an int representing the position in the bottom of the graphical representation of the map
+	 * @param left an int representing the leftmost position in the graphical representation of the map
+	 */
 	public static void setMap(int sizeX, int sizeY, int top, int right,int bot, int left){
 		mapWidth 	= sizeX;
 		mapHeight 	= sizeY;
@@ -192,27 +204,27 @@ public class MapModel {
 
 		int answer = 0;
 		if		(cornerPos==1){ answer = (multi)*(mapWidth/(mapArray.length))+(mapWidth/(mapArray.length*20))		;
-		//Log.v("1:",""+answer);
+		Log.v("1:",""+answer);
 		leftX = answer;
 		}
 		else if	(cornerPos==2){ 
 			answer = (multi)*(mapHeight/(mapArray[0].length))+(mapHeight/(mapArray[0].length*20))	;
-			//Log.v("2:",""+answer);
+			Log.v("2:",""+answer);
 			topY = answer;
 		}
 		else if	(cornerPos==3){ 
 			answer = ((multi+1)*(mapWidth/(mapArray.length)))- (mapWidth/(mapArray.length*20));
-			//Log.v("3:",""+answer); 
+			Log.v("3:",""+answer); 
 			rightX = answer;
 		}
 		else if	(cornerPos==4){ 
 			answer = ((multi+1)*(mapHeight/(mapArray[0].length)))-(mapHeight/(mapArray[0].length*20));
-			//Log.v("4:", ""+answer);
+			Log.v("4:", ""+answer);
 			botY = answer;
 		}
 		else answer = 0;
 
-		//Log.v("MapModel","x: "+mapArray.length+" y: "+mapArray[0].length);
+		Log.v("MapModel","x: "+mapArray.length+" y: "+mapArray[0].length);
 
 		return answer;
 	}
@@ -235,19 +247,19 @@ public class MapModel {
 		//places the circle in the middle of the rect corresponding to the center x-position
 		if (value==1) {
 			answer = ((rightX-leftX)/2)+(multi)*(mapWidth/(mapArray.length))+(mapWidth/(mapArray.length*20)) ;
-			//Log.v("CircX:", ""+answer);
+			Log.v("CircX:", ""+answer);
 
 		}
 		//places the circle in the middle of the rect corresponding to the center y-position
 		else if (value==2) {
 			answer = ((botY-topY)/2)+(multi)*(mapHeight/(mapArray[0].length))+(mapHeight/(mapArray[0].length*20)) ;
 
-			//Log.v("CircY:", ""+answer);
+			Log.v("CircY:", ""+answer);
 		}
 		//Radius
 		else if (value==3) {
 			answer = (botY-topY)/2;
-			//Log.v("Rad:", ""+answer);
+			Log.v("Rad:", ""+answer);
 		}
 		else if(value==4){
 			answer = (rightX-leftX)/2;
@@ -257,10 +269,4 @@ public class MapModel {
 
 		return answer;
 	}
-
-
-
-
-
-
 }
