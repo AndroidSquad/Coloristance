@@ -20,8 +20,8 @@
             android:id="@+id/first"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_alignParentTop="true" 
-            android:layout_marginTop="10dp">
+            android:layout_alignParentTop="true"
+            android:layout_marginTop="10dp" >
 
             <ImageView
                 android:id="@+id/map"
@@ -47,9 +47,8 @@
             android:id="@+id/second"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_below="@id/first" 
-            android:layout_marginTop="40dp"
-            >
+            android:layout_below="@id/first"
+            android:layout_marginTop="40dp" >
 
             <ImageView
                 android:id="@+id/room"
@@ -98,6 +97,50 @@
                 android:layout_toRightOf="@id/room_inventory"
                 android:text="@string/roominvtext"
                 android:textColor="@color/white" />
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:id="@+id/fourth"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/third"
+            android:layout_marginTop="40dp" >
+
+            <ImageView
+                android:id="@+id/back_options"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentLeft="true"
+                android:layout_below="@id/room_inventory"
+                android:layout_centerInParent="true"
+                android:layout_marginRight="10dp"
+                android:src="@drawable/backwards" />
+
+            <TextView
+                android:id="@+id/back_pressed_explanation"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentRight="true"
+                android:layout_centerInParent="true"
+                android:layout_toRightOf="@id/back_options"
+                android:text="@string/takeabreaktext"
+                android:textColor="@color/white" />
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:id="@+id/fifth"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/fourth"
+            android:layout_marginTop="40dp" >
+
+         <TextView
+            android:id="@+id/finished_level_explanation"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:layout_centerInParent="true"
+            android:text="@string/finishedleveltext" />
         </RelativeLayout>
     </RelativeLayout>
 
