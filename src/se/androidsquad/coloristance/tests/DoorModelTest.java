@@ -9,7 +9,10 @@ import org.junit.Test;
 import se.androidsquad.coloristance.DoorModel;
 import se.androidsquad.coloristance.MapModel;
 import se.androidsquad.coloristance.RectModel;
-
+/**
+ * This class asserts that the doors in the room are set to a correct value when we
+ * use the setDoor() method.
+ */
 
 public class DoorModelTest {
 	/*

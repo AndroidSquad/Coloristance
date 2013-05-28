@@ -10,19 +10,15 @@ import org.junit.Test;
 import se.androidsquad.coloristance.MapModel;
 import se.androidsquad.coloristance.RectModel;
 
+/**
+ * The initial test checks that we can set the RectColor correctly.
+ * The second test is more advanced and asserts that the RectColor is corresponding
+ * to the room that the player is currently in.
+ * The last test checks that the roomcolor is the correct one, by knowing that the RectColor
+ * was orange. 
+ */
+
 public class RectModelTest {
-
-	@BeforeClass
-	public static void setUpBeforeClass() throws Exception {
-	}
-
-	@Before
-	public void setUp() throws Exception {
-	}
-
-	@After
-	public void tearDown() throws Exception {
-	}
 
 	@Test
 	public void testSetRectColor() {
