@@ -36,8 +36,16 @@ public class MapModel {
 		}
 		
 		setKeys(level);
-	}
+	}//setMap
 	
+	/**
+	 * 
+	 * @return mapArray the array containing information about the rooms in a certain level, and the doors in each room
+	 */
+	
+	public static String[][] getMap(){
+		return mapArray;		
+	}//getMap
 	/**
 	 * Sets the keys to the corresponding map by retrieving the corresponding array for keys from the
 	 * database (Levels.java)
@@ -57,25 +65,15 @@ public class MapModel {
 		else{
 			Log.v("MapModel", "The key-level doesn't exist");
 		}
-	}
+	}//setKeys
 
-
-	/**
-	 * 
-	 * @return mapArray the array containing information about the rooms in a certain level, and the doors in each room
-	 */
-	
-	public static String[][] getMap(){
-		return mapArray;		
-	}
-	
 	/**
 	 * @return keyArray the array containing the keys for the specific level
 	 */
 	
 	public static String[][] getKeys(){
 		return keyArray;
-	}
+	}//getKeys
 
 	/**
 	 * 
@@ -86,7 +84,7 @@ public class MapModel {
 	public static void setPos(int xPos, int yPos){
 		x = xPos;
 		y = yPos;
-	}
+	}//setPos
 
 	
 	/**
@@ -101,7 +99,7 @@ public class MapModel {
 		}
 		else
 			y=y-1;
-	}
+	}//moveUp
 
 	/**
 	 * Checks to see if the new value is acceptable, if it is, it adds one to the x-position.
@@ -115,7 +113,7 @@ public class MapModel {
 		}
 		else
 			x=x+1;
-	}
+	}//moveRight
 
 
 	/**
@@ -130,7 +128,7 @@ public class MapModel {
 		}
 		else
 			y=y+1;
-	}
+	}//moveDown
 
 
 	/**
@@ -141,10 +139,10 @@ public class MapModel {
 		if(x-1 < 0 || mapArray[x-1][y].charAt(0)=='0'){
 			x=x; //You get the point... Don't move.
 			Log.v("MapModel", "Moving out of bounds" + mapArray[x][y]);
-		}
+		}//if
 		else
 			x=x-1;
-	}
+	}//moveLeft
 
 
 	/**
@@ -153,7 +151,7 @@ public class MapModel {
 
 	public static String getRoom(){
 		return mapArray[x][y];
-	}
+	}//getRoom
 
 	/**
 	 * 
@@ -161,7 +159,7 @@ public class MapModel {
 	 */
 	public static int getMyX(){
 		return x;
-	}
+	}//getMyX
 
 	/**
 	 * 
@@ -169,7 +167,7 @@ public class MapModel {
 	 */
 	public static int getMyY(){
 		return y;
-	}
+	}//getMyY
 
 	/**
 	 * Sets the values for the map, in order for the map to be able to be painted
@@ -187,7 +185,7 @@ public class MapModel {
 		mapRight 	= right;
 		mapBot 		= bot;
 		mapLeft 	= left;
-	}
+	}//setMap
 
 	/** Receives a doorposition, 1-4,the corresponding multiplier.
 	 * This info is used to return a value corresponding to the screen.
@@ -227,7 +225,7 @@ public class MapModel {
 		Log.v("MapModel","x: "+mapArray.length+" y: "+mapArray[0].length);
 
 		return answer;
-	}
+	}//getRectPos
 
 	/**
 	 * Receives a doorposition, 1-4,the corresponding multiplier.
@@ -268,5 +266,5 @@ public class MapModel {
 		else answer = 0;
 
 		return answer;
-	}
-}
+	}//getCircPos
+}//MapModel

@@ -1,7 +1,5 @@
 package se.androidsquad.coloristance;
 
-import android.util.Log;
-
 public class RectModel {
 
 	/**
@@ -40,20 +38,19 @@ public class RectModel {
 		} else {
 			rectColor = WHITE;
 		}
-	}
+	}//setRectColor
 
 	/**
 	 * @return	rectColor the color of the the room asked for as an int
 	 */
 	public static int getRectColor(){
 		return rectColor;
-	}
+	}//getRectColor
 
 	/**
 	 * @return color the color of the room as a string needed for the initialization of a paint object in drawMap
 	 */
 	public static String getRoomColor(){
-
 		String color;
 		if(rectColor == BLACK) 	color = "black";
 		else if(rectColor == WHITE) color ="white";
@@ -62,8 +59,8 @@ public class RectModel {
 		else if(rectColor == ORANGE_LIGHT)	color = "ol";
 		else if(rectColor == PURPLE_LIGHT)	color = "pl";
 		else if(rectColor == RED_LIGHT)		color = "rl";
-
 		else color = "Inget";	
+		
 		return color;
-	}
-}
+	}//getRoomColor
+}//RectModel
