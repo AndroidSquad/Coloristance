@@ -97,6 +97,4 @@ public class InventoryView{
 			keyV.dropKey(i);
 		}
 	}//cleanInventory
-
-
-}
+}//InventoryView

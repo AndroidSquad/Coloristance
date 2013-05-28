@@ -31,7 +31,4 @@ public class DoorView{
 			}
 		}//for
 	}//setDoors
-
-
-
-}
+}//DoorView

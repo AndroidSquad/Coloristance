@@ -20,7 +20,7 @@ public class KeyView{
 
 	public KeyView(Activity current) {
 		this.act = current;
-	}
+	}//Constructor
 
 	/**
 	 * This method defines the keys within a room as being visible or invisible, depending on what keys
@@ -89,15 +89,12 @@ public class KeyView{
 
 		Log.v("FirstScreen", "DropKey newKey ending: " + newKey);
 	}//dropKey
-	
-	
+		
 	public void setStartKeys(){
 
 		//Looping what inital keys to show in the inventory
 		for(int i= 0; i<3; i++){
 			act.findViewById(invPos[i]).setBackgroundResource(keyImg[GameController.inv.getInv()[i]]);
-		}
-		
-	}
-
-}
+		}		
+	}//setStartKeys
+}//KeyView
