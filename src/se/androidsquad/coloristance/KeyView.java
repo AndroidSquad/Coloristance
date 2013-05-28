@@ -38,8 +38,9 @@ public class KeyView{
 				act.findViewById(keyNames[i]).setVisibility(View.INVISIBLE);
 			}
 			else Log.v("Firstscreen", "Incorrect input");
-		} 
-	}
+		}//for	
+	}//setKeys
+
 
 	protected void dropKey(int invPosition){
 		//keyInvPos takes 0-2
@@ -65,7 +66,7 @@ public class KeyView{
 				buffer[keyPos] = '1';
 				Log.v("FirstScreen", "Set 1");
 
-			}
+			}//if
 
 			newKey = new String(buffer);
 			thisKey.setKeyString(newKey);
@@ -73,7 +74,7 @@ public class KeyView{
 			GameController.inv.setInv(invPosition, 5);
 
 			setKeys();
-		}
+		}//else if(alloc==true)
 		else if(alloc== false){
 			Log.v("FirstScreen", "The key has been dropped/Was never there: " + invPosition);
 		}
@@ -84,66 +85,8 @@ public class KeyView{
 		InventoryModel.alloc[invPosition] = alloc;
 
 		Log.v("FirstScreen", "DropKey newKey ending: " + newKey);
-	}
+	}//dropKey
 	
-	/**
-	 * Sets the inventory on the screen.
-	 * @param int keyPos, values between 0 - 4 
-	 */
-
-	protected void setInventory(int keyPos){
-
-		//Set the requested drawable key
-		int clickedKey = keyImg[keyPos];
-
-		//Inventory position to put key at. If something is not declared, 9 will make it go out of bounds.
-		int invPosition = 9;
-
-		thisKey = GameController.key[MapModel.getMyX()][MapModel.getMyY()];
-		// TODO vad gör egentligen denna?
-
-		boolean placed = false;
-		char[] buffer = thisKey.getKeyString().toCharArray();
-		String newKey = new String(buffer);
-		Log.v("FirstScreen", "setInventory newKey init: " + newKey);
-
-		//AllocatedInv checks the three spots a key could fit in and put it at the first available
-		for(int i =0; i<3;i++){
-			boolean allocated = InventoryModel.alloc[i];
-			if(allocated == false && placed == false){
-				act.findViewById(invPos[i]).setBackgroundResource(clickedKey);
-				invPosition = i;
-				Log.v("FirstScreen", "Key put in: "+i);
-
-				placed =true;
-				allocated = true;
-
-				if(keyPos != 5){
-					buffer[keyPos] = '0';
-					Log.v("FirstScreen", "Set 0");
-				}
-
-				newKey = new String(buffer);
-				thisKey.setKeyString(newKey);
-				thisKey.setKeyVisibility(false);
-				act.findViewById(invPos[invPosition]).setBackgroundResource(keyImg[keyPos]);
-				GameController.inv.setInv(invPosition, keyPos);
-
-				setKeys();
-			}
-			else if (allocated == true && placed == false){
-				Log.v("FirstScreen", "Spot: "+i+" was full.");
-			}
-			else{
-				Log.v("FirstScreen", "Key has value has been placed");
-			}
-
-			InventoryModel.alloc[i] = allocated;
-		}
-
-		Log.v("FirstScreen", "setInventory newKey ending: " + newKey);
-
-	}
 	
 	public void setStartKeys(){
 
@@ -153,15 +96,5 @@ public class KeyView{
 		}
 		
 	}
-	
-	/**
-	 * Cleans the current inventory, so that no keys are displayed as being the inventory
-	 */
-	public void cleanInventory(){
-		for(int i = 0; i<3;i++){
-			dropKey(i);
-		}
-	}
-
 
 }

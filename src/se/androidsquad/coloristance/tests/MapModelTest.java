@@ -12,6 +12,15 @@ import org.junit.Test;
 
 import se.androidsquad.coloristance.MapModel;
 
+/**
+* The first test asserts that the mapArray has the correct size.
+* The second test is made in order to check that the roomcode is correctly 
+* defined and represented in correlation to where the player currently is.
+* The third test checks that the players position is correct after each move.
+* The last test is performed to make sure that the player is unable
+* to move outside of the mapArray and also that the player is unable 
+* to move into black squares.
+*/
 
 public class MapModelTest extends TestCase{
 

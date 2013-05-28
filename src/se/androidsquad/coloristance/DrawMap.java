@@ -6,7 +6,6 @@ import android.annotation.SuppressLint;
 import android.content.Context;
 import android.content.res.Configuration;
 import android.graphics.Canvas;
-import android.graphics.Color;
 import android.graphics.Paint;
 import android.graphics.Rect;
 import android.util.AttributeSet;
@@ -19,23 +18,26 @@ import android.view.View;
  */
 public class DrawMap extends View { 
 
-	
+
 	public DrawMap(Context context, AttributeSet attrs) {
 		super(context, attrs);
 	}
-	
+
 	/**
-	 * The onDraw method handles the drawing of the map, both in portratin and landscape mode
+	 * The onDraw method handles the drawing of the map, both in portrait and landscape mode
 	 */
-	Paint border; //A Paint object used to paint the black border on the circle representing the player position
+
+	//A Paint object used to paint the black border on the circle representing the player position
+	Paint border; 
 	@SuppressLint("DrawAllocation")
 	@Override
 	public void onDraw(Canvas canvas) { 
 		super.onDraw(canvas);
-		
+
 		/**
 		 * Creates a HashMap which pairs up the String representing a room with the corresponding color
 		 */
+		
 		HashMap<String, Paint> col = new HashMap<String, Paint>();
 		col.put("bl", new Paint());
 		col.get("bl").setColor(RectModel.BLUE_LIGHT);
@@ -51,13 +53,13 @@ public class DrawMap extends View {
 		col.get("white").setColor(RectModel.WHITE);
 		col.put("black", new Paint());
 		col.get("black").setColor(RectModel.BLACK);
-		
+
 		// Painting the black border around the white circle representing the player position
 		col.put("black2", border = new Paint());
 		col.get("black2").setColor(RectModel.BLACK);
 		border.setStyle(Paint.Style.STROKE); 
 		border.setStrokeWidth(3);
-		
+
 
 		String rectColor = "pl";
 		//TODO vad händer här?
@@ -72,43 +74,20 @@ public class DrawMap extends View {
 		int yPos = MapModel.getMyY();
 		Log.v("DrawMap", mapWidth+", "+mapHeight+", "+mapLeft+", "+mapTop+", "+mapRight+", "+mapBot);
 
-		/*TODO kan ta borta detta?
-		 * the following code segment including the for-loop creates the map frame that the
-		 * levels will be painted on.
-		 */
-		/*Rect frameRect = new Rect();
-		frameRect.set(mapLeft, mapTop, mapRight, mapBot);
-		Paint blue = new Paint();
-		blue.setColor(Color.BLUE);
-		blue.setStyle(Paint.Style.STROKE);
-
-		canvas.drawRect(frameRect, blue);
-
-		canvas.drawRect(frameRect, blue);*/
-
-
-		/*for (int i = 1; i < getWidth() ; i++) {
-			canvas.drawLine(i*getWidth()/8, 0, i*getWidth()/8, getHeight(), col.get(rectColor));
-			canvas.drawLine(0, i*getHeight()/3, getWidth(), i*getHeight()/3, col.get(rectColor));
-
-		} */
-
-		//for (int i = 0; i < getWidth()-1 ; i++){
-		//	canvas.drawLine(i+getWidth()/8, (i+getHeight()/3)+(1/2), (i+getWidth()/8)+(1/5), (i+getHeight()/3)+(1/2), dark);
-
-		/*
+		/**
 		 * creates a HashMap to be able to store a certain x,y position with the corresponding color of the room.
 		 * The String is the key to the specific room.
 		 */
 		HashMap<String, Rect> map = new HashMap<String, Rect>();
 
 		String name = "Ej startat";
-		/*
+		/**
 		 * These two for-loops insert the values of the x,y-position and draws the map differently depending on if the device
 		 * is tilted or not. Then it draws the player on the correct position on the map.
 		 */
-		
-		if(getResources().getConfiguration().orientation == Configuration.ORIENTATION_LANDSCAPE){//if we turn the phone the map should be rendered differently
+
+		if(getResources().getConfiguration().orientation == Configuration.ORIENTATION_LANDSCAPE){
+			//if we turn the phone the map should be rendered differently
 			MapModel.setMap(8*mapWidth/3, 55*mapHeight/144, mapTop, mapRight, mapBot, mapLeft);
 			for(int i = 0; i<MapModel.getMap()[i].length;i++){
 				for(int j = 0; j<MapModel.getMap().length;j++){
@@ -120,12 +99,12 @@ public class DrawMap extends View {
 
 					rectColor = RectModel.getRoomColor();
 					canvas.drawRect( map.get(name), col.get(rectColor));
-				}
-			}
+				}//for
+			}//for
 			canvas.drawCircle(MapModel.getCircPos(1, yPos), MapModel.getCircPos(2, xPos), MapModel.getCircPos(4, yPos), col.get("white"));
 			canvas.drawCircle(MapModel.getCircPos(1, yPos), MapModel.getCircPos(2, xPos), MapModel.getCircPos(4, yPos), col.get("black2"));//Pints the black border on the white circle
 			invalidate();// Calls the onDraw again as soon as it has painted everything
-		}
+		}//if
 		else{
 			MapModel.setMap(mapWidth, mapHeight, mapTop, mapRight, mapBot, mapLeft);
 			for(int i = 0; i<MapModel.getMap().length;i++){
@@ -138,35 +117,12 @@ public class DrawMap extends View {
 
 					rectColor = RectModel.getRoomColor();
 					canvas.drawRect( map.get(name), col.get(rectColor));
-				}
-			}
+				}//for
+			}//for
 			canvas.drawCircle(MapModel.getCircPos(1, xPos), MapModel.getCircPos(2, yPos), MapModel.getCircPos(3, yPos), col.get("white"));
 			canvas.drawCircle(MapModel.getCircPos(1, xPos), MapModel.getCircPos(2, yPos), MapModel.getCircPos(3, yPos), col.get("black2"));//Paints the black border on the white circle
 			invalidate();// Calls the onDraw again as soon as it has painted everything
-
-		}
-			
-
-
-
-	/*TODO kan ta bort detta?
-		//Map Rectangle Two
-		Rect mapRectTwo = new Rect();
-		mapRectTwo.set(9*getWidth()/64, 9*getHeight()/24, 15*getWidth()/64,15*getHeight()/24); 
-		Paint colorTwo = new Paint();
-		colorTwo.setColor(RectModel.PURPLE_LIGHT);
-		canvas.drawRect(mapRectTwo, colorTwo);
-	 */
-
-	//The following line draws the position of the player on the map 
-//	canvas.drawCircle(MapModel.getCircPos(1, MapModel.getMyY()), MapModel.getCircPos(2, MapModel.getMyX()), MapModel.getCircPos(3, MapModel.getMyY()), col.get("white"));
-//	invalidate();// Calls the onDraw again as soon as it has painted everything
-}
-
-/**Refera till xml-filen i javan istŠllet fšr tvŠrtom som vi trodde annars
-
-			View p = view.getRootView();
-	    	TextView greenRect = (TextView)p.findViewById(R.id.toggleButton2); */
-
-}
+		}//else
+	}//onDraw
+}//DrawMap
 

@@ -21,14 +21,16 @@ public class DoorView{
 	 */
 	protected void setDoors(){
 		for(int i = 0; i<4; i++){
-			currentView = act.findViewById(door[i]);
+			View currentView = act.findViewById(door[i]);
+
 			currentView.setVisibility(View.VISIBLE);
 			currentView.setBackgroundColor(DoorModel.getDoor(i));
 			if(DoorModel.getDoor(i) == RectModel.BLACK){
 				currentView.setVisibility(View.INVISIBLE);
 			}
-		}	
-	}
+		}//for
+	}//setDoors
+
 
 
 }

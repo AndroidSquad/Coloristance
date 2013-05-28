@@ -15,12 +15,12 @@ public class InventoryModel{
 		}
 		setAllocations();
 
-	}
+	}//InventoryModel
 
 	InventoryModel(int[] prevInvKeys){
 		invKey = prevInvKeys;
 		setAllocations();
-	}
+	}//InventoryModel
 
 	private void setAllocations(){
 		for(int i=0; i<3; i++){
@@ -33,8 +33,8 @@ public class InventoryModel{
 			else{
 				Log.v("InventoryModel","Incorrect value: " + invKey[i]);
 			}
-		}
-	}
+		}//for
+	}//setAllocations
 
 	public int getInv(int pos){
 		if(invKey[pos]<5)
@@ -43,11 +43,11 @@ public class InventoryModel{
 			Log.v("InventoryModel", "Couldn't return value: " + invKey[pos]);
 			return 0;
 		}
-	}
+	}//getInv
 	public int[] getInv(){
 		return invKey;
-	}
+	}//getInv
 	public void setInv(int pos, int img){
 		invKey[pos] = img;
-	}
-}
+	}//setInv
+}//InventoryModel

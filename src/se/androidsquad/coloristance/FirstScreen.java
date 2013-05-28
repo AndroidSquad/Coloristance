@@ -38,6 +38,7 @@ public class FirstScreen extends Activity {
 	MediaPlayer mp, finish_game;
 	DoorView doorV;
 	KeyView keyV;
+	InventoryView invV;
 	DrawMap map;
 	GameController game;
 	MainActivity main;
@@ -77,14 +78,16 @@ public class FirstScreen extends Activity {
 				Log.v("FirstScreen","funkar ej");
 				timer = new CountDown(10000,1000);
 				Log.v("FirstScreen","Vi räknar ner på nytt");
-			} else //If the player is in the first room, the other instance of CountDown is not needed
+			}//if 
+			else //If the player is in the first room, the instance timerRotation is not needed, since the countdown does not start in the first room
 				timer = new CountDown(10000,1000); 
-		} else {
+		}//if 
+		else {
 			visSpeak = 2;
 			startTime = System.currentTimeMillis();
 			savedTime = 0;
 			timer = new CountDown(10000,1000);
-		}
+		}//else
 
 		setContentView(R.layout.firstscreen);
 		findViewById(R.id.bot_layout).setBackgroundColor(RectModel.BLUE_DARK);
@@ -95,16 +98,17 @@ public class FirstScreen extends Activity {
 		map = new DrawMap(FirstScreen.this, null);
 		doorV = new DoorView(this);
 		keyV = new KeyView(this);
+		invV = new InventoryView(this, keyV);
 	
 		//Variables used to keep track of the player's position in the map
 		int x= MapModel.getMyX();
 		int y= MapModel.getMyY();
 		if(x==0 && y == 0){
 			MapModel.setPos(0, 1);
-		}
+		}//if
 		else {
 			MapModel.setPos(x,y);
-		}
+		}//else
 
 		//Below is needed to get the right room when you start a new level or tilt the screen
 		setRoom();	
@@ -122,13 +126,13 @@ public class FirstScreen extends Activity {
 			Log.v("FirstScreen", "VisSpeak FIRST value is " + visSpeak);
 			visSpeak = 1;
 			musicButton.setBackgroundResource(drawable.speaker);
-		}
+		}//if
 
 		else if(visSpeak ==1){
 			musicButton.setBackgroundResource(drawable.speaker);
 			mp.start();
 			mp.setLooping(true);
-		}
+		}//else if
 		else
 			musicButton.setBackgroundResource(drawable.mutespeaker);
 
@@ -149,15 +153,15 @@ public class FirstScreen extends Activity {
 					musicButton.setBackgroundResource(drawable.speaker);
 					visSpeak = 1;
 					Log.v("FirstScreen", "VisSpeak Value AFTER if " + visSpeak);
-
-				}else{
+				}
+				else {
 					musicButton.setBackgroundResource(drawable.mutespeaker);
 					mp.pause();	
 					visSpeak = 0;
 					Log.v("FirstScreen", "VisSpeak Value AFTER if " + visSpeak);
 				}
-			}
-		});
+			}//onClick
+		});//musicButton
 
 		keyV.setStartKeys();
 
@@ -230,9 +234,9 @@ public class FirstScreen extends Activity {
 								Log.v("FirstScreen","New roomtime set");
 								roomStartTime = System.currentTimeMillis();
 								break;
-							}
-						}
-					}
+							}//if
+						}//for
+					}//if
 
 					//The room, keys and doors have to be set for the new room
 					setRoom();
@@ -245,16 +249,16 @@ public class FirstScreen extends Activity {
 						timer.cancel();
 						mapDone();
 					}
-				}
-			}
-		};
+				}//for
+			}//onClick
+		};//doorClick
 
 
 
 
 		for(int i = 0; i<4; i++){
 			doors[i].setOnClickListener(doorClick);
-		}
+		}//for
 
 		//Handles the clicks on the inventory
 		View.OnClickListener inventoryClick = new View.OnClickListener() {
@@ -267,7 +271,7 @@ public class FirstScreen extends Activity {
 					else if(inventories[i].equals(v) == true && i == 2){keyV.dropKey(i);}
 				}
 
-			}
+			}//onClick
 		};
 
 		for(int i = 0; i<3;i++){
@@ -284,16 +288,15 @@ public class FirstScreen extends Activity {
 						clickedKeyColor = i;
 					}
 				}
-				keyV.setInventory(clickedKeyColor);
-			}
+
+				invV.setInventory(clickedKeyColor);
+			}//onClick
 		};
 		for(int i = 0; i<5; i++){
 			keys[i].setOnClickListener(keyClick);
 		}
 
-	}
-
-
+	}//onCreate
 
 	/** 
 	 * onSaveInstanceState saves valuable information that should not be lost in a screen rotation
@@ -307,7 +310,7 @@ public class FirstScreen extends Activity {
 		outState.putLong("savedtime", savedTime);
 		outState.putLong("roomsavedtime", roomSavedTime);
 		Log.v("FirstScreen","Visible speaker state: " + visSpeak + " saved");
-	}
+	}//onSaveInstanceState
 
 	/*Log.v("FirstScreen", "input : " + GameController.key[MapModel.getMyX()][MapModel.getMyY()].getKeyString());
 		Log.v("FirstScreen", "buffer 1: " + buffer[0]+ buffer[1]+ buffer[2]+ buffer[3]+ buffer[4]);
@@ -323,7 +326,7 @@ public class FirstScreen extends Activity {
 		DoorModel.setDoor(MapModel.getRoom());
 		RectModel.setRectColor(MapModel.getRoom());
 		findViewById(R.id.room).setBackgroundColor(RectModel.getRectColor());
-	}
+	}//setRoom
 
 	/**
 	 * This method is called when the player is in the final room of the level. The method first registers 
@@ -363,8 +366,10 @@ public class FirstScreen extends Activity {
 				if(clicked.getId() == R.id.playNextLevel)
 					finish_game.stop();
 				playNextLevel();
-			}
-		});
+
+			}//onClick
+		});//playNextLevel
+
 
 		View closeButton=dialogView.findViewById(R.id.endGame);
 		closeButton.setOnClickListener(new View.OnClickListener() {
@@ -374,8 +379,9 @@ public class FirstScreen extends Activity {
 					finish_game.stop();
 					endGame();
 				}
-			}	
-		});
+			}//onClick	
+		});//closeButton
+
 
 		View retryButton=dialogView.findViewById(R.id.doneRetry);
 		retryButton.setOnClickListener(new View.OnClickListener() {
@@ -385,13 +391,13 @@ public class FirstScreen extends Activity {
 					finish_game.stop();
 					retryLevel();
 				}	
-			}
-		});
+			}//onClick
+		});//retryButton
 
 		AlertDialog finishDialog = alertDialog.create();
 		finishDialog.setCanceledOnTouchOutside(false);
 		finishDialog.show();
-	}
+	}//mapDone
 
 	/**
 	 * This method is called when the CountDownTimer reaches zero, and the player therefore has failed to move
@@ -419,8 +425,8 @@ public class FirstScreen extends Activity {
 				if(clicked.getId() == R.id.retry){
 					retryLevel();
 				}	
-			}
-		});
+			}//onClick
+		});//retryButton
 
 		View playAgainButton=loseView.findViewById(R.id.endGame);
 		playAgainButton.setOnClickListener(new View.OnClickListener() {
@@ -429,13 +435,13 @@ public class FirstScreen extends Activity {
 				if(clicked.getId() == R.id.endGame){
 					endGame();
 				}
-			}
-		});
+			}//onClick
+		});//playAgainButton
 		AlertDialog gameOverDialog = loseDialog.create();
 		gameOverDialog.setCanceledOnTouchOutside(false);
 		gameOverDialog.show();
 
-	}
+	}//gameLost
 
 	/**
 	 * This method handles what happens when the user presses the back button. Using an AlertDialog, the user
@@ -456,14 +462,14 @@ public class FirstScreen extends Activity {
 				MainActivity.visResume=true;
 				endGame();
 			}
-		})
+		})//.setNeutralButton
 		.setPositiveButton(R.string.try_again,new DialogInterface.OnClickListener(){
 			public void onClick(DialogInterface dialog, int i){
 				retryLevel();
 			}
-		})
+		})//.setPositiveButton
 		.show();
-	}
+	}//onBackPressed
 
 	/**
 	 * This method handles what happens if the user presses the button "Play next level". The next level is 
@@ -475,8 +481,8 @@ public class FirstScreen extends Activity {
 		levelCounter++;
 		GameController.setLevel(levelCounter);
 		startActivity(new Intent(FirstScreen.this, FirstScreen.class));
-		keyV.cleanInventory();
-	}
+		invV.cleanInventory();
+	}//playNextLevel
 
 	/**
 	 * This method handles a user pressing the button "Main menu". The current activity is finished, the 
@@ -491,8 +497,8 @@ public class FirstScreen extends Activity {
 		Intent intent = new Intent(getApplicationContext(), MainActivity.class);
 		intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP); //All previous activities are cleared
 		startActivity(intent);
-		keyV.cleanInventory();
-	}
+		invV.cleanInventory();
+	}//endGame
 
 	/**
 	 * This method handles when the user presses the button "Try again". A new activity with the same level is 
@@ -503,8 +509,8 @@ public class FirstScreen extends Activity {
 		MapModel.setPos(0,1);
 		startActivity(new Intent(FirstScreen.this, FirstScreen.class));
 		levelCounter = GameController.getLevel();
-		keyV.cleanInventory();
-	}
+		invV.cleanInventory();
+	}//retryLevel
 
 	/**
 	 * Returns the total time for the player to complete a level, in seconds
@@ -517,7 +523,7 @@ public class FirstScreen extends Activity {
 		Log.v("FirstScreen","" + "stopTime-startTime milli" + (stopTime-startTime));
 		Log.v("FirstScreen","savedTime" + savedTime);
 		return playedTime = (stopTime - startTime)/1000 + savedTime;
-	}
+	}//getPlayedTime
 
 	/**
 	 * Presents the variable playedTime as a String that can be showed to the user
@@ -525,11 +531,7 @@ public class FirstScreen extends Activity {
 	private void showTime(){
 		playedTime = getPlayedTime();
 		timeResult = Long.toString(playedTime);
-		//		int i = (int) totalTime/1000; TODO
-		//		String s = Integer.toString(i);
-		//		showTime=s;
-		//		return timeResult;
-	}
+	}//showTime
 
 
 	/**
@@ -539,14 +541,14 @@ public class FirstScreen extends Activity {
 	private long getRoomPlayedTime() {
 		roomStopTime = System.currentTimeMillis();
 		return roomPlayedTime = (roomStopTime - roomStartTime)/1000;
-	}
+	}//getRoomPlayedTime
 
 
 	@Override
 	protected void onResume() {
 		super.onResume();
 		musicButton = (ImageButton) findViewById(R.id.musicbutton);
-	}
+	}//onResume
 
 	@Override
 	protected void onRestart() {
@@ -554,8 +556,7 @@ public class FirstScreen extends Activity {
 		mp = MediaPlayer.create(FirstScreen.this, R.raw.house_music);
 		musicButton = (ImageButton) findViewById(R.id.musicbutton);
 		musicButton.setBackgroundResource(drawable.mutespeaker);
-
-	}
+	}//onRestart
 
 	protected void onPause() {
 		super.onPause();
@@ -569,14 +570,14 @@ public class FirstScreen extends Activity {
 		roomStopTime = System.currentTimeMillis(); 
 		roomSavedTime = getRoomPlayedTime();
 		Log.v("FirstScreen","roomsavedtime Šr "+roomSavedTime);
-	}
+	}//onPause
 
 	protected void onStop() {
 		super.onStop();
 		mp.release();
 		visSpeak = 0;
 		timer.cancel();
-	}
+	}//onStop
 
 
 	/**
@@ -602,10 +603,7 @@ public class FirstScreen extends Activity {
 		public void onTick(long millisUntilFinished) {
 			textTimer.setText((millisUntilFinished/1000)+ "");
 		}
-	}	
-
-
-
-}
+	}//CountDown	
+}//FirstScreen
 
 
