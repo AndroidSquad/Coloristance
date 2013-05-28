@@ -38,30 +38,26 @@ public class FirstScreen extends Activity {
 
 	MediaPlayer mp, finish_game;
 	DrawMap map;
-	DrawKeys drawKeys;
 	GameController game;
 	MainActivity main;
 	ImageButton musicButton;
 	KeyModel thisKey;
-	int visSpeak; //state of the ImageButton musicButton, 0 = not playing, 1 = is playing, 2 = not defined
 	Runnable runnable;
+	TextView textTimer;		
+	CountDown timer, timerRotation; //two separate instances of the private class CountDown, 
+	
+	//used to handle the count down in each room. 
+	//The second variable handles the count down in the case of a change of orientation 
+	int visSpeak; //state of the ImageButton musicButton, 0 = not playing, 1 = is playing, 2 = not defined
 	protected static int levelCounter = 1; //variable that keeps track of which level is to be played
-
 	int[] door = {R.id.top_door, R.id.right_door, R.id.bot_door,  R.id.left_door}; 
 	int[] keyNames = {R.id.key_button_blue, R.id.key_button_green, R.id.key_button_orange, R.id.key_button_purple, R.id.key_button_red};
 	int[] keyImg = {drawable.key_blue, drawable.key_green, drawable.key_orange, drawable.key_purple, drawable.key_red, drawable.key_empty};
-//	char[] pos = {'N','E','S','W'};
-
+	int[] invPos = {R.id.invKeyLeft, R.id.invKeyMid, R.id.invKeyRight};
 	long startTime, stopTime, playedTime, savedTime; //variables used for counting the total time it takes for a player to finish a level
 	long roomStartTime, roomStopTime, roomPlayedTime, roomSavedTime; //variables used for keeping track of the countdown time in each room
 	String timeResult; //a String representing the total time for completing a level
 
-	int[] invPos = {R.id.invKeyLeft, R.id.invKeyMid, R.id.invKeyRight};
-
-	TextView textTimer;		
-	CountDown timer, timerRotation; //two separate instances of the private class CountDown, 
-	//used to handle the count down in each room. 
-	//The second variable handles the count down in the case of a change of orientation 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
@@ -99,7 +95,6 @@ public class FirstScreen extends Activity {
 
 		game = new GameController();
 		map = new DrawMap(FirstScreen.this, null);
-		drawKeys = new DrawKeys(FirstScreen.this, null);
 
 		//Variables used to keep track of the player's position in the map
 		int x= MapModel.getMyX();
@@ -139,7 +134,6 @@ public class FirstScreen extends Activity {
 		musicButton.setOnClickListener(new View.OnClickListener(){
 			@Override
 			public void onClick(View v) {
-				// TODO Auto-generated method stub
 				Log.v("FirstScreen", "VisSpeak Value before if " + visSpeak);
 				if(visSpeak==0){
 					try {
@@ -377,7 +371,6 @@ public class FirstScreen extends Activity {
 
 	@Override
 	protected void onSaveInstanceState(Bundle outState) {
-		// TODO Auto-generated method stub
 		super.onSaveInstanceState(outState);
 		outState.putInt("visiblespeaker",visSpeak);
 		outState.putLong("savedtime", savedTime);
@@ -434,7 +427,7 @@ public class FirstScreen extends Activity {
 		Log.v("FirstScreen", "buffer 1: " + buffer[0]+ buffer[1]+ buffer[2]+ buffer[3]+ buffer[4]);
 		Log.v("FirstScreen", "InvPos: " + GameController.inv.getInv(keyInvPos));
 		Log.v("FirstScreen", "input : " + GameController.key[MapModel.getMyX()][MapModel.getMyY()].getKeyString());*/
-	//TODO
+	
 
 	/**
 	 * This method controls that DoorModel appoints the correct doors to each room
