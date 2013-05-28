@@ -72,38 +72,14 @@ public class DrawMap extends View {
 		int yPos = MapModel.getMyY();
 		Log.v("DrawMap", mapWidth+", "+mapHeight+", "+mapLeft+", "+mapTop+", "+mapRight+", "+mapBot);
 
-		/*TODO kan ta borta detta?
-		 * the following code segment including the for-loop creates the map frame that the
-		 * levels will be painted on.
-		 */
-		/*Rect frameRect = new Rect();
-		frameRect.set(mapLeft, mapTop, mapRight, mapBot);
-		Paint blue = new Paint();
-		blue.setColor(Color.BLUE);
-		blue.setStyle(Paint.Style.STROKE);
-
-		canvas.drawRect(frameRect, blue);
-
-		canvas.drawRect(frameRect, blue);*/
-
-
-		/*for (int i = 1; i < getWidth() ; i++) {
-			canvas.drawLine(i*getWidth()/8, 0, i*getWidth()/8, getHeight(), col.get(rectColor));
-			canvas.drawLine(0, i*getHeight()/3, getWidth(), i*getHeight()/3, col.get(rectColor));
-
-		} */
-
-		//for (int i = 0; i < getWidth()-1 ; i++){
-		//	canvas.drawLine(i+getWidth()/8, (i+getHeight()/3)+(1/2), (i+getWidth()/8)+(1/5), (i+getHeight()/3)+(1/2), dark);
-
-		/*
+		/**
 		 * creates a HashMap to be able to store a certain x,y position with the corresponding color of the room.
 		 * The String is the key to the specific room.
 		 */
 		HashMap<String, Rect> map = new HashMap<String, Rect>();
 
 		String name = "Ej startat";
-		/*
+		/**
 		 * These two for-loops insert the values of the x,y-position and draws the map differently depending on if the device
 		 * is tilted or not. Then it draws the player on the correct position on the map.
 		 */

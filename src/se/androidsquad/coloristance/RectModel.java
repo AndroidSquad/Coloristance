@@ -4,9 +4,9 @@ import android.util.Log;
 
 public class RectModel {
 
-	/* 
-	 * This model shall contain the Color that will be used in the game
-	 * and not determine the color, this will be determined by GameController
+	/**
+	 * This Model class contains the colors that will be used in the game. This class will not however determine
+	 * the colors for the rooms and keys, but just keep the colors.
 	 */
 
 	public static final int BLACK 		= 0xFF000000;
@@ -22,7 +22,7 @@ public class RectModel {
 	public static int rectColor; // The color could be 0,1,2,3,4,5,6
 
 	/**
-	 * @param roomcode	this string is the code of the current room
+	 * @param roomcode	this string represents the code of the current room
 	 */
 	public static void setRectColor(String roomcode) { 
 		if (roomcode.charAt(0) == '0'){
@@ -43,14 +43,14 @@ public class RectModel {
 	}
 
 	/**
-	 * @return	the color of the the room asked for as an int
+	 * @return	rectColor the color of the the room asked for as an int
 	 */
 	public static int getRectColor(){
 		return rectColor;
 	}
 
 	/**
-	 * @return the color of the room as a string needed for the initialization of a paint object in drawMap
+	 * @return color the color of the room as a string needed for the initialization of a paint object in drawMap
 	 */
 	public static String getRoomColor(){
 
@@ -66,11 +66,4 @@ public class RectModel {
 		else color = "Inget";	
 		return color;
 	}
-
-	public void updatePos(){
-		/* Denna metod ska meddela RectModelData när position har ändrats så att 
-		 * RectModelData vet att den ska förändra rummets färg. Får kanske använda Listeners eller nåt...
-		 */
-	}	
-
 }
