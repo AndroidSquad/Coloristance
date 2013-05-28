@@ -64,7 +64,7 @@ public class GameController {
 //		doorClick();
 //		Levels.initLevel();
 
-	}
+	}//Constructor
 	
 	public static void setLevel(int lvl){
 		if(1 <= lvl)
@@ -112,4 +112,4 @@ public class GameController {
 	
 
 	
-}
+}//GameController
