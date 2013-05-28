@@ -5,17 +5,14 @@ import java.io.IOException;
 import se.androidsquad.coloristance.R.drawable;
 
 import android.media.MediaPlayer;
-import android.opengl.Visibility;
 import android.os.Bundle;
 import android.app.Activity;
 import android.content.Intent;
 import android.util.Log;
 import android.view.Menu;
 import android.view.View;
-import android.view.View.OnClickListener;
 import android.widget.Button;
 import android.widget.ImageButton;
-import android.view.KeyEvent;
 
 /**
  * This class represents the first screen of our game. It contains buttons to 

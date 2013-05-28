@@ -1,7 +1,6 @@
 package se.androidsquad.coloristance;
 
 import android.util.Log;
-import se.androidsquad.coloristance.database.Levels;
 
 public class GameController {
 

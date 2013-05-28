@@ -1,8 +1,6 @@
 package se.androidsquad.coloristance;
 
 import android.app.Activity;
-import android.content.Context;
-import android.util.AttributeSet;
 import android.view.View;
 
 public class DoorView{

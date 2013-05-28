@@ -2,10 +2,7 @@ package se.androidsquad.coloristance;
 
 import se.androidsquad.coloristance.R.drawable;
 import android.app.Activity;
-import android.content.Context;
-import android.util.AttributeSet;
 import android.util.Log;
-import android.view.View;
 
 public class InventoryView{
 

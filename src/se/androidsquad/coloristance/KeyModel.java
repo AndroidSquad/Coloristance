@@ -1,9 +1,6 @@
 package se.androidsquad.coloristance;
 
-import se.androidsquad.coloristance.R.drawable;
-import android.graphics.Color;
 import android.util.Log;
-import android.view.View;
 
 public class KeyModel {
 
