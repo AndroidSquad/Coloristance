@@ -13,7 +13,7 @@ import android.util.AttributeSet;
 import android.util.Log;
 import android.view.View;
 
-/*
+/**
  * This class is in charge of the painting of the current map on the screen, and also 
  * the player position.
  */
@@ -23,13 +23,19 @@ public class DrawMap extends View {
 	public DrawMap(Context context, AttributeSet attrs) {
 		super(context, attrs);
 	}
-
-	Paint border;
+	
+	/**
+	 * The onDraw method handles the drawing of the map, both in portratin and landscape mode
+	 */
+	Paint border; //A Paint object used to paint the black border on the circle representing the player position
 	@SuppressLint("DrawAllocation")
 	@Override
 	public void onDraw(Canvas canvas) { 
 		super.onDraw(canvas);
-
+		
+		/**
+		 * Creates a HashMap which pairs up the String representing a room with the corresponding color
+		 */
 		HashMap<String, Paint> col = new HashMap<String, Paint>();
 		col.put("bl", new Paint());
 		col.get("bl").setColor(RectModel.BLUE_LIGHT);
@@ -45,13 +51,16 @@ public class DrawMap extends View {
 		col.get("white").setColor(RectModel.WHITE);
 		col.put("black", new Paint());
 		col.get("black").setColor(RectModel.BLACK);
+		
+		// Painting the black border around the white circle representing the player position
 		col.put("black2", border = new Paint());
 		col.get("black2").setColor(RectModel.BLACK);
-		border.setStyle(Paint.Style.STROKE);
+		border.setStyle(Paint.Style.STROKE); 
 		border.setStrokeWidth(3);
 		
 
 		String rectColor = "pl";
+		//TODO vad händer här?
 
 		int mapTop = findViewById(R.id.mapRect).getTop();
 		int mapBot = findViewById(R.id.mapRect).getBottom();
@@ -61,9 +70,9 @@ public class DrawMap extends View {
 		int mapWidth = findViewById(R.id.mapRect).getWidth();
 		int xPos = MapModel.getMyX();
 		int yPos = MapModel.getMyY();
-		//Log.v("DrawMap", mapWidth+", "+mapHeight+", "+mapLeft+", "+mapTop+", "+mapRight+", "+mapBot);
+		Log.v("DrawMap", mapWidth+", "+mapHeight+", "+mapLeft+", "+mapTop+", "+mapRight+", "+mapBot);
 
-		/*
+		/*TODO kan ta borta detta?
 		 * the following code segment including the for-loop creates the map frame that the
 		 * levels will be painted on.
 		 */
@@ -114,7 +123,7 @@ public class DrawMap extends View {
 				}
 			}
 			canvas.drawCircle(MapModel.getCircPos(1, yPos), MapModel.getCircPos(2, xPos), MapModel.getCircPos(4, yPos), col.get("white"));
-			canvas.drawCircle(MapModel.getCircPos(1, yPos), MapModel.getCircPos(2, xPos), MapModel.getCircPos(4, yPos), col.get("black2"));
+			canvas.drawCircle(MapModel.getCircPos(1, yPos), MapModel.getCircPos(2, xPos), MapModel.getCircPos(4, yPos), col.get("black2"));//Pints the black border on the white circle
 			invalidate();// Calls the onDraw again as soon as it has painted everything
 		}
 		else{
@@ -132,7 +141,7 @@ public class DrawMap extends View {
 				}
 			}
 			canvas.drawCircle(MapModel.getCircPos(1, xPos), MapModel.getCircPos(2, yPos), MapModel.getCircPos(3, yPos), col.get("white"));
-			canvas.drawCircle(MapModel.getCircPos(1, xPos), MapModel.getCircPos(2, yPos), MapModel.getCircPos(3, yPos), col.get("black2"));
+			canvas.drawCircle(MapModel.getCircPos(1, xPos), MapModel.getCircPos(2, yPos), MapModel.getCircPos(3, yPos), col.get("black2"));//Paints the black border on the white circle
 			invalidate();// Calls the onDraw again as soon as it has painted everything
 
 		}
@@ -140,7 +149,7 @@ public class DrawMap extends View {
 
 
 
-	/*
+	/*TODO kan ta bort detta?
 		//Map Rectangle Two
 		Rect mapRectTwo = new Rect();
 		mapRectTwo.set(9*getWidth()/64, 9*getHeight()/24, 15*getWidth()/64,15*getHeight()/24); 

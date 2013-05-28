@@ -1,7 +1,6 @@
 package se.androidsquad.coloristance;
 
 import java.io.IOException;
-
 import se.androidsquad.coloristance.R.drawable;
 import android.app.Activity;
 import android.app.AlertDialog;
@@ -21,7 +20,7 @@ import android.widget.TextView;
  * This class is responsible for the majority of the communication with the other classes. This class acts 
  * both as a View and a Controller. 
  * 
- * This class sets the screen to firstscreen.xml. If the orienation is in landscape mode, a landscape version
+ * This class sets the screen to firstscreen.xml. If the orientation is in landscape mode, a landscape version
  * of firstscreen.xml is used. This class sends information to DrawMap to retrieve information from the 
  * database (Levels.java) which level is to be played. This class handles information regarding the room and its
  * related doors. It also handles the color of the inventory stack at the bottom of the screen.
@@ -32,7 +31,6 @@ import android.widget.TextView;
  * level, and the other timer counts down from 10 seconds in each room.
  *   
  */
-
 
 public class FirstScreen extends Activity {
 
@@ -118,7 +116,7 @@ public class FirstScreen extends Activity {
 		if (visSpeak == 2){
 			mp.start();
 			mp.setLooping(true);
-			Log.v("Mafi", "VisSpeak FIRST value is " + visSpeak);
+			Log.v("FirstScreen", "VisSpeak FIRST value is " + visSpeak);
 			visSpeak = 1;
 			musicButton.setBackgroundResource(drawable.speaker);
 		}
@@ -154,9 +152,7 @@ public class FirstScreen extends Activity {
 					mp.pause();	
 					visSpeak = 0;
 					Log.v("FirstScreen", "VisSpeak Value AFTER if " + visSpeak);
-
 				}
-
 			}
 		});
 
@@ -169,7 +165,6 @@ public class FirstScreen extends Activity {
 		 * The following four ImageButtons represent our doors that enables a player to move between the
 		 * rooms on the map.
 		 */
-
 		final ImageButton topDoor = (ImageButton) findViewById(R.id.top_door);
 		final ImageButton rightDoor = (ImageButton) findViewById(R.id.right_door);
 		final ImageButton botDoor = (ImageButton) findViewById(R.id.bot_door);
@@ -179,7 +174,6 @@ public class FirstScreen extends Activity {
 		 * The following three ImageButtons represent the three positions in the inventory that are available for 
 		 * storing keys
 		 */
-
 		final ImageButton invLeft = (ImageButton) findViewById(R.id.invKeyLeft);
 		final ImageButton invMid = (ImageButton) findViewById(R.id.invKeyMid);
 		final ImageButton invRight = (ImageButton) findViewById(R.id.invKeyRight);
@@ -188,7 +182,6 @@ public class FirstScreen extends Activity {
 		 * The following five ImageButtons represent the five different colors of keys that are
 		 * available in the game
 		 */
-
 		final ImageButton keyBlue = (ImageButton) findViewById(R.id.key_button_blue);
 		final ImageButton keyGreen = (ImageButton) findViewById(R.id.key_button_green);
 		final ImageButton keyOrange = (ImageButton) findViewById(R.id.key_button_orange);
@@ -198,8 +191,6 @@ public class FirstScreen extends Activity {
 		final View[] keys = {keyBlue, keyGreen, keyOrange, keyPurple, keyRed};
 		final View[] inventories = {invLeft, invMid, invRight};
 		final View[] doors = {topDoor, rightDoor, botDoor, leftDoor};
-		final String[] whatKey = {"Left was clicked","Mid was clicked","Right was clicked"}; 
-		//		TODO Används denna idag?
 
 		View.OnClickListener doorClick = new View.OnClickListener(){
 
@@ -375,7 +366,7 @@ public class FirstScreen extends Activity {
 		outState.putInt("visiblespeaker",visSpeak);
 		outState.putLong("savedtime", savedTime);
 		outState.putLong("roomsavedtime", roomSavedTime);
-		Log.v("Mafi","Visible speaker state: " + visSpeak + " saved");
+		Log.v("FirstScreen","Visible speaker state: " + visSpeak + " saved");
 	}
 
 	protected void dropKey(int invPosition){
@@ -675,8 +666,8 @@ public class FirstScreen extends Activity {
 
 	private long getPlayedTime() {
 		stopTime = System.currentTimeMillis();
-		Log.v("Mafi","" + "stopTime-startTime milli" + (stopTime-startTime));
-		Log.v("Mafi","savedTime" + savedTime);
+		Log.v("FirstScreen","" + "stopTime-startTime milli" + (stopTime-startTime));
+		Log.v("FirstScreen","savedTime" + savedTime);
 		return playedTime = (stopTime - startTime)/1000 + savedTime;
 	}
 
@@ -724,9 +715,9 @@ public class FirstScreen extends Activity {
 		if (timerRotation != null) {//Sets timerRotation to cancel its countdown, so not to interfere with the instance 'timer'
 			timerRotation.cancel();
 		}
-		Log.v("Mafi","" + savedTime + " innan");
+		Log.v("FirstScreen","" + savedTime + " innan");
 		savedTime = getPlayedTime();
-		Log.v("Mafi","" + savedTime + " efter");
+		Log.v("FirstScreen","" + savedTime + " efter");
 		roomStopTime = System.currentTimeMillis(); 
 		roomSavedTime = getRoomPlayedTime();
 		Log.v("FirstScreen","roomsavedtime Šr "+roomSavedTime);
@@ -754,7 +745,7 @@ public class FirstScreen extends Activity {
 		// Sets the text to Game Over in the textTimer TextView, and calls the gameLost() method
 		@Override
 		public void onFinish() {	
-			textTimer.setText("0");//TODO ska detta tas bort?
+			textTimer.setText("0");
 			gameLost();
 		}
 
