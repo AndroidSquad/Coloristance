@@ -14,7 +14,8 @@
     <string name="key_desc">This is a colored key you can use to get access to a room with the same color</string>
     <string name="finished">Congratulations!</string>
     <string name="play_next_level">Play Next Level</string>
-    <string name="end_game">Main Menu</string>
+    <string name="end_game">End Game</string>
+    <string name="main_menu">Main Menu</string>
     <string name="try_again">Try Again</string>
     <string name="lost_game">Game Over! You ran out of time</string>
 	<string name="back_pressed">Do you want to exit already?</string>

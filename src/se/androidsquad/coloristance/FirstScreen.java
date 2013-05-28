@@ -603,10 +603,10 @@ public class FirstScreen extends Activity {
 	           .setMessage(this.getText(R.string.back_pressed))
 	           .setCancelable(true)
 	           .setNegativeButton("No", null)
-	           .setNeutralButton(R.string.end_game, new DialogInterface.OnClickListener(){
+	           .setNeutralButton(R.string.main_menu, new DialogInterface.OnClickListener(){
 	        	   public void onClick(DialogInterface dialog, int i){
+	        		   MainActivity.visResume=true;
 	        		   endGame();
-
 	        	   }
 	           })
 	           .setPositiveButton(R.string.try_again,new DialogInterface.OnClickListener(){

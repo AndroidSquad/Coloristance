@@ -17,7 +17,7 @@ import android.widget.Button;
 import android.widget.ImageButton;
 import android.view.KeyEvent;
 
-/*
+/**
  * This class represent the first screen of our game, it should contain buttons to 
  * create a new game, start the music, pause the music. From this first screen you should
  * be routed to the MainActivity.xml when you click on the newGame button.
@@ -32,8 +32,8 @@ public class MainActivity extends Activity {
 	public static boolean visResume = false;
 
 
-	/*
-	 * When the class is called the onCreate it sets the view to activity_main.xml, and it also creates different
+	/**
+	 * When the class is called the onCreate sets the view to activity_main.xml, and it also creates different
 	 * buttons in order for the player to start a newGame and turn on the music.
 	 */
 	@Override
@@ -43,12 +43,9 @@ public class MainActivity extends Activity {
 
 		mp = MediaPlayer.create(MainActivity.this, R.raw.house_music);				 
 
-		
-		Button newGame = (Button) findViewById(R.id.new_game); // This row connect the button named new_game in main_activity.xml to the button newGame.
+		Button newGame = (Button) findViewById(R.id.new_game); 
 		Button resumeButton = (Button) findViewById(R.id.resume_game);
 		
-
-				
 		View.OnClickListener startNewGame = new View.OnClickListener(){ 
 
 			@Override
