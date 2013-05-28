@@ -24,10 +24,7 @@ package se.androidsquad.coloristance.database;
  * The first figure must be a value since it represent the room's color.
  */ 
 
-public class Levels { //Would like to scan the .txt file and insert the information into a array[][]. The current version does not work however.
-//protected static File filename = new File("/assets/levels/Level1.txt");
-//protected static String[][] mapArray;
-
+public class Levels { 
 	
 public static String[][] map_1 = {	
 
@@ -101,17 +98,6 @@ public static String[][] keys_3 = {
 	{"10000","00000","00010"},
 	{"00000","00000","01000"}
 };
-
-
-
-//public static void initLevel() throws FileNotFoundException, IOException {
-//	Scanner sc = new Scanner(filename);
-//	for (int i = 0; i < mapArray.length; i++){
-//		for(int j= 0; j< mapArray[i].length; j++){
-//			mapArray[i][j] = sc.next();
-//		}	
-//	} 
-//}
 
 }
 
