@@ -50,9 +50,7 @@ public class FirstScreen extends Activity {
 	int[] door = {R.id.top_door, R.id.right_door, R.id.bot_door,  R.id.left_door}; 
 	int[] keyNames = {R.id.key_button_blue, R.id.key_button_green, R.id.key_button_orange, R.id.key_button_purple, R.id.key_button_red};
 	int[] keyImg = {drawable.key_blue, drawable.key_green, drawable.key_orange, drawable.key_purple, drawable.key_red, drawable.key_empty};
-
-	char[] pos = {'N','E','S','W'};
-//	boolean allocatedInv[] = {false,false,false};
+//	char[] pos = {'N','E','S','W'};
 
 	long startTime, stopTime, playedTime, savedTime; //variables used for counting the total time it takes for a player to finish a level
 	long roomStartTime, roomStopTime, roomPlayedTime, roomSavedTime; //variables used for keeping track of the countdown time in each room
@@ -453,12 +451,12 @@ public class FirstScreen extends Activity {
 	 * If a door is initially defined as being black, then that door is made invisible
 	 */
 	protected void setDoors(){
-		for(int z = 0; z<4; z++){
-			View currentView = findViewById(door[z]);
+		for(int i = 0; i<4; i++){
+			View currentView = findViewById(door[i]);
 
 			currentView.setVisibility(View.VISIBLE);
-			currentView.setBackgroundColor(DoorModel.getDoor(pos[z]));
-			if(DoorModel.getDoor(pos[z]) == RectModel.BLACK){
+			currentView.setBackgroundColor(DoorModel.getDoor(i));
+			if(DoorModel.getDoor(i) == RectModel.BLACK){
 				currentView.setVisibility(View.INVISIBLE);
 			}
 		}	

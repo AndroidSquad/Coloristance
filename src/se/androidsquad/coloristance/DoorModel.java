@@ -48,14 +48,8 @@ public class DoorModel{
 	 * @param loc a char which represent the door and its position
 	 * @return the color of the door
 	 */
-	public static int getDoor(char loc){
-
-		if (loc == 'N') return position[0];
-		else if (loc == 'E') return position[1];
-		else if (loc == 'S') return position[2];
-		else if (loc == 'W') return position[3];
-		else return 0;
-
+	public static int getDoor(int loc){
+				return position[loc];
 	}
 
 	public static int getDoorColorNr(int pos){
