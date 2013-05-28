@@ -1,12 +1,12 @@
 package se.androidsquad.coloristance;
 
-import android.annotation.SuppressLint;
-import android.os.Bundle;
+import android.util.Log;
+import se.androidsquad.coloristance.database.Levels;
 
 public class GameController {
 
 	/*
-	 * Koordinerar mellan View och Model.Bšr innehŒlla metoderna:
+	 * Koordinerar mellan View och Model.Should contain methods:
 	 * 
 	 * doorClick() - changeRoom() - changeMapLocation() - animateDoor()
 	 * 
@@ -30,23 +30,55 @@ public class GameController {
 	 *  
 	 *  Om du får ett fel kan du trycka på det och därefter Ctrl+1 för förlag på lösningar*/
 
-	protected PositionModel pos;
 	protected RectModel rect;
 	protected DoorModel door;
-	protected int col = 3; // Dessa ska vara flexibla och gŒ att Šndra sedan
-	protected int size = 1;// Dessa ska vara flexibla och gŒ att Šndra sedan
 	protected String roomcode;
+
 	
-	
+	public static KeyModel[][] key;
+	public static InventoryModel inv = new InventoryModel();
+
+	// The first level is always "map_1", why the variable level is initally defined as "map_1"
+	public static int level = 1; 
+
+	/*
+	 * The empty constructor of GameController whcih creates an object of 
+	 * each of the different models created
+	 */
+
 	public GameController(){ // Creates an object of each of the Models
-		this.pos = new PositionModel();
+			MapModel.setMap(level);
+			key = KeyModel.getKeyArray();
+			
+	
+//			Log.v("GameController","Fel"+level);
+//		for(int i = 0; i<key.length;i++){
+//			for(int j = 0; j<key[i].length;j++){
+//				Log.v("GameController",i +","+ j +":"+ key[i][j].getKeyString());
+//			}
+//		}
+
 		this.rect = new RectModel();
 		this.door = new DoorModel();
-		roomcode = Levels.Level1[0][0]; //retrieving the room from the database "Levels"
-		RectModel.setRectColor(roomcode);
-		DoorModel.setDoor(roomcode);
+
+//		doorClick();
+//		Levels.initLevel();
 
 	}
+	
+	public static void setLevel(int lvl){
+		if(1 <= lvl)
+			level = lvl;
+		else
+			Log.v("GameController","The level couldn't be set to "+lvl);
+
+	}
+	
+	public static int getLevel(){
+		Log.v("GameController","The level returned was: "+level);
+		return level;	
+	}
+	
 	
 	
 	/* Do we really need this constructor?
@@ -58,21 +90,24 @@ public class GameController {
 		this.door = door;
 	} */
 
-	protected void drawMap() {
-		int posX, posY;
-		pos = new PositionModel();
-		posX = pos.getX(); // ska skickas til view att i denna positionen i rutnätet ska en cirkel ritas ut
-		posY = pos.getY();
+//	protected void drawMap() {
+//		int posX, posY;
+//		pos = new PositionModel();
+//		posX = pos.getX(); // ska skickas til view att i denna positionen i rutnätet ska en cirkel ritas ut
+//		posY = pos.getY();
+//
+//	}
 
-	}
+//	protected void drawRoom() {
+//		
+//	}
+//	 this model is only called once and not as it supposed more often as I understand it.............................................................
+//	protected void doorClick() {
+//		roomcode = Levels.mapArray[0][0]; //retrieving the room from the database "Levels"
+//		RectModel.setRectColor(roomcode);
+//		DoorModel.setDoor(roomcode);
+//	}
 
-	protected void drawRoom() {
-		
-	}
-
-	protected void doorClick() {
-
-	}
 	
 	
 

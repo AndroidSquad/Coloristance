@@ -29,5 +29,5 @@ proguard/
 *.ipr
 *.iws
 .idea/
-
-
+*.log
+*.bash*
