@@ -1,7 +1,6 @@
 package se.androidsquad.coloristance;
 
 import java.io.IOException;
-
 import se.androidsquad.coloristance.R.drawable;
 import android.app.Activity;
 import android.app.AlertDialog;
@@ -33,35 +32,30 @@ import android.widget.TextView;
  *   
  */
 
-
 public class FirstScreen extends Activity {
 
 	MediaPlayer mp, finish_game;
 	DrawMap map;
-	DrawKeys drawKeys;
 	GameController game;
 	MainActivity main;
 	ImageButton musicButton;
 	KeyModel thisKey;
-	int visSpeak; //state of the ImageButton musicButton, 0 = not playing, 1 = is playing, 2 = not defined
 	Runnable runnable;
+	TextView textTimer;		
+	CountDown timer, timerRotation; //two separate instances of the private class CountDown, 
+	
+	//used to handle the count down in each room. 
+	//The second variable handles the count down in the case of a change of orientation 
+	int visSpeak; //state of the ImageButton musicButton, 0 = not playing, 1 = is playing, 2 = not defined
 	protected static int levelCounter = 1; //variable that keeps track of which level is to be played
-
 	int[] door = {R.id.top_door, R.id.right_door, R.id.bot_door,  R.id.left_door}; 
 	int[] keyNames = {R.id.key_button_blue, R.id.key_button_green, R.id.key_button_orange, R.id.key_button_purple, R.id.key_button_red};
 	int[] keyImg = {drawable.key_blue, drawable.key_green, drawable.key_orange, drawable.key_purple, drawable.key_red, drawable.key_empty};
-//	char[] pos = {'N','E','S','W'};
-
+	int[] invPos = {R.id.invKeyLeft, R.id.invKeyMid, R.id.invKeyRight};
 	long startTime, stopTime, playedTime, savedTime; //variables used for counting the total time it takes for a player to finish a level
 	long roomStartTime, roomStopTime, roomPlayedTime, roomSavedTime; //variables used for keeping track of the countdown time in each room
 	String timeResult; //a String representing the total time for completing a level
 
-	int[] invPos = {R.id.invKeyLeft, R.id.invKeyMid, R.id.invKeyRight};
-
-	TextView textTimer;		
-	CountDown timer, timerRotation; //two separate instances of the private class CountDown, 
-	//used to handle the count down in each room. 
-	//The second variable handles the count down in the case of a change of screen orientation 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
@@ -99,7 +93,6 @@ public class FirstScreen extends Activity {
 
 		game = new GameController();
 		map = new DrawMap(FirstScreen.this, null);
-		drawKeys = new DrawKeys(FirstScreen.this, null);
 
 		//Variables used to keep track of the player's position in the map
 		int x= MapModel.getMyX();
@@ -139,7 +132,6 @@ public class FirstScreen extends Activity {
 		musicButton.setOnClickListener(new View.OnClickListener(){
 			@Override
 			public void onClick(View v) {
-				// TODO Auto-generated method stub
 				Log.v("FirstScreen", "VisSpeak Value before if " + visSpeak);
 				if(visSpeak==0){
 					try {
@@ -160,9 +152,7 @@ public class FirstScreen extends Activity {
 					mp.pause();	
 					visSpeak = 0;
 					Log.v("FirstScreen", "VisSpeak Value AFTER if " + visSpeak);
-
 				}
-
 			}
 		});
 
@@ -175,7 +165,6 @@ public class FirstScreen extends Activity {
 		 * The following four ImageButtons represent our doors that enables a player to move between the
 		 * rooms on the map.
 		 */
-
 		final ImageButton topDoor = (ImageButton) findViewById(R.id.top_door);
 		final ImageButton rightDoor = (ImageButton) findViewById(R.id.right_door);
 		final ImageButton botDoor = (ImageButton) findViewById(R.id.bot_door);
@@ -185,7 +174,6 @@ public class FirstScreen extends Activity {
 		 * The following three ImageButtons represent the three positions in the inventory that are available for 
 		 * storing keys
 		 */
-
 		final ImageButton invLeft = (ImageButton) findViewById(R.id.invKeyLeft);
 		final ImageButton invMid = (ImageButton) findViewById(R.id.invKeyMid);
 		final ImageButton invRight = (ImageButton) findViewById(R.id.invKeyRight);
@@ -194,7 +182,6 @@ public class FirstScreen extends Activity {
 		 * The following five ImageButtons represent the five different colors of keys that are
 		 * available in the game
 		 */
-
 		final ImageButton keyBlue = (ImageButton) findViewById(R.id.key_button_blue);
 		final ImageButton keyGreen = (ImageButton) findViewById(R.id.key_button_green);
 		final ImageButton keyOrange = (ImageButton) findViewById(R.id.key_button_orange);
@@ -204,8 +191,6 @@ public class FirstScreen extends Activity {
 		final View[] keys = {keyBlue, keyGreen, keyOrange, keyPurple, keyRed};
 		final View[] inventories = {invLeft, invMid, invRight};
 		final View[] doors = {topDoor, rightDoor, botDoor, leftDoor};
-		final String[] whatKey = {"Left was clicked","Mid was clicked","Right was clicked"}; 
-		//		TODO Används denna idag?
 
 		View.OnClickListener doorClick = new View.OnClickListener(){
 
@@ -377,7 +362,6 @@ public class FirstScreen extends Activity {
 
 	@Override
 	protected void onSaveInstanceState(Bundle outState) {
-		// TODO Auto-generated method stub
 		super.onSaveInstanceState(outState);
 		outState.putInt("visiblespeaker",visSpeak);
 		outState.putLong("savedtime", savedTime);
@@ -434,7 +418,7 @@ public class FirstScreen extends Activity {
 		Log.v("FirstScreen", "buffer 1: " + buffer[0]+ buffer[1]+ buffer[2]+ buffer[3]+ buffer[4]);
 		Log.v("FirstScreen", "InvPos: " + GameController.inv.getInv(keyInvPos));
 		Log.v("FirstScreen", "input : " + GameController.key[MapModel.getMyX()][MapModel.getMyY()].getKeyString());*/
-	//TODO
+	
 
 	/**
 	 * This method controls that DoorModel appoints the correct doors to each room
