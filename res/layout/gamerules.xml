@@ -63,6 +63,33 @@
             android:textColor="@color/white" 
             android:layout_marginTop="10dp"
             android:layout_below="@id/room_inventory"/>
+        
+        <TextView
+            android:id="@+id/back_pressed_explanation"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/takeabreaktext"
+            android:textColor="@color/white" 
+            android:layout_marginTop="10dp"
+            android:layout_below="@id/room_inv_explanation"/>
+        
+        <ImageView
+            android:id="@+id/back_options"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:src="@drawable/backwards"
+            android:layout_marginTop="10dp"
+            android:layout_below="@id/back_pressed_explanation" />
+        
+         <TextView
+            android:id="@+id/finished_level_explanation"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/finishedleveltext"
+            android:textColor="@color/white" 
+            android:layout_marginTop="10dp"
+            android:layout_below="@id/back_options"/>
+        
     </RelativeLayout>
 
 </ScrollView>
