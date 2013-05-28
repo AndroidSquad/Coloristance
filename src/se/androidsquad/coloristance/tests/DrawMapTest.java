@@ -18,10 +18,6 @@ public class DrawMapTest {
 		MapModel.setMap(1);
 	}
 
-	@After
-	public void tearDown() throws Exception {
-	}
-
 	@Test
 	public void testOnDrawCanvas() {
 		assertEquals(8, MapModel.mapArray.length);

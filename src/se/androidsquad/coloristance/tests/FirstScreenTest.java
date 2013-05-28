@@ -25,10 +25,6 @@ public class FirstScreenTest {
 
 	}
 
-	@After
-	public void tearDown() throws Exception {
-	}
-
 	/*
 	 * this test help us investigate if the player can move on the map and
 	 * that the position is correct after each movement.
