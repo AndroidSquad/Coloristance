@@ -9,6 +9,7 @@ import org.junit.Test;
 import se.androidsquad.coloristance.models.DoorModel;
 import se.androidsquad.coloristance.models.MapModel;
 import se.androidsquad.coloristance.models.RectModel;
+
 /**
  * This class asserts that the doors in the room are set to a correct value when we
  * use the setDoor() method.
@@ -19,7 +20,7 @@ public class DoorModelTest {
 	 * We need to instantiate the colors that we use in the game as
 	 * an int in order to test so the doors get the right color
 	 */
-	int zero=RectModel.BLACK;
+	int zero = RectModel.BLACK;
 	int two = RectModel.GREEN_LIGHT;
 	int three = RectModel.ORANGE_LIGHT;
 	int seven = RectModel.WHITE;
@@ -36,10 +37,11 @@ public class DoorModelTest {
 	@Test
 	public void testSetDoor() {
 		DoorModel.setDoor("13027");
-		assertEquals(DoorModel.getDoor('N'), three);
-		assertEquals(DoorModel.getDoor('E'), zero);
-		assertEquals(DoorModel.getDoor('S'), two);
-		assertEquals(DoorModel.getDoor('W'), seven);	
+		System.out.print(DoorModel.getDoor(4));
+		assertEquals(DoorModel.getDoor(1), three);
+		assertEquals(DoorModel.getDoor(2), zero);
+		assertEquals(DoorModel.getDoor(3), two);
+		assertEquals(DoorModel.getDoor(4), seven);	
 	}
 
 }
