@@ -539,8 +539,8 @@ public class FirstScreen extends Activity {
 		MapModel.setPos(0,1); //TODO vad ska TODOas här??
 		AlertDialog.Builder alertDialog = new AlertDialog.Builder(this);
 		alertDialog.setTitle(this.getText(R.string.finished)+"\t"+" You finished in: "+ timeResult +" seconds" );
-		//alertDialog.setTitle(showTime()); TODO kan detta tas bort?
 		LayoutInflater inflater = this.getLayoutInflater();
+
 
 		mp.stop();
 		finish_game = MediaPlayer.create(FirstScreen.this, R.raw.super_mario_complete);	
@@ -555,11 +555,8 @@ public class FirstScreen extends Activity {
 
 			public void onClick(View clicked){
 				if(clicked.getId() == R.id.playNextLevel)
-					levelCounter++;
-				GameController.setLevel(levelCounter);
-				startActivity(new Intent(FirstScreen.this, FirstScreen.class));
-				finish_game.stop();
-				cleanInventory();
+					finish_game.stop();
+					playNextLevel();
 			}
 		});
 		
@@ -568,19 +565,25 @@ public class FirstScreen extends Activity {
 
 			public void onClick(View clicked){
 				if(clicked.getId() == R.id.endGame){
-					levelCounter=1;
-					GameController.setLevel(levelCounter);
-					Intent intent = new Intent(getApplicationContext(), MainActivity.class);
-					intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
-					startActivity(intent);
 					finish_game.stop();
-					finish();
-					cleanInventory();
+					endGame();
 				}
 			}	
 		});
+		
+		View retryButton=dialogView.findViewById(R.id.doneRetry);
+		retryButton.setOnClickListener(new View.OnClickListener() {
+
+			public void onClick(View clicked){
+				if(clicked.getId() == R.id.doneRetry){
+					finish_game.stop();
+					retryLevel();
+				}	
+			}
+		});
 
 		AlertDialog finishDialog = alertDialog.create();
+		finishDialog.setCanceledOnTouchOutside(false);
 		finishDialog.show();
 	}
 
@@ -608,10 +611,7 @@ public class FirstScreen extends Activity {
 
 			public void onClick(View clicked){
 				if(clicked.getId() == R.id.retry){
-					MapModel.setPos(0,1);
-					startActivity(new Intent(FirstScreen.this, FirstScreen.class));
-					levelCounter = GameController.getLevel();
-					cleanInventory();
+					retryLevel();
 				}	
 			}
 		});
@@ -621,18 +621,12 @@ public class FirstScreen extends Activity {
 
 			public void onClick(View clicked){
 				if(clicked.getId() == R.id.endGame){
-					levelCounter=1;
-					GameController.setLevel(levelCounter);
-					MapModel.setPos(0,1);
-					Intent intent = new Intent(getApplicationContext(), MainActivity.class);
-					intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
-					startActivity(intent);
-					finish();
-					cleanInventory();
+					endGame();
 				}
 			}
 		});
 		AlertDialog gameOverDialog = loseDialog.create();
+		gameOverDialog.setCanceledOnTouchOutside(false);
 		gameOverDialog.show();
 
 	}
@@ -648,29 +642,63 @@ public class FirstScreen extends Activity {
 	@Override
 	public void onBackPressed() {   
 		new AlertDialog.Builder(this)
-	           .setMessage("Do you want to exit already?")
+	           .setMessage(this.getText(R.string.back_pressed))
 	           .setCancelable(true)
 	           .setNegativeButton("No", null)
-	           .setNeutralButton("Main screen", new DialogInterface.OnClickListener(){
+	           .setNeutralButton(R.string.end_game, new DialogInterface.OnClickListener(){
 	        	   public void onClick(DialogInterface dialog, int i){
-	        		   FirstScreen.this.finish();
-	        		   startActivity(new Intent(getApplicationContext(), MainActivity.class));
-	        		   cleanInventory();
+	        		   endGame();
+
 	        	   }
 	           })
-	           .setPositiveButton("Restart",new DialogInterface.OnClickListener(){
+	           .setPositiveButton(R.string.try_again,new DialogInterface.OnClickListener(){
 	        	   public void onClick(DialogInterface dialog, int i){
-	        		   MapModel.setPos(0,1); 
-	        		   FirstScreen.this.finish();
-	        		   cleanInventory();
-	        		   Intent intent = new Intent(getApplicationContext(), FirstScreen.class);
-	        		   startActivity(intent);
-	        		  
+	        		   retryLevel();
 	        	   }
 	           })
 	           .show();
 	}
 
+	/**
+	 * This method handles what happens if the user presses the button "Play next level". The next level is 
+	 * returned with the correspding rooms, doors and keys. A new activity with the next level is started, and 
+	 * the current inventory is cleaned.
+	 */
+	
+	public void playNextLevel() {
+		levelCounter++;
+		GameController.setLevel(levelCounter);
+		startActivity(new Intent(FirstScreen.this, FirstScreen.class));
+		cleanInventory();
+	}
+	
+	/**
+	 * This method handles a user pressing the button "Main menu". The current activity is finished, the 
+	 * variable levelCounter is set to prepare for the first level, and a new activity for the main menu is
+	 * processed. 
+	 */
+	
+	public void endGame() {
+		levelCounter = 1;
+		GameController.setLevel(levelCounter);
+		finish();
+		Intent intent = new Intent(getApplicationContext(), MainActivity.class);
+		intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP); //All previous activities are cleared
+		startActivity(intent);
+		cleanInventory();
+	}
+	
+	/**
+	 * This method handles when the user presses the button "Try again". A new activity with the same level is 
+	 * initiated.
+	 */
+	
+	public void retryLevel(){
+		MapModel.setPos(0,1);
+		startActivity(new Intent(FirstScreen.this, FirstScreen.class));
+		levelCounter = GameController.getLevel();
+		cleanInventory();
+	}
 
 	/**
 	 * Returns the total time for the player to complete a level, in seconds
@@ -759,7 +787,7 @@ public class FirstScreen extends Activity {
 		// Sets the text to Game Over in the textTimer TextView, and calls the gameLost() method
 		@Override
 		public void onFinish() {	
-			textTimer.setText("GAME OVER");//TODO ska detta tas bort?
+			textTimer.setText("0");//TODO ska detta tas bort?
 			gameLost();
 		}
 
@@ -768,8 +796,10 @@ public class FirstScreen extends Activity {
 		public void onTick(long millisUntilFinished) {
 			textTimer.setText((millisUntilFinished/1000)+ "");
 		}
-
 	}	
+	
+
+	
 }
 
 

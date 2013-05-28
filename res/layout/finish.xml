@@ -17,10 +17,18 @@
     android:id="@+id/playNextLevel"
     android:layout_width="fill_parent"
     android:layout_height="wrap_content"/>
+    
     <Button 
     android:text="@string/end_game"
     android:id="@+id/endGame"
     android:layout_width="fill_parent"
     android:layout_height="wrap_content"/> 
+    
+    <Button 
+    android:text="@string/try_again"
+    android:id="@+id/doneRetry"
+    android:layout_width="fill_parent"
+    android:layout_height="wrap_content"/> 
+    
 
 </LinearLayout>
