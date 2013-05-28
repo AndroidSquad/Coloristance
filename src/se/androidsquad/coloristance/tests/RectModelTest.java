@@ -4,8 +4,8 @@ import static org.junit.Assert.*;
 
 import org.junit.Test;
 
-import se.androidsquad.coloristance.MapModel;
-import se.androidsquad.coloristance.RectModel;
+import se.androidsquad.coloristance.models.MapModel;
+import se.androidsquad.coloristance.models.RectModel;
 
 /**
  * The initial test checks that we can set the RectColor correctly.

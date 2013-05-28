@@ -20,7 +20,7 @@
         android:label="@string/app_name"
         android:theme="@style/AppTheme" >
         <activity
-            android:name="se.androidsquad.coloristance.MainActivity"
+            android:name="se.androidsquad.coloristance.controllers.MainActivity"
             android:label="@string/app_name"
             android:theme="@android:style/Theme.NoTitleBar.Fullscreen" >
             <intent-filter>
@@ -30,12 +30,12 @@
             </intent-filter>
         </activity>
         <activity
-            android:name="se.androidsquad.coloristance.FirstScreen"
+           	android:name="se.androidsquad.coloristance.controllers.FirstScreen"
             android:theme="@android:style/Theme.NoTitleBar.Fullscreen" >
         </activity>
         <activity
-            android:name="se.androidsquad.coloristance.GameRules"
-            android:theme="@android:style/Theme.NoTitleBar.Fullscreen" >
+ 			android:name="se.androidsquad.coloristance.controllers.GameRules"   
+ 			android:theme="@android:style/Theme.NoTitleBar.Fullscreen" >
         </activity>
     </application>
 

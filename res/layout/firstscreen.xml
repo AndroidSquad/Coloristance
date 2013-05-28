@@ -14,7 +14,7 @@
         android:layout_weight="0.15"
         android:background="@color/black" >
 
-        <se.androidsquad.coloristance.DrawMap
+        <se.androidsquad.coloristance.views.MapDrawerView
             android:id="@+id/mapRect"
             android:layout_width="match_parent"
             android:layout_height="match_parent"

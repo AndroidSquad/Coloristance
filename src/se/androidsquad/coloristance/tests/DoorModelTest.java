@@ -6,9 +6,9 @@ import static org.junit.Assert.*;
 import org.junit.Before;
 import org.junit.Test;
 
-import se.androidsquad.coloristance.DoorModel;
-import se.androidsquad.coloristance.MapModel;
-import se.androidsquad.coloristance.RectModel;
+import se.androidsquad.coloristance.models.DoorModel;
+import se.androidsquad.coloristance.models.MapModel;
+import se.androidsquad.coloristance.models.RectModel;
 /**
  * This class asserts that the doors in the room are set to a correct value when we
  * use the setDoor() method.

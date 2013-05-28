@@ -8,7 +8,7 @@ import junit.framework.TestCase;
 import org.junit.Before;
 import org.junit.Test;
 
-import se.androidsquad.coloristance.MapModel;
+import se.androidsquad.coloristance.models.MapModel;
 
 /**
 * The first test asserts that the mapArray has the correct size.
