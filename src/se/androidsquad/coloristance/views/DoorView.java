@@ -14,7 +14,7 @@ public class DoorView{
 
 	public DoorView(Activity current) {
 		this.act = current;
-	}
+	}//Constructor
 
 	/**
 	 * This method handles that the doors are appointed to the right locations in a room

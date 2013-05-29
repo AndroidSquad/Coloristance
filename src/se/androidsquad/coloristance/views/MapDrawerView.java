@@ -67,15 +67,11 @@ public class MapDrawerView extends View {
 		String rectColor = "";
 		//TODO vad händer här?
 
-		int mapTop = findViewById(R.id.mapRect).getTop();
-		int mapBot = findViewById(R.id.mapRect).getBottom();
-		int mapRight = findViewById(R.id.mapRect).getRight();
-		int mapLeft = findViewById(R.id.mapRect).getLeft();
 		int mapHeight = findViewById(R.id.mapRect).getHeight();
 		int mapWidth = findViewById(R.id.mapRect).getWidth();
 		int xPos = MapModel.getMyX();
 		int yPos = MapModel.getMyY();
-		Log.v("DrawMap", mapWidth+", "+mapHeight+", "+mapLeft+", "+mapTop+", "+mapRight+", "+mapBot);
+		Log.v("DrawMap", mapWidth+", "+mapHeight);
 
 		/**
 		 * creates a HashMap to be able to store a certain x,y position with the corresponding color of the room.
@@ -91,7 +87,7 @@ public class MapDrawerView extends View {
 
 		if(getResources().getConfiguration().orientation == Configuration.ORIENTATION_LANDSCAPE){
 			//if we turn the phone the map should be rendered differently
-			MapModel.setMap(8*mapWidth/3, 55*mapHeight/144, mapTop, mapRight, mapBot, mapLeft);
+			MapModel.setMap(8*mapWidth/3, 55*mapHeight/144);
 			for(int i = 0; i<MapModel.getMap()[i].length;i++){
 				for(int j = 0; j<MapModel.getMap().length;j++){
 					name = i+","+j;
@@ -109,7 +105,7 @@ public class MapDrawerView extends View {
 			invalidate();// Calls the onDraw again as soon as it has painted everything
 		}//if
 		else{
-			MapModel.setMap(mapWidth, mapHeight, mapTop, mapRight, mapBot, mapLeft);
+			MapModel.setMap(mapWidth, mapHeight);
 			for(int i = 0; i<MapModel.getMap().length;i++){
 				for(int j = 0; j<MapModel.getMap()[i].length;j++){
 					name = i+","+j;

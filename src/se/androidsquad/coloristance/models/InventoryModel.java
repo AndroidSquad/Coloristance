@@ -6,7 +6,6 @@ public class InventoryModel{
 
 	public static int[] invKey = new int[3];
 	public static boolean[] alloc = new boolean[3];
-	//int[] img = {drawable.key_blue, drawable.key_green, drawable.key_orange, drawable.key_purple, drawable.key_red};
 
 	public InventoryModel(){
 		//Initalize inventory with three empty slots

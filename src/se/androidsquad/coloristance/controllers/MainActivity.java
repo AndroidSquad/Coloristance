@@ -59,8 +59,6 @@ public class MainActivity extends Activity {
 				intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
 				finish();
 				startActivity(intent);
-				//finish();
-				//startActivity(new Intent(MainActivity.this, FirstScreen.class));
 			}//onClick
 
 		};//startNewGame
@@ -111,7 +109,6 @@ public class MainActivity extends Activity {
 		musicMenuButton.setOnClickListener(new View.OnClickListener(){
 			@Override
 			public void onClick(View v) {
-				// TODO Auto-generated method stub
 				if(!visMenuSpeak){
 					musicMenuButton.setBackgroundResource(drawable.speaker);
 					try {
