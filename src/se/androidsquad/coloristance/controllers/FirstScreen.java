@@ -336,11 +336,6 @@ public class FirstScreen extends Activity {
 		Log.v("FirstScreen","Visible speaker state: " + visSpeak + " saved");
 	}//onSaveInstanceState
 
-	/*Log.v("FirstScreen", "input : " + GameController.key[MapModel.getMyX()][MapModel.getMyY()].getKeyString());
-		Log.v("FirstScreen", "buffer 1: " + buffer[0]+ buffer[1]+ buffer[2]+ buffer[3]+ buffer[4]);
-		Log.v("FirstScreen", "InvPos: " + GameController.inv.getInv(keyInvPos));
-		Log.v("FirstScreen", "input : " + GameController.key[MapModel.getMyX()][MapModel.getMyY()].getKeyString());*/
-
 	/**
 	 * This method is called when the player is in the final room of the level. The method first registers 
 	 * and counts the time it took for the player to complete the level. Then the method sets the position of the 
@@ -528,7 +523,6 @@ public class FirstScreen extends Activity {
 	/**
 	 * Returns the total time for the player to complete a level, in seconds
 	 * @return long playedTime 
-	 * TODO är detta rätt sätt med Javadoc @param?
 	 */
 
 	private long getPlayedTime() {

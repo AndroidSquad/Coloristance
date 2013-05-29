@@ -32,7 +32,6 @@ public class MapModel {
 			mapArray = Levels.map_3;
 		}
 		else{
-			//Log.v("MapModel", "The map-level doesn't exist");
 		}
 		
 		setKeys(level);
@@ -94,7 +93,6 @@ public class MapModel {
 
 	public static void moveUp(){
 		if(y-1 < 0 || mapArray[x][y-1].charAt(0)=='0'){
-			//Log.v("MapModel", "Trying to move out of bounds" + mapArray[x][y]);
 		}
 		else
 			y=y-1;
@@ -107,7 +105,6 @@ public class MapModel {
 
 	public static void moveRight(){
 		if(x+1 >= mapArray.length || mapArray[x+1][y].charAt(0)=='0'){
-			//Log.v("MapModel", "Trying to move out of bounds" + mapArray[x][y]);
 		}
 		else
 			x=x+1;
@@ -121,7 +118,6 @@ public class MapModel {
 
 	public static void moveDown(){
 		if(y+1>=mapArray[0].length || mapArray[x][y+1].charAt(0)=='0'){
-			//Log.v("MapModel", "Trying to move out of bounds" + mapArray[x][y]);
 		}
 		else
 			y=y+1;
@@ -134,7 +130,6 @@ public class MapModel {
 	 */
 	public static void moveLeft(){
 		if(x-1 < 0 || mapArray[x-1][y].charAt(0)=='0'){
-			//Log.v("MapModel", "Trying to move out of bounds" + mapArray[x][y]);
 		}//if
 		else
 			x=x-1;
@@ -174,13 +169,10 @@ public class MapModel {
 	 * @param bot an int representing the position in the bottom of the graphical representation of the map
 	 * @param left an int representing the leftmost position in the graphical representation of the map
 	 */
-	public static void setMap(int sizeX, int sizeY, int top, int right,int bot, int left){
+	public static void setMap(int sizeX, int sizeY){
 		mapWidth 	= sizeX;
 		mapHeight 	= sizeY;
-//		mapTop 		= top;
-//		mapRight 	= right;
-//		mapBot 		= bot;
-//		mapLeft 	= left;
+
 	}//setMap
 
 	/** Receives a doorposition, 1-4,the corresponding multiplier.
