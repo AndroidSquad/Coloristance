@@ -374,7 +374,7 @@ public class FirstScreen extends Activity {
 
 		View playNextLevel= dialogView.findViewById(R.id.playNextLevel);
 		playNextLevel.setOnClickListener(new View.OnClickListener() {
-
+ 
 			public void onClick(View clicked){
 				if(clicked.getId() == R.id.playNextLevel)
 					finish_game.stop();
@@ -390,6 +390,7 @@ public class FirstScreen extends Activity {
 			public void onClick(View clicked){
 				if(clicked.getId() == R.id.endGame){
 					finish_game.stop();
+					MainActivity.visResume=false;
 					endGame();
 				}
 			}//onClick	
@@ -446,6 +447,7 @@ public class FirstScreen extends Activity {
 
 			public void onClick(View clicked){
 				if(clicked.getId() == R.id.endGame){
+					MainActivity.visResume=false;
 					endGame();
 				}
 			}//onClick
