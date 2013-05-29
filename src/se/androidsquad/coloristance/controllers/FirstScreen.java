@@ -38,8 +38,7 @@ import android.widget.TextView;
 
 public class FirstScreen extends Activity {
 
-
-	MediaPlayer mp, finish_game;
+	MediaPlayer mp, finish_game, doorAccess, doorAccessDenied;
 	DoorView doorV;
 	KeyView keyV;
 	public static InventoryView invV = null;
@@ -208,26 +207,37 @@ public class FirstScreen extends Activity {
 			public void onClick(View v) {
 
 				/*The following four if statements handle if a player is allowed into a new room or not, based
-				 *if the player has the necessary keys in the inventory
+				 *if the player has the necessary keys in the inventory. It also handles the two door sounds acces and access denied depending 
+				 *on if the playaer has access to the door or not. 
 				 */
+				
+				
 				for(int doorCount = 0; doorCount<4 ;doorCount++){
+					boolean granted = false;
 					if(doors[doorCount].equals(v)== true){
 						for(int i = 0; i<3;i++){
 							if((InventoryModel.alloc[i] && DoorModel.getDoorColorNr(doorCount) == GameController.inv.getInv(i))|| DoorModel.getDoorColorNr(doorCount) == 5){
+								
+								doorAccess = MediaPlayer.create(FirstScreen.this, R.raw.door_access); 	
+								
 								if(doorCount == 0){
 									MapModel.moveUp();
+									doorAccess.start();
 									Log.v("FirstScreen", "Up");
 								}
 								else if(doorCount == 1){
 									MapModel.moveRight();
+									doorAccess.start();
 									Log.v("FirstScreen", "Right");
 								}
 								else if(doorCount == 2){
 									MapModel.moveDown();
+									doorAccess.start();
 									Log.v("FirstScreen", "Down");
 								}
 								else if(doorCount == 3){
 									MapModel.moveLeft();
+									doorAccess.start();
 									Log.v("FirstScreen", "Left");
 								}
 								else{
@@ -239,8 +249,16 @@ public class FirstScreen extends Activity {
 								timer.start();
 								Log.v("FirstScreen","New roomtime set");
 								roomStartTime = System.currentTimeMillis();
+								granted = true;
 								break;
 							}//if
+							else if(granted == false && i == 2){
+								doorAccessDenied = MediaPlayer.create(FirstScreen.this, R.raw.door_access_denied); 	
+								doorAccessDenied.start();
+							}
+//							doorAccess.release();
+//							doorAccessDenied.release();
+									
 						}//for
 					}//if
 

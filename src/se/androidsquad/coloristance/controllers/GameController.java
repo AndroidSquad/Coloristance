@@ -41,12 +41,12 @@ public class GameController {
 	public static KeyModel[][] key;
 	public static InventoryModel inv = new InventoryModel();
 
-	// The first level is always "map_1", why the variable level is initally defined as "map_1"
+	// The first level is always "map_1", why the variable level is initally defined 1
 	public static int level = 1; 
 
 	/*
 	 * The empty constructor of GameController whcih creates an object of 
-	 * each of the different models created
+	 * each of the three models, RectModel, DoorModel and Roomcode.
 	 */
 
 	public GameController(){ // Creates an object of each of the Models
@@ -55,21 +55,11 @@ public class GameController {
 			key = KeyModel.getKeyArray();
 		}
 	
-//			Log.v("GameController","Fel"+level);
-//		for(int i = 0; i<key.length;i++){
-//			for(int j = 0; j<key[i].length;j++){
-//				Log.v("GameController",i +","+ j +":"+ key[i][j].getKeyString());
-//			}
-//		}
-
 		this.rect = new RectModel();
 		this.door = new DoorModel();
 
-//		doorClick();
-//		Levels.initLevel();
-
-	}//Constructor
-	
+	}
+	//investigates which level you are on ,  initially the level is set to 1
 	public static void setLevel(int lvl){
 		if(1 <= lvl)
 			level = lvl;
@@ -78,42 +68,11 @@ public class GameController {
 
 	}
 	
+	/**
+	 * @return The level that you currently are playing
+	 */
 	public static int getLevel(){
 		Log.v("GameController","The level returned was: "+level);
 		return level;	
-	}
-	
-	
-	
-	/* Do we really need this constructor?
-	 * 
-	 * public GameController(PositionModel pos, Levels level, RectModel rect, DoorModel door) {
-		this.pos = pos;
-		this.level = level;
-		this.rect = rect;
-		this.door = door;
-	} */
-
-//	protected void drawMap() {
-//		int posX, posY;
-//		pos = new PositionModel();
-//		posX = pos.getX(); // ska skickas til view att i denna positionen i rutnätet ska en cirkel ritas ut
-//		posY = pos.getY();
-//
-//	}
-
-//	protected void drawRoom() {
-//		
-//	}
-//	 this model is only called once and not as it supposed more often as I understand it.............................................................
-//	protected void doorClick() {
-//		roomcode = Levels.mapArray[0][0]; //retrieving the room from the database "Levels"
-//		RectModel.setRectColor(roomcode);
-//		DoorModel.setDoor(roomcode);
-//	}
-
-	
-	
-
-	
-}//GameController
+	}	
+}
