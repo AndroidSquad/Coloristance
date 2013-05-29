@@ -59,7 +59,7 @@ public class FirstScreen extends Activity {
 	protected static int levelCounter = 1; //variable that keeps track of which level is to be played
 	int[] invPos = {R.id.invKeyLeft, R.id.invKeyMid, R.id.invKeyRight};
 	long startTime, stopTime, playedTime, savedTime; //variables used for counting the total time it takes for a player to finish a level
-	long roomStartTime, roomStopTime, roomPlayedTime, roomSavedTime; //variables used for keeping track of the countdown time in each room
+	long roomStartTime, roomStopTime, roomPlayedTime, roomSavedTime,playedTimeDecimals; //variables used for keeping track of the countdown time in each room
 	String timeResult; //a String representing the total time for completing a level
 
 	@Override
@@ -351,16 +351,17 @@ public class FirstScreen extends Activity {
 	 *  end their game and return to the main menu. The buttons in this AlertDialog are represented
 	 *  in an .xml file named "finish".
 	 *  
-	 *  Also, the music playing during the level is stopped, and a special melody, signalling that the player 
+	 *  Also, the music playing during the level is stopped, and a special melody, signaling that the player 
 	 *  has completed the level, is initiated
 	 */
 
 	protected void mapDone(){
 		getPlayedTime();
+		getPlayedDecimals();
 		showTime();
 		MapModel.setPos(0,1); //TODO vad ska TODOas här??
 		AlertDialog.Builder alertDialog = new AlertDialog.Builder(this);
-		alertDialog.setTitle(this.getText(R.string.finished)+"\t"+" You finished in: "+ timeResult +" seconds" );
+		alertDialog.setTitle(this.getText(R.string.finished)+"\t"+" You finished in: "+ timeResult +"."+ playedTimeDecimals +" seconds");
 		LayoutInflater inflater = this.getLayoutInflater();
 
 
@@ -538,14 +539,24 @@ public class FirstScreen extends Activity {
 		Log.v("FirstScreen","" + "stopTime-startTime milli" + (stopTime-startTime));
 		Log.v("FirstScreen","savedTime" + savedTime);
 		return playedTime = (stopTime - startTime)/1000 + savedTime;
+		
+	}//getPlayedDecimals
+	
+	double decimals;
+	private long getPlayedDecimals() {
+		Log.v("FirstScreen","" + (stopTime - startTime)%1000 + " Decimals");
+		playedTimeDecimals = (stopTime - startTime)%1000;
+		return playedTimeDecimals;
+		
 	}//getPlayedTime
 
+	
 	/**
 	 * Presents the variable playedTime as a String that can be showed to the user
 	 */
 	private void showTime(){
 		playedTime = getPlayedTime();
-		timeResult = Long.toString(playedTime);
+		timeResult = Long.toString(playedTime);		
 	}//showTime
 
 
