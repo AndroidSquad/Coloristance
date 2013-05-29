@@ -16,10 +16,10 @@ public class RoomView{
 		this.act = current;
 	}
 
-	/**
-	 * This method controls that DoorModel appoints the correct doors to each room
-	 * This method controls that the room is set to its corresponding color. 
-	 */
+	
+//	This method controls that DoorModel appoints the correct doors to each room, and it also 
+//	controls that the room is set to its corresponding color. 
+	 
 	public void setRoom(){
 		DoorModel.setDoor(MapModel.getRoom());
 		RectModel.setRectColor(MapModel.getRoom());
