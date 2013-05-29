@@ -33,12 +33,11 @@ public class GameController {
 	 *  Pröva ex. att i en xml-fil skriva android: och sedan trycka Ctrl+Space
 	 *  
 	 *  Om du får ett fel kan du trycka på det och därefter Ctrl+1 för förlag på lösningar*/
-
+	
+	public static boolean turned = false;
 	protected RectModel rect;
 	protected DoorModel door;
 	protected String roomcode;
-
-	
 	public static KeyModel[][] key;
 	public static InventoryModel inv = new InventoryModel();
 
@@ -51,9 +50,10 @@ public class GameController {
 	 */
 
 	public GameController(){ // Creates an object of each of the Models
+		if(turned == false){
 			MapModel.setMap(level);
 			key = KeyModel.getKeyArray();
-			
+		}
 	
 //			Log.v("GameController","Fel"+level);
 //		for(int i = 0; i<key.length;i++){

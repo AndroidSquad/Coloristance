@@ -18,7 +18,7 @@
         android:allowBackup="true"
         android:icon="@drawable/coloristance_logo"
         android:label="@string/app_name"
-        android:theme="@style/AppTheme" >
+        android:theme="@style/AppTheme">
         <activity
             android:name="se.androidsquad.coloristance.controllers.MainActivity"
             android:label="@string/app_name"
@@ -30,6 +30,7 @@
             </intent-filter>
         </activity>
         <activity
+            android:configChanges="orientation|keyboardHidden"
            	android:name="se.androidsquad.coloristance.controllers.FirstScreen"
             android:theme="@android:style/Theme.NoTitleBar.Fullscreen" >
         </activity>

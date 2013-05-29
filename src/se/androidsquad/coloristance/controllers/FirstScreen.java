@@ -3,19 +3,13 @@ package se.androidsquad.coloristance.controllers;
 import java.io.IOException;
 import se.androidsquad.coloristance.R;
 import se.androidsquad.coloristance.R.drawable;
-import se.androidsquad.coloristance.models.DoorModel;
-import se.androidsquad.coloristance.models.InventoryModel;
-import se.androidsquad.coloristance.models.KeyModel;
-import se.androidsquad.coloristance.models.MapModel;
-import se.androidsquad.coloristance.models.RectModel;
-import se.androidsquad.coloristance.views.DoorView;
-import se.androidsquad.coloristance.views.MapDrawerView;
-import se.androidsquad.coloristance.views.InventoryView;
-import se.androidsquad.coloristance.views.KeyView;
+import se.androidsquad.coloristance.models.*;
+import se.androidsquad.coloristance.views.*;
 import android.app.Activity;
 import android.app.AlertDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.content.res.Configuration;
 import android.media.MediaPlayer;
 import android.os.Bundle;
 import android.os.CountDownTimer;
@@ -43,13 +37,14 @@ import android.widget.TextView;
  */
 
 public class FirstScreen extends Activity {
-	
-	
+
+
 	MediaPlayer mp, finish_game;
 	DoorView doorV;
 	KeyView keyV;
-	InventoryView invV;
-	MapDrawerView map;
+	public static InventoryView invV = null;
+	MapDrawerView mapV;
+	RoomView roomV;
 	GameController game;
 	MainActivity main;
 	ImageButton musicButton;
@@ -105,11 +100,12 @@ public class FirstScreen extends Activity {
 		textTimer = (TextView) findViewById(R.id.texttime);		
 
 		game = new GameController();
-		map = new MapDrawerView(FirstScreen.this, null);
+		mapV = new MapDrawerView(FirstScreen.this, null);
 		doorV = new DoorView(this);
 		keyV = new KeyView(this);
 		invV = new InventoryView(this, keyV);
-	
+		roomV = new RoomView(this);
+
 		//Variables used to keep track of the player's position in the map
 		int x= MapModel.getMyX();
 		int y= MapModel.getMyY();
@@ -121,9 +117,9 @@ public class FirstScreen extends Activity {
 		}//else
 
 		//Below is needed to get the right room when you start a new level or tilt the screen
-		setRoom();	
+		roomV.setRoom();	
 		// Below is needed to get the corresponding doors to the right room when a new level is started or tilted
-//		doorV.setDoors();	
+		//		doorV.setDoors();	
 
 		musicButton  = (ImageButton) findViewById(R.id.musicbutton); //graphical representation of the "speaker" in
 		//the lower left corner, signalling if music is being player or not		
@@ -249,7 +245,7 @@ public class FirstScreen extends Activity {
 					}//if
 
 					//The room, keys and doors have to be set for the new room
-					setRoom();
+					roomV.setRoom();
 					keyV.setKeys();
 					doorV.setDoors();
 
@@ -326,17 +322,6 @@ public class FirstScreen extends Activity {
 		Log.v("FirstScreen", "buffer 1: " + buffer[0]+ buffer[1]+ buffer[2]+ buffer[3]+ buffer[4]);
 		Log.v("FirstScreen", "InvPos: " + GameController.inv.getInv(keyInvPos));
 		Log.v("FirstScreen", "input : " + GameController.key[MapModel.getMyX()][MapModel.getMyY()].getKeyString());*/
-
-
-	/**
-	 * This method controls that DoorModel appoints the correct doors to each room
-	 * This method controls that the room is set to its corresponding color. 
-	 */
-	protected void setRoom(){
-		DoorModel.setDoor(MapModel.getRoom());
-		RectModel.setRectColor(MapModel.getRoom());
-		findViewById(R.id.room).setBackgroundColor(RectModel.getRectColor());
-	}//setRoom
 
 	/**
 	 * This method is called when the player is in the final room of the level. The method first registers 
@@ -488,6 +473,7 @@ public class FirstScreen extends Activity {
 	 */
 
 	public void playNextLevel() {
+		GameController.turned = false;
 		levelCounter++;
 		GameController.setLevel(levelCounter);
 		startActivity(new Intent(FirstScreen.this, FirstScreen.class));
@@ -501,13 +487,11 @@ public class FirstScreen extends Activity {
 	 */
 
 	public void endGame() {
-		levelCounter = 1;
-		GameController.setLevel(levelCounter);
-		finish();
+		//GameController.setLevel(levelCounter);
+		//finish();
 		Intent intent = new Intent(getApplicationContext(), MainActivity.class);
-		intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP); //All previous activities are cleared
+		//intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP); //All previous activities are cleared
 		startActivity(intent);
-		invV.cleanInventory();
 	}//endGame
 
 	/**
@@ -516,6 +500,7 @@ public class FirstScreen extends Activity {
 	 */
 
 	public void retryLevel(){
+		GameController.turned = false;
 		MapModel.setPos(0,1);
 		startActivity(new Intent(FirstScreen.this, FirstScreen.class));
 		levelCounter = GameController.getLevel();
@@ -552,6 +537,18 @@ public class FirstScreen extends Activity {
 		roomStopTime = System.currentTimeMillis();
 		return roomPlayedTime = (roomStopTime - roomStartTime)/1000;
 	}//getRoomPlayedTime
+
+
+
+	@Override
+	public void onConfigurationChanged(Configuration newConfig) {
+		super.onConfigurationChanged(newConfig);
+		Log.v("FirstScreen_1", "Was here");
+		GameController.turned = true;
+		roomV.setRoom();
+		keyV.setKeys();
+		doorV.setDoors();
+	}//onCofigurationChanged
 
 
 	@Override
