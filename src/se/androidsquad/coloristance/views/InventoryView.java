@@ -38,7 +38,7 @@ public class InventoryView{
 		int invPosition = 9;
 
 		thisKey = GameController.key[MapModel.getMyX()][MapModel.getMyY()];
-		// TODO vad gör egentligen denna?
+		
 
 		boolean placed = false;
 		char[] buffer = thisKey.getKeyString().toCharArray();
@@ -81,17 +81,13 @@ public class InventoryView{
 
 		Log.v("FirstScreen", "setInventory newKey ending: " + newKey);
 
-		/*		Log.v("FirstScreen", "input setInventory : " + GameController.key[MapModel.getMyX()][MapModel.getMyY()].getKeyString());
-		Log.v("FirstScreen", "buffer setInventory 1: " + buffer[0]+ buffer[1]+ buffer[2]+ buffer[3]+ buffer[4]);
-		Log.v("FirstScreen", "set InvPos: " + GameController.inv.getInv(putAtPosition));
-		Log.v("FirstScreen", "newKey: " + newKey);*/
 
 	}//setInventory
 	
 		
-	/**
-	 * Cleans the current inventory, so that no keys are displayed as being the inventory
-	 */
+	
+//	  Cleans the current inventory, so that no keys are displayed as being the inventory
+	 
 	public void cleanInventory(){
 		for(int i = 0; i<3;i++){
 			keyV.dropKey(i);
