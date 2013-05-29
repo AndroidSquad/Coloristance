@@ -30,7 +30,6 @@ public class MainActivity extends Activity {
 	boolean visMenuSpeak; //state of the ImageButton musicMenuButton
 	public static boolean visResume = false; //state of the Button resumeButton
 
-
 	/**
 	 * When the class is called the onCreate sets the view to activity_main.xml, and it also creates different
 	 * buttons in order for the player to start a newGame and turn on the music.
@@ -39,6 +38,9 @@ public class MainActivity extends Activity {
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_main);
+		FirstScreen.turn = false; 
+		//Detta kan ev. ställa till problem med att Resume inte ritar ut nycklar ordentligt... 
+		//Vet ej förrän Resume är fullt fungerande i övrigt.
 
 		mp = MediaPlayer.create(MainActivity.this, R.raw.house_music);				 
 
@@ -49,7 +51,6 @@ public class MainActivity extends Activity {
 			
 			@Override
 			public void onClick(View v) {
-				FirstScreen.turn = false;
 				if(FirstScreen.invV != null){
 					FirstScreen.invV.cleanInventory();
 				}

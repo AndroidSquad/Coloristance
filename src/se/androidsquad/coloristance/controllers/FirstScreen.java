@@ -402,7 +402,6 @@ public class FirstScreen extends Activity {
 
 			public void onClick(View clicked){
 				if(clicked.getId() == R.id.doneRetry){
-					FirstScreen.turn = false;
 					finish_game.stop();
 					retryLevel();
 				}	
