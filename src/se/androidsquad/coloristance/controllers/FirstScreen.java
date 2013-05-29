@@ -212,7 +212,8 @@ public class FirstScreen extends Activity {
 			public void onClick(View v) {
 
 				/*The following four if statements handle if a player is allowed into a new room or not, based
-				 *if the player has the necessary keys in the inventory
+				 *if the player has the necessary keys in the inventory. It also handles the two door sounds acces and access denied depending 
+				 *on if the playaer has access to the door or not. 
 				 */
 				
 				
