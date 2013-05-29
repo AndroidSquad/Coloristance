@@ -50,7 +50,8 @@ public class FirstScreen extends Activity {
 	KeyModel thisKey;
 	Runnable runnable;
 	TextView textTimer;		
-	CountDown timer, timerRotation; //two separate instances of the private class CountDown, 
+	CountDown timer, timerRotation; //two separate instances of the private class CountDown,
+	public static boolean turn = false;
 
 	//used to handle the count down in each room. 
 	//The second variable handles the count down in the case of a change of orientation 
@@ -64,13 +65,27 @@ public class FirstScreen extends Activity {
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
-
+		
+		setContentView(R.layout.firstscreen);
+		findViewById(R.id.bot_layout).setBackgroundColor(RectModel.BLUE_DARK);
+		
+		game = new GameController();
+		mapV = new MapDrawerView(FirstScreen.this, null);
+		doorV = new DoorView(this);
+		keyV = new KeyView(this);
+		invV = new InventoryView(this, keyV);
+		roomV = new RoomView(this);
+		
 		if (savedInstanceState != null) {
 			// Restore value of members from saved state
+			turn = true;
 			visSpeak = savedInstanceState.getInt("visiblespeaker");
 			savedTime = savedInstanceState.getLong("savedtime");
 			roomSavedTime =savedInstanceState.getLong("roomsavedtime");
 			startTime = System.currentTimeMillis();
+			roomV.setRoom();
+			keyV.setKeys();
+			doorV.setDoors();
 			Log.v("FirstScreen","innan if");
 			Log.v("FirstScreen",""+MapModel.getMyX()+MapModel.getMyY());
 			if((MapModel.getMyX() != 0) || (MapModel.getMyY() != 1)){ //The timer count down is not supposed to start in the first room
@@ -93,17 +108,7 @@ public class FirstScreen extends Activity {
 			timer = new CountDown(10000,1000);
 		}//else
 
-		setContentView(R.layout.firstscreen);
-		findViewById(R.id.bot_layout).setBackgroundColor(RectModel.BLUE_DARK);
-
 		textTimer = (TextView) findViewById(R.id.texttime);		
-
-		game = new GameController();
-		mapV = new MapDrawerView(FirstScreen.this, null);
-		doorV = new DoorView(this);
-		keyV = new KeyView(this);
-		invV = new InventoryView(this, keyV);
-		roomV = new RoomView(this);
 
 		//Variables used to keep track of the player's position in the map
 		int x= MapModel.getMyX();
@@ -491,8 +496,8 @@ public class FirstScreen extends Activity {
 	 */
 
 	public void playNextLevel() {
-		GameController.turned = false;
 		levelCounter++;
+		turn = false;
 		GameController.setLevel(levelCounter);
 		startActivity(new Intent(FirstScreen.this, FirstScreen.class));
 		invV.cleanInventory();
@@ -518,7 +523,7 @@ public class FirstScreen extends Activity {
 	 */
 
 	public void retryLevel(){
-		GameController.turned = false;
+		turn = false;
 		MapModel.setPos(0,1);
 		startActivity(new Intent(FirstScreen.this, FirstScreen.class));
 		levelCounter = GameController.getLevel();
@@ -555,19 +560,6 @@ public class FirstScreen extends Activity {
 		roomStopTime = System.currentTimeMillis();
 		return roomPlayedTime = (roomStopTime - roomStartTime)/1000;
 	}//getRoomPlayedTime
-
-
-
-	@Override
-	public void onConfigurationChanged(Configuration newConfig) {
-		super.onConfigurationChanged(newConfig);
-		Log.v("FirstScreen_1", "Was here");
-		GameController.turned = true;
-		roomV.setRoom();
-		keyV.setKeys();
-		doorV.setDoors();
-	}//onCofigurationChanged
-
 
 	@Override
 	protected void onResume() {

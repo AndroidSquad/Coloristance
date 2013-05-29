@@ -30,7 +30,6 @@
             </intent-filter>
         </activity>
         <activity
-            android:configChanges="orientation|keyboardHidden"
            	android:name="se.androidsquad.coloristance.controllers.FirstScreen"
             android:theme="@android:style/Theme.NoTitleBar.Fullscreen" >
         </activity>

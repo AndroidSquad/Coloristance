@@ -34,9 +34,9 @@ public class GameController {
 	 *  
 	 *  Om du får ett fel kan du trycka på det och därefter Ctrl+1 för förlag på lösningar*/
 	
-	public static boolean turned = false;
-	protected RectModel rect;
-	protected DoorModel door;
+//	public static boolean turned = false;
+	protected static RectModel rect;
+	protected static DoorModel door;
 	protected String roomcode;
 	public static KeyModel[][] key;
 	public static InventoryModel inv = new InventoryModel();
@@ -50,13 +50,13 @@ public class GameController {
 	 */
 
 	public GameController(){ // Creates an object of each of the Models
-		if(turned == false){
+		
 			MapModel.setMap(level);
-			key = KeyModel.getKeyArray();
-		}
-	
-		this.rect = new RectModel();
-		this.door = new DoorModel();
+			if(FirstScreen.turn == false){
+				key = KeyModel.getKeyArray();
+			}
+			rect = new RectModel();
+			door = new DoorModel();
 
 	}
 	//investigates which level you are on ,  initially the level is set to 1
