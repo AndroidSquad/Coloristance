@@ -62,7 +62,8 @@ public static String[][] map_3 = {
 	{"00000","70000","47003"}
 
 };
-
+//The five lined codes can have the value zero or one.
+//first position=blue, second position=green, third position=orange, forth=purple and the last is red
 public static String[][] keys_1 = {	
 
 	
@@ -77,7 +78,6 @@ public static String[][] keys_1 = {
 };
 
 public static String[][] keys_2 = {	
-	// första=blå, Andra= grön, tredje orange, fjärde=lila, femte=röd
 	{"00000","10000","00011"},
 	{"10000","00100","10100"},
 	{"01000","01010","00000"},

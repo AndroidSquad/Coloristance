@@ -38,9 +38,9 @@ public class MapDrawerView extends View {
 	public void onDraw(Canvas canvas) { 
 		super.onDraw(canvas);
 
-		/**
-		 * Creates a HashMap which pairs up the String representing a room with the corresponding color defined as a Paint object
-		 */
+		
+//		 Creates a HashMap which pairs up the String representing a room with the corresponding color defined as a Paint object
+		 
 		
 		HashMap<String, Paint> col = new HashMap<String, Paint>();
 		col.put("bl", new Paint());
@@ -85,10 +85,9 @@ public class MapDrawerView extends View {
 
 		String name = "Ej startat";
 		
-		/**
-		 * These two for-loops insert the values of the x,y-position and draws the map differently depending on if the device
-		 * is tilted or not. Then it draws the player on the correct position on the map.
-		 */
+		
+//		 These two for-loops insert the values of the x,y-position and draws the map differently depending on if the device
+//		 is tilted or not. Then it draws the player on the correct position on the map.	 
 
 		if(getResources().getConfiguration().orientation == Configuration.ORIENTATION_LANDSCAPE){
 			//if we turn the phone the map should be rendered differently
