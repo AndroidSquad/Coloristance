@@ -2,6 +2,7 @@ package se.androidsquad.coloristance.views;
 
 import se.androidsquad.coloristance.R;
 import se.androidsquad.coloristance.R.drawable;
+import se.androidsquad.coloristance.controllers.FirstScreen;
 import se.androidsquad.coloristance.controllers.GameController;
 import se.androidsquad.coloristance.models.InventoryModel;
 import se.androidsquad.coloristance.models.KeyModel;
@@ -54,15 +55,15 @@ public class KeyView{
 		String newKey = new String(buffer);
 		int keyPos = GameController.inv.getInv(invPosition);
 		boolean alloc = InventoryModel.alloc[invPosition];
-		Log.v("FirstScreen", "DropKey newKey init: " + newKey);
-		Log.v("FirstScreen", "Allocations: "+InventoryModel.alloc);
+		Log.d("FirstScreen", "DropKey newKey init: " + newKey);
+		Log.d("FirstScreen", "Allocations: "+InventoryModel.alloc);
 
 
-		if(newKey.charAt(keyPos) == '1'){
-			//TODO Visa ett snabbt felmeddelande att nyckeln redan finns i rummet
-			Log.v("FirstScreen", "The key already exist in the room");
-		}
-		else if(alloc == true ){
+		//		if(newKey.charAt(keyPos) == '1' && FirstScreen.reset == false){
+		//			//TODO Visa ett snabbt felmeddelande att nyckeln redan finns i rummet
+		//			Log.v("FirstScreen", "The key already exist in the room");
+		//		}
+		if(alloc == true && newKey.charAt(keyPos) != '1' || FirstScreen.reset == true ){
 			act.findViewById(invPos[invPosition]).setBackgroundResource(emptyInventory);
 			alloc = false;
 			if(keyPos != 5){
@@ -89,7 +90,7 @@ public class KeyView{
 
 		Log.v("FirstScreen", "DropKey newKey ending: " + newKey);
 	}//dropKey
-		
+
 	public void setStartKeys(){
 
 		//Looping what inital keys to show in the inventory

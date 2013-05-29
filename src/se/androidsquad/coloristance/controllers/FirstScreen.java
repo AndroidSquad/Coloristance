@@ -51,6 +51,7 @@ public class FirstScreen extends Activity {
 	TextView textTimer;		
 	CountDown timer, timerRotation; //two separate instances of the private class CountDown,
 	public static boolean turn = false;
+	public static boolean reset = false;
 
 	//used to handle the count down in each room. 
 	//The second variable handles the count down in the case of a change of orientation 
@@ -492,11 +493,14 @@ public class FirstScreen extends Activity {
 	 */
 
 	public void playNextLevel() {
+		reset = true;
 		levelCounter++;
 		turn = false;
 		GameController.setLevel(levelCounter);
 		startActivity(new Intent(FirstScreen.this, FirstScreen.class));
 		invV.cleanInventory();
+		reset = false;
+		
 	}//playNextLevel
 
 	/**
@@ -519,11 +523,13 @@ public class FirstScreen extends Activity {
 	 */
 
 	public void retryLevel(){
+		reset = true;
 		turn = false;
+		invV.cleanInventory();
 		MapModel.setPos(0,1);
 		startActivity(new Intent(FirstScreen.this, FirstScreen.class));
 		levelCounter = GameController.getLevel();
-		invV.cleanInventory();
+		reset = false;
 	}//retryLevel
 
 	/**
