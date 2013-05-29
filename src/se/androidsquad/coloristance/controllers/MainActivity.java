@@ -46,17 +46,21 @@ public class MainActivity extends Activity {
 		Button resumeButton = (Button) findViewById(R.id.resume_game);
 
 		View.OnClickListener startNewGame = new View.OnClickListener(){ 
-
+			
 			@Override
 			public void onClick(View v) {
 				FirstScreen.levelCounter=1;
 				GameController.setLevel(1);
 				MapModel.setPos(0,1);
-				Intent intent = new Intent(getApplicationContext(), MainActivity.class);
+				if(FirstScreen.invV != null){
+					FirstScreen.invV.cleanInventory();
+				}
+				Intent intent = new Intent(getApplicationContext(), FirstScreen.class);
 				intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
-				startActivity(intent);
 				finish();
-				startActivity(new Intent(MainActivity.this, FirstScreen.class));
+				startActivity(intent);
+				//finish();
+				//startActivity(new Intent(MainActivity.this, FirstScreen.class));
 			}//onClick
 
 		};//startNewGame
