@@ -2,6 +2,7 @@ package se.androidsquad.coloristance.views;
 
 import se.androidsquad.coloristance.R;
 import se.androidsquad.coloristance.R.drawable;
+import se.androidsquad.coloristance.controllers.FirstScreen;
 import se.androidsquad.coloristance.controllers.GameController;
 import se.androidsquad.coloristance.models.InventoryModel;
 import se.androidsquad.coloristance.models.KeyModel;
@@ -89,8 +90,10 @@ public class InventoryView{
 //	  Cleans the current inventory, so that no keys are displayed as being the inventory
 	 
 	public void cleanInventory(){
+		FirstScreen.reset = true;
 		for(int i = 0; i<3;i++){
-			keyV.dropKey(i);
+			keyV.dropKey(i);	
 		}
+		FirstScreen.reset = false;
 	}//cleanInventory
 }//InventoryView

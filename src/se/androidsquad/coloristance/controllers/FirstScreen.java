@@ -493,13 +493,11 @@ public class FirstScreen extends Activity {
 	 */
 
 	public void playNextLevel() {
-		reset = true;
 		levelCounter++;
 		turn = false;
 		GameController.setLevel(levelCounter);
 		startActivity(new Intent(FirstScreen.this, FirstScreen.class));
 		invV.cleanInventory();
-		reset = false;
 		
 	}//playNextLevel
 
@@ -523,13 +521,11 @@ public class FirstScreen extends Activity {
 	 */
 
 	public void retryLevel(){
-		reset = true;
 		turn = false;
 		invV.cleanInventory();
 		MapModel.setPos(0,1);
 		startActivity(new Intent(FirstScreen.this, FirstScreen.class));
 		levelCounter = GameController.getLevel();
-		reset = false;
 	}//retryLevel
 
 	/**

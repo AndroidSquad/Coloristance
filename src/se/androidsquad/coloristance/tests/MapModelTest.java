@@ -3,8 +3,6 @@
  */
 package se.androidsquad.coloristance.tests;
 
-import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertNotNull;
 import junit.framework.TestCase;
 
 import org.junit.Before;
