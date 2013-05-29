@@ -16,32 +16,28 @@ import se.androidsquad.coloristance.models.RectModel;
  */
 
 public class DoorModelTest {
-	/*
-	 * We need to instantiate the colors that we use in the game as
-	 * an int in order to test so the doors get the right color
-	 */
+	
+	 //We need to instantiate the colors that we use in the game as an int in order to test so the doors get the right color
 	int zero = RectModel.BLACK;
 	int two = RectModel.GREEN_LIGHT;
 	int three = RectModel.ORANGE_LIGHT;
 	int seven = RectModel.WHITE;
 	
+	//instantiate the level 1 and the right position on the map to be able to do the setDoorTest
 	@Before
 	public void setUp() throws Exception {
 		MapModel.setMap(1);
 		MapModel.setPos(1, 1);
 	}
 
-	/*
-	 * Investigates if we set the value of a door the getDoor returns the right color
-	 */
+	//Investigates if we set the value of a door the getDoor returns the right color
 	@Test
 	public void testSetDoor() {
 		DoorModel.setDoor("13027");
-		System.out.print(DoorModel.getDoor(4));
-		assertEquals(DoorModel.getDoor(1), three);
-		assertEquals(DoorModel.getDoor(2), zero);
-		assertEquals(DoorModel.getDoor(3), two);
-		assertEquals(DoorModel.getDoor(4), seven);	
+		assertEquals(DoorModel.getDoor(0), three);
+		assertEquals(DoorModel.getDoor(1), zero);
+		assertEquals(DoorModel.getDoor(2), two);
+		assertEquals(DoorModel.getDoor(3), seven);	
 	}
 
 }

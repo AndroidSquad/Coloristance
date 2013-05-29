@@ -16,13 +16,16 @@ import se.androidsquad.coloristance.models.RectModel;
  */
 
 public class RectModelTest {
-
+	
+	// investigates if we can set the color and that it is stored correctly.
 	@Test
 	public void testSetRectColor() {
 		RectModel.setRectColor("2");
 		assertEquals(RectModel.rectColor, RectModel.getRectColor());
 		
 	}
+	// This test case investigates if the color corresponds to the position on the map when the
+	// player moves on the map.
 	@Test
 	public void testMoveColor(){
 		MapModel.setMap(1);
@@ -36,6 +39,10 @@ public class RectModelTest {
 		assertEquals(RectModel.ORANGE_LIGHT, RectModel.getRectColor());
 		
 	}
+	
+	// This test case needs the code above to be run because if it is not the 
+	//	color is not ORANGE_LIGHT because the position is not (1,0)
+	 
 	@Test
 	public void testGetRoomColor() {
 		assertEquals("ol", RectModel.getRoomColor());
