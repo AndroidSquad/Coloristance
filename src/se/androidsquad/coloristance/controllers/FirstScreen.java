@@ -9,7 +9,6 @@ import android.app.Activity;
 import android.app.AlertDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
-import android.content.res.Configuration;
 import android.media.MediaPlayer;
 import android.os.Bundle;
 import android.os.CountDownTimer;
@@ -83,9 +82,6 @@ public class FirstScreen extends Activity {
 			savedTime = savedInstanceState.getLong("savedtime");
 			roomSavedTime =savedInstanceState.getLong("roomsavedtime");
 			startTime = System.currentTimeMillis();
-			roomV.setRoom();
-			keyV.setKeys();
-			doorV.setDoors();
 			Log.v("FirstScreen","innan if");
 			Log.v("FirstScreen",""+MapModel.getMyX()+MapModel.getMyY());
 			if((MapModel.getMyX() != 0) || (MapModel.getMyY() != 1)){ //The timer count down is not supposed to start in the first room
@@ -108,6 +104,9 @@ public class FirstScreen extends Activity {
 			timer = new CountDown(10000,1000);
 		}//else
 
+		roomV.setRoom();
+		keyV.setKeys();
+		doorV.setDoors();
 		textTimer = (TextView) findViewById(R.id.texttime);		
 
 		//Variables used to keep track of the player's position in the map
