@@ -41,6 +41,8 @@ public class DoorModel{
 				return position[loc];
 	}//getDoor
 
+	//Takes a position of a door as an int, it then matches the position with the correct color and 
+	//returns the position of the door
 	public static int getDoorColorNr(int pos){
 
 		int doorNr = 9;

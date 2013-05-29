@@ -16,15 +16,16 @@ public class GameController {
 	public static KeyModel[][] key;
 	public static InventoryModel inv = new InventoryModel();
 
-	// The first level is always "map_1", why the variable level is initially defined as 1
+//	The first level is always "map_1", why the variable level is initially defined as 1
 	public static int level = 1; 
 
-	/*
-	 * The empty constructor of GameController whcih creates an object of 
-	 * each of the three models, RectModel, DoorModel and Roomcode.
-	 */
+	
+//	 The empty constructor of GameController which creates an object of 
+//	 each of the three models, RectModel, DoorModel and Roomcode.
+	 
 
-	public GameController(){ // Creates an object of each of the Models
+
+	public GameController(){ 
 		if(turned == false){
 			MapModel.setMap(level);
 			key = KeyModel.getKeyArray();
@@ -34,7 +35,8 @@ public class GameController {
 		this.door = new DoorModel();
 
 	}
-	//investigates which level you are on ,  initially the level is set to 1
+	//investigates which level you are on,  initially the level is set to 1
+
 	public static void setLevel(int lvl){
 		if(1 <= lvl)
 			level = lvl;
