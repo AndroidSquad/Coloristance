@@ -71,7 +71,7 @@ public class MapDrawerView extends View {
 		int mapWidth = findViewById(R.id.mapRect).getWidth();
 		int xPos = MapModel.getMyX();
 		int yPos = MapModel.getMyY();
-		Log.v("DrawMap", mapWidth+", "+mapHeight);
+		//Log.v("DrawMap", mapWidth+", "+mapHeight);
 
 		/**
 		 * creates a HashMap to be able to store a certain x,y position with the corresponding color of the room.

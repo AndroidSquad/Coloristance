@@ -49,10 +49,7 @@ public class MainActivity extends Activity {
 			
 			@Override
 			public void onClick(View v) {
-				FirstScreen.reset = true; 
-				FirstScreen.levelCounter=1;
-				GameController.setLevel(1);
-				MapModel.setPos(0,1);
+				FirstScreen.turn = false;
 				if(FirstScreen.invV != null){
 					FirstScreen.invV.cleanInventory();
 				}
@@ -60,7 +57,9 @@ public class MainActivity extends Activity {
 				intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
 				finish();
 				startActivity(intent);
-				FirstScreen.reset = false;
+				FirstScreen.levelCounter=1;
+				GameController.setLevel(1);
+				MapModel.setPos(0,1);
 			}//onClick
 
 		};//startNewGame

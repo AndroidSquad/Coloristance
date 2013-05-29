@@ -66,17 +66,18 @@ public class KeyView{
 		if(alloc == true && newKey.charAt(keyPos) != '1' || FirstScreen.reset == true ){
 			act.findViewById(invPos[invPosition]).setBackgroundResource(emptyInventory);
 			alloc = false;
-			if(keyPos != 5){
-				buffer[keyPos] = '1';
-				Log.v("FirstScreen", "Set 1");
+			if(FirstScreen.reset == false){
+				if(keyPos != 5){
+					buffer[keyPos] = '1';
+					Log.v("FirstScreen", "Set 1");
 
-			}//if
+				}//if
 
-			newKey = new String(buffer);
-			thisKey.setKeyString(newKey);
-			thisKey.setKeyVisibility(true);
+				newKey = new String(buffer);
+				thisKey.setKeyString(newKey);
+				thisKey.setKeyVisibility(true);
+			}
 			GameController.inv.setInv(invPosition, 5);
-
 			setKeys();
 		}//else if(alloc==true)
 		else if(alloc== false){
