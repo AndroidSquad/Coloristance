@@ -38,7 +38,7 @@ public class DoorModel{
 	 * @return the color of the door
 	 */
 	public static int getDoor(int loc){
-				return position[loc];
+		return position[loc];
 	}//getDoor
 
 	//Takes a position of a door as an int, it then matches the position with the correct color and 

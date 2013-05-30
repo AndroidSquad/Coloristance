@@ -20,7 +20,7 @@ public class MapModel {
 	 * Sets the map that is to be played by retrieving the corresponding array from the database (Levels.java)
 	 * @param level an int representing what level is to be played
 	 */
-	
+
 	public static void setMap(int level){
 		if(level == 1) {
 			mapArray = Levels.map_1;
@@ -33,15 +33,15 @@ public class MapModel {
 		}
 		else{
 		}
-		
+
 		setKeys(level);
 	}//setMap
-	
+
 	/**
 	 * 
 	 * @return mapArray the array containing information about the rooms in a certain level, and the doors in each room
 	 */
-	
+
 	public static String[][] getMap(){
 		return mapArray;		
 	}//getMap
@@ -69,7 +69,7 @@ public class MapModel {
 	/**
 	 * @return keyArray the array containing the keys for the specific level
 	 */
-	
+
 	public static String[][] getKeys(){
 		return keyArray;
 	}//getKeys
@@ -79,13 +79,13 @@ public class MapModel {
 	 * @param xPos an int describing the position of the player on the x-axis
 	 * @param yPos an int describing the position of the player on the y-axis
 	 */
-	
+
 	public static void setPos(int xPos, int yPos){
 		x = xPos;
 		y = yPos;
 	}//setPos
 
-	
+
 	/**
 	 * Checks to see if the new value is acceptable, if it is, it removes one from the y-position.
 	 * it is called whenever the "North" door is clicked.
@@ -250,7 +250,7 @@ public class MapModel {
 		else if(value==4){
 			answer = (rightX-leftX)/2;
 		}
-		
+
 		else answer = 0;
 
 		return answer;

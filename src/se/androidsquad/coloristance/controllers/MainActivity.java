@@ -48,7 +48,7 @@ public class MainActivity extends Activity {
 		Button resumeButton = (Button) findViewById(R.id.resume_game);
 
 		View.OnClickListener startNewGame = new View.OnClickListener(){ 
-			
+
 			@Override
 			public void onClick(View v) {
 				if(FirstScreen.invV != null){
@@ -95,7 +95,6 @@ public class MainActivity extends Activity {
 			public void onClick(View v){
 				startActivity(new Intent(MainActivity.this, FirstScreen.class));
 			}
-
 		});//resumeButton
 
 		/**
@@ -162,6 +161,7 @@ public class MainActivity extends Activity {
 		getMenuInflater().inflate(R.menu.main, menu);
 		return true;
 	}//onCreateOptionsMenu
+
 	@Override
 	protected void onResume() {
 		super.onResume();
