@@ -39,8 +39,6 @@ public class StartMenuActivity extends Activity {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_main);
 		GameActivity.turn = false; 
-		//Detta kan ev. ställa till problem med att Resume inte ritar ut nycklar ordentligt... 
-		//Vet ej förrän Resume är fullt fungerande i övrigt.
 
 		mp = MediaPlayer.create(StartMenuActivity.this, R.raw.house_music);				 
 

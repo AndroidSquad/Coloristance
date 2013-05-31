@@ -5,16 +5,10 @@ import android.util.Log;
 public class KeyModel {
 
 	/**
-	 *TODO beskriva vad denna klassen gör
+	 *This class contains the code for managing the keys, including their visibility
+	 *and color.
 	 */
 
-	//Nytt key_object för varjerum. Läs in från levels 
-	// Skall länkas till rummen 'Antal rum'
-	// Skall relatera till färger 1-5 och en empty 6
-	// Skall ha en position i rummet 1-5, färg fristående - relaterar till skärm
-
-	//position: Talar om var i rummet nyckeln befinner sig
-	//color: anger nycklens färg
 	private boolean isVisible;
 	private String keys;
 	private int keyColor;

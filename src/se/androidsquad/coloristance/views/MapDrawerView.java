@@ -65,7 +65,6 @@ public class MapDrawerView extends View {
 		border.setStrokeWidth(3);
 
 		String rectColor = "";
-		//TODO vad händer här?
 
 		int mapHeight = findViewById(R.id.mapRect).getHeight();
 		int mapWidth = findViewById(R.id.mapRect).getWidth();

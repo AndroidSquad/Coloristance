@@ -58,11 +58,6 @@ public class KeyView{
 		Log.d("FirstScreen", "DropKey newKey init: " + newKey);
 		Log.d("FirstScreen", "Allocations: "+InventoryModel.alloc);
 
-
-		//		if(newKey.charAt(keyPos) == '1' && FirstScreen.reset == false){
-		//			//TODO Visa ett snabbt felmeddelande att nyckeln redan finns i rummet
-		//			Log.v("FirstScreen", "The key already exist in the room");
-		//		}
 		if(alloc == true && newKey.charAt(keyPos) != '1' || GameActivity.reset == true ){
 			act.findViewById(invPos[invPosition]).setBackgroundResource(emptyInventory);
 			alloc = false;

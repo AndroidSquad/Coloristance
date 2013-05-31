@@ -122,8 +122,6 @@ public class GameActivity extends Activity {
 
 		//Below is needed to get the right room when you start a new level or tilt the screen
 		roomV.setRoom();	
-		// Below is needed to get the corresponding doors to the right room when a new level is started or tilted
-		//		doorV.setDoors();	
 
 		musicButton  = (ImageButton) findViewById(R.id.musicbutton); //graphical representation of the "speaker" in
 		//the lower left corner, signalling if music is being player or not		
@@ -509,10 +507,7 @@ public class GameActivity extends Activity {
 	 */
 
 	public void endGame() {
-		//GameController.setLevel(levelCounter);
-		//finish();
 		Intent intent = new Intent(getApplicationContext(), StartMenuActivity.class);
-		//intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP); //All previous activities are cleared
 		startActivity(intent);
 	}//endGame
 

@@ -9,7 +9,6 @@ import android.util.Log;
 
 public class GameController {
 
-	//	public static boolean turned = false;
 	protected static RectModel rect;
 	protected static DoorModel door;
 	protected String roomcode;
