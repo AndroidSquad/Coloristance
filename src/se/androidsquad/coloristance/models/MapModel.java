@@ -24,7 +24,7 @@ public class MapModel {
 	public static void setMap(int level){
 		if(level == 1) {
 			mapArray = Levels.map_1;
-		}
+		}//if
 		else if(level == 2){
 			mapArray = Levels.map_2;
 		} 
