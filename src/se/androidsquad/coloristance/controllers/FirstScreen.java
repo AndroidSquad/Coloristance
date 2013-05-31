@@ -65,17 +65,17 @@ public class FirstScreen extends Activity {
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
-		
+
 		setContentView(R.layout.firstscreen);
 		findViewById(R.id.bot_layout).setBackgroundColor(RectModel.BLUE_DARK);
-		
+
 		game = new GameController();
 		mapV = new MapDrawerView(FirstScreen.this, null);
 		doorV = new DoorView(this);
 		keyV = new KeyView(this);
 		invV = new InventoryView(this, keyV);
 		roomV = new RoomView(this);
-		
+
 		if (savedInstanceState != null) {
 			// Restore value of members from saved state
 			turn = true;
@@ -215,16 +215,16 @@ public class FirstScreen extends Activity {
 				 *if the player has the necessary keys in the inventory. It also handles the two door sounds acces and access denied depending 
 				 *on if the playaer has access to the door or not. 
 				 */
-				
-				
+
+
 				for(int doorCount = 0; doorCount<4 ;doorCount++){
 					boolean granted = false;
 					if(doors[doorCount].equals(v)== true){
 						for(int i = 0; i<3;i++){
 							if((InventoryModel.alloc[i] && DoorModel.getDoorColorNr(doorCount) == GameController.inv.getInv(i))|| DoorModel.getDoorColorNr(doorCount) == 5){
-								
+
 								doorAccess = MediaPlayer.create(FirstScreen.this, R.raw.door_access); 	
-								
+
 								if(doorCount == 0){
 									MapModel.moveUp();
 									doorAccess.start();
@@ -261,9 +261,9 @@ public class FirstScreen extends Activity {
 								doorAccessDenied = MediaPlayer.create(FirstScreen.this, R.raw.door_access_denied); 	
 								doorAccessDenied.start();
 							}
-//							doorAccess.release();
-//							doorAccessDenied.release();
-									
+							//							doorAccess.release();
+							//							doorAccessDenied.release();
+
 						}//for
 					}//if
 
@@ -375,7 +375,7 @@ public class FirstScreen extends Activity {
 
 		View playNextLevel= dialogView.findViewById(R.id.playNextLevel);
 		playNextLevel.setOnClickListener(new View.OnClickListener() {
- 
+
 			public void onClick(View clicked){
 				if(clicked.getId() == R.id.playNextLevel)
 					finish_game.stop();
@@ -499,7 +499,7 @@ public class FirstScreen extends Activity {
 		GameController.setLevel(levelCounter);
 		startActivity(new Intent(FirstScreen.this, FirstScreen.class));
 		invV.cleanInventory();
-		
+
 	}//playNextLevel
 
 	/**
@@ -539,18 +539,18 @@ public class FirstScreen extends Activity {
 		Log.v("FirstScreen","" + "stopTime-startTime milli" + (stopTime-startTime));
 		Log.v("FirstScreen","savedTime" + savedTime);
 		return playedTime = (stopTime - startTime)/1000 + savedTime;
-		
+
 	}//getPlayedDecimals
-	
+
 	double decimals;
 	private long getPlayedDecimals() {
 		Log.v("FirstScreen","" + (stopTime - startTime)%1000 + " Decimals");
 		playedTimeDecimals = (stopTime - startTime)%1000;
 		return playedTimeDecimals;
-		
+
 	}//getPlayedTime
 
-	
+
 	/**
 	 * Presents the variable playedTime as a String that can be showed to the user
 	 */

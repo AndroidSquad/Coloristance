@@ -7,7 +7,7 @@ public class KeyModel {
 	/**
 	 *TODO beskriva vad denna klassen gör
 	 */
-	
+
 	//Nytt key_object för varjerum. Läs in från levels 
 	// Skall länkas till rummen 'Antal rum'
 	// Skall relatera till färger 1-5 och en empty 6
@@ -43,12 +43,12 @@ public class KeyModel {
 					if(room.charAt(x) == '1'){ 
 						keyArray[i][j].setKeyVisibility(true);
 						keyArray[i][j].setKeyImg(x);
-						
+
 						Log.v("KeyModel", "Key True: " +i+","+j+"keyCode: "+ MapModel.getKeys()[i][j]);
 					}
 					else if(room.charAt(x) == '0'){ 
 						keyArray[i][j].setKeyVisibility(false);
-		
+
 						Log.v("KeyModel", "Key False: " +i+","+j+"keyCode: "+ MapModel.getKeys()[i][j]);
 					}
 					else{
@@ -87,20 +87,20 @@ public class KeyModel {
 			keyColor = color;
 			Log.v("KeyModel", "Declared: "+color);
 		}
- 
+
 		else{
 			keyColor = 666;
 			Log.v("KeyModel", "No color was found");
 		}		
 	}//setKeyImg
-	
+
 	/**
 	 * @return keyColor an int representing the color of the key
 	 */
 	public int getImg(){
 		return keyColor;
 	}//getImg
-	
+
 	/**
 	 * @return isVisible a boolean describing if the key should be visible or not
 	 */
@@ -114,7 +114,7 @@ public class KeyModel {
 	public String getKeyString(){
 		return keys;
 	}//getKeyString
-	
+
 	/**
 	 * @param update a String defining that is used to set the variable keys to a different value,
 	 * representing a change in room and the keys in the room
@@ -122,5 +122,5 @@ public class KeyModel {
 	public void setKeyString(String update){
 		keys = update;
 	}//setKeyString
-	
+
 }//KeyModel

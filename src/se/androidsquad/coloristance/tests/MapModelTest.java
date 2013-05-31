@@ -25,7 +25,7 @@ public class MapModelTest extends TestCase{
 	@Before
 	public void setUp() throws Exception {
 		MapModel.setMap(1);
-	}
+	}//setUp
 
 	// This test investigates if we are able to set the position on the map as intended
 	@Test
@@ -34,7 +34,7 @@ public class MapModelTest extends TestCase{
 		assertEquals(3,MapModel.getMyX());
 		assertEquals(2,MapModel.getMyY());
 		
-	}
+	}//testSetPos
 
 	 // this is a auto generated method stub where we investigate if level 1  is initialized as it is supposed to.
 	@Test
@@ -83,7 +83,7 @@ public class MapModelTest extends TestCase{
 		assertEquals("00000", result[7][0]);
 		assertEquals("70000", result[7][1]);
 		assertEquals("00000", result[7][2]);
-	}
+	}//testArrayLevel1
 
 	//We needed to understand why we got a nullpointer exception when drawing the map,
 	//so we did this simple test to see that the for-loop ran 1 position more than our length of the map
@@ -91,7 +91,7 @@ public class MapModelTest extends TestCase{
 	public void testCorrectArrayLength() {
 		assertEquals(8, MapModel.mapArray.length);
 		assertEquals(3, MapModel.mapArray[0].length);
-	}
+	}//testCorrectArrayLength
 	/*
 	 * this test examine if the you have moved to the position (1,1) on the map
 	 * the roomcode should be 13027
@@ -100,7 +100,7 @@ public class MapModelTest extends TestCase{
 	public void testCodeOfRoom() {
 		MapModel.setPos(1, 1);
 		assertEquals(MapModel.getRoom(),"13027");
-	}
+	}//testCodeOfRoom
 
 	/*
 	 * this test help us investigate if the player can move on the map and
@@ -167,7 +167,5 @@ public class MapModelTest extends TestCase{
 		assertEquals(1, MapModel.getMyX());		
 		assertEquals(2,MapModel.getMyY());
 
-
-
-	}
-}
+	}//testMovementsOnMap
+}//MapModelTest

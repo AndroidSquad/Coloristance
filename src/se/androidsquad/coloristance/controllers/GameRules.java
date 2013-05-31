@@ -9,13 +9,13 @@ import android.os.Bundle;
  */
 public class GameRules extends Activity{
 
-	
+
 	/**
 	 * When the class is called the onCreate sets the view to gamerules.xml
 	 */
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
-        setContentView(R.layout.gamerules);
+		setContentView(R.layout.gamerules);
 	}//onCreate
 }//GameRules

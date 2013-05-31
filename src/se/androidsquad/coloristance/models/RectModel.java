@@ -60,7 +60,7 @@ public class RectModel {
 		else if(rectColor == PURPLE_LIGHT)	color = "pl";
 		else if(rectColor == RED_LIGHT)		color = "rl";
 		else color = "Inget";	
-		
+
 		return color;
 	}//getRoomColor
 }//RectModel

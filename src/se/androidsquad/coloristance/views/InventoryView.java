@@ -15,7 +15,7 @@ public class InventoryView{
 	static int[] keyNames = {R.id.key_button_blue, R.id.key_button_green, R.id.key_button_orange, R.id.key_button_purple, R.id.key_button_red};
 	static int[] keyImg = {drawable.key_blue, drawable.key_green, drawable.key_orange, drawable.key_purple, drawable.key_red, drawable.key_empty};
 	static int[] invPos = {R.id.invKeyLeft, R.id.invKeyMid, R.id.invKeyRight};
-	
+
 	KeyModel thisKey;
 	KeyView  keyV;
 	public Activity act;
@@ -24,7 +24,7 @@ public class InventoryView{
 		this.act = current;
 		this.keyV = keyV;
 	}
-	
+
 	/**
 	 * Sets the inventory on the screen.
 	 * @param int keyPos, values between 0 - 4 
@@ -39,7 +39,7 @@ public class InventoryView{
 		int invPosition = 9;
 
 		thisKey = GameController.key[MapModel.getMyX()][MapModel.getMyY()];
-		
+
 
 		boolean placed = false;
 		char[] buffer = thisKey.getKeyString().toCharArray();
@@ -84,11 +84,11 @@ public class InventoryView{
 
 
 	}//setInventory
-	
-		
-	
-//	  Cleans the current inventory, so that no keys are displayed as being the inventory
-	 
+
+
+
+	//	  Cleans the current inventory, so that no keys are displayed as being the inventory
+
 	public void cleanInventory(){
 		FirstScreen.reset = true;
 		for(int i = 0; i<3;i++){

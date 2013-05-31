@@ -23,7 +23,7 @@ public class RectModelTest {
 		RectModel.setRectColor("2");
 		assertEquals(RectModel.rectColor, RectModel.getRectColor());
 		
-	}
+	}//testSetRectColor
 	// This test case investigates if the color corresponds to the position on the map when the
 	// player moves on the map.
 	@Test
@@ -38,7 +38,7 @@ public class RectModelTest {
 		assertEquals(RectModel.rectColor, RectModel.getRectColor());
 		assertEquals(RectModel.ORANGE_LIGHT, RectModel.getRectColor());
 		
-	}
+	}//testMoveColor
 	
 	// This test case needs the code above to be run because if it is not the 
 	//	color is not ORANGE_LIGHT because the position is not (1,0)
@@ -47,7 +47,7 @@ public class RectModelTest {
 	public void testGetRoomColor() {
 		assertEquals("ol", RectModel.getRoomColor());
 		
-	}
+	}//testGetRoomColor
 
 
-}
+}//RectModelTest

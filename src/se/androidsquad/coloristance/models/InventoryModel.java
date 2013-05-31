@@ -8,13 +8,13 @@ public class InventoryModel{
 	public static boolean[] alloc = new boolean[3];
 
 	public InventoryModel(){
-		//Initalize inventory with three empty slots
+		//Initialize inventory with three empty slots
 		for(int i=0; i<3; i++){
 			invKey[i] = 5;
 		}
 		setAllocations();
 
-	}//InventoryModel
+	}//Constructor
 
 	InventoryModel(int[] prevInvKeys){
 		invKey = prevInvKeys;
@@ -43,9 +43,11 @@ public class InventoryModel{
 			return 0;
 		}
 	}//getInv
+
 	public int[] getInv(){
 		return invKey;
 	}//getInv
+
 	public void setInv(int pos, int img){
 		invKey[pos] = img;
 	}//setInv
