@@ -1,9 +1,3 @@
-Coloristance
-========
-Lägger till Git for Dummies för att jag kan
-========
-Mr. Mafi
-
 #Git for Dummies, Mac edition
 En guide för hur git-kommandon används i Mac’s terminal (command line), instruktionerna gäller till största del även för PC. Kommandon i git och terminal (command line) kommer att förklaras och presenteras för att ge en inblick i vad som kan göras. Guiden kommer använda sig av en fabriksmetafor för att ge I:are möjlighet att förstå git utifrån ett mer familjärt perspektiv.
 
@@ -72,7 +66,7 @@ Det här är alla de kommandon som fungerar i terminalen.
 | kommando --help | Får upp en kortare hjälp för ett kommando |
 | ctrl + c | Avbryter nuvarande kommando |
 | grep –r searchterm | Söker rekursive I ALLA FILER efter söktermen. Mycket kraftfullt! Går att använda med wildcard (*) |
-| :wq | Spara �ndringar och avsluta |
+| cat ~/.ssh/id_rsa.pub | Öppnar din ssh-nyckel så att du kan lägga in den på github |
 | EXTREMT MYCKET MER | Googla |
 
 # 3. Git-kommandon
@@ -97,12 +91,7 @@ Alla kommandon som har med git att göra börjar med git, följt av kommandonamn
 | git reset | Git reset är motsatsen till git add, dvs den berövar en fil dess stage:ade tillstånd till skillnad från git add som ger ett stage:at tillstånd”. När du har ställt ut varor på lastkajen men ångrar dig och vill ta tillbaka dom så anropar du git reset. Detta för att du ska kunna göra ändringar på varorna du trodde var redo att skickas, men inte var det.  |
 | git reset --hard | Kommer att ångra allt som gjorts, dvs återställa alla ändrade filer till senaste commit. |
 | git reset --hard HEAD^ | Återställer den senaste commiten och återställer working tree och alla pekare (VARNING!) |
-<<<<<<< HEAD
-| git log | Listar alla tidigare commits och visare vem som postat dem i ordningen; senaste först. P� windows kommer du efter ett git log anrop fastna med ett ':' tryck d� 'q' och enter f�r att komma tillbaka till den vanliga terminalen.|
-=======
-| git reset --soft HEAD~1 | �terst�ller den senaste commiten som �nnu inte �r pushad till repo. 
 | git log | Listar alla tidigare commits och visare vem som postat dem i ordningen; senaste först |
->>>>>>> dd3aedad7a56d1cf39930dfbcab2407d5f2d2a63
 | git branch | listar alla branches som finns |
 | git branch branchnamn | Skapar en ny branch kallad branchname |
 | git checkout branchname | Byter från nuvarande branch till branchname |
@@ -169,7 +158,7 @@ Det finns ett ”plugin” till powershell som gör att git integreras. Kolla [H
 - Intro till .git som gjorts av en av grundarna till github: [youtube]
 
 
-[här]:http://haacked.com/archive/2011/12/13/better-git-with-powershell.aspx
+[HÄR]:http://haacked.com/archive/2011/12/13/better-git-with-powershell.aspx
 [youtube]:http://www.youtube.com/watch?feature=player_detailpage&v=ZDR433b0HJY#t=2791s
 [check it out!]:http://www.sublimetext.com/2
 [finns här]:http://www.maclife.com/article/columns/terminal_101_better_shell_zsh
