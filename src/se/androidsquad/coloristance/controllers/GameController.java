@@ -35,8 +35,9 @@ public class GameController {
 
 		if(lvl == 1){
 			Log.v("GameController","You are at the first level: "+lvl);
+			level = lvl;
 		}
-		else if(1 <= lvl){
+		else if(lvl > 1){
 			level = lvl;
 		}		
 		else{
