@@ -22,7 +22,7 @@ import android.widget.ImageButton;
  * be routed to the FirstScreen.xml when you click on the newGame button.
  */
 
-public class MainActivity extends Activity {
+public class StartMenuActivity extends Activity {
 
 	MediaPlayer mp;
 	ImageButton musicMenuButton;
@@ -38,11 +38,11 @@ public class MainActivity extends Activity {
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_main);
-		FirstScreen.turn = false; 
+		GameActivity.turn = false; 
 		//Detta kan ev. ställa till problem med att Resume inte ritar ut nycklar ordentligt... 
 		//Vet ej förrän Resume är fullt fungerande i övrigt.
 
-		mp = MediaPlayer.create(MainActivity.this, R.raw.house_music);				 
+		mp = MediaPlayer.create(StartMenuActivity.this, R.raw.house_music);				 
 
 		Button newGame = (Button) findViewById(R.id.new_game); 
 		Button resumeButton = (Button) findViewById(R.id.resume_game);
@@ -51,14 +51,14 @@ public class MainActivity extends Activity {
 
 			@Override
 			public void onClick(View v) {
-				if(FirstScreen.invV != null){
-					FirstScreen.invV.cleanInventory();
+				if(GameActivity.invV != null){
+					GameActivity.invV.cleanInventory();
 				}
-				Intent intent = new Intent(getApplicationContext(), FirstScreen.class);
+				Intent intent = new Intent(getApplicationContext(), GameActivity.class);
 				intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
 				finish();
 				startActivity(intent);
-				FirstScreen.levelCounter=1;
+				GameActivity.levelCounter=1;
 				GameController.setLevel(1);
 				MapModel.setPos(0,1);
 			}//onClick
@@ -93,7 +93,7 @@ public class MainActivity extends Activity {
 		resumeButton.setOnClickListener(new View.OnClickListener() {
 
 			public void onClick(View v){
-				startActivity(new Intent(MainActivity.this, FirstScreen.class));
+				startActivity(new Intent(StartMenuActivity.this, GameActivity.class));
 			}
 		});//resumeButton
 
@@ -148,7 +148,7 @@ public class MainActivity extends Activity {
 
 			@Override
 			public void onClick(View v) {
-				startActivity(new Intent(MainActivity.this, GameRules.class));
+				startActivity(new Intent(StartMenuActivity.this, GameRules.class));
 			}//onClick
 		});//gameRules
 
@@ -171,7 +171,7 @@ public class MainActivity extends Activity {
 	@Override
 	protected void onRestart() {
 		super.onRestart();
-		mp = MediaPlayer.create(MainActivity.this, R.raw.house_music);
+		mp = MediaPlayer.create(StartMenuActivity.this, R.raw.house_music);
 		musicMenuButton = (ImageButton) findViewById(R.id.musicmenubutton);
 		musicMenuButton.setBackgroundResource(drawable.mutespeaker);
 

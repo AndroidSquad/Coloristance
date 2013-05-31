@@ -35,7 +35,7 @@ import android.widget.TextView;
  *   
  */
 
-public class FirstScreen extends Activity {
+public class GameActivity extends Activity {
 
 	MediaPlayer mp, finish_game, doorAccess, doorAccessDenied;
 	DoorView doorV;
@@ -44,7 +44,7 @@ public class FirstScreen extends Activity {
 	MapDrawerView mapV;
 	RoomView roomV;
 	GameController game;
-	MainActivity main;
+	StartMenuActivity main;
 	ImageButton musicButton;
 	KeyModel thisKey;
 	Runnable runnable;
@@ -70,7 +70,7 @@ public class FirstScreen extends Activity {
 		findViewById(R.id.bot_layout).setBackgroundColor(RectModel.BLUE_DARK);
 
 		game = new GameController();
-		mapV = new MapDrawerView(FirstScreen.this, null);
+		mapV = new MapDrawerView(GameActivity.this, null);
 		doorV = new DoorView(this);
 		keyV = new KeyView(this);
 		invV = new InventoryView(this, keyV);
@@ -128,7 +128,7 @@ public class FirstScreen extends Activity {
 		musicButton  = (ImageButton) findViewById(R.id.musicbutton); //graphical representation of the "speaker" in
 		//the lower left corner, signalling if music is being player or not		
 
-		mp = MediaPlayer.create(FirstScreen.this, R.raw.house_music); 	
+		mp = MediaPlayer.create(GameActivity.this, R.raw.house_music); 	
 
 		if (visSpeak == 2){
 			mp.start();
@@ -223,7 +223,7 @@ public class FirstScreen extends Activity {
 						for(int i = 0; i<3;i++){
 							if((InventoryModel.alloc[i] && DoorModel.getDoorColorNr(doorCount) == GameController.inv.getInv(i))|| DoorModel.getDoorColorNr(doorCount) == 5){
 
-								doorAccess = MediaPlayer.create(FirstScreen.this, R.raw.door_access); 	
+								doorAccess = MediaPlayer.create(GameActivity.this, R.raw.door_access); 	
 
 								if(doorCount == 0){
 									MapModel.moveUp();
@@ -258,7 +258,7 @@ public class FirstScreen extends Activity {
 								break;
 							}//if
 							else if(granted == false && i == 2){
-								doorAccessDenied = MediaPlayer.create(FirstScreen.this, R.raw.door_access_denied); 	
+								doorAccessDenied = MediaPlayer.create(GameActivity.this, R.raw.door_access_denied); 	
 								doorAccessDenied.start();
 							}
 							//							doorAccess.release();
@@ -366,7 +366,7 @@ public class FirstScreen extends Activity {
 
 
 		mp.stop();
-		finish_game = MediaPlayer.create(FirstScreen.this, R.raw.super_mario_complete);	
+		finish_game = MediaPlayer.create(GameActivity.this, R.raw.super_mario_complete);	
 		finish_game.start();
 		//		finish_game.setLooping(true);
 
@@ -391,7 +391,7 @@ public class FirstScreen extends Activity {
 			public void onClick(View clicked){
 				if(clicked.getId() == R.id.endGame){
 					finish_game.stop();
-					MainActivity.visResume=false;
+					StartMenuActivity.visResume=false;
 					endGame();
 				}
 			}//onClick	
@@ -448,7 +448,7 @@ public class FirstScreen extends Activity {
 
 			public void onClick(View clicked){
 				if(clicked.getId() == R.id.endGame){
-					MainActivity.visResume=false;
+					StartMenuActivity.visResume=false;
 					endGame();
 				}
 			}//onClick
@@ -475,7 +475,7 @@ public class FirstScreen extends Activity {
 		.setNegativeButton("No", null)
 		.setNeutralButton(R.string.main_menu, new DialogInterface.OnClickListener(){
 			public void onClick(DialogInterface dialog, int i){
-				MainActivity.visResume=true;
+				StartMenuActivity.visResume=true;
 				endGame();
 			}
 		})//.setNeutralButton
@@ -497,7 +497,7 @@ public class FirstScreen extends Activity {
 		levelCounter++;
 		turn = false;
 		GameController.setLevel(levelCounter);
-		startActivity(new Intent(FirstScreen.this, FirstScreen.class));
+		startActivity(new Intent(GameActivity.this, GameActivity.class));
 		invV.cleanInventory();
 
 	}//playNextLevel
@@ -511,7 +511,7 @@ public class FirstScreen extends Activity {
 	public void endGame() {
 		//GameController.setLevel(levelCounter);
 		//finish();
-		Intent intent = new Intent(getApplicationContext(), MainActivity.class);
+		Intent intent = new Intent(getApplicationContext(), StartMenuActivity.class);
 		//intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP); //All previous activities are cleared
 		startActivity(intent);
 	}//endGame
@@ -525,7 +525,7 @@ public class FirstScreen extends Activity {
 		turn = false;
 		invV.cleanInventory();
 		MapModel.setPos(0,1);
-		startActivity(new Intent(FirstScreen.this, FirstScreen.class));
+		startActivity(new Intent(GameActivity.this, GameActivity.class));
 		levelCounter = GameController.getLevel();
 	}//retryLevel
 
@@ -578,7 +578,7 @@ public class FirstScreen extends Activity {
 	@Override
 	protected void onRestart() {
 		super.onRestart();
-		mp = MediaPlayer.create(FirstScreen.this, R.raw.house_music);
+		mp = MediaPlayer.create(GameActivity.this, R.raw.house_music);
 		musicButton = (ImageButton) findViewById(R.id.musicbutton);
 		musicButton.setBackgroundResource(drawable.mutespeaker);
 	}//onRestart

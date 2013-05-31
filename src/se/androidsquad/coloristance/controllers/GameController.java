@@ -45,7 +45,7 @@ public class GameController {
 		}
 
 		MapModel.setMap(level);
-		if(FirstScreen.turn == false){
+		if(GameActivity.turn == false){
 			key = KeyModel.getKeyArray();
 		}
 	}

@@ -2,7 +2,7 @@ package se.androidsquad.coloristance.views;
 
 import se.androidsquad.coloristance.R;
 import se.androidsquad.coloristance.R.drawable;
-import se.androidsquad.coloristance.controllers.FirstScreen;
+import se.androidsquad.coloristance.controllers.GameActivity;
 import se.androidsquad.coloristance.controllers.GameController;
 import se.androidsquad.coloristance.models.InventoryModel;
 import se.androidsquad.coloristance.models.KeyModel;
@@ -63,10 +63,10 @@ public class KeyView{
 		//			//TODO Visa ett snabbt felmeddelande att nyckeln redan finns i rummet
 		//			Log.v("FirstScreen", "The key already exist in the room");
 		//		}
-		if(alloc == true && newKey.charAt(keyPos) != '1' || FirstScreen.reset == true ){
+		if(alloc == true && newKey.charAt(keyPos) != '1' || GameActivity.reset == true ){
 			act.findViewById(invPos[invPosition]).setBackgroundResource(emptyInventory);
 			alloc = false;
-			if(FirstScreen.reset == false){
+			if(GameActivity.reset == false){
 				if(keyPos != 5){
 					buffer[keyPos] = '1';
 					Log.v("FirstScreen", "Set 1");
